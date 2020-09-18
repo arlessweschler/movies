@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Repo with webpack 4 build boilerplate",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "webpack-dev-server --config=webpack.config.js --open"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nk11dev/webpack4__boilerplate.git"
@@ -13,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/nk11dev/webpack4__boilerplate/issues"
   },
-  "homepage": "https://github.com/nk11dev/webpack4__boilerplate#readme"
+  "homepage": "https://github.com/nk11dev/webpack4__boilerplate#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "3.0.0",
+    "html-webpack-plugin": "4.4.1",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  }
 }
