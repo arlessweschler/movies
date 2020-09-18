@@ -1,0 +1,17 @@
+{
+  "name": "webpack4__boilerplate",
+  "version": "1.0.0",
+  "description": "Repo with webpack 4 build boilerplate",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nk11dev/webpack4__boilerplate.git"
+  },
+  "author": "nk11dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nk11dev/webpack4__boilerplate/issues"
+  },
+  "homepage": "https://github.com/nk11dev/webpack4__boilerplate#readme"
+}
