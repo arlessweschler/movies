@@ -4,7 +4,11 @@
   "description": "Repo with webpack 4 build boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config=webpack.config.js --open"
+    "dev": "webpack-dev-server --config=webpack.config.dev.js --open",
+    "build": "webpack --config=webpack.config.prod.js",
+    "serve": "npx http-server ./dist -p 3000 -o" ,
+    "prod": "npm run build && npm run serve" ,
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
@@ -23,11 +27,14 @@
     "clean-webpack-plugin": "3.0.0",
     "css-loader": "4.3.0",
     "html-webpack-plugin": "4.4.1",
+    "http-server": "0.12.3",
+    "mini-css-extract-plugin": "0.11.2",
     "node-sass": "4.14.1",
     "sass-loader": "10.0.2",
     "style-loader": "1.2.1",
     "webpack": "4.44.2",
     "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.0",
+    "webpack-merge": "5.1.4"
   }
 }

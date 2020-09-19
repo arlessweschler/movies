@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./index.scss";
 console.log('src/index.js');
 
 const p = document.createElement('p');
