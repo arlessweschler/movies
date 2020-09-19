@@ -11,3 +11,7 @@ const numbers2 = [7, 8, 9, 10];
 const numbers3 = [...numbers1, ...numbers2];
 p2.textContent = numbers3.join(' ');
 document.body.appendChild(p2);
+
+var imageEl = document.createElement('div');
+imageEl.setAttribute('class', 'webpack-image');
+document.body.appendChild(imageEl);
