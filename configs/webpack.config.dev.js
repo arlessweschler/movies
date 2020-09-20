@@ -9,9 +9,6 @@ module.exports = merge(commonConfig, {
     }
   },
   devtool: 'inline-source-map',
-  devServer: {
-    contentBase: '.../dist',
-  },
   module: {
     rules: [
       {
