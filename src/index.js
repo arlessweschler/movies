@@ -1,7 +1,7 @@
 import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
-import ClientEntry from './root/ClientEntry.jsx';
+import ClientEntry from './root/ClientEntry';
 
 
 console.log('src/index.js');

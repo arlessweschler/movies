@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 
 
 class ClientEntry extends Component {
@@ -7,11 +8,11 @@ class ClientEntry extends Component {
 
     return (
       <div>
-        <p>ClientEntry.jsx</p>
+        <p>ClientEntry</p>
         <div className="webpack-image"></div>
       </div>
     );
   }
 }
 
-export default ClientEntry;
+export default hot(ClientEntry);

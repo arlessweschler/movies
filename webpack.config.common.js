@@ -3,9 +3,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
+  },
+  entry: [
+    'react-hot-loader/patch',
+    './src/index.js'
+  ],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {

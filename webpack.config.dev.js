@@ -3,6 +3,11 @@ const commonConfig = require('./webpack.config.common');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
