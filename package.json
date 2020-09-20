@@ -4,8 +4,8 @@
   "description": "Repo with webpack 4 build boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config=webpack.config.dev.js --hot",
-    "build": "webpack --config=webpack.config.prod.js",
+    "dev": "webpack-dev-server --config=configs/webpack.config.dev.js --hot",
+    "build": "webpack --config=configs/webpack.config.prod.js",
     "serve": "npx http-server ./dist -p 8080",
     "prod": "npm run build && npm run serve",
     "start": "npm run dev"

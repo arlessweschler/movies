@@ -2,13 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const srcPath = path.resolve(__dirname, '../src');
+
 module.exports = {
+  context: path.resolve(__dirname),
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
   },
   entry: [
     'react-hot-loader/patch',
-    './src/index.js'
+    `${srcPath}/index.js`
   ],
   output: {
     filename: '[name].[hash].js',
@@ -35,11 +38,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      favicon: './src/assets/img/favicon.ico',
+      favicon: `${srcPath}/assets/img/favicon.ico`,
       filename: 'index.html',
       hash: true,
       inject: true,
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      template: path.resolve(__dirname, `${srcPath}/index.html`),
     }),
   ]
 };
