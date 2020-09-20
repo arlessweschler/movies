@@ -9,14 +9,15 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
     alias: {
-      "app_root": path.resolve(__dirname, `${srcPath}/root`),
-      "app_components": path.resolve(__dirname, `${srcPath}/components`),
-      "app_examples": path.resolve(__dirname, `${srcPath}/examples`),
+      "app_root": path.resolve(__dirname, `${srcPath}/app/root`),
+      "app_components": path.resolve(__dirname, `${srcPath}/app/components`),
+      "app_examples": path.resolve(__dirname, `${srcPath}/app/examples`),
+      "app_assets": path.resolve(__dirname, `${srcPath}/assets`)
     }
   },
   entry: [
     'react-hot-loader/patch',
-    `${srcPath}/index.js`
+    `${srcPath}/app/index.js`
   ],
   output: {
     filename: '[name].[hash].js',
@@ -36,7 +37,6 @@ module.exports = {
           name: '[name].[ext]',
           outputPath: 'assets/img'
         },
-
       }
     ]
   },
@@ -47,7 +47,7 @@ module.exports = {
       filename: 'index.html',
       hash: true,
       inject: true,
-      template: path.resolve(__dirname, `${srcPath}/index.html`),
+      template: path.resolve(__dirname, `${srcPath}/views/index.html`),
     }),
   ]
 };

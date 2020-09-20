@@ -1,0 +1,15 @@
+h1 {
+  color: orange;
+}
+
+.webpack-image {
+  // background-image: url('../assets/img/webpack_logo.png');
+  background-image: url('~app_assets/img/webpack_logo.png');
+  // background-image: url('assets/img/webpack_logo.png');
+  // background-image: url('~img/webpack_logo.png');
+  // background-image: url('webpack_logo.png');
+  // background-image: url('webpack_logo.png');
+  background-size: contain;
+  width: 500px;
+  height: 195px;
+}
