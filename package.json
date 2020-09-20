@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config=configs/webpack.config.dev.js --hot",
     "build": "webpack --config=configs/webpack.config.prod.js",
-    "serve": "npx http-server ./dist -p 8080",
+    "serve": "npx http-server ./dist --port 8080 --proxy http://localhost:8080?",
     "prod": "npm run build && npm run serve",
     "start": "npm run dev"
   },
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0"
   }
 }

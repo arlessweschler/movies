@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
+import BrowserRouterExample from 'app_examples/BrowserRouterExample';
 
 
 class ClientEntry extends Component {
@@ -9,7 +10,8 @@ class ClientEntry extends Component {
     return (
       <div>
         <p>ClientEntry</p>
-        <div className="webpack-image"></div>
+        <div className="webpack-image" />
+        <BrowserRouterExample />
       </div>
     );
   }
