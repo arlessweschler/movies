@@ -6,9 +6,12 @@ import {
   Link
 } from "react-router-dom";
 
-import HomePage from 'app_components/HomePage';
-import Page1 from 'app_components/Page1';
-import Page2 from 'app_components/Page2';
+import {
+  HomePage,
+  DashboardPage
+} from 'app_components/pages';
+
+import UsersContainer from 'app_containers/UsersContainer';
 
 
 export default function BrowserRouterExample() {
@@ -20,10 +23,10 @@ export default function BrowserRouterExample() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/page1">Page1</Link>
+            <Link to="/dashboard">DashboardPage</Link>
           </li>
           <li>
-            <Link to="/page2">Page2</Link>
+            <Link to="/users">UsersContainer</Link>
           </li>
         </ul>
 
@@ -33,11 +36,11 @@ export default function BrowserRouterExample() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/page1">
-            <Page1 />
+          <Route path="/dashboard">
+            <DashboardPage />
           </Route>
-          <Route path="/page2">
-            <Page2 />
+          <Route path="/users">
+            <UsersContainer />
           </Route>
         </Switch>
       </div>

@@ -8,12 +8,7 @@ module.exports = {
   context: path.resolve(__dirname),
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
-    alias: {
-      "app_root": path.resolve(__dirname, `${srcPath}/app/root`),
-      "app_components": path.resolve(__dirname, `${srcPath}/app/components`),
-      "app_examples": path.resolve(__dirname, `${srcPath}/app/examples`),
-      "app_assets": path.resolve(__dirname, `${srcPath}/assets`)
-    }
+    alias: require('./aliases')
   },
   entry: [
     'react-hot-loader/patch',
