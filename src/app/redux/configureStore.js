@@ -4,8 +4,11 @@ import {
   compose
 } from 'redux';
 
-import { createLogger } from 'redux-logger';
 
+import { createLogger } from 'redux-logger';
+const createHistory = require("history").createBrowserHistory;
+
+const history = createHistory();
 
 const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error
@@ -21,7 +24,7 @@ const rootReducer = require('redux_reducers').default;
 
 function configureStore(initialState = {}) {
   console.log('configureStore()');
-  
+
   const store = createStore(
     rootReducer,
     initialState,
@@ -32,5 +35,6 @@ function configureStore(initialState = {}) {
 }
 
 export {
-  configureStore
+  configureStore,
+  history
 };

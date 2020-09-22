@@ -6,6 +6,7 @@ module.exports = {
   "app_root": path.resolve(__dirname, `${srcPath}/app/root`),
   "app_components": path.resolve(__dirname, `${srcPath}/app/components`),
   "app_containers": path.resolve(__dirname, `${srcPath}/app/containers`),
+  "async_routes": path.resolve(__dirname, `${srcPath}/app/root/async-routing/routes`),
 
   // ресурсы
   "app_assets": path.resolve(__dirname, `${srcPath}/assets`),
