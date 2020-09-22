@@ -15,7 +15,7 @@ module.exports = {
     `${srcPath}/app/index.client.js`
   ],
   output: {
-    filename: '[name].[hash].js',
+    filename: 'js/[name].[hash].js',
     path: path.resolve(__dirname, '../dist/client')
   },
   module: {
@@ -40,7 +40,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: `${srcPath}/assets/img/favicon.ico`,
       filename: 'index.html',
-      hash: true,
+      minify: false,
       inject: true,
       template: path.resolve(__dirname, `${srcPath}/views/index.html`),
     }),
