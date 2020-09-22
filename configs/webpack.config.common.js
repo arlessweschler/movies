@@ -15,8 +15,9 @@ module.exports = {
     `${srcPath}/app/index.client.js`
   ],
   output: {
-    filename: 'js/[name].[hash].js',
-    path: path.resolve(__dirname, '../dist/client')
+    path: path.resolve(__dirname, '../dist/client'),
+    filename: 'js/[name].[hash].bundle.js',
+    chunkFilename: 'js/[id].[chunkhash].chunk.js'
   },
   module: {
     rules: [

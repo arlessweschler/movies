@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { UsersPage } from 'app_components/pages';
+import UsersPage from 'app_components/pages/users-page/UsersPage';
 
 import {
   loadUsers,

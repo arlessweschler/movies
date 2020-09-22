@@ -5,9 +5,10 @@ import {
   Route
 } from "react-router-dom";
 
-import { HomePage, DashboardPage } from 'app_components/pages';
-import { Layout } from 'app_components/layout';
-import { UsersContainer } from 'app_containers';
+import Layout from 'app_components//layout/Layout';
+import HomePage from 'app_components/pages/home-page/HomePage';
+import DashboardPage from 'app_components/pages/dashboard-page/DashboardPage';
+import UsersContainer from 'app_containers/UsersContainer';
 
 console.log('-- AppBrowserRouter');
 
