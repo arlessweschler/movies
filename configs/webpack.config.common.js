@@ -12,11 +12,11 @@ module.exports = {
   },
   entry: [
     'react-hot-loader/patch',
-    `${srcPath}/app/index.js`
+    `${srcPath}/app/index.client.js`
   ],
   output: {
     filename: '[name].[hash].js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist/client')
   },
   module: {
     rules: [

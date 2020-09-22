@@ -45,7 +45,7 @@ const prodConfig = {
       filename: '[name].[contenthash].css',
     }),
   ]
-};
+}
 
 module.exports = env => {
   switch (process.env.NODE_ENV) {
@@ -54,6 +54,6 @@ module.exports = env => {
     case 'production':
       return merge(commonConfig, prodConfig);
     default:
-      throw new Error('No matching webpack client configuration was found!');
+      throw new Error('No matching webpack configuration was found!');
   }
-};
+}
