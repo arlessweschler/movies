@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 
-import Layout from 'app_components//layout/Layout';
+import Layout from 'app_components/layout/layout/Layout';
 import HomePage from 'app_components/pages/home-page/HomePage';
 import DashboardPage from 'app_components/pages/dashboard-page/DashboardPage';
 import UsersContainer from 'app_containers/UsersContainer';
