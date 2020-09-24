@@ -5,7 +5,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 
-const getDefinePluginConfig = require('./webpack_common/define-plugin-config.js');
+const getDefinePluginConfig = require('./webpack-common/define-plugin-config.js');
 const FILENAME = 'server.js';
 
 const commonConfig = {
