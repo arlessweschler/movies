@@ -4,12 +4,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, '../src');
+const getAlias = require('./webpack_common/alias.js');
+const getOptimization = require('./webpack_common/optimization.js');
+const namedChunksFunc = require('./webpack_common/named-chunks.js');
+const rules = require('./webpack_common/rules.js');
 
 module.exports = {
   context: path.resolve(__dirname),
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
-    alias: require('./aliases')
+    alias: getAlias({ srcPath })
   },
   entry: [
     'react-hot-loader/patch',
@@ -20,61 +24,14 @@ module.exports = {
     filename: 'js/[name].[hash].js',
     chunkFilename: 'js/[id].[chunkhash].chunk.js'
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            // get the name. E.g. node_modules/packageName/not/this/part.js
-            // or node_modules/packageName
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-
-            // npm package names are URL-safe, but some servers don't like @ symbols
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },
-  },
+  optimization: getOptimization({ splitBy: 'packageName' }),
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.(jpe?g|jpg|png|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'assets/img'
-        },
-      }
-    ]
+    rules: rules
   },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.NamedChunksPlugin(chunk => {
-      if (chunk.name) {
-        return chunk.name;
-      }
-
-      return [...chunk._modules]
-        .filter((i) => i.userRequest)
-        .map(m =>
-          path.relative(
-            m.context,
-            m.userRequest.substring(0, m.userRequest.lastIndexOf('.'))
-          )
-        )
-        .join('_');
-    }),
+    new webpack.NamedChunksPlugin(namedChunksFunc),
     new HtmlWebpackPlugin({
       favicon: `${srcPath}/assets/img/favicon.ico`,
       filename: 'index.html',
