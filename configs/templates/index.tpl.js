@@ -1,9 +1,27 @@
 function getScript(hash, filename) {
-  return `${('script(src="/js/' + filename + '.' + hash + '.js")')}`;
+  return `${(typeof hash !== 'undefined' ? 'script(type="text/javascript", src="/js/' + filename + '.' + hash + '.js")' : '')}`;
 }
 
 function getStyle(hash, filename) {
-  return `${('link(rel="stylesheet", type="text/css", href="/' + filename + '.' + hash + '.css")')}`;
+  return `${(typeof hash !== 'undefined' ? 'link(rel="stylesheet", type="text/css", href="/css/' + filename + '.' + hash + '.css")' : '')}`;
+}
+
+function getReactRoot() {
+  return `
+  if IS_SSR
+    div#root !{rootContent}
+  else
+    div#root
+  `;
+}
+
+function printRenderingType() {
+  return `
+  if IS_SSR
+    <!-- RENDERING-SSR -->
+  else
+    <!-- RENDERING-CSR -->
+  `;
 }
 
 module.exports = function (compilation = {}) {
@@ -13,15 +31,16 @@ module.exports = function (compilation = {}) {
 doctype html
 html(lang="en")
 
+${printRenderingType()}
+
 head
   meta(charset="utf-8")
   title Webpack4__boilerplate__nk11dev
-  ${hash && getStyle(hash, 'main')}
+  ${getStyle(hash, 'main')}
 
 body
   h1 Index.html from pug
-  div#root
-  ${hash && getScript(hash, 'main')}
-  ${hash && getScript(hash, 'vendor_sync')}
+  ${getReactRoot()}
+  ${getScript(hash, 'main')}
 `;
 }

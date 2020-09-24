@@ -29,7 +29,7 @@ let commonConfig = {
     filename: 'js/[name].[hash].js',
     chunkFilename: 'js/[id].[hash].chunk.js'
   },
-  optimization: getOptimization({ splitBy: 'loadType' }),
+  // optimization: getOptimization({ splitBy: 'loadType' }),
   module: {
     rules: rules
   },
