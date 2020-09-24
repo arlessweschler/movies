@@ -1,14 +1,12 @@
-
+const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 
-console.log('-- webpack.config.server');
-console.log('-- process.env.NODE_ENV:', process.env.NODE_ENV);
-
-const FILENAME = 'server.js'; 
+const getDefinePluginConfig = require('./webpack_common/define-plugin-config.js');
+const FILENAME = 'server.js';
 
 const commonConfig = {
   entry: './src/server/index.server.js',
@@ -22,11 +20,12 @@ const commonConfig = {
   plugins: [
     new CleanWebpackPlugin(
       {
-          verbose: true,
-          cleanOnceBeforeBuildPatterns: [FILENAME],
-          cleanAfterEveryBuildPatterns: [FILENAME]
+        verbose: true,
+        cleanOnceBeforeBuildPatterns: [FILENAME],
+        cleanAfterEveryBuildPatterns: [FILENAME]
       }
-  )
+    ),
+    new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
   ]
 };
 

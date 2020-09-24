@@ -2,9 +2,6 @@ const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const commonConfig = require('./webpack.config.common');
 
-console.log('-- webpack.config.client');
-console.log('-- process.env.NODE_ENV:', process.env.NODE_ENV);
-
 const devConfig = {
   mode: 'development',
   resolve: {
@@ -14,7 +11,7 @@ const devConfig = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    port: 8080,
+    port: process.env.npm_package_config_PORT_DEV,
     historyApiFallback: true,
     stats: 'minimal'
   },

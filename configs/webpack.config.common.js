@@ -6,7 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const srcPath = path.resolve(__dirname, '../src');
 const getAlias = require('./webpack_common/alias.js');
 const getOptimization = require('./webpack_common/optimization.js');
-const namedChunksFunc = require('./webpack_common/named-chunks.js');
+const namedChunksPluginConfig = require('./webpack_common/named-chunks-plugin-config.js');
+const getDefinePluginConfig = require('./webpack_common/define-plugin-config.js');
 const rules = require('./webpack_common/rules.js');
 
 module.exports = {
@@ -31,7 +32,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.NamedChunksPlugin(namedChunksFunc),
+    new webpack.NamedChunksPlugin(namedChunksPluginConfig),
+    new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
     new HtmlWebpackPlugin({
       favicon: `${srcPath}/assets/img/favicon.ico`,
       filename: 'index.html',

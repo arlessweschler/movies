@@ -1,7 +1,7 @@
 const express = require('express');
 import logger from 'morgan';
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 const CLIENT_FOLDER = 'dist/client';
 
 const app = express();
@@ -12,4 +12,7 @@ app.get("*", (req, res) => {
   res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
 });
 
-app.listen(PORT, () => console.log(`\n-- listening on port: ${PORT} --`));
+app.listen(PORT, () => {
+  console.log(`\n-- listening on port: ${PORT} --`);
+  console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
+});
