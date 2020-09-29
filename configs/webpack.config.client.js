@@ -30,7 +30,7 @@ const prodConfig = {
   devtool: 'source-map',
   stats: 'minimal',
   optimization: {
-    // minimize: false
+    minimize: false
   },
   module: {
     rules: [

@@ -28,6 +28,9 @@ const commonConfig = {
     filename: FILENAME,
     path: path.resolve(__dirname, '../dist')
   },
+  optimization: {
+    minimize: false
+  },
   module: {
     rules: [
       {
@@ -45,8 +48,8 @@ const commonConfig = {
     new CleanWebpackPlugin(
       {
         verbose: true,
-        cleanOnceBeforeBuildPatterns: [FILENAME],
-        cleanAfterEveryBuildPatterns: [FILENAME]
+        cleanOnceBeforeBuildPatterns: ['*server.js'],
+        cleanAfterEveryBuildPatterns: ['*server.js']
       }
     ),
     new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
@@ -59,7 +62,9 @@ const commonConfig = {
 const devConfig = {
   mode: 'development',
   plugins: [
-    new NodemonPlugin()
+    new NodemonPlugin({
+      script: `./dist/${FILENAME}`
+    })
   ]
 };
 
