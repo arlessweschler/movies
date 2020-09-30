@@ -9,7 +9,7 @@ import { StaticRouter } from 'react-router-dom';
 
 const { PORT, IS_SSR } = process.env;
 const CLIENT_FOLDER = 'dist/client';
-import ROUTES from 'async_routes';
+import ROUTES from 'app_root/routing/routes';
 
 console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
 

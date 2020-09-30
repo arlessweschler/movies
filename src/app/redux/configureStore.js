@@ -6,9 +6,19 @@ import {
 
 
 import { createLogger } from 'redux-logger';
-const createHistory = require("history").createBrowserHistory;
+import {
+  createBrowserHistory,
+  createMemoryHistory
+} from 'history';
 
-const history = createHistory();
+let history;
+
+// нужно для серверного рендеринга
+if (typeof window !== 'undefined' && window.document) {
+  history = createBrowserHistory();
+} else {
+  history = createMemoryHistory();
+}
 
 const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error

@@ -1,5 +1,5 @@
-function getScript(hash, filename) {
-  return `${(typeof hash !== 'undefined' ? 'script(type="text/javascript", src="/js/' + filename + '.' + hash + '.js")' : '')}`;
+function getScript(hash, filename, ext) {
+  return `${(typeof hash !== 'undefined' ? 'script(type="text/javascript", src="/js/' + filename + '.' + hash + '.' + ext + '")' : '')}`;
 }
 
 function getStyle(hash, filename) {
@@ -41,6 +41,7 @@ head
 body
   h1 Index.html from pug
   ${getReactRoot()}
-  ${getScript(hash, 'main')}
+  ${getScript(hash, 'vendor', 'chunk.js')}
+  ${getScript(hash, 'main', 'js')}
 `;
 }

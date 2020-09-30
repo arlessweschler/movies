@@ -5,7 +5,6 @@ module.exports = function ({ srcPath }) {
     app_root: 'app/root',
     app_components: 'app/components',
     app_containers: 'app/containers',
-    async_routes: 'app/root/async-routing/routes',
 
     app_assets: 'assets',
     app_data: 'data',

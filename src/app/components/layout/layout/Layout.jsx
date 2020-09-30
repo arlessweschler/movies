@@ -1,20 +1,14 @@
 import React from 'react'
-import { renderRoutes } from 'react-router-config';
 
-import Navigation from 'app_components/layout/navigation/Navigation';
+import { Navigation } from 'app_components/layout';
 
 const Layout = (props) => {
-  console.log('-- Layout, props:', props);
-  
-  const { children, route } = props;
   return (
-    <div className="layout">
+    <div className="layout-wrapper">
       <Navigation />
-      {
-        (route && route.routes)
-          ? renderRoutes(route.routes)
-          : children
-      }
+      <div className="layout-content">
+        {props.children}
+      </div>
     </div>
   );
 }

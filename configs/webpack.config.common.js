@@ -6,12 +6,12 @@ const pug = require('pug');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const srcPath = path.resolve(__dirname, '../src');
-const getAlias = require('./webpack-common/alias.js');
-const getOptimization = require('./webpack-common/optimization.js');
-const namedChunksPluginConfig = require('./webpack-common/named-chunks-plugin-config.js');
-const getDefinePluginConfig = require('./webpack-common/define-plugin-config.js');
-const rules = require('./webpack-common/rules.js');
-const indexTemplate = require('./templates/index.tpl.js');
+const getAlias = require('./webpack-common/alias');
+const getOptimization = require('./webpack-common/optimization');
+const namedChunksPluginConfig = require('./webpack-common/named-chunks-plugin-config');
+const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
+const rules = require('./webpack-common/rules');
+const indexTemplate = require('./templates/index.tpl');
 const GenerateAssetWebpackPlugin = require('./webpack-plugins/generate-asset-webpack-plugin');
 
 let commonConfig = {
@@ -29,7 +29,7 @@ let commonConfig = {
     filename: 'js/[name].[hash].js',
     chunkFilename: 'js/[id].[hash].chunk.js'
   },
-  optimization: getOptimization({ splitBy: 'loadType' }),
+  optimization: getOptimization({ splitBy: 'vendor' }),
   module: {
     rules: rules
   },

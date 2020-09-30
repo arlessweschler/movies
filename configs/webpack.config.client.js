@@ -30,7 +30,12 @@ const prodConfig = {
   devtool: 'source-map',
   stats: 'minimal',
   optimization: {
-    minimize: false
+    // minimize: false
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   },
   module: {
     rules: [

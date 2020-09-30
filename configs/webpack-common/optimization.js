@@ -28,6 +28,15 @@ module.exports = function ({ splitBy }) {
           }
         };
 
+      case 'vendor':
+        return {
+          vendor_sync: {
+            name: 'vendor',
+            chunks: 'all',
+            test: /node_modules/
+          }
+        };
+
       default:
         throw new Error('No matching webpack optimization "splitBy" value found!');
     }

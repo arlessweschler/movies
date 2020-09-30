@@ -4,10 +4,10 @@ const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
-const getDefinePluginConfig = require('./webpack-common/define-plugin-config.js');
+const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const getAlias = require('./webpack-common/alias.js');
+const getAlias = require('./webpack-common/alias');
 const FILENAME = 'server.js';
 const srcPath = path.resolve(__dirname, '../src');
 
