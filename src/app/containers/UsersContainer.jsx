@@ -37,9 +37,14 @@ export default class UsersContainer extends Component {
     this.handleClear = this.handleClear.bind(this);
   }
 
+  static fetchData(store, params) {
+    return store.dispatch(loadUsers());
+  }
+
   componentDidMount() {
-    console.log('-- UsersContainer, componentDidMount');
-    this.props.actions.loadUsers();
+    const { users, actions } = this.props;
+    const { listWasFetched } = users;
+    if(!listWasFetched) actions.loadUsers();
   }
 
   handleLoad() {

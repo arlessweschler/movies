@@ -33,8 +33,6 @@ const enhancer = compose(
 const rootReducer = require('redux_reducers').default;
 
 function configureStore(initialState = {}) {
-  console.log('configureStore()');
-
   const store = createStore(
     rootReducer,
     initialState,

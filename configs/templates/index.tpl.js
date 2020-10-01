@@ -10,6 +10,10 @@ function getReactRoot() {
   return `
   if IS_SSR
     div#root !{rootContent}
+
+    script.
+      window.__PRELOADED_STATE__ = !{preloadedState}
+
   else
     div#root
   `;

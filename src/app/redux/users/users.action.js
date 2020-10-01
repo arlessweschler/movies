@@ -16,6 +16,7 @@ function clearUsers() {
 function setError(hasErrors) {
   return {
     type: USERS_DATA_LOADING_ERROR,
+    isLoading: false,
     hasErrors
   };
 }
@@ -23,6 +24,9 @@ function setError(hasErrors) {
 function setSucces(data) {
   return {
     type: USERS_DATA_LOADING_SUCCESS,
+    listWasFetched: true,
+    isLoading: false,
+    hasErrors: false,
     data
   };
 }
@@ -38,7 +42,6 @@ function loadUsers() {
   return (dispatch) => {
     const url = '/users';
     dispatch(setLoading(true));
-
     return ApiService.fetch({ url })
       .then((response) => {
         if (!response.ok) {
@@ -46,16 +49,13 @@ function loadUsers() {
             throw new Error(text);
           });
         }
-
         return response.json();
       })
       .then(({ data }) => dispatch(setSucces(data)))
-      .then(() => dispatch(setLoading(false)))
-      .then(() => dispatch(setError(false)))
       .catch(({ message }) => {
-        dispatch(setLoading(false));
         return dispatch(setError({ url, message }));
       });
+
 
   };
 }

@@ -5,8 +5,16 @@ import { renderRoutes } from 'react-router-config';
 import { Layout } from 'app_components/layout';
 import { configureStore } from 'redux_store';
 
-console.log('src/app/root/RootRoute.jsx');
-const store = configureStore();
+
+let initialState = {};
+
+if (typeof window !== 'undefined' && window.__PRELOADED_STATE__) {
+	initialState = window.__PRELOADED_STATE__;
+}
+
+console.log('src/app/root/RootRoute.jsx, initialState:', initialState);
+
+const store = configureStore(initialState);
 
 const RootRoute = (props) => {
   const { children, route } = props;
