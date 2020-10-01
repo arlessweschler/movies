@@ -11,7 +11,7 @@ const devConfig = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    port: process.env.npm_package_config_PORT_DEV,
+    port: process.env.npm_package_config_PORT_CLIENT_DEV,
     historyApiFallback: true,
     stats: 'minimal'
   },

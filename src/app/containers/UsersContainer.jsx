@@ -51,9 +51,25 @@ export default class UsersContainer extends Component {
   }
 
   render() {
-    console.log('\n-- UsersContainer, render');
     const { users } = this.props;
-    const { list } = users;
+    const { list, isLoading, hasErrors } = users;
+
+    console.log('\n-- UsersContainer.render(), users:', users);
+
+    const hasData = (typeof list !== 'undefined') && (list.length > 0);
+    let content = '';
+
+    if (isLoading) {
+      content = (<p>Загрузка...</p>)
+    }
+
+    if (hasData) {
+      content = (<UsersPage data={list} />);
+    }
+
+    if (hasErrors) {
+      content = (<p>{hasErrors.message}</p>);
+    }
 
     return (
       <div>
@@ -66,11 +82,7 @@ export default class UsersContainer extends Component {
           Очистить список
         </button>
 
-        {
-          list.length
-            ? <UsersPage data={list} />
-            : ''
-        }
+        {content}
       </div>
     );
   }

@@ -4,7 +4,7 @@ import {
   compose
 } from 'redux';
 
-
+import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {
   createBrowserHistory,
@@ -24,7 +24,7 @@ const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error
 });
 
-let middlewares = [logger];
+let middlewares = [thunk, logger];
 
 const enhancer = compose(
   applyMiddleware(...middlewares)

@@ -4,8 +4,9 @@
   "description": "Repo with webpack 4 build boilerplate",
   "main": "index.client.js",
   "config": {
-    "PORT": "8080",
-    "PORT_DEV": "8080",
+    "API_PATH": "http://127.0.0.1:8081/api",
+    "PORT_SERVER": "8081",
+    "PORT_CLIENT_DEV": "8080",
     "RENDERING": "client"
   },
   "scripts": {
@@ -36,12 +37,14 @@
     "css-loader": "4.3.0",
     "file-loader": "6.1.0",
     "html-webpack-plugin": "4.4.1",
+    "isomorphic-fetch": "3.0.0",
     "mini-css-extract-plugin": "0.11.2",
     "moment": "2.29.0",
     "node-sass": "4.14.1",
     "nodemon-webpack-plugin": "4.3.2",
     "pug": "3.0.0",
     "react-hot-loader": "4.12.21",
+    "redux-thunk": "2.3.0",
     "sass-loader": "10.0.2",
     "style-loader": "1.2.1",
     "webpack": "4.44.2",

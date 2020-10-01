@@ -5,6 +5,7 @@ module.exports = function ({ srcPath }) {
     app_root: 'app/root',
     app_components: 'app/components',
     app_containers: 'app/containers',
+    app_services: 'app/services',
 
     app_assets: 'assets',
     app_data: 'data',
@@ -12,6 +13,9 @@ module.exports = function ({ srcPath }) {
     redux_store: 'app/redux/configureStore',
     redux_reducers: 'app/redux/rootReducer',
     redux_actions: 'app/redux/actions',
+
+    server_api: 'server/api',
+    server_config: 'server/express-app-config',
   };
   Object.keys(list).forEach(
     key => {

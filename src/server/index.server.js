@@ -7,7 +7,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { renderRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
-const { PORT, IS_SSR } = process.env;
+import appResponseHeaders from 'server_config/app-response-headers';
+const { PORT_SERVER, IS_SSR } = process.env;
 const CLIENT_FOLDER = 'dist/client';
 import ROUTES from 'app_root/routing/routes';
 
@@ -16,7 +17,10 @@ console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
 const app = express();
 app.use(logger('dev'));
 
-if (IS_SSR) {
+app.use(appResponseHeaders);
+
+
+/* if (IS_SSR) {
   const RESOURCES = ['js', 'css', 'assets'];
 
   RESOURCES.forEach(function (item) {
@@ -46,8 +50,10 @@ if (IS_SSR) {
   app.get("*", (req, res) => {
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
   });
-}
+} */
 
-app.listen(PORT, () => {
-  console.log(`\n-- listening on port: ${PORT} --`);
+app.use('/api', require('server_api/users'));
+
+app.listen(PORT_SERVER, () => {
+  console.log(`\n-- listening on port: ${PORT_SERVER} --`);
 });

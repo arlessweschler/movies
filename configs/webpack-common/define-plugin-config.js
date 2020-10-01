@@ -3,8 +3,9 @@ module.exports = function (env) {
     process: {
       env: {
         NODE_ENV: `'${env.NODE_ENV}'`,
-        PORT: `'${env.npm_package_config_PORT}'`,
-        PORT_DEV: `'${env.npm_package_config_PORT_DEV}'`,
+        API_PATH: `'${env.npm_package_config_API_PATH}'`,
+        PORT_SERVER: `'${env.npm_package_config_PORT_SERVER}'`,
+        PORT_CLIENT_DEV: `'${env.npm_package_config_PORT_CLIENT_DEV}'`,
         IS_SSR: env.npm_package_config_RENDERING == 'server'
       }
     }
