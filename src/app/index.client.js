@@ -1,12 +1,16 @@
 import "./index.scss";
 import React from "react";
-import ReactDOM from "react-dom";
+import { render, hydrate } from 'react-dom';
 
 import ClientEntry from 'app_root/ClientEntry';
 
 console.log('-- src/index.js');
 console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
 
-ReactDOM.render(
-  <ClientEntry />, document.querySelector("#root")
+const renderMethod = process.env.IS_SSR
+  ? hydrate
+  : render;
+
+renderMethod(
+  <ClientEntry />, document.getElementById('root')
 );
