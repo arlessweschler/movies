@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ export default function (ROUTES) {
 
       let context = {};
 
-      const rootContent = renderToStaticMarkup(
+      const rootContent = renderToString(
         <StaticRouter location={req.url} context={context}>
           {renderRoutes(ROUTES)}
         </StaticRouter>
