@@ -32,12 +32,18 @@ if (IS_SSR) {
 
   const ssrRequestHandler = getSsrRequestHandler(REACT_ROUTES);
 
-  app.get(EXPRESS_ROUTES, ssrRequestHandler);
+  // app.get(EXPRESS_ROUTES, ssrRequestHandler);
+  app.get('*', ssrRequestHandler);
 
-// клиентский рендеринг  
+  // клиентский рендеринг  
 } else {
   app.use(express.static(CLIENT_FOLDER));
-  app.get(EXPRESS_ROUTES, (req, res) => {
+  // app.get(EXPRESS_ROUTES, (req, res) => {
+  app.get('*', (req, res) => {
+    if (!EXPRESS_ROUTES.includes(req.url)) {
+      res.status(404);
+    }
+
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
   });
 }

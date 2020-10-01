@@ -13,6 +13,7 @@ const devConfig = {
   devServer: {
     port: process.env.npm_package_config_PORT_CLIENT_DEV,
     historyApiFallback: true,
+    writeToDisk: true,
     stats: 'minimal'
   },
   module: {

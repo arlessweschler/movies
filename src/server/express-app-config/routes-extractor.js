@@ -13,7 +13,7 @@ const func = function (list) {
     }
   }
 
-  return [...new Set(arr)];
+  return [...new Set(arr)].filter(i => i != '*');
 };
 
 export default func;

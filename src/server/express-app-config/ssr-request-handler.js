@@ -27,11 +27,16 @@ export default function (ROUTES) {
         </StaticRouter>
       );
 
+      if (context.status == 404) {
+        res.status(404);
+      } 
+      
       res.render('index', {
         rootContent,
         preloadedState: preloadedStateStr,
         IS_SSR: true
       });
+
     });
   }
 };

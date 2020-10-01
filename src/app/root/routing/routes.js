@@ -2,7 +2,8 @@ import { RootRoute } from 'app_root/routing/RootRoute';
 
 import {
   HomePage,
-  DashboardPage
+  DashboardPage,
+  NotFoundPage
 } from 'app_components/pages';
 
 import {
@@ -28,6 +29,12 @@ const routes = [
       {
         path: '/users',
         component: UsersContainer
+      },
+
+      {
+        path: '*',
+        component: NotFoundPage,
+        status: 404
       }
     ]
   }
