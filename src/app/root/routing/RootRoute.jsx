@@ -6,7 +6,7 @@ import { Layout } from 'app_components/layout';
 import { configureStore, history } from 'redux_store';
 
 const IS_CLIENT = (typeof window !== 'undefined' && window.__PRELOADED_STATE__);
-const initialState = IS_CLIENT
+let initialState = IS_CLIENT
   ? initialState = window.__PRELOADED_STATE__
   : {};
 

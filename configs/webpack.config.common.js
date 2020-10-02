@@ -28,7 +28,8 @@ let commonConfig = {
   output: {
     path: path.resolve(__dirname, '../dist/client'),
     filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[id].[hash].chunk.js'
+    chunkFilename: 'js/[id].[hash].chunk.js',
+    publicPath: '/'
   },
   optimization: getOptimization({ splitBy: 'vendor' }),
   module: {

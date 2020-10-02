@@ -27,7 +27,6 @@ const routes = [
         component: UsersListContainer
       },
 
-      // Карточка организации
       {
         path: '/users/:user_id',
         exact: true,
