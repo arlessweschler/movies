@@ -2,7 +2,6 @@ import { RootRoute } from 'app_root/routing/RootRoute';
 
 import {
   HomePage,
-  DashboardPage,
   NotFoundPage
 } from 'app_components/pages';
 
@@ -19,11 +18,6 @@ const routes = [
         path: '/',
         exact: true,
         component: HomePage
-      },
-
-      {
-        path: '/dashboard',
-        component: DashboardPage
       },
 
       {
