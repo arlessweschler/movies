@@ -1,13 +1,13 @@
-// import "./Navigation.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navigation(props) {
   const { currentRoute } = props;
   const links = [
-    { url: '/', text: 'Home' },
     { url: '/dashboard', text: 'DashboardPage' },
     { url: '/users', text: 'UsersContainer' },
     { url: '/unknown-route', text: 'PageNotFound' },
@@ -16,6 +16,12 @@ export default function Navigation(props) {
   return (
     <React.Fragment>
       <ul className="list-group list-group-horizontal cstm-nav">
+        <li className={cn("list-group-item", { 'active': ('/' == currentRoute) })}>
+          <Link to='/'>
+            <FontAwesomeIcon icon={faHome} />
+          </Link>
+        </li>
+
         {links.map(function (item) {
           const { url, text } = item;
           return (
