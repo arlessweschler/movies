@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, ButtonGroup } from 'reactstrap';
 
-import { UsersPage } from 'app_components/pages';
-
-import {
-  loadUsers,
-  clearUsers
-} from "redux_actions";
-
+import { loadUsers, clearUsers } from "redux_actions"
+import { UsersToolbar, UsersPage } from 'app_components/pages';
+;
 
 // маппинг редюсеров
 const mapStateToProps = ({ users }) => {
@@ -28,17 +23,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-
 @connect(mapStateToProps, mapDispatchToProps)
 export default class UsersContainer extends Component {
 
-  constructor() {
-    super();
-    this.handleLoad = this.handleLoad.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-  }
-
-  static fetchData(store, params) {
+  static fetchData(store) {
     return store.dispatch(loadUsers());
   }
 
@@ -60,42 +48,21 @@ export default class UsersContainer extends Component {
     const { users } = this.props;
     const { list, isLoading, hasErrors } = users;
 
-    console.log('\n-- UsersContainer.render(), users:', users);
-
     const hasData = (typeof list !== 'undefined') && (list.length > 0);
-    let content = '';
+    let usersPageData = {};
 
-    if (isLoading) {
-      content = (<p>Загрузка...</p>)
-    }
-
-    if (hasData) {
-      content = (<UsersPage data={list} />);
-    }
-
-    if (hasErrors) {
-      content = (<p>{hasErrors.message}</p>);
-    }
+    if (isLoading) usersPageData.message = 'Загрузка...';
+    if (hasData) usersPageData.list = list;
+    if (hasErrors) usersPageData.message = hasErrors.message;
 
     return (
-      <div>
-        <h2>UsersContainer content</h2>
-        <ButtonGroup className="pt-2 pb-4">
-          <Button className="btn-success"
-            onClick={this.handleLoad}
-          >
-            Загрузить список
-          </Button>
-
-          <Button className="btn-warning"
-            onClick={this.handleClear}
-          >
-            Очистить список
-          </Button>
-        </ButtonGroup>
-        
-        {content}
-      </div>
+      <React.Fragment>
+        <UsersToolbar
+          handleLoad={this.handleLoad.bind(this)}
+          handleClear={this.handleClear.bind(this)}
+        />
+        {<UsersPage {...usersPageData} />}
+      </React.Fragment>
     );
   }
 };

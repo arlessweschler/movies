@@ -5,35 +5,23 @@ import { renderRoutes } from 'react-router-config';
 import { Layout } from 'app_components/layout';
 import { configureStore, history } from 'redux_store';
 
-
-let initialState = {};
-
-if (typeof window !== 'undefined' && window.__PRELOADED_STATE__) {
-  initialState = window.__PRELOADED_STATE__;
-}
-
-console.log('src/app/root/RootRoute.jsx, initialState:', initialState);
+const IS_CLIENT = (typeof window !== 'undefined' && window.__PRELOADED_STATE__);
+const initialState = IS_CLIENT
+  ? initialState = window.__PRELOADED_STATE__
+  : {};
 
 const store = configureStore(initialState);
 
 const RootRoute = (props) => {
-  const { children, route, history: staticHistory } = props;
-
-  const { location: { pathname } } = history;
-  const { location: { pathname: staticPathname } } = staticHistory;
-
-  const currentRoute = (typeof window !== 'undefined' && window.document)
-    ? pathname
-    : staticPathname;
+  const { route, history: staticHistory } = props;
+  const currentRoute = IS_CLIENT
+    ? history.location.pathname
+    : staticHistory.location.pathname;
 
   return (
     <Provider store={store}>
       <Layout currentRoute={currentRoute}>
-        {
-          (route && route.routes)
-            ? renderRoutes(route.routes)
-            : children
-        }
+        {renderRoutes(route.routes)}
       </Layout>
     </Provider>
   );
