@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { loadUsers, clearUsers } from "redux_actions"
+import { loadUsersList, clearUsersList } from "redux_actions"
 import { UsersToolbar, UsersPage } from 'app_components/pages';
 ;
 
 // маппинг редюсеров
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ usersList }) => {
   return {
-    users
+    usersList
   };
 };
 
@@ -17,36 +17,36 @@ const mapStateToProps = ({ users }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      loadUsers,
-      clearUsers
+      loadUsersList,
+      clearUsersList
     }, dispatch)
   };
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class UsersContainer extends Component {
+export default class UsersListContainer extends Component {
 
   static fetchData(store) {
-    return store.dispatch(loadUsers());
+    return store.dispatch(loadUsersList());
   }
 
   componentDidMount() {
-    const { users, actions } = this.props;
-    const { listWasFetched } = users;
-    if (!listWasFetched) actions.loadUsers();
+    const { usersList, actions } = this.props;
+    const { listWasFetched } = usersList;
+    if (!listWasFetched) actions.loadUsersList();
   }
 
   handleLoad() {
-    this.props.actions.loadUsers();
+    this.props.actions.loadUsersList();
   }
 
   handleClear() {
-    this.props.actions.clearUsers();
+    this.props.actions.clearUsersList();
   }
 
   render() {
-    const { users } = this.props;
-    const { list, isLoading, hasErrors } = users;
+    const { usersList } = this.props;
+    const { list, isLoading, hasErrors } = usersList;
 
     const hasData = (typeof list !== 'undefined') && (list.length > 0);
     let usersPageData = {};

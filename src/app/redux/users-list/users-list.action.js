@@ -1,21 +1,21 @@
 import ApiService from 'app_services/Api.service';
 
 import {
-  USERS_DATA_IS_LOADING,
-  USERS_DATA_LOADING_SUCCESS,
-  USERS_DATA_LOADING_ERROR,
-  USERS_DATA_CLEARED,
-} from './users.constants';
+  USERS_LIST_IS_LOADING,
+  USERS_LIST_LOADING_SUCCESS,
+  USERS_LIST_LOADING_ERROR,
+  USERS_LIST_CLEARED,
+} from './users-list.constants';
 
-function clearUsers() {
+function clearUsersList() {
   return {
-    type: USERS_DATA_CLEARED
+    type: USERS_LIST_CLEARED
   };
 }
 
 function setError(hasErrors) {
   return {
-    type: USERS_DATA_LOADING_ERROR,
+    type: USERS_LIST_LOADING_ERROR,
     isLoading: false,
     hasErrors
   };
@@ -23,7 +23,7 @@ function setError(hasErrors) {
 
 function setSucces(data) {
   return {
-    type: USERS_DATA_LOADING_SUCCESS,
+    type: USERS_LIST_LOADING_SUCCESS,
     listWasFetched: true,
     isLoading: false,
     hasErrors: false,
@@ -33,12 +33,12 @@ function setSucces(data) {
 
 function setLoading(isLoading) {
   return {
-    type: USERS_DATA_IS_LOADING,
+    type: USERS_LIST_IS_LOADING,
     isLoading
   };
 }
 
-function loadUsers() {
+function loadUsersList() {
   return (dispatch) => {
     const url = '/users';
     dispatch(setLoading(true));
@@ -61,6 +61,6 @@ function loadUsers() {
 }
 
 export {
-  loadUsers,
-  clearUsers
+  loadUsersList,
+  clearUsersList
 };

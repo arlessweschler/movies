@@ -1,11 +1,11 @@
 // общая функциональность
 import {
-  loadUsers,
-  clearUsers
-} from './users/users.action';
+  loadUsersList,
+  clearUsersList
+} from './users-list/users-list.action';
 
 
 export {
-  loadUsers,
-  clearUsers
+  loadUsersList,
+  clearUsersList
 };

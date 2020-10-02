@@ -1,5 +1,7 @@
-import UsersContainer from 'app_containers/UsersContainer';
+import UsersListContainer from 'app_containers/UsersListContainer';
+import UserCardContainer from 'app_containers/UserCardContainer';
 
 export {
-  UsersContainer
+  UsersListContainer,
+  UserCardContainer
 };

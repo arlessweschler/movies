@@ -10,8 +10,7 @@ export default function NotFoundPage() {
       }
       return (
         <div>
-          <h2>404 NotFoundPage</h2>
-          <p>Страница не найдена</p>
+          <p>404 - Страница не найдена</p>
         </div>
       );
     }} />

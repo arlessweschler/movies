@@ -9,6 +9,7 @@ export default function Navigation(props) {
   const { currentRoute } = props;
   const links = [
     { url: '/users', text: 'Пользователи' },
+    { url: '/users/random-user-id', text: 'Карточка пользователя' },
     { url: '/unknown-route', text: '404' },
   ];
 

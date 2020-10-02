@@ -1,34 +1,34 @@
 import {
-  USERS_DATA_IS_LOADING,
-  USERS_DATA_LOADING_SUCCESS,
-  USERS_DATA_LOADING_ERROR,
-  USERS_DATA_CLEARED,
-} from './users.constants';
+  USERS_LIST_IS_LOADING,
+  USERS_LIST_LOADING_SUCCESS,
+  USERS_LIST_LOADING_ERROR,
+  USERS_LIST_CLEARED,
+} from './users-list.constants';
 
 
-const defaultUsers = {
+const defaultUsersList = {
   list: [],
   listWasFetched: false,
   isLoading: false,
   hasErrors: false
 };
 
-function users(state = defaultUsers, action) {
+function usersList(state = defaultUsersList, action) {
   switch (action.type) {
-    case USERS_DATA_IS_LOADING:
+    case USERS_LIST_IS_LOADING:
       return {
         ...state,
         isLoading: action.isLoading
       };
 
-    case USERS_DATA_LOADING_ERROR:
+    case USERS_LIST_LOADING_ERROR:
       return {
         ...state,
         isLoading: action.isLoading,
         hasErrors: action.hasErrors
       };
 
-    case USERS_DATA_LOADING_SUCCESS:
+    case USERS_LIST_LOADING_SUCCESS:
       const { list } = action.data;
       return {
         ...state,
@@ -38,8 +38,8 @@ function users(state = defaultUsers, action) {
         hasErrors: action.hasErrors
       };
 
-    case USERS_DATA_CLEARED:
-      return { ...defaultUsers };
+    case USERS_LIST_CLEARED:
+      return { ...defaultUsersList };
 
     default:
       return state;
@@ -47,5 +47,5 @@ function users(state = defaultUsers, action) {
 };
 
 export {
-  users
+  usersList
 };

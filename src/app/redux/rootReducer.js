@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 import {
-  users
-} from './users/users.reducer';
+  usersList
+} from './users-list/users-list.reducer';
 
 
 export default combineReducers({
-  users
+  usersList
 });

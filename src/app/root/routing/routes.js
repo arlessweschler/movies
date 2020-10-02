@@ -6,7 +6,8 @@ import {
 } from 'app_components/pages';
 
 import {
-  UsersContainer
+  UsersListContainer,
+  UserCardContainer
 } from 'app_containers';
 
 const routes = [
@@ -22,7 +23,15 @@ const routes = [
 
       {
         path: '/users',
-        component: UsersContainer
+        exact: true,
+        component: UsersListContainer
+      },
+
+      // Карточка организации
+      {
+        path: '/users/:user_id',
+        exact: true,
+        component: UserCardContainer
       },
 
       {
