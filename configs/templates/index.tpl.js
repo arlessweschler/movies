@@ -40,10 +40,10 @@ ${printRenderingType()}
 head
   meta(charset="utf-8")
   title Webpack4__boilerplate__nk11dev
+  ${getStyle(hash, 'vendor')}
   ${getStyle(hash, 'main')}
 
 body
-  h1 Index.html from pug
   ${getReactRoot()}
   ${getScript(hash, 'vendor', 'chunk.js')}
   ${getScript(hash, 'main', 'js')}

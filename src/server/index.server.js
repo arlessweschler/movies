@@ -19,6 +19,9 @@ app.use(appResponseHeaders);
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 console.log('EXPRESS_ROUTES:', EXPRESS_ROUTES);
 
+// API
+app.use('/api', require('server_api/users'));
+
 // серверный рендеринг
 if (IS_SSR) {
   const RESOURCES = ['js', 'css', 'assets'];
@@ -30,26 +33,26 @@ if (IS_SSR) {
   app.set('view engine', 'pug');
   app.set('views', path.join(__dirname + '/client/views'));
 
-  const ssrRequestHandler = getSsrRequestHandler(REACT_ROUTES);
-
-  // app.get(EXPRESS_ROUTES, ssrRequestHandler);
-  app.get('*', ssrRequestHandler);
+  app.get('*', getSsrRequestHandler(REACT_ROUTES));
 
   // клиентский рендеринг  
 } else {
+  // ассеты 
   app.use(express.static(CLIENT_FOLDER));
-  // app.get(EXPRESS_ROUTES, (req, res) => {
-  app.get('*', (req, res) => {
-    if (!EXPRESS_ROUTES.includes(req.url)) {
-      res.status(404);
-    }
 
+  // CSR прикладные маршруты
+  app.get(EXPRESS_ROUTES, (req, res) => {
+    res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
+  });
+
+  // CSR 404
+  app.use((req, res) => {
+    res.status(404);
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
   });
 }
 
-// API
-app.use('/api', require('server_api/users'));
+
 
 app.listen(PORT_SERVER, () => {
   console.log(`\n-- listening on port: ${PORT_SERVER} --`);

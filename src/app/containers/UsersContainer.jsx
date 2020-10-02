@@ -44,7 +44,7 @@ export default class UsersContainer extends Component {
   componentDidMount() {
     const { users, actions } = this.props;
     const { listWasFetched } = users;
-    if(!listWasFetched) actions.loadUsers();
+    if (!listWasFetched) actions.loadUsers();
   }
 
   handleLoad() {
@@ -80,12 +80,23 @@ export default class UsersContainer extends Component {
       <div>
         <h2>UsersContainer content</h2>
 
-        <button onClick={this.handleLoad}>
+        <div className="btn-group pt-2 pb-4">
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={this.handleLoad}
+        >
           Загрузить список
         </button>
-        <button onClick={this.handleClear}>
+
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={this.handleClear}
+        >
           Очистить список
         </button>
+        </div>
 
         {content}
       </div>

@@ -22,7 +22,8 @@ let commonConfig = {
   },
   entry: [
     'react-hot-loader/patch',
-    `${srcPath}/app/index.client.js`
+    `${srcPath}/app/index.client.js`,
+    'bootstrap-loader'
   ],
   output: {
     path: path.resolve(__dirname, '../dist/client'),
@@ -44,7 +45,15 @@ let commonConfig = {
       templateContent: function () {
         return pug.render(indexTemplate(), { pretty: true });
       },
-    })
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jquery: 'jquery',
+      jQuery: 'jquery',
+      'window.jquery': 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+    }),
   ]
 };
 
