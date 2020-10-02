@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Button, ButtonGroup } from 'reactstrap';
 
 import { UsersPage } from 'app_components/pages';
 
@@ -79,25 +80,20 @@ export default class UsersContainer extends Component {
     return (
       <div>
         <h2>UsersContainer content</h2>
+        <ButtonGroup className="pt-2 pb-4">
+          <Button className="btn-success"
+            onClick={this.handleLoad}
+          >
+            Загрузить список
+          </Button>
 
-        <div className="btn-group pt-2 pb-4">
-        <button
-          type="button"
-          className="btn btn-success"
-          onClick={this.handleLoad}
-        >
-          Загрузить список
-        </button>
-
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={this.handleClear}
-        >
-          Очистить список
-        </button>
-        </div>
-
+          <Button className="btn-warning"
+            onClick={this.handleClear}
+          >
+            Очистить список
+          </Button>
+        </ButtonGroup>
+        
         {content}
       </div>
     );
