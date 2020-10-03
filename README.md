@@ -1,4 +1,6 @@
 # Стартовый репозиторий с примером сборки Webpack 4/ Express/ React + Redux/ SSR
+<img src="src/assets/img/build-stack.gif">
+
 ## Содержание
 
 - [Стек](#стек)
