@@ -25,14 +25,44 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class UserCardContainer extends Component {
 
-  static fetchData(store) {
-    return store.dispatch(loadUserDetails());
+  static fetchData(store, urlParams) {
+    const user_id = urlParams[0].split('/').pop();
+    return store.dispatch(loadUserDetails(user_id));
   }
 
+  state = {
+    user_id: this.props.match.params.user_id
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const user_id_next = nextProps.match.params.user_id;
+
+    if (prevState.user_id !== user_id_next) {
+      return { user_id: user_id_next };
+    } else {
+      return null;
+    }
+  }
+
+  // запрашиваем данные если они не были ранее запрошены или id пользователя в хранилище отличается от id пользователя в url
   componentDidMount() {
     const { userDetails, actions } = this.props;
-    const { dataWasFetched } = userDetails;
-    if (!dataWasFetched) actions.loadUserDetails();
+
+    if (
+      !userDetails.dataWasFetched ||
+      (this.state.user_id !== userDetails.data.id)
+    ) {
+      actions.loadUserDetails(this.state.user_id);
+    }
+  }
+
+  // запрашиваем новые данные если поменялся id пользователя
+  componentDidUpdate(prevProps, prevState) {
+    const user_id_next = this.state.user_id;
+
+    if (prevState.user_id !== user_id_next) {
+      this.props.actions.loadUserDetails(user_id_next);
+    }
   }
 
   render() {

@@ -38,9 +38,9 @@ function setLoading(isLoading) {
   };
 }
 
-function loadUserDetails() {
+function loadUserDetails(user_id) {
   return (dispatch) => {
-    const url = '/users/random-user-id';
+    const url = `/users/${user_id}`;
     dispatch(setLoading(true));
     return ApiService.fetch({ url })
       .then((response) => {
