@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { history } from 'redux_store';
+import queryString from 'query-string'
 
+import { MOVIES_TYPES } from 'app_services/ApiMovies.service';
 import { MoviesTopFilter, MoviesList } from 'app_components/pages';
 import {
   redirect,
@@ -40,21 +43,34 @@ export default class MoviesListContainer extends Component {
   }
 
   componentDidMount() {
+    const { moviesType } = queryString.parse(history.location.search);
     const { moviesList, moviesGenres, actions } = this.props;
+    const { moviesWasFetched, moviesFetchedType, filter } = moviesList;
 
+    // устанавливаем фильтр по типу фильма (если есть в url - берем оттуда, если нет - берем первый из списка)
+    if (moviesType) {
+      const currentFilter = MOVIES_TYPES.find(i => (i.key == moviesType));
+      actions.setMoviesFilter(currentFilter);
+    }
+
+    // запрашиваем жанры, если их нет
     if (!moviesGenres.genresWasFetched) actions.loadMoviesGenres();
-    if (!moviesList.moviesWasFetched) actions.loadMoviesList();
-  }
 
-  getFilters() {
-    return [
-      { key: "now_playing", value: "Сейчас в кино" },
-      { key: "popular", value: "Популярные" },
-      { key: "top_rated", value: "Лучшие" }
-    ];
+    // запрашиваем фильмы, если их нет или список имеющихся фильмов отличается от типа установленного фильтра
+    if (
+      !moviesWasFetched ||
+      moviesFetchedType !== filter.key
+    ) {
+      actions.loadMoviesList()
+    };
   }
 
   handleFilter(filter) {
+    const { pathname, search } = history.location;
+    this.props.actions.redirect({
+      fromURL: `${pathname}${search}`,
+      toURL: `/movies?moviesType=${filter.key}`
+    });
     this.props.actions.setMoviesFilter(filter);
     this.props.actions.loadMoviesList();
   }
@@ -69,12 +85,9 @@ export default class MoviesListContainer extends Component {
     if (moviesIsLoading) params.message = 'Загрузка...';
     if (hasMovies) params.movies = movies;
     if (moviesHasErrors) params.message = moviesHasErrors.message;
-
-    const { genres } =   moviesGenres
-    ;
-
+    
     const hasGenres = (typeof genres !== 'undefined') && (genres.length > 0);
-    if (hasGenres) params.genres = genres;
+    if (hasGenres) params.genres = moviesGenres.genres;
 
     return params;
   }
@@ -83,7 +96,7 @@ export default class MoviesListContainer extends Component {
     return (
       <React.Fragment>
         <MoviesTopFilter
-          filters={this.getFilters()}
+          filters={MOVIES_TYPES}
           activeFilter={this.props.moviesList.filter}
           handleFilter={this.handleFilter}
         />

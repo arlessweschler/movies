@@ -8,8 +8,9 @@ import {
 
 const defaultMoviesList = {
   movies: [],
+  moviesFetchedType: '',
   filter: {
-    key: "now_playing",
+    key: 'now_playing',
     value: "Сейчас в кино"
   },
   moviesWasFetched: false,
@@ -43,6 +44,7 @@ function moviesList(state = defaultMoviesList, action) {
       return {
         ...state,
         movies: results,
+        moviesFetchedType: action.moviesFetchedType,
         moviesWasFetched: action.moviesWasFetched,
         moviesIsLoading: action.moviesIsLoading,
         moviesHasErrors: action.moviesHasErrors

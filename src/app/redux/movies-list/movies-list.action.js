@@ -22,13 +22,14 @@ function setError(moviesHasErrors) {
   };
 }
 
-function setSucces(data) {
+function setSucces({ data, moviesFetchedType }) {
   return {
     type: MOVIES_LIST_LOADING_SUCCESS,
     moviesWasFetched: true,
     moviesIsLoading: false,
     moviesHasErrors: false,
-    data
+    data,
+    moviesFetchedType
   };
 }
 
@@ -44,7 +45,7 @@ function loadMoviesList() {
     const { moviesList: { filter }, } = getState();
     const url = `/movie/${filter.key}`;
     dispatch(setLoading(true));
-    
+
     return ApiService.fetch({ url })
       .then((response) => {
         if (!response.ok) {
@@ -54,7 +55,7 @@ function loadMoviesList() {
         }
         return response.json();
       })
-      .then((data) => dispatch(setSucces(data)))
+      .then((data) => dispatch(setSucces({ data, moviesFetchedType: filter.key })))
       .catch(({ message }) => {
         return dispatch(setError({ url, message }));
       });

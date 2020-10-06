@@ -10,6 +10,12 @@ export const TMDB_IMAGE_URL = {
   medium: `${HOST_IMAGES}/w300`,
 };
 
+export const MOVIES_TYPES = [
+  { key: "now_playing", value: "Сейчас в кино" },
+  { key: "popular", value: "Популярные" },
+  { key: "top_rated", value: "Лучшие" }
+];
+
 export default {
   fetch: function ({ url }) {
     const fetchUrl = `${HOST_DATA}${url}?api_key=${TMDB_API_KEY}&${LANGUAGE}`;
