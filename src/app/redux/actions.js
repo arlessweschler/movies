@@ -12,6 +12,9 @@ import {
   clearUserDetails
 } from './user-details/user-details.action';
 
+import {
+  loadMoviesList
+} from './movies-list/movies-list.action';
 
 export {
   redirect,
@@ -20,5 +23,7 @@ export {
   clearUsersList,
 
   loadUserDetails,
-  clearUserDetails
+  clearUserDetails,
+
+  loadMoviesList
 };

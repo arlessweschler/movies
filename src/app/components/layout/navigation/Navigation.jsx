@@ -8,6 +8,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 export default function Navigation(props) {
   const { currentRoute } = props;
   const links = [
+    { url: '/movies', text: 'Фильмы' },
     { url: '/users', text: 'Пользователи' },
     { url: '/users/random-user-id', text: 'Карточка пользователя' },
     { url: '/unknown-route', text: '404' },

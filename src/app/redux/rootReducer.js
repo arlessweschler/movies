@@ -12,9 +12,15 @@ import {
   userDetails
 } from './user-details/user-details.reducer';
 
+import {
+  moviesList
+} from './movies-list/movies-list.reducer';
+
 
 export default combineReducers({
   redirect,
   usersList,
-  userDetails
+  userDetails,
+
+  moviesList
 });
