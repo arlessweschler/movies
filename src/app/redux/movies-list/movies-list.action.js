@@ -3,8 +3,16 @@ import ApiService from 'app_services/ApiMovies.service';
 import {
   MOVIES_LIST_IS_LOADING,
   MOVIES_LIST_LOADING_SUCCESS,
-  MOVIES_LIST_LOADING_ERROR
+  MOVIES_LIST_LOADING_ERROR,
+  MOVIES_FILTER_UPDATED
 } from './movies-list.constants';
+
+function setMoviesFilter(filter) {
+  return {
+    type: MOVIES_FILTER_UPDATED,
+    filter
+  };
+}
 
 function setError(hasErrors) {
   return {
@@ -32,9 +40,11 @@ function setLoading(isLoading) {
 }
 
 function loadMoviesList() {
-  return (dispatch) => {
-    const url = '/movie/popular';
+  return (dispatch, getState) => {
+    const { moviesList: { filter }, } = getState();
+    const url = `/movie/${filter.key}`;
     dispatch(setLoading(true));
+    
     return ApiService.fetch({ url })
       .then((response) => {
         if (!response.ok) {
@@ -54,5 +64,6 @@ function loadMoviesList() {
 }
 
 export {
-  loadMoviesList
+  loadMoviesList,
+  setMoviesFilter
 };

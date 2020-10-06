@@ -13,7 +13,8 @@ import {
 } from './user-details/user-details.action';
 
 import {
-  loadMoviesList
+  loadMoviesList,
+  setMoviesFilter
 } from './movies-list/movies-list.action';
 
 export {
@@ -25,5 +26,6 @@ export {
   loadUserDetails,
   clearUserDetails,
 
-  loadMoviesList
+  loadMoviesList,
+  setMoviesFilter
 };

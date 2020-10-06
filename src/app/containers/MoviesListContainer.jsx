@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { MoviesPage } from 'app_components/pages';
+import { MoviesTopFilter, MoviesList } from 'app_components/pages';
 import {
   redirect,
-  loadMoviesList
+  loadMoviesList,
+  setMoviesFilter
 } from "redux_actions"
 
 // маппинг редюсеров
@@ -20,7 +21,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       redirect,
-      loadMoviesList
+      loadMoviesList,
+      setMoviesFilter
     }, dispatch)
   };
 };
@@ -28,23 +30,50 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class MoviesListContainer extends Component {
 
+  constructor() {
+    super();
+    this.handleFilter = this.handleFilter.bind(this);
+  }
+
   componentDidMount() {
     const { moviesList, actions } = this.props;
     const { listWasFetched } = moviesList;
     if (!listWasFetched) actions.loadMoviesList();
   }
 
+  getFilters() {
+    return [
+      { key: "now_playing", value: "Сейчас в кино" },
+      { key: "popular", value: "Популярные" },
+      { key: "top_rated", value: "Лучшие" }
+    ];
+  }
+
+  handleFilter(filter) {
+    this.props.actions.setMoviesFilter(filter);
+    this.props.actions.loadMoviesList();
+  }
+
   render() {
     const { moviesList } = this.props;
-    const { list, isLoading, hasErrors } = moviesList;
+    const { list, isLoading, hasErrors, filter } = moviesList;
 
     const hasData = (typeof list !== 'undefined') && (list.length > 0);
-    let pageData = {};
+    let listProps = {};
 
-    if (isLoading) pageData.message = 'Загрузка...';
-    if (hasData) pageData.list = list;
-    if (hasErrors) pageData.message = hasErrors.message;
+    if (isLoading) listProps.message = 'Загрузка...';
+    if (hasData) listProps.list = list;
+    if (hasErrors) listProps.message = hasErrors.message;
 
-    return <MoviesPage {...pageData} />;
+    return (
+      <React.Fragment>
+        <MoviesTopFilter
+          filters={this.getFilters()}
+          activeFilter={filter}
+          handleFilter={this.handleFilter}
+        />
+        <MoviesList {...listProps} />
+      </React.Fragment>
+    );
   }
 };

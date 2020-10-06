@@ -1,12 +1,17 @@
 import {
   MOVIES_LIST_IS_LOADING,
   MOVIES_LIST_LOADING_SUCCESS,
-  MOVIES_LIST_LOADING_ERROR
+  MOVIES_LIST_LOADING_ERROR,
+  MOVIES_FILTER_UPDATED
 } from './movies-list.constants';
 
 
 const defaultMoviesList = {
   list: [],
+  filter: {
+    key: "now_playing",
+    value: "Сейчас в кино"
+  },
   listWasFetched: false,
   isLoading: false,
   hasErrors: false
@@ -14,6 +19,12 @@ const defaultMoviesList = {
 
 function moviesList(state = defaultMoviesList, action) {
   switch (action.type) {
+    case MOVIES_FILTER_UPDATED:
+      return {
+        ...state,
+        filter: action.filter
+      };
+
     case MOVIES_LIST_IS_LOADING:
       return {
         ...state,
