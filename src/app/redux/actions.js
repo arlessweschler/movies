@@ -17,6 +17,10 @@ import {
   setMoviesFilter
 } from './movies-list/movies-list.action';
 
+import {
+  loadMoviesGenres
+} from './movies-genres/movies-genres.action';
+
 export {
   redirect,
 
@@ -27,5 +31,7 @@ export {
   clearUserDetails,
 
   loadMoviesList,
-  setMoviesFilter
+  setMoviesFilter,
+
+  loadMoviesGenres
 };

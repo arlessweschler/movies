@@ -14,28 +14,28 @@ function setMoviesFilter(filter) {
   };
 }
 
-function setError(hasErrors) {
+function setError(moviesHasErrors) {
   return {
     type: MOVIES_LIST_LOADING_ERROR,
-    isLoading: false,
-    hasErrors
+    moviesIsLoading: false,
+    moviesHasErrors
   };
 }
 
 function setSucces(data) {
   return {
     type: MOVIES_LIST_LOADING_SUCCESS,
-    listWasFetched: true,
-    isLoading: false,
-    hasErrors: false,
+    moviesWasFetched: true,
+    moviesIsLoading: false,
+    moviesHasErrors: false,
     data
   };
 }
 
-function setLoading(isLoading) {
+function setLoading(moviesIsLoading) {
   return {
     type: MOVIES_LIST_IS_LOADING,
-    isLoading
+    moviesIsLoading
   };
 }
 

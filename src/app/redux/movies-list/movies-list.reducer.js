@@ -7,14 +7,14 @@ import {
 
 
 const defaultMoviesList = {
-  list: [],
+  movies: [],
   filter: {
     key: "now_playing",
     value: "Сейчас в кино"
   },
-  listWasFetched: false,
-  isLoading: false,
-  hasErrors: false
+  moviesWasFetched: false,
+  moviesIsLoading: false,
+  moviesHasErrors: false
 };
 
 function moviesList(state = defaultMoviesList, action) {
@@ -28,24 +28,24 @@ function moviesList(state = defaultMoviesList, action) {
     case MOVIES_LIST_IS_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading
+        moviesIsLoading: action.moviesIsLoading
       };
 
     case MOVIES_LIST_LOADING_ERROR:
       return {
         ...state,
-        isLoading: action.isLoading,
-        hasErrors: action.hasErrors
+        moviesIsLoading: action.moviesIsLoading,
+        moviesHasErrors: action.moviesHasErrors
       };
 
     case MOVIES_LIST_LOADING_SUCCESS:
       const { results } = action.data;
       return {
         ...state,
-        list: results,
-        listWasFetched: action.listWasFetched,
-        isLoading: action.isLoading,
-        hasErrors: action.hasErrors
+        movies: results,
+        moviesWasFetched: action.moviesWasFetched,
+        moviesIsLoading: action.moviesIsLoading,
+        moviesHasErrors: action.moviesHasErrors
       };
 
     default:

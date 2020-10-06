@@ -16,11 +16,16 @@ import {
   moviesList
 } from './movies-list/movies-list.reducer';
 
+import {
+  moviesGenres
+} from './movies-genres/movies-genres.reducer';
+
 
 export default combineReducers({
   redirect,
   usersList,
   userDetails,
 
-  moviesList
+  moviesList,
+  moviesGenres
 });
