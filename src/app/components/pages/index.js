@@ -6,6 +6,7 @@ import NotFoundPage from 'app_components/pages/not-found-page/NotFoundPage';
 
 import MoviesTopFilter from 'app_components/pages/movies-page/MoviesTopFilter/MoviesTopFilter';
 import MoviesList from 'app_components/pages/movies-page/MoviesList/MoviesList';
+import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPaging';
 
 export {
   HomePage,
@@ -15,5 +16,6 @@ export {
   NotFoundPage,
 
   MoviesTopFilter,
-  MoviesList
+  MoviesList,
+  MoviesPaging
 };

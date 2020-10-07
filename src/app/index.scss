@@ -2,10 +2,24 @@
 @import 'app_components/pages/users-page/UsersPage/UsersPage.scss';
 @import 'app_components/pages/movies-page/MoviesList/MoviesList.scss';
 @import 'app_components/pages/movies-page/MoviesTopFilter/MoviesTopFilter.scss';
+@import 'app_components/pages/movies-page/MoviesPaging/MoviesPaging.scss';
+
+html {
+  overflow-y: scroll !important;
+}
 
 .webpack-image {
   background-image: url('~app_assets/img/webpack_logo.png');
   background-size: contain;
   width: 500px;
   height: 195px;
+}
+
+.no-image {
+  background-image: url('~app_assets/img/no_poster.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }

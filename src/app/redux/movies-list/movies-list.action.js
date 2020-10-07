@@ -40,13 +40,14 @@ function setLoading(moviesIsLoading) {
   };
 }
 
-function loadMoviesList() {
+function loadMoviesList(page = 1) {
   return (dispatch, getState) => {
     const { moviesList: { filter }, } = getState();
     const url = `/movie/${filter.key}`;
-    dispatch(setLoading(true));
+    const urlParams = `&page=${page}`
+    dispatch(setLoading(true));;
 
-    return ApiService.fetch({ url })
+    return ApiService.fetch({ url, urlParams })
       .then((response) => {
         if (!response.ok) {
           return response.text().then(text => {

@@ -7,7 +7,12 @@ import {
 
 
 const defaultMoviesList = {
-  movies: [],
+  movies: {
+    page: '',
+    total_results: '',
+    total_pages: '',
+    results: []
+  },
   moviesFetchedType: '',
   filter: {
     key: 'now_playing',
@@ -40,10 +45,9 @@ function moviesList(state = defaultMoviesList, action) {
       };
 
     case MOVIES_LIST_LOADING_SUCCESS:
-      const { results } = action.data;
       return {
         ...state,
-        movies: results,
+        movies: action.data,
         moviesFetchedType: action.moviesFetchedType,
         moviesWasFetched: action.moviesWasFetched,
         moviesIsLoading: action.moviesIsLoading,

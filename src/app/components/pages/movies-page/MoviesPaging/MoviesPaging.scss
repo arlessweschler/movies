@@ -1,0 +1,25 @@
+ul.pagination {
+  color: gray;
+
+  li {
+    padding: 10px;
+    border: 1px solid transparent;
+
+    &.active {
+      border: 1px solid lightgray;
+    }
+
+    &.disabled {
+      a {
+        cursor: not-allowed;
+      }
+    }
+
+    a {
+      padding: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+  }
+}

@@ -17,8 +17,8 @@ export const MOVIES_TYPES = [
 ];
 
 export default {
-  fetch: function ({ url }) {
-    const fetchUrl = `${HOST_DATA}${url}?api_key=${TMDB_API_KEY}&${LANGUAGE}`;
+  fetch: function ({ url, urlParams }) {
+    const fetchUrl = `${HOST_DATA}${url}?api_key=${TMDB_API_KEY}&${LANGUAGE}${urlParams}`;
 
     console.log(`\n-- Movies.service, fetchUrl: ${fetchUrl}`);
 

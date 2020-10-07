@@ -22,7 +22,11 @@ export default function MoviesListPage({ movies = null, genres = null, message =
         {movies.map(function ({ poster_path, title, genre_ids }) {
           return (
             <div className="card" key={uuidv4()}>
-              <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
+              {
+                poster_path
+                  ? <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
+                  : <div className="no-image"/>
+              }
               <div className="card-body">
                 <div className="mb-1">{title}</div>
                 {genres && genre_ids && (
