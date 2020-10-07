@@ -7,12 +7,16 @@ import { store } from 'app_root/routing/RootRoute';
 
 export default function (ROUTES) {
   return function (req, res) {
-    const { url } = req
-    const branch = matchRoutes(ROUTES, url);
+    const branch = matchRoutes(ROUTES, req.path);
+    console.log('-- ssr-request-handler');
+    console.log('req.url:', req.url);
+    console.log('req.path :', req.path );
+    console.log('req.params:', req.params);
+    console.log('req.query:', req.query);
 
     const promises = branch.map(({ route, match }) => {
       const fetchData = route.component.fetchData;
-      return fetchData instanceof Function ? fetchData(store, req.params) : Promise.resolve(null)
+      return fetchData instanceof Function ? fetchData(store, req.params, req.query) : Promise.resolve(null)
     });
 
     Promise.all(promises).then((data) => {

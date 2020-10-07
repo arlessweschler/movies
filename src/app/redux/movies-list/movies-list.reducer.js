@@ -1,36 +1,26 @@
 import {
   MOVIES_LIST_IS_LOADING,
   MOVIES_LIST_LOADING_SUCCESS,
-  MOVIES_LIST_LOADING_ERROR,
-  MOVIES_FILTER_UPDATED
+  MOVIES_LIST_LOADING_ERROR
 } from './movies-list.constants';
 
 
-const defaultMoviesList = {
+const DEFAULT_MOVIES_LIST = {
   movies: {
-    page: '',
+    page: 1,
     total_results: '',
     total_pages: '',
     results: []
   },
   moviesFetchedType: '',
-  filter: {
-    key: 'now_playing',
-    value: "Сейчас в кино"
-  },
+  filter: 'now_playing',
   moviesWasFetched: false,
   moviesIsLoading: false,
   moviesHasErrors: false
 };
 
-function moviesList(state = defaultMoviesList, action) {
+function moviesList(state = DEFAULT_MOVIES_LIST, action) {
   switch (action.type) {
-    case MOVIES_FILTER_UPDATED:
-      return {
-        ...state,
-        filter: action.filter
-      };
-
     case MOVIES_LIST_IS_LOADING:
       return {
         ...state,
@@ -48,6 +38,7 @@ function moviesList(state = defaultMoviesList, action) {
       return {
         ...state,
         movies: action.data,
+        filter: action.filter,
         moviesFetchedType: action.moviesFetchedType,
         moviesWasFetched: action.moviesWasFetched,
         moviesIsLoading: action.moviesIsLoading,
@@ -60,5 +51,6 @@ function moviesList(state = defaultMoviesList, action) {
 };
 
 export {
-  moviesList
+  moviesList,
+  DEFAULT_MOVIES_LIST
 };

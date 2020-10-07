@@ -13,13 +13,8 @@ import {
 } from './user-details/user-details.action';
 
 import {
-  loadMoviesList,
-  setMoviesFilter
+  loadMoviesList
 } from './movies-list/movies-list.action';
-
-import {
-  loadMoviesGenres
-} from './movies-genres/movies-genres.action';
 
 export {
   redirect,
@@ -30,8 +25,5 @@ export {
   loadUserDetails,
   clearUserDetails,
 
-  loadMoviesList,
-  setMoviesFilter,
-
-  loadMoviesGenres
+  loadMoviesList
 };

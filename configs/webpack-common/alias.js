@@ -10,6 +10,7 @@ module.exports = function ({ srcPath }) {
     app_assets: 'assets',
     app_data: 'data',
 
+    app_redux: 'app/redux/',
     redux_store: 'app/redux/configureStore',
     redux_reducers: 'app/redux/rootReducer',
     redux_actions: 'app/redux/actions',

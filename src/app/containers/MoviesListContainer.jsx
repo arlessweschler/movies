@@ -8,9 +8,7 @@ import { MOVIES_TYPES } from 'app_services/ApiMovies.service';
 import { MoviesTopFilter, MoviesPaging, MoviesList } from 'app_components/pages';
 import {
   redirect,
-  loadMoviesGenres,
-  loadMoviesList,
-  setMoviesFilter
+  loadMoviesList
 } from "redux_actions"
 
 // маппинг редюсеров
@@ -26,9 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       redirect,
-      loadMoviesGenres,
-      loadMoviesList,
-      setMoviesFilter
+      loadMoviesList
     }, dispatch)
   };
 };
@@ -43,26 +39,21 @@ export default class MoviesListContainer extends Component {
     this.onPageChange = this.onPageChange.bind(this);
   }
 
+  static fetchData(store, urlParams, urlQuery) {
+    return store.dispatch(loadMoviesList(urlQuery));
+  }
+
   componentDidMount() {
     const { moviesType, page } = qs.parse(history.location.search);
-    const { moviesList, moviesGenres, actions } = this.props;
-    const { moviesWasFetched, moviesFetchedType, filter } = moviesList;
+    const { moviesList, actions } = this.props;
+    const { moviesWasFetched, moviesFetchedType } = moviesList;
 
-    // устанавливаем фильтр по типу фильма (если есть в url - берем оттуда, если нет - берем первый из списка)
-    if (moviesType) {
-      const currentFilter = MOVIES_TYPES.find(i => (i.key == moviesType));
-      actions.setMoviesFilter(currentFilter);
-    }
-
-    // запрашиваем жанры, если их нет
-    if (!moviesGenres.genresWasFetched) actions.loadMoviesGenres();
-
-    // запрашиваем фильмы, если их нет или список имеющихся фильмов отличается от типа установленного фильтра
+    // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
     if (
       !moviesWasFetched ||
-      moviesFetchedType !== filter.key
+      (moviesType && (moviesFetchedType !== moviesType))
     ) {
-      actions.loadMoviesList(page);
+      actions.loadMoviesList({ moviesType, page });
     };
   }
 
@@ -84,17 +75,19 @@ export default class MoviesListContainer extends Component {
     return params;
   }
 
-  handleFilter(filter) {
+  handleFilter(moviesType) {
     const { pathname, search } = history.location;
+    
     this.props.actions.redirect({
       fromURL: `${pathname}${search}`,
-      toURL: `/movies?moviesType=${filter.key}`
+      toURL: `/movies?moviesType=${moviesType}`
     });
-    this.props.actions.setMoviesFilter(filter);
-    this.props.actions.loadMoviesList();
+    this.props.actions.loadMoviesList({ moviesType });
   }
 
   onPageChange({ selected }) {
+    const { moviesType } = qs.parse(history.location.search);
+
     const nextPage = selected + 1;
     const { pathname, search } = history.location;
 
@@ -106,7 +99,7 @@ export default class MoviesListContainer extends Component {
       toURL: `/movies?${qs.stringify(queryParams)}`
     });
 
-    this.props.actions.loadMoviesList(nextPage);
+    this.props.actions.loadMoviesList({ moviesType, page: nextPage });
   }
 
   render() {
