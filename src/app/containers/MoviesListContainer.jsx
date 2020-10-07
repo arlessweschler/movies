@@ -69,6 +69,7 @@ export default class MoviesListContainer extends Component {
   getMoviesListParams() {
     const { moviesList, moviesGenres } = this.props;
     const { movies, moviesIsLoading, moviesHasErrors } = moviesList;
+    const { genres } = moviesGenres;
 
     const hasMovies = (typeof movies.results !== 'undefined') && (movies.results.length > 0);
     let params = {};
@@ -78,7 +79,7 @@ export default class MoviesListContainer extends Component {
     if (moviesHasErrors) params.message = moviesHasErrors.message;
 
     const hasGenres = (typeof genres !== 'undefined') && (genres.length > 0);
-    if (hasGenres) params.genres = moviesGenres.genres;
+    if (hasGenres) params.genres = genres;
 
     return params;
   }

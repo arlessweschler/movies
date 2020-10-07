@@ -3,11 +3,33 @@
     width: 175px;
     margin-bottom: 20px;
 
-    .card-body {
+    &-body {
+      position: relative;
+      padding: 0.85rem;
       background-color: #222943;
       color: #fff;
-      padding: 0.85rem;
+    }
+
+    &-title {
       line-height: 1.2;
+    }
+
+    &-rating {
+      position: absolute;
+      min-width: 35px;
+      right: 7px;
+      top: 7px;
+      padding: 5px;
+      font-size: 0.8em;
+      text-align: center;
+      background-color: #212529;
+      color: #ffc107;
+      border: 2px #343a40 solid;
+      border-radius: 50%;
+    }
+
+    &-genres {
+      color: lightslategray;
     }
 
     img {

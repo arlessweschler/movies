@@ -19,18 +19,26 @@ export default function MoviesListPage({ movies = null, genres = null, message =
       {message && <p>{message}</p>}
 
       {movies && <div className="d-flex flex-wrap justify-content-between movies-list">
-        {movies.map(function ({ poster_path, title, genre_ids }) {
+        {movies.map(function ({ poster_path, title, genre_ids, vote_average }) {
           return (
             <div className="card" key={uuidv4()}>
+
               {
                 poster_path
                   ? <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
-                  : <div className="no-image"/>
+                  : <div className="no-image" />
               }
               <div className="card-body">
-                <div className="mb-1">{title}</div>
+                {vote_average > 0 && (
+                  <span className="card-rating">{vote_average}</span>
+                )}
+
+                <div className="card-title mb-1 mr-5">
+                  {title}
+                </div>
+
                 {genres && genre_ids && (
-                  <div className="small">{getGenres(genre_ids)}</div>
+                  <div className="card-genres small">{getGenres(genre_ids)}</div>
                 )}
               </div>
             </div>
