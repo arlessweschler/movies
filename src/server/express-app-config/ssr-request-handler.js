@@ -3,14 +3,14 @@ import { renderToString } from 'react-dom/server';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
-import { store } from 'app_root/routing/RootRoute';
+import { store } from 'redux_store';
 
 export default function (ROUTES) {
   return function (req, res) {
     const branch = matchRoutes(ROUTES, req.path);
     console.log('-- ssr-request-handler');
     console.log('req.url:', req.url);
-    console.log('req.path :', req.path );
+    console.log('req.path :', req.path);
     console.log('req.params:', req.params);
     console.log('req.query:', req.query);
 
@@ -33,8 +33,8 @@ export default function (ROUTES) {
 
       if (context.status == 404) {
         res.status(404);
-      } 
-      
+      }
+
       res.render('index', {
         rootContent,
         preloadedState: preloadedStateStr,

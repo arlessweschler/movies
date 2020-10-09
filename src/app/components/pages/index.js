@@ -4,7 +4,7 @@ import UsersPage from 'app_components/pages/users-page/UsersPage/UsersPage';
 import UserCardPage from 'app_components/pages/user-card-page/UserCardPage';
 import NotFoundPage from 'app_components/pages/not-found-page/NotFoundPage';
 
-import MoviesTopFilter from 'app_components/pages/movies-page/MoviesTopFilter/MoviesTopFilter';
+import MoviesToolbar from 'app_components/pages/movies-page/MoviesToolbar/MoviesToolbar';
 import MoviesList from 'app_components/pages/movies-page/MoviesList/MoviesList';
 import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPaging';
 
@@ -15,7 +15,7 @@ export {
   UserCardPage,
   NotFoundPage,
 
-  MoviesTopFilter,
+  MoviesToolbar,
   MoviesList,
   MoviesPaging
 };

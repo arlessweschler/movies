@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { history } from 'redux_store';
-import qs from 'query-string'
+import qs from 'query-string';
 
-import { MOVIES_TYPES } from 'app_services/ApiMovies.service';
-import { MoviesTopFilter, MoviesPaging, MoviesList } from 'app_components/pages';
-import {
-  redirect,
-  loadMoviesList
-} from "redux_actions"
+
+import { redirect, isEmpty } from 'app_services/Utils.service';
+import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
+import { loadMoviesList } from "redux_actions"
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -23,7 +20,6 @@ const mapStateToProps = ({ moviesGenres, moviesList }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      redirect,
       loadMoviesList
     }, dispatch)
   };
@@ -34,7 +30,7 @@ export default class MoviesListContainer extends Component {
 
   constructor() {
     super();
-    this.getMoviesListParams = this.getMoviesListParams.bind(this);
+    this.getUrlParams = this.getUrlParams.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
   }
@@ -44,81 +40,55 @@ export default class MoviesListContainer extends Component {
   }
 
   componentDidMount() {
-    const { moviesType, page } = qs.parse(history.location.search);
+    const { moviesType, page } = this.getUrlParams();
     const { moviesList, actions } = this.props;
-    const { moviesWasFetched, moviesFetchedType } = moviesList;
 
     // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
-    if (
-      !moviesWasFetched ||
-      (moviesType && (moviesFetchedType !== moviesType))
-    ) {
+    if (isEmpty(moviesList.movies.results)) {
       actions.loadMoviesList({ moviesType, page });
     };
   }
 
-  getMoviesListParams() {
-    const { moviesList, moviesGenres } = this.props;
-    const { movies, moviesIsLoading, moviesHasErrors } = moviesList;
-    const { genres } = moviesGenres;
-
-    const hasMovies = (typeof movies.results !== 'undefined') && (movies.results.length > 0);
-    let params = {};
-
-    if (moviesIsLoading) params.message = 'Загрузка...';
-    if (hasMovies) params.movies = movies.results;
-    if (moviesHasErrors) params.message = moviesHasErrors.message;
-
-    const hasGenres = (typeof genres !== 'undefined') && (genres.length > 0);
-    if (hasGenres) params.genres = genres;
-
-    return params;
+  getUrlParams() {
+    return qs.parse(this.props.history.location.search);
   }
 
   handleFilter(moviesType) {
-    const { pathname, search } = history.location;
-    
-    this.props.actions.redirect({
-      fromURL: `${pathname}${search}`,
-      toURL: `/movies?moviesType=${moviesType}`
-    });
+    redirect(`/movies?moviesType=${moviesType}`);
     this.props.actions.loadMoviesList({ moviesType });
   }
 
   onPageChange({ selected }) {
-    const { moviesType } = qs.parse(history.location.search);
+    const { moviesType } = this.getUrlParams();
+    const urlParams = { moviesType, page: selected + 1 };
 
-    const nextPage = selected + 1;
-    const { pathname, search } = history.location;
-
-    let queryParams = qs.parse(search);
-    queryParams.page = nextPage;
-
-    this.props.actions.redirect({
-      fromURL: `${pathname}${search}`,
-      toURL: `/movies?${qs.stringify(queryParams)}`
-    });
-
-    this.props.actions.loadMoviesList({ moviesType, page: nextPage });
+    redirect(`/movies?${qs.stringify(urlParams)}`);
+    this.props.actions.loadMoviesList(urlParams);
   }
 
   render() {
-    const { moviesList } = this.props;
-    const { total_pages, page } = moviesList.movies;
+    const { moviesList, moviesGenres } = this.props;
+    const { movies, isLoading, error } = moviesList;
+
+    const { moviesType } = this.getUrlParams();
 
     return (
       <React.Fragment>
-        <MoviesTopFilter
-          filters={MOVIES_TYPES}
-          activeFilter={this.props.moviesList.filter}
+        <MoviesToolbar
+          activeFilter={moviesType}
           handleFilter={this.handleFilter}
         />
         <MoviesPaging
-          pageCount={total_pages}
-          initialPage={page - 1}
+          pageCount={movies.total_pages}
+          initialPage={movies.page - 1}
           onPageChange={this.onPageChange}
         />
-        <MoviesList {...this.getMoviesListParams()} />
+        <MoviesList
+          genres={moviesGenres.genres}
+          movies={movies.results}
+          isLoading={isLoading}
+          error={error}
+        />
       </React.Fragment>
     );
   }

@@ -1,13 +1,14 @@
 import ApiService from 'app_services/ApiMovies.service';
 
 import {
-  DEFAULT_MOVIES_LIST
+  DEFAULT_MOVIES_LIST,
+  DEFAULT_MOVIES_FILTER
 } from 'app_redux/movies-list/movies-list.reducer';
 
 import {
-  MOVIES_LIST_IS_LOADING,
-  MOVIES_LIST_LOADING_SUCCESS,
-  MOVIES_LIST_LOADING_ERROR
+  MOVIES_LIST_PENDING,
+  MOVIES_LIST_SUCCESS,
+  MOVIES_LIST_ERROR
 } from 'app_redux/movies-list/movies-list.constants';
 
 import {
@@ -26,22 +27,16 @@ function setSuccesGenres({ data }) {
   };
 }
 
-function setSuccesMovies({ data, moviesFetchedType, filter }) {
+function setSuccesMovies({ data }) {
   return {
-    type: MOVIES_LIST_LOADING_SUCCESS,
-    moviesWasFetched: true,
-    moviesIsLoading: false,
-    moviesHasErrors: false,
-    data,
-    moviesFetchedType,
-    filter
+    type: MOVIES_LIST_SUCCESS,
+    data
   };
 }
 
-function setLoadingMovies(moviesIsLoading) {
+function setLoadingMovies() {
   return {
-    type: MOVIES_LIST_IS_LOADING,
-    moviesIsLoading
+    type: MOVIES_LIST_PENDING
   };
 }
 
@@ -52,11 +47,10 @@ function setLoadingGenres(genresIsLoading) {
   };
 }
 
-function setErrorMovies(moviesHasErrors) {
+function setErrorMovies(error) {
   return {
-    type: MOVIES_LIST_LOADING_ERROR,
-    moviesIsLoading: false,
-    moviesHasErrors
+    type: MOVIES_LIST_ERROR,
+    error
   };
 }
 
@@ -89,21 +83,20 @@ function loadMoviesList(moviesParams = {}) {
           dataGenres = await responseGenres.text().then(text => { throw new Error(text) });
         }
       } catch (error) {
-        const { message } = error;
-        dispatch(setErrorGenres({ url, message }));
+        dispatch(setErrorGenres(error.message));
       }
     }
 
     // список фильмов
     const {
       page = DEFAULT_MOVIES_LIST.movies.page,
-      moviesType = DEFAULT_MOVIES_LIST.filter
+      moviesType = DEFAULT_MOVIES_FILTER
     } = moviesParams;
     const url = `/movie/${moviesType}`;
     const urlParams = `&page=${page}`;
 
     try {
-      dispatch(setLoadingMovies(true));
+      dispatch(setLoadingMovies());
 
       const responseMovies = await ApiService.fetch({ url, urlParams });
 
@@ -111,17 +104,14 @@ function loadMoviesList(moviesParams = {}) {
       if (responseMovies.ok) {
         dataMovies = await responseMovies.json();
         dispatch(setSuccesMovies({
-          data: dataMovies,
-          moviesFetchedType: moviesType,
-          filter: moviesType
+          data: dataMovies
         }));
       } else {
         dataMovies = await responseMovies.text().then(text => { throw new Error(text) });
       }
 
     } catch (error) {
-      const { message } = error;
-      dispatch(setErrorMovies({ url, message }));
+      dispatch(setErrorMovies(error.message));
     }
   };
 

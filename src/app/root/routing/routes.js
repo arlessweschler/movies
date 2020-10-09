@@ -1,4 +1,4 @@
-import { RootRoute } from 'app_root/routing/RootRoute';
+import RootRoute from 'app_root/routing/RootRoute';
 
 import {
   HomePage,
