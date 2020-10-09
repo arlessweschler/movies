@@ -1,40 +1,38 @@
 import {
-  MOVIES_GENRES_IS_LOADING,
-  MOVIES_GENRES_LOADING_SUCCESS,
-  MOVIES_GENRES_LOADING_ERROR
+  MOVIES_GENRES_PENDING,
+  MOVIES_GENRES_SUCCESS,
+  MOVIES_GENRES_FAIL
 } from './movies-genres.constants';
 
 
 const defaultMoviesGenres = {
   genres: [],
-  genresWasFetched: false,
-  genresIsLoading: false,
-  genresHasErrors: false
+  isLoading: false,
+  error: null
 };
 
 function moviesGenres(state = defaultMoviesGenres, action) {
   switch (action.type) {
-    case MOVIES_GENRES_IS_LOADING:
+    case MOVIES_GENRES_PENDING:
       return {
         ...state,
-        genresIsLoading: action.genresIsLoading
+        isLoading: true
       };
 
-    case MOVIES_GENRES_LOADING_ERROR:
+    case MOVIES_GENRES_FAIL:
       return {
         ...state,
-        genresIsLoading: action.genresIsLoading,
-        genresHasErrors: action.genresHasErrors
+        isLoading: false,
+        error: action.error
       };
 
-    case MOVIES_GENRES_LOADING_SUCCESS:
+    case MOVIES_GENRES_SUCCESS:
       const { genres } = action.data;
       return {
         ...state,
         genres,
-        genresWasFetched: action.genresWasFetched,
-        genresIsLoading: action.genresIsLoading,
-        genresHasErrors: action.genresHasErrors
+        isLoading: false,
+        error: null
       };
 
     default:

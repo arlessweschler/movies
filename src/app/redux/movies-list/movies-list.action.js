@@ -1,4 +1,5 @@
 import ApiService from 'app_services/ApiMovies.service';
+import { isEmpty } from 'app_services/Utils.service';
 
 import {
   DEFAULT_MOVIES_LIST,
@@ -12,17 +13,14 @@ import {
 } from 'app_redux/movies-list/movies-list.constants';
 
 import {
-  MOVIES_GENRES_IS_LOADING,
-  MOVIES_GENRES_LOADING_SUCCESS,
-  MOVIES_GENRES_LOADING_ERROR
+  MOVIES_GENRES_PENDING,
+  MOVIES_GENRES_SUCCESS,
+  MOVIES_GENRES_FAIL
 } from 'app_redux/movies-genres/movies-genres.constants';
 
 function setSuccesGenres({ data }) {
   return {
-    type: MOVIES_GENRES_LOADING_SUCCESS,
-    genresWasFetched: true,
-    genresIsLoading: false,
-    genresHasErrors: false,
+    type: MOVIES_GENRES_SUCCESS,
     data
   };
 }
@@ -40,10 +38,9 @@ function setLoadingMovies() {
   };
 }
 
-function setLoadingGenres(genresIsLoading) {
+function setLoadingGenres() {
   return {
-    type: MOVIES_GENRES_IS_LOADING,
-    genresIsLoading
+    type: MOVIES_GENRES_PENDING
   };
 }
 
@@ -54,11 +51,10 @@ function setErrorMovies(error) {
   };
 }
 
-function setErrorGenres(genresHasErrors) {
+function setErrorGenres(error) {
   return {
-    type: MOVIES_GENRES_LOADING_ERROR,
-    genresIsLoading: false,
-    genresHasErrors
+    type: MOVIES_GENRES_FAIL,
+    error
   };
 }
 
@@ -67,9 +63,9 @@ function loadMoviesList(moviesParams = {}) {
     const { moviesGenres } = getState();
 
     // список жанров фильмов
-    if (!moviesGenres.genresWasFetched) {
+    if (isEmpty(moviesGenres.genres)) {
       try {
-        dispatch(setLoadingGenres(true));
+        dispatch(setLoadingGenres());
 
         const responseGenres = await ApiService.fetch({ url: '/genre/movie/list' });
 

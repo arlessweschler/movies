@@ -39,7 +39,7 @@ function moviesList(state = DEFAULT_MOVIES_LIST, action) {
       return {
         ...state,
         isLoading: false,
-        error: false,
+        error: null,
         movies: action.data
       };
 
