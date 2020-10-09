@@ -3,7 +3,8 @@ import { renderToString } from 'react-dom/server';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
-import { store } from 'redux_store';
+import { configureStore } from 'redux_store';
+import rootSaga from 'app_redux/movies-list-saga/movies-list-saga.sagas';
 
 export default function (ROUTES) {
   return function (req, res) {
@@ -14,12 +15,11 @@ export default function (ROUTES) {
     console.log('req.params:', req.params);
     console.log('req.query:', req.query);
 
-    const promises = branch.map(({ route, match }) => {
-      const fetchData = route.component.fetchData;
-      return fetchData instanceof Function ? fetchData(store, req.params, req.query) : Promise.resolve(null)
-    });
+    const store = configureStore();
 
-    Promise.all(promises).then((data) => {
+    store.runSaga(rootSaga).toPromise().then(() => {
+      console.log('-- ssr-request-handler, toPromise()');
+
       const preloadedState = store.getState();
       const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, "\\u003c");
 
@@ -41,6 +41,20 @@ export default function (ROUTES) {
         IS_SSR: true
       });
 
+
+
+    }).catch((e) => {
+      console.log('-- ssr-request-handler, catch, e.message:', e.message);
+      res.status(500).send(e.message);
     });
+
+    branch.forEach(({ route }) => {
+      const fetchData = route.component.fetchData;
+      if (fetchData instanceof Function) {
+        fetchData(store, req.params, req.query)
+      }
+    });
+
+    store.close();
   }
 };

@@ -26,14 +26,16 @@ function moviesList(state = DEFAULT_MOVIES_LIST, action) {
         isLoading: true
       };
 
-    case MOVIES_LIST_ERROR:
+    // case MOVIES_LIST_ERROR:
+    case 'GET_MOVIES_FAIL':
       return {
         ...state,
         isLoading: false,
         error: action.error
       };
 
-    case MOVIES_LIST_SUCCESS:
+    // case MOVIES_LIST_SUCCESS:
+    case 'GET_MOVIES_SUCCESS':
       return {
         ...state,
         isLoading: false,

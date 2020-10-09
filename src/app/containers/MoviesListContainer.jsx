@@ -6,7 +6,7 @@ import qs from 'query-string';
 
 import { redirect, isEmpty } from 'app_services/Utils.service';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
-import { loadMoviesList } from "redux_actions"
+import { /* loadMoviesList, */ getMovies } from 'redux_actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -20,7 +20,8 @@ const mapStateToProps = ({ moviesGenres, moviesList }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      loadMoviesList
+      // loadMoviesList,
+      getMovies
     }, dispatch)
   };
 };
@@ -36,7 +37,8 @@ export default class MoviesListContainer extends Component {
   }
 
   static fetchData(store, urlParams, urlQuery) {
-    return store.dispatch(loadMoviesList(urlQuery));
+    // return store.dispatch(loadMoviesList(urlQuery));
+    return store.dispatch(getMovies(urlQuery));
   }
 
   componentDidMount() {
@@ -45,7 +47,8 @@ export default class MoviesListContainer extends Component {
 
     // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
     if (isEmpty(moviesList.movies.results)) {
-      actions.loadMoviesList({ moviesType, page });
+      // actions.loadMoviesList({ moviesType, page });
+      actions.getMovies({ moviesType, page });
     };
   }
 
@@ -55,7 +58,8 @@ export default class MoviesListContainer extends Component {
 
   handleFilter(moviesType) {
     redirect(`/movies?moviesType=${moviesType}`);
-    this.props.actions.loadMoviesList({ moviesType });
+    // this.props.actions.loadMoviesList({ moviesType });
+    this.props.actions.getMovies({ moviesType });
   }
 
   onPageChange({ selected }) {
@@ -63,7 +67,8 @@ export default class MoviesListContainer extends Component {
     const urlParams = { moviesType, page: selected + 1 };
 
     redirect(`/movies?${qs.stringify(urlParams)}`);
-    this.props.actions.loadMoviesList(urlParams);
+    // this.props.actions.loadMoviesList(urlParams);
+    this.props.actions.getMovies(urlParams);
   }
 
   render() {

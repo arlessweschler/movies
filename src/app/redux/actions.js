@@ -16,6 +16,8 @@ import {
   loadMoviesList
 } from './movies-list/movies-list.action';
 
+import { getMovies } from './movies-list-saga/movies-list-saga.action';
+
 export {
   redirect,
 
@@ -25,5 +27,7 @@ export {
   loadUserDetails,
   clearUserDetails,
 
-  loadMoviesList
+  loadMoviesList,
+
+  getMovies
 };
