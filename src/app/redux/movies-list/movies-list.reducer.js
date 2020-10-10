@@ -20,7 +20,8 @@ const DEFAULT_MOVIES_FILTER = 'now_playing';
 
 function moviesList(state = DEFAULT_MOVIES_LIST, action) {
   switch (action.type) {
-    case MOVIES_LIST_PENDING:
+    // case MOVIES_LIST_PENDING:
+    case 'GET_MOVIES_START':
       return {
         ...state,
         isLoading: true

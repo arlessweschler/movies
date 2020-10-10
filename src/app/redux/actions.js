@@ -16,7 +16,7 @@ import {
   loadMoviesList
 } from './movies-list/movies-list.action';
 
-import { getMovies } from './movies-list-saga/movies-list-saga.action';
+import { getMovies, getGenres } from './movies-list-saga/movies-list-saga.action';
 
 export {
   redirect,
@@ -29,5 +29,6 @@ export {
 
   loadMoviesList,
 
-  getMovies
+  getMovies,
+  getGenres
 };

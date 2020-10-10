@@ -6,7 +6,11 @@ import qs from 'query-string';
 
 import { redirect, isEmpty } from 'app_services/Utils.service';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
-import { /* loadMoviesList, */ getMovies } from 'redux_actions';
+import { 
+  /* loadMoviesList, */ 
+  getMovies,
+  getGenres 
+} from 'redux_actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -21,7 +25,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       // loadMoviesList,
-      getMovies
+      getMovies,
+      getGenres
     }, dispatch)
   };
 };
@@ -38,12 +43,17 @@ export default class MoviesListContainer extends Component {
 
   static fetchData(store, urlParams, urlQuery) {
     // return store.dispatch(loadMoviesList(urlQuery));
-    return store.dispatch(getMovies(urlQuery));
+    store.dispatch(getGenres());
+    store.dispatch(getMovies(urlQuery));
   }
 
   componentDidMount() {
     const { moviesType, page } = this.getUrlParams();
-    const { moviesList, actions } = this.props;
+    const { moviesList, moviesGenres, actions } = this.props;
+
+    if (isEmpty(moviesGenres.genres)) {
+      actions.getGenres();
+    };
 
     // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
     if (isEmpty(moviesList.movies.results)) {
