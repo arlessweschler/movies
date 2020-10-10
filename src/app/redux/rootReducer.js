@@ -20,12 +20,16 @@ import {
   moviesGenres
 } from './movies-genres/movies-genres.reducer';
 
+import moviesReducer from 'app_redux/movies-list-saga/movies-list-saga.reducers';
+
 
 export default combineReducers({
   redirect,
   usersList,
   userDetails,
 
-  moviesList,
-  moviesGenres
+  // moviesList,
+  // moviesGenres,
+  moviesList: moviesReducer.movies,
+  moviesGenres: moviesReducer.genres
 });

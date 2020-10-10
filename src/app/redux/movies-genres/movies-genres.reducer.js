@@ -6,7 +6,7 @@ import {
 
 
 const defaultMoviesGenres = {
-  genres: [],
+  data: [],
   isLoading: false,
   error: null
 };
@@ -33,7 +33,7 @@ function moviesGenres(state = defaultMoviesGenres, action) {
       const { genres } = action.data;
       return {
         ...state,
-        genres,
+        data: genres,
         isLoading: false,
         error: null
       };

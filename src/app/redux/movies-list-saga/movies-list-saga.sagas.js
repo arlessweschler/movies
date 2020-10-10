@@ -2,7 +2,7 @@ import { put, takeEvery, all, fork } from "redux-saga/effects";
 
 
 import ApiService from 'app_services/ApiMovies.service';
-import { actionKeys, asyncActionMaps } from "./movies-list-saga.action";
+import { actionKeys, asyncActionMaps } from 'app_redux/movies-list-saga/movies-list-saga.action';
 // import * as apiMovies from "@/api/apiMovies";
 
 // watch
@@ -29,7 +29,7 @@ function* getMoviesSaga({
     urlParams: `&page=${page}`
   };
 
-  yield put(actions.start());
+  yield put(actions.start({ moviesType, page }));
   try {
     const response = yield ApiService.fetch(requestData);
 
@@ -57,8 +57,8 @@ function* getGenresSaga({ type }) {
       ? yield response.json()
       : yield response.text()
         .then(text => { throw new Error(text) })
-        console.warn('-- movies-list-saga.sagas.js, *getGenresSaga(), data:', data);
-    yield put(actions.success(data));
+    console.warn('-- movies-list-saga.sagas.js, *getGenresSaga(), data:', data);
+    yield put(actions.success(data.genres));
   } catch (error) {
     yield put(actions.fail(error.message));
   }

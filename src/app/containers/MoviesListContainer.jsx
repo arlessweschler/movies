@@ -51,12 +51,12 @@ export default class MoviesListContainer extends Component {
     const { moviesType, page } = this.getUrlParams();
     const { moviesList, moviesGenres, actions } = this.props;
 
-    if (isEmpty(moviesGenres.genres)) {
+    if (isEmpty(moviesGenres.data)) {
       actions.getGenres();
     };
 
     // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
-    if (isEmpty(moviesList.movies.results)) {
+    if (isEmpty(moviesList.data.results)) {
       // actions.loadMoviesList({ moviesType, page });
       actions.getMovies({ moviesType, page });
     };
@@ -83,7 +83,7 @@ export default class MoviesListContainer extends Component {
 
   render() {
     const { moviesList, moviesGenres } = this.props;
-    const { movies, isLoading, error } = moviesList;
+    const { data, isLoading, error } = moviesList;
 
     const { moviesType } = this.getUrlParams();
 
@@ -94,13 +94,13 @@ export default class MoviesListContainer extends Component {
           handleFilter={this.handleFilter}
         />
         <MoviesPaging
-          pageCount={movies.total_pages}
-          initialPage={movies.page - 1}
+          pageCount={data.total_pages}
+          initialPage={data.page - 1}
           onPageChange={this.onPageChange}
         />
         <MoviesList
-          genres={moviesGenres.genres}
-          movies={movies.results}
+          genres={moviesGenres.data}
+          movies={data.results}
           isLoading={isLoading}
           error={error}
         />

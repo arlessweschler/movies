@@ -6,7 +6,7 @@ import {
 
 
 const DEFAULT_MOVIES_LIST = {
-  movies: {
+  data: {
     page: 1,
     total_results: '',
     total_pages: '',
@@ -41,7 +41,7 @@ function moviesList(state = DEFAULT_MOVIES_LIST, action) {
         ...state,
         isLoading: false,
         error: null,
-        movies: action.data
+        data: action.data
       };
 
     default:
