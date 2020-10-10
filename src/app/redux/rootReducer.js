@@ -12,14 +12,6 @@ import {
   userDetails
 } from './user-details/user-details.reducer';
 
-import {
-  moviesList
-} from './movies-list/movies-list.reducer';
-
-import {
-  moviesGenres
-} from './movies-genres/movies-genres.reducer';
-
 import moviesReducer from 'app_redux/movies-list-saga/movies-list-saga.reducers';
 
 
@@ -28,8 +20,6 @@ export default combineReducers({
   usersList,
   userDetails,
 
-  // moviesList,
-  // moviesGenres,
   moviesList: moviesReducer.movies,
   moviesGenres: moviesReducer.genres
 });

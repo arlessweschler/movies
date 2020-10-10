@@ -6,6 +6,9 @@ import { createAsyncReducer, } from 'app_redux/redux';
   movies: createAsyncReducer(actionKeys.GET_MOVIES),
   genres: createAsyncReducer(actionKeys.GET_GENRES)
 }); */
+
+export const DEFAULT_MOVIES_TYPE = 'now_playing';
+
 const DEFAULT_MOVIES_STATE = {
   data: {
     page: 1,

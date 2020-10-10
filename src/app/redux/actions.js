@@ -12,11 +12,10 @@ import {
   clearUserDetails
 } from './user-details/user-details.action';
 
-import {
-  loadMoviesList
-} from './movies-list/movies-list.action';
-
-import { getMovies, getGenres } from './movies-list-saga/movies-list-saga.action';
+import { 
+  getMovies, 
+  getGenres 
+} from './movies-list-saga/movies-list-saga.action';
 
 export {
   redirect,
@@ -26,8 +25,6 @@ export {
 
   loadUserDetails,
   clearUserDetails,
-
-  loadMoviesList,
 
   getMovies,
   getGenres

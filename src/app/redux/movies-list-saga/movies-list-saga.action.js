@@ -1,7 +1,7 @@
 import {
   createActionCreator,
   createActionsForAsyncAction
-} from "app_redux/redux";
+} from 'app_redux/redux';
 
 console.warn('-- movies-list-saga.action.js, actionKeys {}');
 export const actionKeys = {

@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, ButtonGroup } from "reactstrap";
 
 import { MOVIES_TYPES } from 'app_services/ApiMovies.service';
-import { DEFAULT_MOVIES_FILTER } from 'app_redux/movies-list/movies-list.reducer';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/movies-list-saga/movies-list-saga.reducers';
 
 export default function MoviesToolbar({
   handleFilter,
-  activeFilter = DEFAULT_MOVIES_FILTER
+  activeFilter = DEFAULT_MOVIES_TYPE
 }) {
   return (
     <ButtonGroup className="movies-filter mb-3">

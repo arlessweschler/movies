@@ -3,6 +3,7 @@ import { put, takeEvery, all, fork } from "redux-saga/effects";
 
 import ApiService from 'app_services/ApiMovies.service';
 import { actionKeys, asyncActionMaps } from 'app_redux/movies-list-saga/movies-list-saga.action';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/movies-list-saga/movies-list-saga.reducers';
 // import * as apiMovies from "@/api/apiMovies";
 
 // watch
@@ -17,7 +18,7 @@ export function* watchMovieBrowser() {
 // sagas
 function* getMoviesSaga({
   type,
-  moviesType = 'now_playing',
+  moviesType = DEFAULT_MOVIES_TYPE,
   page = 1
 }) {
   const actions = asyncActionMaps[type];
