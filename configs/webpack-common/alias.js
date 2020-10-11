@@ -6,6 +6,7 @@ module.exports = function ({ srcPath }) {
     app_components: 'app/components',
     app_containers: 'app/containers',
     app_services: 'app/services',
+    app_history: 'app/services/History.service',
 
     app_assets: 'assets',
     app_data: 'data',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { redirect } from 'app_services/Utils.service';
+import { redirect } from 'app_history';
 import { UsersToolbar, UsersPage } from 'app_components/pages';
 import {
   loadUsersList,

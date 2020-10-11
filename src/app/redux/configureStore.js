@@ -3,12 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import createSagaMiddleware, { END } from 'redux-saga';
-import { createBrowserHistory, createMemoryHistory } from 'history';
 
-
-const history = (typeof window !== 'undefined' && window.document)
-  ? createBrowserHistory()
-  : createMemoryHistory();
 
 export default function configureStore(initialState = {}) {
   const sagaMiddleware = createSagaMiddleware();
@@ -38,6 +33,5 @@ export default function configureStore(initialState = {}) {
 }
 
 export {
-  configureStore,
-  history
+  configureStore
 };

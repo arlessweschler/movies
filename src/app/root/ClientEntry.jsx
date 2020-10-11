@@ -3,7 +3,8 @@ import { Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import routes from 'app_root/routing/routes';
-import { history, configureStore } from 'redux_store';
+import { configureStore } from 'redux_store';
+import history from 'app_history';
 import { watchMovieBrowser } from "app_redux/movies-saga/movies-saga.sagas";
 
 let initialState = window.__PRELOADED_STATE__
