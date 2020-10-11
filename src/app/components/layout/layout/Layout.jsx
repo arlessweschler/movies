@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 import { Navigation } from 'app_components/layout';
 
 const Layout = (props) => {
-  const { currentRoute, children } = props;
-
   return (
     <div className="layout-wrapper container-fluid pt-3">
-      <Navigation currentRoute={currentRoute} />
+      <Navigation />
       <div className="layout-content">
         {props.children}
       </div>
@@ -15,4 +13,4 @@ const Layout = (props) => {
   );
 }
 
-export default Layout
+export default Layout;

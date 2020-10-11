@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
 import { Layout } from 'app_components/layout';
-import { configureStore, history } from 'redux_store';
+import { configureStore } from 'redux_store';
 import { isClient } from 'app_services/Utils.service';
 import { watchMovieBrowser } from "app_redux/movies-saga/movies-saga.sagas";
 
@@ -16,17 +16,12 @@ let store = configureStore(initialState);
 store.runSaga(watchMovieBrowser);
 
 const RootRoute = (props) => {
-  const { route, serverStore, history: staticHistory } = props;
-
-  const currentRoute = isClient()
-    ? history.location.pathname
-    : staticHistory.location.pathname;
-
+  const { route, serverStore } = props;
   serverStore && (store = serverStore);
 
   return (
     <Provider store={store}>
-      <Layout currentRoute={currentRoute}>
+      <Layout>
         {renderRoutes(route.routes)}
       </Layout>
     </Provider>

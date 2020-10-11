@@ -1,12 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-export default function Navigation(props) {
-  const { currentRoute } = props;
+export default function Navigation() {
+  const { pathname } = useLocation();
+
   const links = [
     { url: '/movies', text: 'Фильмы' },
     { url: '/users', text: 'Пользователи' },
@@ -17,7 +18,7 @@ export default function Navigation(props) {
   return (
     <React.Fragment>
       <ul className="list-group list-group-horizontal cstm-nav">
-        <li className={cn("list-group-item", { 'active': ('/' == currentRoute) })}>
+        <li className={cn("list-group-item", { 'active': ('/' == pathname) })}>
           <Link to='/'>
             <FontAwesomeIcon icon={faHome} />
           </Link>
@@ -28,7 +29,7 @@ export default function Navigation(props) {
           return (
             <li
               key={uuidv4()}
-              className={cn("list-group-item", { 'active': (url == currentRoute) })}
+              className={cn("list-group-item", { 'active': (url == pathname) })}
             >
               <Link to={url}>{text}</Link>
             </li>
