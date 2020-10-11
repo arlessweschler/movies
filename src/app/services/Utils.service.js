@@ -1,9 +1,6 @@
 import { history } from 'redux_store';
 
 const Utils = {
-  isClient() {
-    return (typeof window !== 'undefined' && window.document);
-  },
   redirect(url) {
     console.log('-- redirect, url:', url);
     history.push(url);
@@ -17,7 +14,6 @@ const Utils = {
   },
 }
 
-const isClient = Utils.isClient;
 const redirect = Utils.redirect;
 const isEmpty = Utils.isEmpty;
 const isNotEmpty = (value) => !Utils.isEmpty(value);
@@ -25,7 +21,6 @@ const isNotEmpty = (value) => !Utils.isEmpty(value);
 export default Utils;
 
 export {
-  isClient,
   redirect,
   isEmpty,
   isNotEmpty

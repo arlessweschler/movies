@@ -6,9 +6,7 @@ import createSagaMiddleware, { END } from 'redux-saga';
 import { createBrowserHistory, createMemoryHistory } from 'history';
 
 
-import { isClient } from 'app_services/Utils.service';
-
-const history = isClient()
+const history = (typeof window !== 'undefined' && window.document)
   ? createBrowserHistory()
   : createMemoryHistory();
 

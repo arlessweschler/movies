@@ -27,7 +27,7 @@ export default function (ROUTES) {
 
       const rootContent = renderToString(
         <StaticRouter location={req.url} context={context}>
-          {renderRoutes(ROUTES, { serverStore: store })}
+          {renderRoutes(ROUTES, { store })}
         </StaticRouter>
       );
 
