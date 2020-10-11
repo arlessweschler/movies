@@ -3,7 +3,7 @@ import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import ClientEntry from 'app_root/ClientEntry';
+import ClientRouter from 'app_root/ClientRouter';
 
 console.log('-- src/index.js');
 console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
@@ -14,7 +14,7 @@ const renderMethod = process.env.IS_SSR
 
 renderMethod(
   <AppContainer>
-    <ClientEntry />
+    <ClientRouter />
   </AppContainer>,
   document.getElementById('root')
 );

@@ -5,16 +5,17 @@ import { renderRoutes } from 'react-router-config';
 import routes from 'app_root/routing/routes';
 import { configureStore } from 'redux_store';
 import history from 'app_history';
-import { watchMovieBrowser } from "app_redux/movies-saga/movies-saga.sagas";
+import rootSaga  from 'app_redux/rootSaga';
+
 
 let initialState = window.__PRELOADED_STATE__
   ? window.__PRELOADED_STATE__
   : {};
 
 const store = configureStore(initialState);
-store.runSaga(watchMovieBrowser);
+store.runSaga(rootSaga);
 
-const ClientEntry = () => {
+const ClientRouter = () => {
   return (
     <Router history={history}>
       {renderRoutes(routes, { store })}
@@ -22,4 +23,4 @@ const ClientEntry = () => {
   );
 };
 
-export default ClientEntry;
+export default ClientRouter;

@@ -1,4 +1,4 @@
-import { put, takeEvery, all, fork } from "redux-saga/effects";
+import { put, takeEvery, all } from "redux-saga/effects";
 
 
 import ApiService from 'app_services/ApiMovies.service';
@@ -64,9 +64,3 @@ function* getGenresSaga({ type }) {
     yield put(actions.fail(error.message));
   }
 }
-
-export default function* root() {
-  yield all([
-    fork(watchMovieBrowser)
-  ]);
-};
