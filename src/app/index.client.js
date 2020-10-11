@@ -1,6 +1,7 @@
-import "./index.scss";
-import React from "react";
+import './index.scss';
+import React from 'react';
 import { render, hydrate } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
 import ClientEntry from 'app_root/ClientEntry';
 
@@ -12,5 +13,14 @@ const renderMethod = process.env.IS_SSR
   : render;
 
 renderMethod(
-  <ClientEntry />, document.getElementById('root')
+  <AppContainer>
+    <ClientEntry />
+  </AppContainer>,
+  document.getElementById('root')
 );
+
+if (process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    module.hot.accept();
+  }
+}

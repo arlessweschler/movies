@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { hot } from 'react-hot-loader/root';
 
 import routes from 'app_root/routing/routes';
 import { history, configureStore } from 'redux_store';
@@ -22,4 +21,4 @@ const ClientEntry = () => {
   );
 };
 
-export default hot(ClientEntry);
+export default ClientEntry;
