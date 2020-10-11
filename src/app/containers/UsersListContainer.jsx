@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { redirect } from 'app_services/Utils.service';
 import { UsersToolbar, UsersPage } from 'app_components/pages';
 import {
-  redirect,
   loadUsersList,
   clearUsersList
 } from "redux_actions"
@@ -20,7 +20,6 @@ const mapStateToProps = ({ usersList }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      redirect,
       loadUsersList,
       clearUsersList
     }, dispatch)
@@ -56,10 +55,7 @@ export default class UsersListContainer extends Component {
   }
 
   handleRowClick(id) {
-    this.props.actions.redirect({
-      fromURL: '/users',
-      toURL: `/users/${id}`
-    });
+    redirect(`/users/${id}`);
   }
 
   render() {

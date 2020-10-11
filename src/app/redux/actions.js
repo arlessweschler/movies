@@ -1,8 +1,4 @@
 import {
-  redirect
-} from './common/redirect/redirect.action';
-
-import {
   loadUsersList,
   clearUsersList
 } from './users-list/users-list.action';
@@ -15,11 +11,9 @@ import {
 import { 
   getMovies, 
   getGenres 
-} from './movies-list-saga/movies-list-saga.action';
+} from './movies-saga/movies-saga.action';
 
 export {
-  redirect,
-
   loadUsersList,
   clearUsersList,
 

@@ -4,7 +4,7 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
 import { configureStore } from 'redux_store';
-import rootSaga from 'app_redux/movies-list-saga/movies-list-saga.sagas';
+import rootSaga from 'app_redux/movies-saga/movies-saga.sagas';
 
 export default function (ROUTES) {
   return function (req, res) {

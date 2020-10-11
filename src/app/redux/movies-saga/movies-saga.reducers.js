@@ -1,6 +1,6 @@
-import { actionKeys } from 'app_redux/movies-list-saga/movies-list-saga.action';
+import { actionKeys } from 'app_redux/movies-saga/movies-saga.action';
 // import { combineReducers } from 'redux';
-import { createAsyncReducer, } from 'app_redux/redux';
+import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
 
 /* const moviesReducer = combineReducers({
   movies: createAsyncReducer(actionKeys.GET_MOVIES),

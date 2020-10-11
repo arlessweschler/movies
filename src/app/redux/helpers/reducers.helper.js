@@ -1,29 +1,3 @@
-export const createActionCreator = (type, actionProps) => {
-
-  const actionCreator = {
-    type,
-    ...actionProps
-  };
-
-  console.warn('-- redux.js, createActionCreator(), type:', type);
-
-  return actionCreator;
-};
-
-export const createActionsForAsyncAction = (
-  actionKey
-) => {
-  console.warn('-- redux.js, createActionsForAsyncAction(), actionKey:', actionKey);
-
-  const actionsForAsyncAction = {
-    start: request => createActionCreator(`${actionKey}_START`, { request }),
-    success: data => createActionCreator(`${actionKey}_SUCCESS`, { data }),
-    fail: error => createActionCreator(`${actionKey}_FAIL`, { error })
-  };
-
-  return actionsForAsyncAction;
-};
-
 export const createAsyncReducerMap = (
   actionKey
 ) => {
@@ -65,7 +39,7 @@ export const createReducer = (
   };
 };
 
-console.warn('-- redux.js, initialAsyncState{}');
+console.warn('-- reducers.helper.js, initialAsyncState{}');
 const initialAsyncState = {
   isLoading: false,
   error: null,
@@ -78,7 +52,7 @@ export const createAsyncReducer = (
   initialState = initialAsyncState
 ) => {
 
-  console.warn('-- redux.js, createAsyncReducer(), actionKey:', actionKey);
+  console.warn('-- reducers.helper.js, createAsyncReducer(), actionKey:', actionKey);
 
   return createReducer(
     initialState,

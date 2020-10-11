@@ -5,7 +5,7 @@ import { renderRoutes } from 'react-router-config';
 import { Layout } from 'app_components/layout';
 import { configureStore, history } from 'redux_store';
 import { isClient } from 'app_services/Utils.service';
-import { watchMovieBrowser } from "app_redux/movies-list-saga/movies-list-saga.sagas";
+import { watchMovieBrowser } from "app_redux/movies-saga/movies-saga.sagas";
 
 
 let initialState = (isClient() && window.__PRELOADED_STATE__)
