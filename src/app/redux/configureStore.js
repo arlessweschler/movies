@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 
-export default function configureStore(initialState = {}) {
+export function configureStore(initialState = {}) {
   const sagaMiddleware = createSagaMiddleware();
 
   let middlewares = [
@@ -32,6 +32,8 @@ export default function configureStore(initialState = {}) {
   return store;
 }
 
-export {
-  configureStore
-};
+let initialState = (typeof window !== 'undefined' && window.__PRELOADED_STATE__)
+  ? window.__PRELOADED_STATE__
+  : {};
+
+export default configureStore(initialState);

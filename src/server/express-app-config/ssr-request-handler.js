@@ -41,8 +41,6 @@ export default function (ROUTES) {
         IS_SSR: true
       });
 
-
-
     }).catch((e) => {
       console.log('-- ssr-request-handler, catch, e.message:', e.message);
       res.status(500).send(e.message);
