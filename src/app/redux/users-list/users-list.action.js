@@ -1,4 +1,4 @@
-import ApiService from 'app_services/Api.service';
+import ApiService from 'app_services/ApiService';
 
 import {
   USERS_LIST_IS_LOADING,

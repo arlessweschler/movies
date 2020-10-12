@@ -1,8 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { TMDB_IMAGE_URL } from 'app_services/ApiMovies.service';
-import { isNotEmpty } from 'app_services/Utils.service';
+import { TMDB_IMAGE_URL } from 'app_config';
+import { isNotEmpty } from 'app_services/UtilsService';
 
 export default function MoviesListPage({
   isLoading = false,

@@ -1,4 +1,4 @@
-import ApiService from 'app_services/Api.service';
+import ApiService from 'app_services/ApiService';
 
 import {
   USER_DETAILS_IS_LOADING,

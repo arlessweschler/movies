@@ -5,7 +5,7 @@ import qs from 'query-string';
 
 
 import { redirect } from 'app_history';
-import { isEmpty } from 'app_services/Utils.service';
+import { isEmpty } from 'app_services/UtilsService';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
 import { 
   getMovies,

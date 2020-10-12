@@ -1,7 +1,7 @@
 import { put, takeEvery, all } from "redux-saga/effects";
 
 
-import ApiService from 'app_services/ApiMovies.service';
+import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 // import * as apiMovies from "@/api/apiMovies";
@@ -25,14 +25,13 @@ function* getMoviesSaga({
 
   console.warn('-- sagas/movies-list/movies-list.sagas.js, *getMoviesSaga(), type:', type);
 
-  const requestData = {
-    url: `/movie/${moviesType}`,
-    urlParams: `&page=${page}`
-  };
-
   yield put(actions.start({ moviesType, page }));
   try {
-    const response = yield ApiService.fetch(requestData);
+    const response = yield ApiService.fetch({
+      useMoviesApi: true,
+      url: `/movie/${moviesType}`,
+      urlParams: `&page=${page}`
+    });
 
     let data = response.ok
       ? yield response.json()
@@ -52,7 +51,10 @@ function* getGenresSaga({ type }) {
 
   yield put(actions.start());
   try {
-    const response = yield ApiService.fetch({ url: '/genre/movie/list' });
+    const response = yield ApiService.fetch({ 
+      useMoviesApi: true,
+      url: '/genre/movie/list' 
+    });
 
     let data = response.ok
       ? yield response.json()
