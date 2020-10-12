@@ -8,13 +8,12 @@ export default function MoviesListPage({
   isLoading = false,
   error = false,
   movies = null,
-  genres = null,
-  message = ''
+  genres = null
 }) {
   const getGenres = function (ids) {
     return ids
       .map(id => {
-        const item = genres.find(item => item.id === id);
+        const item = genres.find && genres.find(item => item.id === id);
         return item ? item.name : null;
       })
       .join(', ');
