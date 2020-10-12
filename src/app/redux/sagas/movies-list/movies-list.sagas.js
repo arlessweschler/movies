@@ -2,13 +2,13 @@ import { put, takeEvery, all } from "redux-saga/effects";
 
 
 import ApiService from 'app_services/ApiMovies.service';
-import { actionKeys, asyncActionMaps } from 'app_redux/movies-saga/movies-saga.action';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/movies-saga/movies-saga.reducers';
+import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 // import * as apiMovies from "@/api/apiMovies";
 
 // watch
 export function* watchMovieBrowser() {
-  console.warn('-- movies-saga.sagas.js, *watchMovieBrowser()');
+  console.warn('-- sagas/movies-list/movies-list.sagas.js, *watchMovieBrowser()');
   yield all([
     takeEvery(actionKeys.GET_MOVIES, getMoviesSaga),
     takeEvery(actionKeys.GET_GENRES, getGenresSaga),
@@ -23,7 +23,7 @@ function* getMoviesSaga({
 }) {
   const actions = asyncActionMaps[type];
 
-  console.warn('-- movies-saga.sagas.js, *getMoviesSaga(), type:', type);
+  console.warn('-- sagas/movies-list/movies-list.sagas.js, *getMoviesSaga(), type:', type);
 
   const requestData = {
     url: `/movie/${moviesType}`,
@@ -48,7 +48,7 @@ function* getMoviesSaga({
 function* getGenresSaga({ type }) {
   const actions = asyncActionMaps[type];
 
-  console.warn('-- movies-saga.sagas.js, *getGenresSaga(), type:', type);
+  console.warn('-- sagas/movies-list/movies-list.sagas.js, *getGenresSaga(), type:', type);
 
   yield put(actions.start());
   try {
@@ -58,7 +58,7 @@ function* getGenresSaga({ type }) {
       ? yield response.json()
       : yield response.text()
         .then(text => { throw new Error(text) })
-    console.warn('-- movies-saga.sagas.js, *getGenresSaga(), data:', data);
+    console.warn('-- sagas/movies-list/movies-list.sagas.js, *getGenresSaga(), data:', data);
     yield put(actions.success(data.genres));
   } catch (error) {
     yield put(actions.fail(error.message));

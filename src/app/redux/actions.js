@@ -1,17 +1,17 @@
 import {
   loadUsersList,
   clearUsersList
-} from './users-list/users-list.action';
+} from 'app_redux/users-list/users-list.action';
 
 import {
   loadUserDetails,
   clearUserDetails
-} from './user-details/user-details.action';
+} from 'app_redux/user-details/user-details.action';
 
 import { 
   getMovies, 
   getGenres 
-} from './movies-saga/movies-saga.action';
+} from 'app_redux/sagas/movies-list/movies-list.actions';
 
 export {
   loadUsersList,

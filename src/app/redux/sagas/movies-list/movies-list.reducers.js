@@ -1,4 +1,4 @@
-import { actionKeys } from 'app_redux/movies-saga/movies-saga.action';
+import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
 // import { combineReducers } from 'redux';
 import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
 
@@ -32,7 +32,7 @@ const moviesReducer = {
   genres: createAsyncReducer(actionKeys.GET_GENRES, DEFAULT_GENRES_STATE)
 };
 
-console.warn('-- reducers.js, moviesReducer {}');
+console.warn('-- sagas/movies-list/movies-list.reducers.js, moviesReducer {}');
 
 // export { moviesReducer };
 export default moviesReducer;

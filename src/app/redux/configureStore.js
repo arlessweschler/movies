@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from 'redux_reducers';
-import SagaManager from 'app_redux/SagaManager';
+import SagaManager from 'app_redux/sagas/SagaManager';
 
 
 export function configureStore(initialState = {}, startSagas = false) {
@@ -44,9 +44,9 @@ export function configureStore(initialState = {}, startSagas = false) {
         store.replaceReducer(nextRootReducer)
       })
 
-      module.hot.accept('./SagaManager', () => {
+      module.hot.accept('./sagas/SagaManager', () => {
         SagaManager.cancelSagas(store);
-        require('./SagaManager').default.startSagas(sagaMiddleware);
+        require('./sagas/SagaManager').default.startSagas(sagaMiddleware);
       });
     }
   }

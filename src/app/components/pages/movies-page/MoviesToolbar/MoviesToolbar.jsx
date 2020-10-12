@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, ButtonGroup } from "reactstrap";
 
 import { MOVIES_TYPES } from 'app_services/ApiMovies.service';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/movies-saga/movies-saga.reducers';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 export default function MoviesToolbar({
   handleFilter,

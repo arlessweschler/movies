@@ -8,7 +8,7 @@ import {
   userDetails
 } from './user-details/user-details.reducer';
 
-import moviesReducer from 'app_redux/movies-saga/movies-saga.reducers';
+import moviesReducer from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 
 export default combineReducers({
