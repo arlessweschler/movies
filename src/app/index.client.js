@@ -1,4 +1,3 @@
-import './index.scss';
 import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -13,9 +12,7 @@ const renderMethod = process.env.IS_SSR
   : render;
 
 renderMethod(
-  <AppContainer>
-    <ClientRouter />
-  </AppContainer>,
+  <ClientRouter />,
   document.getElementById('root')
 );
 

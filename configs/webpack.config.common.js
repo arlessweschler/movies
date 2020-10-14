@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pug = require('pug');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const srcPath = path.resolve(__dirname, '../src');
+
 const getAlias = require('./webpack-common/alias');
 const getOptimization = require('./webpack-common/optimization');
 const namedChunksPluginConfig = require('./webpack-common/named-chunks-plugin-config');
@@ -13,16 +13,18 @@ const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
 const rules = require('./webpack-common/rules');
 const indexTemplate = require('./templates/index.tpl');
 const GenerateAssetWebpackPlugin = require('./webpack-plugins/generate-asset-webpack-plugin');
+const SRC_PATH = path.resolve(__dirname, '../src');
 
 let commonConfig = {
   context: path.resolve(__dirname),
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],
-    alias: getAlias({ srcPath })
+    alias: getAlias({ srcPath: SRC_PATH })
   },
   entry: [
     'react-hot-loader/patch',
-    `${srcPath}/app/index.client.js`,
+    `${SRC_PATH}/app/index.client.js`,
+    `${SRC_PATH}/app/index.styles.js`,
     'bootstrap-loader'
   ],
   output: {
@@ -33,7 +35,10 @@ let commonConfig = {
   },
   optimization: getOptimization({ splitBy: 'vendor' }),
   module: {
-    rules: rules
+    rules: [
+      rules.jsx, 
+      rules.images
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -41,7 +46,7 @@ let commonConfig = {
     new webpack.NamedChunksPlugin(namedChunksPluginConfig),
     new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
     new HtmlWebpackPlugin({
-      favicon: `${srcPath}/assets/img/favicon.ico`,
+      favicon: `${SRC_PATH}/assets/img/favicon.ico`,
       minify: false,
       templateContent: function () {
         return pug.render(indexTemplate(), { pretty: true });

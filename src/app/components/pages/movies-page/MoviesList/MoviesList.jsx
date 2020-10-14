@@ -23,7 +23,7 @@ export default function MoviesListPage({
     <React.Fragment>
       {
         isLoading
-          ? <p>'Загрузка...'</p>
+          ? <p>Загрузка...</p>
           : ''
       }
 

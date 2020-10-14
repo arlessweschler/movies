@@ -7,13 +7,14 @@ const NodemonPlugin = require('nodemon-webpack-plugin');
 const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const rules = require('./webpack-common/rules');
 const getAlias = require('./webpack-common/alias');
 const FILENAME = 'server.js';
-const srcPath = path.resolve(__dirname, '../src');
+const SRC_PATH = path.resolve(__dirname, '../src');
 
 const commonConfig = {
-  entry: `${srcPath}/server/index.${FILENAME}`,
-  
+  entry: `${SRC_PATH}/server/index.${FILENAME}`,
+
   target: 'node',
   node: {
     __dirname: false
@@ -22,7 +23,7 @@ const commonConfig = {
   stats: 'minimal',
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.css'],
-    alias: getAlias({ srcPath })
+    alias: getAlias({ srcPath: SRC_PATH })
   },
   output: {
     filename: FILENAME,
@@ -33,14 +34,14 @@ const commonConfig = {
   },
   module: {
     rules: [
+      rules.jsx,
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
+        test: /\.scss$/,
+        use: ['url-loader']
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        use: ['url-loader']
       }
     ]
   },

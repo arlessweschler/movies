@@ -6,17 +6,9 @@ function getStyle(hash, filename) {
   return `${(typeof hash !== 'undefined' ? 'link(rel="stylesheet", type="text/css", href="/css/' + filename + '.' + hash + '.css")' : '')}`;
 }
 
-function getReactRoot() {
+function favicon() {
   return `
-  if IS_SSR
-    div#root !{rootContent}
-
-    script.
-      window.__PRELOADED_STATE__ = !{preloadedState}
-
-  else
-    div#root
-  `;
+  link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")`;
 }
 
 function printRenderingType() {
@@ -35,17 +27,24 @@ module.exports = function (compilation = {}) {
 doctype html
 html(lang="en")
 
-${printRenderingType()}
+  ${printRenderingType()}
+  ${favicon()}
 
-head
-  meta(charset="utf-8")
-  title Webpack4__boilerplate__nk11dev
-  ${getStyle(hash, 'vendor')}
-  ${getStyle(hash, 'main')}
+  head
+    meta(charset="utf-8")
+    title Webpack4__boilerplate__nk11dev
+    ${getStyle(hash, 'vendor')}
+    ${getStyle(hash, 'main')}
 
-body
-  ${getReactRoot()}
-  ${getScript(hash, 'vendor', 'chunk.js')}
-  ${getScript(hash, 'main', 'js')}
+  body
+    if IS_SSR
+      div#root !{rootContent}
+      script.
+        window.__PRELOADED_STATE__ = !{preloadedState}
+    else
+      div#root
+
+    ${getScript(hash, 'vendor', 'chunk.js')}
+    ${getScript(hash, 'main', 'js')}
 `;
 }

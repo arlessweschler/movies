@@ -1,6 +1,9 @@
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+
 const commonConfig = require('./webpack.config.common');
+const rules = require('./webpack-common/rules');
 
 const devConfig = {
   mode: 'development',
@@ -18,10 +21,8 @@ const devConfig = {
   },
   module: {
     rules: [
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
+      rules.css(),
+      rules.scss()
     ]
   }
 };
@@ -40,19 +41,8 @@ const prodConfig = {
   },
   module: {
     rules: [
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../',
-            },
-          },
-          'css-loader',
-          'sass-loader'
-        ]
-      }
+      rules.css({ extract: true, publicPath: '../' }),
+      rules.scss({ extract: true, publicPath: '../' })
     ]
   },
   plugins: [

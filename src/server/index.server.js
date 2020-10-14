@@ -1,5 +1,6 @@
 const express = require('express');
 import logger from 'morgan';
+const favicon = require('serve-favicon')
 const path = require('path');
 
 import appResponseHeaders from 'server_config/app-response-headers';
@@ -13,6 +14,7 @@ const CLIENT_FOLDER = 'dist/client';
 console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
 
 const app = express();
+app.use(favicon(path.join(__dirname + '/client/favicon.ico')));
 app.use(logger('dev'));
 app.use(appResponseHeaders);
 
