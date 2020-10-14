@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -72,13 +72,13 @@ export default class UsersListContainer extends Component {
     if (hasErrors) usersPageData.message = hasErrors.message;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <UsersToolbar
           handleLoad={this.handleLoad}
           handleClear={this.handleClear}
         />
         {<UsersPage {...usersPageData} />}
-      </React.Fragment>
+      </Fragment>
     );
   }
 };

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 
 export default function UsersPage({ list = null, message = '', handleRowClick }) {
   return (
-    <React.Fragment>
+    <Fragment>
       {message && <p>{message}</p>}
 
       {list && <table className="table table-hover users-table">
@@ -30,6 +30,6 @@ export default function UsersPage({ list = null, message = '', handleRowClick })
           })}
         </tbody>
       </table>}
-    </React.Fragment>
+    </Fragment>
   );
 }

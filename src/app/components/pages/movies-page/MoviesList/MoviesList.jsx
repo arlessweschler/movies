@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TMDB_IMAGE_URL } from 'app_config';
@@ -20,7 +20,7 @@ export default function MoviesListPage({
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       {
         isLoading
           ? <p>Загрузка...</p>
@@ -66,6 +66,6 @@ export default function MoviesListPage({
           </div>
           : ''
       }
-    </React.Fragment >
+    </Fragment >
   );
 }

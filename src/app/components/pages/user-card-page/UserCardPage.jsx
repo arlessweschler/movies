@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 export default function UserCardPage({ data, message }) {
   const { details = {} } = data;
   return (
-    <React.Fragment>
+    <Fragment>
       <h2>Карточка пользователя</h2>
       {message
         ? <p>{message}</p>
@@ -46,6 +46,6 @@ export default function UserCardPage({ data, message }) {
           </table>
         )
       }
-    </React.Fragment>
+    </Fragment>
   );
 }

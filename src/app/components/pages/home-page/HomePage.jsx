@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import moment from 'moment';
 
 export default function HomePage() {
   const dateAndTime = moment();
   return (
-    <React.Fragment>
+    <Fragment>
       <p>
         <b>Текущая дата: </b>{dateAndTime.format('DD.MM.YYYY')}
       </p>
@@ -12,6 +12,6 @@ export default function HomePage() {
         <b>Текущее время: </b>{dateAndTime.format('hh:mm:ss')}
       </p>
       <div className="webpack-image" />
-    </React.Fragment>
+    </Fragment>
   );
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import qs from 'query-string';
@@ -7,9 +7,9 @@ import qs from 'query-string';
 import { redirect } from 'app_history';
 import { isEmpty } from 'app_services/UtilsService';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
-import { 
+import {
   getMovies,
-  getGenres 
+  getGenres
 } from 'redux_actions';
 
 // маппинг редюсеров
@@ -83,7 +83,7 @@ export default class MoviesListContainer extends Component {
     const { moviesType } = this.getUrlParams();
 
     return (
-      <React.Fragment>
+      <Fragment>
         <MoviesToolbar
           activeFilter={moviesType}
           handleFilter={this.handleFilter}
@@ -99,7 +99,7 @@ export default class MoviesListContainer extends Component {
           isLoading={isLoading}
           error={error}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,7 +16,7 @@ export default function Navigation() {
   ];
 
   return (
-    <React.Fragment>
+    <Fragment>
       <ul className="list-group list-group-horizontal cstm-nav">
         <li className={cn("list-group-item", { 'active': ('/' == pathname) })}>
           <Link to='/'>
@@ -39,6 +39,6 @@ export default function Navigation() {
       </ul>
 
       <hr />
-    </React.Fragment>
+    </Fragment>
   );
 }

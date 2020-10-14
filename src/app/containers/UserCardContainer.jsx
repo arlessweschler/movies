@@ -75,9 +75,7 @@ export default class UserCardContainer extends Component {
     if (hasErrors) userCardData.message = hasErrors.message;
 
     return (
-      <React.Fragment>
-        <UserCardPage {...userCardData} />
-      </React.Fragment>
+      <UserCardPage {...userCardData} />
     );
   }
 };
