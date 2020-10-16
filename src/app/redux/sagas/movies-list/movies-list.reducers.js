@@ -12,13 +12,13 @@ export const DEFAULT_MOVIES_TYPE = 'now_playing';
 const DEFAULT_MOVIES_STATE = {
   data: {
     page: 1,
-    total_results: '',
-    total_pages: '',
+    total_pages: null,
+    total_results: null,
     results: []
   },
   isLoading: false,
   error: null,
-  request: undefined
+  request: null
 };
 
 const DEFAULT_GENRES_STATE = {

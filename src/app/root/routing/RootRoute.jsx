@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
@@ -14,6 +15,13 @@ const RootRoute = (props) => {
       </Layout>
     </Provider>
   );
+};
+
+RootRoute.propTypes = {
+  route: PropTypes.shape({
+    routes: PropTypes.array
+  }).isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default RootRoute;

@@ -1,16 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import qs from 'query-string';
 
 
 import { redirect } from 'app_history';
 import { isEmpty } from 'app_services/UtilsService';
+import PTS from 'app_services/PropTypesService';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
 import {
   getMovies,
   getGenres
 } from 'redux_actions';
+import { GenresContextProvider } from 'app_contexts/GenresContext';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -30,9 +33,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class MoviesListContainer extends Component {
-
+class MoviesListContainer extends Component {
   constructor() {
     super();
     this.getUrlParams = this.getUrlParams.bind(this);
@@ -89,17 +90,50 @@ export default class MoviesListContainer extends Component {
           handleFilter={this.handleFilter}
         />
         <MoviesPaging
-          pageCount={data.total_pages}
           initialPage={data.page - 1}
+          pageCount={data.total_pages}
           onPageChange={this.onPageChange}
         />
-        <MoviesList
-          genres={moviesGenres.data}
-          movies={data.results}
-          isLoading={isLoading}
-          error={error}
-        />
+        <GenresContextProvider
+          value={moviesGenres.data}
+        >
+          <MoviesList
+            movies={data.results}
+            isLoading={isLoading}
+            error={error}
+          />
+        </GenresContextProvider>
       </Fragment>
     );
   }
 };
+
+MoviesListContainer.propTypes = {
+  actions: PT.shape({
+    getMovies: PT.func.isRequired,
+    getGenres: PT.func.isRequired,
+  }).isRequired,
+
+  moviesList: PT.shape({
+    isLoading: PT.bool.isRequired,
+    error: PTS.nullOrString,
+    data: PT.shape({
+      page: PT.number.isRequired,
+      total_pages: PTS.nullOrNumber,
+      total_results: PTS.nullOrNumber,
+      results: PT.array.isRequired,
+    }).isRequired
+  }).isRequired,
+
+  moviesGenres: PT.shape({
+    data: PT.array.isRequired
+  }).isRequired,
+
+  history: PT.shape({
+    location: PT.shape({
+      search: PT.string.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesListContainer);

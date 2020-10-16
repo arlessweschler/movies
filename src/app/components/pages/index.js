@@ -6,6 +6,7 @@ import NotFoundPage from 'app_components/pages/not-found-page/NotFoundPage';
 
 import MoviesToolbar from 'app_components/pages/movies-page/MoviesToolbar/MoviesToolbar';
 import MoviesList from 'app_components/pages/movies-page/MoviesList/MoviesList';
+import MovieItem from 'app_components/pages/movies-page/MovieItem/MovieItem';
 import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPaging';
 
 export {
@@ -17,5 +18,6 @@ export {
 
   MoviesToolbar,
   MoviesList,
+  MovieItem,
   MoviesPaging
 };

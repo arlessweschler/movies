@@ -1,71 +1,39 @@
 import React, { Fragment } from 'react';
+import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-import { TMDB_IMAGE_URL } from 'app_config';
+import { MovieItem } from 'app_components/pages';
 import { isNotEmpty } from 'app_services/UtilsService';
+import PTS from 'app_services/PropTypesService';
 
-export default function MoviesListPage({
-  isLoading = false,
-  error = false,
-  movies = null,
-  genres = null
-}) {
-  const getGenres = function (ids) {
-    return ids
-      .map(id => {
-        const item = genres.find && genres.find(item => item.id === id);
-        return item ? item.name : null;
-      })
-      .join(', ');
-  }
-
+function MoviesListPage(props) {
+  const { isLoading, error, movies } = props;
   return (
     <Fragment>
-      {
-        isLoading
-          ? <p>Загрузка...</p>
-          : ''
-      }
+      { isLoading ? <p>Загрузка...</p> : ''}
 
-      {
-        error
-          ? <p>{error}</p>
-          : ''
-      }
+      { error ? <p>{error}</p> : ''}
 
       {
         isNotEmpty(movies)
           ? <div className="d-flex flex-wrap justify-content-between movies-list">
-            {movies.map(function ({ poster_path, title, genre_ids, vote_average }) {
-              return (
-                <div className="card" key={uuidv4()}>
-
-                  {
-                    poster_path
-                      ? <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
-                      : <div className="no-image" />
-                  }
-                  <div className="card-body">
-                    {vote_average > 0 && (
-                      <span className="card-rating">{vote_average}</span>
-                    )}
-
-                    <div className="card-title mb-1 mr-5">
-                      {title}
-                    </div>
-
-                    {isNotEmpty(genres) && genre_ids && (
-                      <div className="card-genres small">{getGenres(genre_ids)}</div>
-                    )}
-                  </div>
-                </div>
-
-              );
-
-            })}
+            {movies.map((movie) =>
+              <MovieItem
+                key={uuidv4()}
+                movie={movie}
+              />
+            )}
           </div>
           : ''
       }
     </Fragment >
   );
-}
+};
+
+MoviesListPage.propTypes = {
+  isLoading: PT.bool.isRequired,
+  error: PTS.nullOrNumber,
+  movies: PT.array
+};
+
+export default MoviesListPage;
