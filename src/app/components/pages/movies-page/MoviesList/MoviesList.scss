@@ -1,39 +1,46 @@
-.movies-list {
-  .card {
-    width: 175px;
-    margin-bottom: 20px;
+.cstm-list {
+  position: relative;
+  display: flex;
 
-    &-body {
-      position: relative;
-      padding: 0.85rem;
-      background-color: #222943;
-      color: #fff;
-    }
+  .movies-list {
+    margin-top: 20px;
 
-    &-title {
-      line-height: 1.2;
-    }
+    .card {
+      width: 175px;
+      margin-bottom: 20px;
 
-    &-rating {
-      position: absolute;
-      min-width: 35px;
-      right: 7px;
-      top: 7px;
-      padding: 5px;
-      font-size: 0.8em;
-      text-align: center;
-      background-color: #212529;
-      color: #ffc107;
-      border: 2px #343a40 solid;
-      border-radius: 50%;
-    }
+      &-body {
+        position: relative;
+        padding: 0.85rem;
+        background-color: #222943;
+        color: #fff;
+      }
 
-    &-genres {
-      color: lightslategray;
-    }
+      &-title {
+        line-height: 1.2;
+      }
 
-    img {
-      width: 100%;
+      &-rating {
+        position: absolute;
+        min-width: 35px;
+        right: 7px;
+        top: 7px;
+        padding: 5px;
+        font-size: 0.8em;
+        text-align: center;
+        background-color: #212529;
+        color: #ffc107;
+        border: 2px #343a40 solid;
+        border-radius: 50%;
+      }
+
+      &-genres {
+        color: lightslategray;
+      }
+
+      img {
+        width: 100%;
+      }
     }
   }
 }

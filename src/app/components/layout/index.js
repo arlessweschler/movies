@@ -1,7 +1,9 @@
-import Layout from 'app_components/layout/layout/Layout';
-import Navigation from 'app_components/layout/navigation/Navigation';
+import Layout from 'app_components/layout/Layout/Layout';
+import Navigation from 'app_components/layout/Navigation/Navigation';
+import ProgressBar from 'app_components/layout/ProgressBar/ProgressBar';
 
 export {
   Navigation,
-  Layout
+  Layout,
+  ProgressBar
 };
