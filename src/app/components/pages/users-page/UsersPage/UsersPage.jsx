@@ -1,3 +1,5 @@
+import 'app_components/pages/users-page/UsersPage/UsersPage.scss';
+
 import React, { Fragment } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 

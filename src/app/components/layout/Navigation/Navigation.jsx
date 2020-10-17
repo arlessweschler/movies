@@ -1,3 +1,5 @@
+import 'app_components/layout/navigation/Navigation.scss';
+
 import React, { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';

@@ -1,3 +1,5 @@
+import 'app_components/pages/movies-page/MoviesPaging/MoviesPaging.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import ReactPaginate from "react-paginate";

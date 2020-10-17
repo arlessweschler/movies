@@ -1,3 +1,5 @@
+import 'app_components/pages/movies-page/MoviesToolbar/MoviesToolbar.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
