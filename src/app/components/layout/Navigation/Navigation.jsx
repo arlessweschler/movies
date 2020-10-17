@@ -12,6 +12,7 @@ export default function Navigation() {
 
   const links = [
     { url: '/movies', text: 'Фильмы' },
+    { url: '/movies/random-movie-id', text: 'Карточка фильма' },
     { url: '/users', text: 'Пользователи' },
     { url: '/users/random-user-id', text: 'Карточка пользователя' },
     { url: '/unknown-route', text: '404' },

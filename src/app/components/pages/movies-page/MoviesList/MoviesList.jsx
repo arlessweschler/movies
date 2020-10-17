@@ -37,7 +37,7 @@ function MoviesListPage(props) {
 
 MoviesListPage.propTypes = {
   isLoading: PT.bool.isRequired,
-  error: PTS.nullOrNumber,
+  error: PTS.nullOrString,
   movies: PT.array
 };
 

@@ -8,7 +8,8 @@ import {
 import {
   UsersListContainer,
   UserCardContainer,
-  MoviesListContainer
+  MoviesListContainer,
+  MovieCardContainer
 } from 'app_containers';
 
 const routes = [
@@ -26,6 +27,12 @@ const routes = [
         path: '/movies',
         exact: true,
         component: MoviesListContainer
+      },
+
+      {
+        path: '/movies/:movie_id',
+        exact: true,
+        component: MovieCardContainer
       },
 
       {
