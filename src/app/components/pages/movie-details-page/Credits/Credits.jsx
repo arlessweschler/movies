@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { isNotEmpty } from 'app_services/UtilsService';
 import { TMDB_IMAGE_URL } from 'app_config';
-import noPhotoImage from 'app_assets/img/no_photo.png'
 
 function Credits({ credits }) {
   const { cast } = credits;
@@ -37,6 +36,7 @@ function Credits({ credits }) {
                   ) : (
                       <div className="cast-image no-image" />
                     )}
+                    
                   {/* name */}
                   <div className="cast-name">
                     {person.name}

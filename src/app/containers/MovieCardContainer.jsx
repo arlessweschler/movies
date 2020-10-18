@@ -10,6 +10,7 @@ import {
   getCredits
 } from 'redux_actions';
 import { CrewContextProvider } from 'app_contexts/CrewContext';
+import { isEmpty } from 'app_services/UtilsService';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
@@ -29,14 +30,27 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class MovieCardContainer extends Component {
+
+  static fetchData(store, urlParams) {
+    const movie_id = urlParams[0].split('/').pop();
+
+    store.dispatch(getMovieDetails(movie_id));
+    store.dispatch(getCredits(movie_id));
+  }
+
   componentDidMount() {
-    const { actions, match } = this.props;
+    const { actions, match, movieDetails } = this.props;
+    const { movie, credits } = movieDetails;
     const { movie_id } = match.params;
+    const isOutdated = (movie_id != movie.data.id);
 
-    console.log('-- MovieCardContainer.componentDidMount(), movie_id:', movie_id);
+    if (isEmpty(movie.data) || isOutdated) {
+      actions.getMovieDetails(movie_id);
+    }
 
-    actions.getMovieDetails(movie_id);
-    actions.getCredits(movie_id);
+    if (isEmpty(credits.data) || isOutdated) {
+      actions.getCredits(movie_id);
+    }
   }
 
   render() {
