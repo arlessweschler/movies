@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PTS from 'app_services/PropTypesService';
-import { MovieCard } from 'app_components/pages';
+import { MovieCard, Credits } from 'app_components/pages';
 import {
-  getMovieDetails
+  getMovieDetails,
+  getCredits
 } from 'redux_actions';
 
 
@@ -21,7 +22,8 @@ const mapStateToProps = ({ movieDetails }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      getMovieDetails
+      getMovieDetails,
+      getCredits
     }, dispatch)
   };
 };
@@ -29,22 +31,24 @@ const mapDispatchToProps = (dispatch) => {
 class MovieCardContainer extends Component {
   componentDidMount() {
     const { actions, match } = this.props;
-
     const { movie_id } = match.params;
 
     console.log('-- MovieCardContainer.componentDidMount(), movie_id:', movie_id);
+    
     actions.getMovieDetails(movie_id);
+    actions.getCredits(movie_id);
   }
 
   render() {
     const { movieDetails } = this.props;
-    const { movie } = movieDetails;
+    const { movie, credits } = movieDetails;
 
-    console.log('-- MovieCardContainer.rednder(), movieDetails:', movieDetails);
+    console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
 
     return (
       <Fragment>
         <MovieCard movie={movie.data} />
+        <Credits credits={credits.data} />
       </Fragment>
     );
   }
@@ -53,6 +57,12 @@ class MovieCardContainer extends Component {
 MovieCardContainer.propTypes = {
   movieDetails: PT.shape({
     movie: PT.shape({
+      isLoading: PT.bool.isRequired,
+      error: PTS.nullOrString,
+      data: PT.object.isRequired
+    }).isRequired,
+
+    credits: PT.shape({
       isLoading: PT.bool.isRequired,
       error: PTS.nullOrString,
       data: PT.object.isRequired

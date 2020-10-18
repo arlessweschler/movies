@@ -17,6 +17,7 @@ import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPa
 
 // карточка фильма
 import MovieCard from 'app_components/pages/movie-details-page/MovieCard/MovieCard';
+import Credits from 'app_components/pages/movie-details-page/Credits/Credits';
 
 export {
   HomePage,
@@ -31,5 +32,6 @@ export {
   MovieItem,
   MoviesPaging,
 
-  MovieCard
+  MovieCard,
+  Credits
 };

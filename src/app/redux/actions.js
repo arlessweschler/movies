@@ -14,7 +14,8 @@ import {
 } from 'app_redux/sagas/movies-list/movies-list.actions';
 
 import { 
-  getMovieDetails
+  getMovieDetails,
+  getCredits
 } from 'app_redux/sagas/movie-details/movie-details.actions';
 
 export {
@@ -27,5 +28,6 @@ export {
   getMovies,
   getGenres,
 
-  getMovieDetails
+  getMovieDetails,
+  getCredits
 };

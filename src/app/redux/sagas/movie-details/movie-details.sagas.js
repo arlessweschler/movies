@@ -9,7 +9,8 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie
 export function* watchMovieDetails() {
   console.warn('-- sagas/movie-details/movie-details.sagas.js, *watchMovieDetails()');
   yield all([
-    takeEvery(actionKeys.GET_MOVIE_DETAILS, getMovieDetailsSaga)
+    takeEvery(actionKeys.GET_MOVIE_DETAILS, getMovieDetailsSaga),
+    takeEvery(actionKeys.GET_CREDITS, getCreditsSaga)
   ]);
 }
 
@@ -27,6 +28,26 @@ function* getMovieDetailsSaga({
     const data = yield ApiService.fetch({
       useMoviesApi: true,
       url: `/movie/${movieId}`
+    });
+    yield put(actions.success(data));
+  } catch (error) {
+    yield put(actions.fail(error.message));
+  }
+}
+
+function* getCreditsSaga({
+  type,
+  movieId
+}) {
+  const actions = asyncActionMaps[type];
+
+  console.warn('-- sagas/movie-details/movie-details.sagas.js, *getCreditsSaga(), type:', type);
+
+  yield put(actions.start({ movieId }));
+  try {
+    const data = yield ApiService.fetch({
+      useMoviesApi: true,
+      url: `/movie/${movieId}/credits`
     });
     yield put(actions.success(data));
   } catch (error) {
