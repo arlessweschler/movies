@@ -38,11 +38,13 @@ class MovieCardContainer extends Component {
 
   render() {
     const { movieDetails } = this.props;
-    const { data } = movieDetails;
-    
+    const { movie } = movieDetails;
+
+    console.log('-- MovieCardContainer.rednder(), movieDetails:', movieDetails);
+
     return (
       <Fragment>
-        <MovieCard movie={data} />
+        <MovieCard movie={movie.data} />
       </Fragment>
     );
   }
@@ -50,10 +52,12 @@ class MovieCardContainer extends Component {
 
 MovieCardContainer.propTypes = {
   movieDetails: PT.shape({
-    isLoading: PT.bool.isRequired,
-    error: PTS.nullOrString,
-    data: PT.object.isRequired
-  }).isRequired,
+    movie: PT.shape({
+      isLoading: PT.bool.isRequired,
+      error: PTS.nullOrString,
+      data: PT.object.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCardContainer);

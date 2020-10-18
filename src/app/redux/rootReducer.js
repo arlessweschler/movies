@@ -19,5 +19,5 @@ export default combineReducers({
   moviesList: moviesReducer.movies,
   moviesGenres: moviesReducer.genres,
 
-  movieDetails: movieDetailsReducer.movie
+  movieDetails: movieDetailsReducer
 });
