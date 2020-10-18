@@ -18,6 +18,8 @@ import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPa
 // карточка фильма
 import MovieCard from 'app_components/pages/movie-details-page/MovieCard/MovieCard';
 import Credits from 'app_components/pages/movie-details-page/Credits/Credits';
+import CrewNames from 'app_components/pages/movie-details-page/CrewNames/CrewNames';
+import MovieField from 'app_components/pages/movie-details-page/MovieField/MovieField';
 
 export {
   HomePage,
@@ -33,5 +35,7 @@ export {
   MoviesPaging,
 
   MovieCard,
-  Credits
+  Credits,
+  CrewNames,
+  MovieField
 };

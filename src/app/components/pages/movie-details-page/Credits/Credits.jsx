@@ -11,7 +11,7 @@ import noPhotoImage from 'app_assets/img/no_photo.png'
 function Credits({ credits }) {
   const { cast } = credits;
 
-  console.log('-- Credits.render(), credits:', credits);
+  // console.log('-- Credits.render(), credits:', credits);
 
   return (
     <div className="container">

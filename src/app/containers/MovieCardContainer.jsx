@@ -9,7 +9,7 @@ import {
   getMovieDetails,
   getCredits
 } from 'redux_actions';
-
+import { CrewContextProvider } from 'app_contexts/CrewContext';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
@@ -34,7 +34,7 @@ class MovieCardContainer extends Component {
     const { movie_id } = match.params;
 
     console.log('-- MovieCardContainer.componentDidMount(), movie_id:', movie_id);
-    
+
     actions.getMovieDetails(movie_id);
     actions.getCredits(movie_id);
   }
@@ -43,11 +43,15 @@ class MovieCardContainer extends Component {
     const { movieDetails } = this.props;
     const { movie, credits } = movieDetails;
 
-    console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
+    // console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
 
     return (
       <Fragment>
-        <MovieCard movie={movie.data} />
+        <CrewContextProvider
+          value={credits.data}
+        >
+          <MovieCard movie={movie.data} />
+        </CrewContextProvider>
         <Credits credits={credits.data} />
       </Fragment>
     );
