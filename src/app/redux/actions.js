@@ -13,6 +13,10 @@ import {
   getGenres 
 } from 'app_redux/sagas/movies-list/movies-list.actions';
 
+import { 
+  getMovieDetails
+} from 'app_redux/sagas/movie-details/movie-details.actions';
+
 export {
   loadUsersList,
   clearUsersList,
@@ -21,5 +25,7 @@ export {
   clearUserDetails,
 
   getMovies,
-  getGenres
+  getGenres,
+
+  getMovieDetails
 };

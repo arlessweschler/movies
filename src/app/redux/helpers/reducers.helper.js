@@ -41,10 +41,10 @@ export const createReducer = (
 
 console.warn('-- helpers/reducers.helper.js, initialAsyncState{}');
 const initialAsyncState = {
+  data: {},
   isLoading: false,
   error: null,
-  data: undefined,
-  request: undefined
+  request: null
 };
 
 export const createAsyncReducer = (
