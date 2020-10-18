@@ -1,6 +1,6 @@
 import 'app_components/pages/movie-details-page/Credits/Credits.scss';
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,36 +14,45 @@ function Credits({ credits }) {
   // console.log('-- Credits.render(), credits:', credits);
 
   return (
-    <div className="container">
+    <div className="container mt-3">
       {
         isNotEmpty(cast)
-          ? <div className="cast-list">
-            <h2>Актеры:</h2>
+          ?
+          <Fragment>
+            <h2>Actors:</h2>
+            <div className="row">
 
-            {cast.map((person) =>
-              <div
-                key={uuidv4()}
-                className="cast-item"
-              >
-                {person.profile_path ? (
-                  <img src={`${TMDB_IMAGE_URL.small + person.profile_path}`}
-                  />
-                ) : (
-                    <img src={noPhotoImage}
+              {cast.map((person) =>
+                <div
+                  key={uuidv4()}
+                  className="col cast-item"
+                >
+
+                  {/* photo */}
+                  {person.profile_path ? (
+                    <img
+                      className="cast-image"
+                      src={`${TMDB_IMAGE_URL.small + person.profile_path}`}
                     />
-                  )}
+                  ) : (
+                      <div className="cast-image no-image" />
+                    )}
+                  {/* name */}
+                  <div className="cast-name">
+                    {person.name}
+                  </div>
 
-                {person.name}
+                  {/* character */}
+                  {person.character
+                    ? <div className="small text-secondary">
+                      ({person.character})
+                      </div>
+                    : ''}
+                </div>
+              )}
 
-                {person.character
-                  ? <span className="small text-secondary p-1">
-                    ({person.character})
-                    </span>
-                  : ''}
-              </div>
-            )}
-
-          </div>
+            </div>
+          </Fragment>
           : ''
       }
     </div>
