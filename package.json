@@ -59,6 +59,7 @@
     "query-string": "6.13.5",
     "react-hot-loader": "4.12.21",
     "react-paginate": "6.5.0",
+    "react-player": "2.6.2",
     "reactstrap": "8.6.0",
     "redux-devtools-extension": "2.13.8",
     "redux-saga": "1.1.3",

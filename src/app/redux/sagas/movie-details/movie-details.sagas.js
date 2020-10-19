@@ -10,7 +10,8 @@ export function* watchMovieDetails() {
   console.warn('-- sagas/movie-details/movie-details.sagas.js, *watchMovieDetails()');
   yield all([
     takeEvery(actionKeys.GET_MOVIE_DETAILS, getMovieDetailsSaga),
-    takeEvery(actionKeys.GET_CREDITS, getCreditsSaga)
+    takeEvery(actionKeys.GET_CREDITS, getCreditsSaga),
+    takeEvery(actionKeys.GET_VIDEOS, getVideosSaga)
   ]);
 }
 
@@ -50,6 +51,26 @@ function* getCreditsSaga({
       url: `/movie/${movieId}/credits`
     });
     yield put(actions.success(data));
+  } catch (error) {
+    yield put(actions.fail(error.message));
+  }
+}
+
+function* getVideosSaga({
+  type,
+  movieId
+}) {
+  const actions = asyncActionMaps[type];
+
+  console.warn('-- sagas/movie-details/movie-details.sagas.js, *getVideosSaga(), type:', type);
+
+  yield put(actions.start({ movieId }));
+  try {
+    const data = yield ApiService.fetch({
+      useMoviesApi: true,
+      url: `/movie/${movieId}/videos`
+    });
+    yield put(actions.success(data.results));
   } catch (error) {
     yield put(actions.fail(error.message));
   }

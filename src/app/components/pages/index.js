@@ -20,6 +20,7 @@ import MovieCard from 'app_components/pages/movie-details-page/MovieCard/MovieCa
 import Credits from 'app_components/pages/movie-details-page/Credits/Credits';
 import CrewNames from 'app_components/pages/movie-details-page/CrewNames/CrewNames';
 import MovieField from 'app_components/pages/movie-details-page/MovieField/MovieField';
+import MoviePlayer from 'app_components/pages/movie-details-page/MoviePlayer/MoviePlayer';
 
 export {
   HomePage,
@@ -37,5 +38,6 @@ export {
   MovieCard,
   Credits,
   CrewNames,
-  MovieField
+  MovieField,
+  MoviePlayer
 };

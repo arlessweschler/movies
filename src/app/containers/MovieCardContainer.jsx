@@ -4,10 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PTS from 'app_services/PropTypesService';
-import { MovieCard, Credits } from 'app_components/pages';
+import { MovieCard, MoviePlayer, Credits } from 'app_components/pages';
 import {
   getMovieDetails,
-  getCredits
+  getCredits,
+  getVideos
 } from 'redux_actions';
 import { CrewContextProvider } from 'app_contexts/CrewContext';
 import { isEmpty } from 'app_services/UtilsService';
@@ -24,7 +25,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       getMovieDetails,
-      getCredits
+      getCredits,
+      getVideos
     }, dispatch)
   };
 };
@@ -36,6 +38,7 @@ class MovieCardContainer extends Component {
 
     store.dispatch(getMovieDetails(movie_id));
     store.dispatch(getCredits(movie_id));
+    store.dispatch(getVideos(movie_id));
   }
 
   componentDidMount() {
@@ -51,21 +54,27 @@ class MovieCardContainer extends Component {
     if (isEmpty(credits.data) || isOutdated) {
       actions.getCredits(movie_id);
     }
+
+    if (isEmpty(credits.data) || isOutdated) {
+      actions.getVideos(movie_id);
+    }
   }
 
   render() {
     const { movieDetails } = this.props;
-    const { movie, credits } = movieDetails;
+    const { movie, credits, videos } = movieDetails;
 
-    // console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
+    console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
 
     return (
       <Fragment>
-        <CrewContextProvider
-          value={credits.data}
-        >
+        <CrewContextProvider value={credits.data}>
           <MovieCard movie={movie.data} />
         </CrewContextProvider>
+        <MoviePlayer
+          videos={videos.data}
+          searchParams={{ site: 'YouTube', type: 'Trailer' }}
+        />
         <Credits credits={credits.data} />
       </Fragment>
     );
