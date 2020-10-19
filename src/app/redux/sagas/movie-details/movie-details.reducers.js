@@ -12,7 +12,10 @@ const DEFAULT_VIDEOUS_STATE = {
 const movieDetailsReducer = combineReducers({
   movie: createAsyncReducer(actionKeys.GET_MOVIE_DETAILS),
   credits: createAsyncReducer(actionKeys.GET_CREDITS),
-  videos: createAsyncReducer(actionKeys.GET_VIDEOS, DEFAULT_VIDEOUS_STATE)
+  videos: createAsyncReducer(
+    actionKeys.GET_VIDEOS,
+    { initialState: DEFAULT_VIDEOUS_STATE }
+  )
 });
 
 console.warn('-- sagas/movie-details/movie-details.reducers.js, movieDetailsReducer {}');

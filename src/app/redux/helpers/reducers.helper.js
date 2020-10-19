@@ -49,9 +49,9 @@ const initialAsyncState = {
 
 export const createAsyncReducer = (
   actionKey,
-  initialState = initialAsyncState
+  params = {}
 ) => {
-
+  const { initialState = initialAsyncState } = params;
   console.warn('-- helpers/reducers.helper.js, createAsyncReducer(), actionKey:', actionKey);
 
   return createReducer(

@@ -28,8 +28,14 @@ const DEFAULT_GENRES_STATE = {
 };
 
 const moviesReducer = {
-  movies: createAsyncReducer(actionKeys.GET_MOVIES, DEFAULT_MOVIES_STATE),
-  genres: createAsyncReducer(actionKeys.GET_GENRES, DEFAULT_GENRES_STATE)
+  movies: createAsyncReducer(
+    actionKeys.GET_MOVIES,
+    { initialState: DEFAULT_MOVIES_STATE }
+  ),
+  genres: createAsyncReducer(
+    actionKeys.GET_GENRES,
+    { initialState: DEFAULT_GENRES_STATE }
+  )
 };
 
 console.warn('-- sagas/movies-list/movies-list.reducers.js, moviesReducer {}');

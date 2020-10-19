@@ -93,6 +93,12 @@ MovieCardContainer.propTypes = {
       isLoading: PT.bool.isRequired,
       error: PTS.nullOrString,
       data: PT.object.isRequired
+    }).isRequired,
+
+    videos: PT.shape({
+      isLoading: PT.bool.isRequired,
+      error: PTS.nullOrString,
+      data: PT.array.isRequired
     }).isRequired
   }).isRequired
 };
