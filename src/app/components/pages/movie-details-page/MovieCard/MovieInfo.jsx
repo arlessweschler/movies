@@ -50,31 +50,24 @@ function MovieInfo({ movie }) {
       />
 
       {/* screenplay */}
-      <CrewNames
+      {/* <CrewNames
         label="Screenplay"
         searchParams={{ department: 'Writing', job: 'Screenplay' }}
-      />
+      /> */}
 
       {/* duration */}
-      {runtime
+      {/* {runtime
         ? <MovieField
           label="Duration"
           value={getDurationStr(runtime)} />
-        : ''}
+        : ''} */}
 
       {/* vote_average */}
-      {vote_average
+      {/*  {vote_average
         ? <MovieField
           label="Rating"
           value={vote_average} />
-        : ''}
-
-      {/* overview */}
-      {overview
-        ? <div className="border-top mt-3 pt-3">
-          {overview}
-        </div>
-        : ''}
+        : ''} */}
 
     </Fragment>
   );
@@ -84,7 +77,6 @@ MovieInfo.propTypes = {
   movie: PT.shape({
     title: PT.string,
     tagline: PT.string,
-    overview: PT.string,
     production_countries: PT.array,
     genres: PT.array,
     release_date: PT.string,

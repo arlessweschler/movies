@@ -8,7 +8,7 @@ import { MoviePlayer } from 'app_components/pages';
 import MovieInfo from './MovieInfo';
 
 function MovieCard({ movie, videos }) {
-  const { poster_path } = movie;
+  const { poster_path, overview } = movie;
 
   // console.log('-- MovieCard.render(), movie:', movie);
 
@@ -19,6 +19,16 @@ function MovieCard({ movie, videos }) {
   return (
     <Fragment>
       <div className={`container ${baseCls}`}>
+
+        {/* row start */}
+        <div className="row mt-2">
+          <div className="col p-0">
+            <MovieInfo
+              movie={movie}
+            />
+          </div>
+        </div>
+        {/* row end */}
 
         {/* row start */}
         <div className="row">
@@ -50,11 +60,12 @@ function MovieCard({ movie, videos }) {
 
         {/* row start */}
         <div className="row mt-2">
-          <div className="col p-0">
-            <MovieInfo
-              movie={movie}
-            />
-          </div>
+          {/* overview */}
+          {overview
+            ? <div className="border-top mt-3 pt-3">
+              {overview}
+            </div>
+            : ''}
         </div>
         {/* row end */}
 
@@ -66,6 +77,7 @@ function MovieCard({ movie, videos }) {
 MovieCard.propTypes = {
   movie: PT.shape({
     poster_path: PT.string,
+    overview: PT.string,
   }).isRequired,
 };
 
