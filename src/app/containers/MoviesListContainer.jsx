@@ -11,9 +11,10 @@ import PTS from 'app_services/PropTypesService';
 import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
 import {
   getMovies,
-  getGenres
+  getGenres,
+  resetMovieDetails
 } from 'redux_actions';
-import { GenresContextProvider } from 'app_contexts/GenresContext';
+import { MiniMovieContextProvider } from 'app_contexts/MiniMovieContext';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -28,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       getMovies,
-      getGenres
+      getGenres,
+      resetMovieDetails
     }, dispatch)
   };
 };
@@ -39,6 +41,7 @@ class MoviesListContainer extends Component {
     this.getUrlParams = this.getUrlParams.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
+    this.linkMovie = this.linkMovie.bind(this);
   }
 
   static fetchData(store, urlParams, urlQuery) {
@@ -77,6 +80,11 @@ class MoviesListContainer extends Component {
     this.props.actions.getMovies(urlParams);
   }
 
+  linkMovie(id) {
+    this.props.actions.resetMovieDetails();
+    redirect(`/movies/${id}`);
+  }
+
   render() {
     const { moviesList, moviesGenres } = this.props;
     const { data, isLoading, error } = moviesList;
@@ -94,15 +102,16 @@ class MoviesListContainer extends Component {
           pageCount={data.total_pages}
           onPageChange={this.onPageChange}
         />
-        <GenresContextProvider
-          value={moviesGenres.data}
+        <MiniMovieContextProvider
+          genres={moviesGenres.data}
+          linkMovie={this.linkMovie}
         >
           <MoviesList
             movies={data.results}
             isLoading={isLoading}
             error={error}
           />
-        </GenresContextProvider>
+        </MiniMovieContextProvider>
       </Fragment>
     );
   }

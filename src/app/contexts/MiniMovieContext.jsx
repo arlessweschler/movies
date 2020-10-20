@@ -2,11 +2,11 @@ import React, { Component, createContext } from 'react';
 
 import { isEmpty } from 'app_services/UtilsService';
 
-const GenresContext = createContext();
+const MiniMovieContext = createContext();
 
-class GenresContextProvider extends Component {
+class MiniMovieContextProvider extends Component {
   printGenres = ({ ids, cls }) => {
-    const { value: genres } = this.props;
+    const { genres } = this.props;
 
     if (isEmpty(genres) || (typeof genres.find !== 'function')) {
       return null;
@@ -30,15 +30,16 @@ class GenresContextProvider extends Component {
 
   render() {
     return (
-      <GenresContext.Provider value={{
-        genres: this.props.value,
+      <MiniMovieContext.Provider value={{
+        genres: this.props.genres,
+        linkMovie: this.props.linkMovie,
         printGenres: this.printGenres
       }} >
         {this.props.children}
-      </GenresContext.Provider>
+      </MiniMovieContext.Provider>
     );
   }
 }
 
-export { GenresContextProvider };
-export default GenresContext;
+export { MiniMovieContextProvider };
+export default MiniMovieContext;

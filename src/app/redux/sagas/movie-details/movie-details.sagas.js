@@ -11,7 +11,8 @@ export function* watchMovieDetails() {
   yield all([
     takeEvery(actionKeys.GET_MOVIE_DETAILS, getMovieDetailsSaga),
     takeEvery(actionKeys.GET_CREDITS, getCreditsSaga),
-    takeEvery(actionKeys.GET_VIDEOS, getVideosSaga)
+    takeEvery(actionKeys.GET_VIDEOS, getVideosSaga),
+    takeEvery(actionKeys.RESET_MOVIE_DETAILS, resetMovieDetailsSaga)
   ]);
 }
 
@@ -73,5 +74,20 @@ function* getVideosSaga({
     yield put(actions.success(data.results));
   } catch (error) {
     yield put(actions.fail(error.message));
+  }
+}
+
+function* resetMovieDetailsSaga({
+  resetList
+}) {
+  let actions;
+
+  for (let item of resetList) {
+    actions = asyncActionMaps[item];
+    try {
+      yield put(actions.reset());
+    } catch (error) {
+      yield put(actions.fail(error.message));
+    }
   }
 }

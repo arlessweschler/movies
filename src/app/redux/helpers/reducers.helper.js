@@ -1,6 +1,8 @@
 export const createAsyncReducerMap = (
-  actionKey
+  actionKey,
+  params = {}
 ) => {
+  const { initialState = initialAsyncState } = params;
 
   const startReducerFn = (state, action) => ({
     ...state,
@@ -22,10 +24,15 @@ export const createAsyncReducerMap = (
     error: action.error
   });
 
+  const resetReducerFn = (state, action) => ({
+    ...initialState
+  });
+
   return {
     [`${actionKey}_START`]: startReducerFn,
     [`${actionKey}_SUCCESS`]: successReducerFn,
-    [`${actionKey}_FAIL`]: failReducerFn
+    [`${actionKey}_FAIL`]: failReducerFn,
+    [`${actionKey}_RESET`]: resetReducerFn
   };
 };
 
@@ -56,6 +63,6 @@ export const createAsyncReducer = (
 
   return createReducer(
     initialState,
-    createAsyncReducerMap(actionKey)
+    createAsyncReducerMap(actionKey, params)
   );
 };

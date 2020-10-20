@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import PT from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import GenresContext from 'app_contexts/GenresContext';
+import MiniMovieContext from 'app_contexts/MiniMovieContext';
 
 function MovieItem({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;
-  const { printGenres } = useContext(GenresContext);
+  const { printGenres, linkMovie } = useContext(MiniMovieContext);
 
   return (
-    <Link className="card movie-link" to={`/movies/${id}`}>
+    <div
+      className="card movie-link"
+      onClick={() => linkMovie(id)}
+    >
       {poster_path
         ? <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
         : <div className="no-image" />}
@@ -30,7 +32,7 @@ function MovieItem({ movie }) {
           cls: 'card-genres small'
         })}
       </div>
-    </Link>
+    </div>
   );
 };
 
