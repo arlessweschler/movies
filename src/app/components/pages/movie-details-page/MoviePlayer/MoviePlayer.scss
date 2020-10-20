@@ -8,7 +8,9 @@
   border: 0;
 }
 
-.movie-details-card {
+$b: 'movie-details';
+
+.#{$b} {
   .movie-player {
     .react-player__preview {
       @include embed-responsive-item;

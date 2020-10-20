@@ -10,6 +10,7 @@ import { ProgressBar } from 'app_components/layout';
 function MoviePlayer({ videos, searchParams }) {
   const host = 'https://www.youtube.com';
   const [isLoading, setLoading] = useState(true);
+  const showPreview = true;
 
   const trailer = videos.find((video) => {
     return (
@@ -31,8 +32,8 @@ function MoviePlayer({ videos, searchParams }) {
         playing={false}
         controls={true}
         onReady={() => setLoading(false)}
-      // устанавливает превью изображение, при клике на которое загружается плеер
-      // light
+        // устанавливает превью изображение, при клике на которое загружается плеер
+        light={showPreview}
       />
     </Fragment>
   );

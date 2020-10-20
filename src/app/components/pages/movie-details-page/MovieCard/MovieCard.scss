@@ -1,5 +1,8 @@
-.movie-details-card {
-  &__column {
+$b: 'movie-details';
+
+.#{$b} {
+
+  .#{$b}__column {
     padding: 0px !important;
 
     &--left {
@@ -9,7 +12,7 @@
     }
   }
 
-  &__poster {
+  .#{$b}__poster {
     // fix image 16by9 width proportion
     width: auto !important;
 
@@ -24,4 +27,5 @@
       margin: 0 auto;
     }
   }
+
 }

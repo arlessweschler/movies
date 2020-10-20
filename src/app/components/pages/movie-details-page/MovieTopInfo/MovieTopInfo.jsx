@@ -6,8 +6,11 @@ import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHistory, faVideo, faGlobe, faStar } from '@fortawesome/free-solid-svg-icons'
+import b_ from 'b_';
+import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
+import { b_col } from 'app_services/FormatterService';
 
 function MovieTopInfo({ movie }) {
   const { title, production_countries, genres, release_date, runtime, vote_average } = movie;
@@ -41,34 +44,36 @@ function MovieTopInfo({ movie }) {
     }
   });
 
-  const baseCls = 'movie-details-card';
-  const getColClasses = (size) => `col-${size} col-sm-${size} col-md-${size} col-lg-${size} col-xl-${size}`;
+  const b = b_.with('movie-details');
+  const b_top = b_.with('movie-details-top');
+  const b_rate = b_.with('movie-details-rating');
+  // b_col = b_col
 
   return (
     <Fragment>
       <div className="row">
 
         {/* col start */}
-        <div className={`${getColClasses(9)} p-0`}>
+        <div className={cn(b_col(9), 'p-0')}>
 
           {/* title */}
-          <h1 className={`${baseCls}__title`}>
+          <h1>
             {title}
-            <span className={`${baseCls}__year`}>
+            <span className={b('year')}>
               ({moment(release_date).format('YYYY')})
               </span>
           </h1>
 
           {/* tags */}
-          <div className={`${baseCls}__top-text`}>
-            {tags.map((item, i) => (
+          <div className={b_top()}>
+            {tags.map((item) => (
               <Fragment key={uuidv4()}>
-                <span className="item" >
+                <span className={b_top('item')} >
                   <FontAwesomeIcon
-                    className="item-icon"
+                    className={b_top('icon')}
                     icon={item.icon}
                   />
-                  <span className="item-text">
+                  <span className={b_top('text')}>
                     {item.text}
                   </span>
                 </span>
@@ -79,16 +84,16 @@ function MovieTopInfo({ movie }) {
         {/* col end */}
 
         {/* col start: rating */}
-        <div className={`${getColClasses(3)} p-0`}>
+        <div className={cn(b_col(3), 'p-0')}>
           {vote_average && (
-            <div className={`${baseCls}__rating`}>
+            <div className={b_rate()}>
               <FontAwesomeIcon
-                className={`${baseCls}__rating-icon`}
+                className={b_rate('icon')}
                 icon={faStar}
               />
-              <span className={`${baseCls}__rating-text`}>
-                {vote_average}
-                <span className="out-of-10">/10</span>
+              {vote_average}
+              <span className={b_rate('scale')}>
+                /10
               </span>
             </div>
           )}

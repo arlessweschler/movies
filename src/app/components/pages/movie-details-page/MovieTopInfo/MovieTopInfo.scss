@@ -1,55 +1,61 @@
-.movie-details-card {
+$b: 'movie-details';
+$gray: #868e96;
+$lightgray: #afb5ba;
+$yellow: #FFA500;
 
-  // movie release year
-  &__year {
-    color: #868e96;
+.#{$b} {
+
+  .#{$b}__year {
+    color: $gray;
     padding-left: 10px;
     font-size: calc(1.375rem + 0.5vw);
     font-weight: 400;
   }
 
-  // movie top tags
-  &__top-text {
+  $bTop: #{$b}-top;
+
+  .#{$bTop} {
     margin-bottom: 10px;
 
-    .item {
+    .#{$bTop}__item {
       position: relative;
       margin: 10px 5px 10px 10px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
 
       @media (max-width: 768px) {
         display: block;
         margin: 0 0 5px 0;
         line-height: 1.2;
       }
+    }
 
-      &:first-child {
-        margin-left: 0px;
-      }
+    .#{$bTop}__icon {
+      color: $lightgray;
+    }
 
-      .item-icon {
-        color: #afb5ba;
-      }
-
-      .item-text {
-        margin-left: 5px;
-        color: #868e96;
-      }
+    .#{$bTop}__text {
+      margin-left: 5px;
+      color: $gray;
     }
   }
 
-  // movie rating
-  &__rating {
+  $bRate: #{$b}-rating;
+
+  .#{$bRate} {
     float: right;
     font-size: calc(1rem + 1.2vw);
 
-    &-icon {
+    .#{$bRate}__icon {
       margin-right: 5px;
-      color: #FFA500;
+      color: $yellow;
     }
 
-    .out-of-10 {
+    .#{$bRate}__scale {
       font-size: calc(0.8rem + 0.3vw);
-      color: #868e96;
+      color: $gray;
     }
   }
 }
