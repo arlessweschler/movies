@@ -9,10 +9,10 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie
 export function* watchMovieDetails() {
   console.warn('-- sagas/movie-details/movie-details.sagas.js, *watchMovieDetails()');
   yield all([
-    takeEvery(actionKeys.GET_MOVIE_DETAILS, getMovieDetailsSaga),
-    takeEvery(actionKeys.GET_CREDITS, getCreditsSaga),
-    takeEvery(actionKeys.GET_VIDEOS, getVideosSaga),
-    takeEvery(actionKeys.RESET_MOVIE_DETAILS, resetMovieDetailsSaga)
+    takeEvery(actionKeys.MOVIE_DETAILS, getMovieDetailsSaga),
+    takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
+    takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
+    takeEvery(actionKeys.RESET_MOVIE_CARD, resetMovieDetailsSaga)
   ]);
 }
 

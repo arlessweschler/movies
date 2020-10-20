@@ -24,7 +24,7 @@ export const createAsyncReducerMap = (
     error: action.error
   });
 
-  const resetReducerFn = (state, action) => ({
+  const resetReducerFn = () => ({
     ...initialState
   });
 

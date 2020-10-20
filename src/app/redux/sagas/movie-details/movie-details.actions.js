@@ -5,41 +5,41 @@ import {
 
 console.warn('-- sagas/movie-details/movie-details.actions.js, actionKeys {}');
 export const actionKeys = {
-  GET_MOVIE_DETAILS: 'GET_MOVIE_DETAILS',
-  GET_CREDITS: 'GET_CREDITS',
-  GET_VIDEOS: 'GET_VIDEOS',
-  RESET_MOVIE_DETAILS: 'RESET_MOVIE_DETAILS',
+  MOVIE_DETAILS: 'MOVIE_DETAILS',
+  MOVIE_CREDITS: 'MOVIE_CREDITS',
+  MOVIE_VIDEOS: 'MOVIE_VIDEOS',
+  RESET_MOVIE_CARD: 'RESET_MOVIE_CARD',
 };
 
 console.warn('-- sagas/movie-details/movie-details.actions.js, asyncActionMaps {}');
 export const asyncActionMaps = {
-  [actionKeys.GET_MOVIE_DETAILS]: createActionsForAsyncAction(actionKeys.GET_MOVIE_DETAILS),
-  [actionKeys.GET_CREDITS]: createActionsForAsyncAction(actionKeys.GET_CREDITS),
-  [actionKeys.GET_VIDEOS]: createActionsForAsyncAction(actionKeys.GET_VIDEOS)
+  [actionKeys.MOVIE_DETAILS]: createActionsForAsyncAction(actionKeys.MOVIE_DETAILS),
+  [actionKeys.MOVIE_CREDITS]: createActionsForAsyncAction(actionKeys.MOVIE_CREDITS),
+  [actionKeys.MOVIE_VIDEOS]: createActionsForAsyncAction(actionKeys.MOVIE_VIDEOS)
 };
 
 const actions = {
   getMovieDetails: (movieId) => {
     console.warn('-- sagas/movie-м/movie-details.actions.js, getMovieDetails()');
-    return createActionCreator(actionKeys.GET_MOVIE_DETAILS, { movieId })
+    return createActionCreator(actionKeys.MOVIE_DETAILS, { movieId })
   },
   getCredits: (movieId) => {
     console.warn('-- sagas/movie-м/movie-details.actions.js, getCredits()');
-    return createActionCreator(actionKeys.GET_CREDITS, { movieId })
+    return createActionCreator(actionKeys.MOVIE_CREDITS, { movieId })
   },
   getVideos: (movieId) => {
     console.warn('-- sagas/movie-м/movie-details.actions.js, getVideos()');
-    return createActionCreator(actionKeys.GET_VIDEOS, { movieId })
+    return createActionCreator(actionKeys.MOVIE_VIDEOS, { movieId })
   },
   resetMovieDetails: () => {
     console.warn('-- sagas/movie-м/movie-details.actions.js, resetMovieDetails()');
     return createActionCreator(
-      actionKeys.RESET_MOVIE_DETAILS,
+      actionKeys.RESET_MOVIE_CARD,
       {
         resetList: [
-          actionKeys.GET_MOVIE_DETAILS,
-          actionKeys.GET_CREDITS,
-          actionKeys.GET_VIDEOS
+          actionKeys.MOVIE_DETAILS,
+          actionKeys.MOVIE_CREDITS,
+          actionKeys.MOVIE_VIDEOS
         ]
       }
     )

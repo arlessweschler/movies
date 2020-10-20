@@ -10,10 +10,10 @@ const DEFAULT_VIDEOUS_STATE = {
 };
 
 const movieDetailsReducer = combineReducers({
-  movie: createAsyncReducer(actionKeys.GET_MOVIE_DETAILS),
-  credits: createAsyncReducer(actionKeys.GET_CREDITS),
+  movie: createAsyncReducer(actionKeys.MOVIE_DETAILS),
+  credits: createAsyncReducer(actionKeys.MOVIE_CREDITS),
   videos: createAsyncReducer(
-    actionKeys.GET_VIDEOS,
+    actionKeys.MOVIE_VIDEOS,
     { initialState: DEFAULT_VIDEOUS_STATE }
   )
 });
