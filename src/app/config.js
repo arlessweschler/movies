@@ -8,6 +8,7 @@ const TMDB_IMAGE_HOST = 'https://image.tmdb.org/t/p';
 export const TMDB_IMAGE_URL = {
   small: `${TMDB_IMAGE_HOST}/w185`,
   medium: `${TMDB_IMAGE_HOST}/w300`,
+  large: `${TMDB_IMAGE_HOST}/w1280`
 };
 
 export const TMDB_MOVIES_TYPES = [

@@ -38,7 +38,7 @@ export default {
       fetchFunc = fetch;
     }
 
-    console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
+    // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 
     return fetchFunc(fetchUrl, fetchParams);
   }

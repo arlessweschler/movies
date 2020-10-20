@@ -1,3 +1,5 @@
+import 'app_components/pages/movie-details-page/MoviePlayer/MoviePlayer.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import ReactPlayer from 'react-player/youtube'
@@ -17,15 +19,16 @@ function MoviePlayer({ videos, searchParams }) {
   if (isEmpty(trailer)) return null;
 
   return (
-    <div className="container mt-4">
-      <ReactPlayer
-        url={`${host}/embed/${trailer.key}`}
-        playing={false}
-        controls={true}
-        // устанавливает превью изображение, при клике на которое загружается плеер
-        light
-      />
-    </div>
+    <ReactPlayer
+      width="100%"
+      height="100%"
+      className='movie-player'
+      url={`${host}/embed/${trailer.key}`}
+      playing={false}
+      controls={true}
+      // устанавливает превью изображение, при клике на которое загружается плеер
+      light
+    />
   );
 };
 

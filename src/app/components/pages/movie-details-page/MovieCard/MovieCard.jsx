@@ -1,106 +1,70 @@
-import React from 'react';
+import 'app_components/pages/movie-details-page/MovieCard/MovieCard.scss';
+
+import React, { Fragment } from 'react';
 import PT from 'prop-types';
-import moment from 'moment';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { isNotEmpty } from 'app_services/UtilsService';
-import { MovieField, CrewNames } from 'app_components/pages';
+import { MoviePlayer } from 'app_components/pages';
+import MovieInfo from './MovieInfo';
 
-function MovieCard({ movie }) {
-  const { id, title, tagline, overview, production_countries, genres, poster_path, release_date, runtime, vote_average } = movie;
+function MovieCard({ movie, videos }) {
+  const { poster_path } = movie;
 
   // console.log('-- MovieCard.render(), movie:', movie);
 
-  const getDurationStr = mins => {
-    let h = Math.floor(mins / 60);
-    let m = mins % 60;
-    m = m < 10 ? "0" + m : m;
-    return `${h}h ${m}m`;
-  };
+  const embedCls = 'embed-responsive';
+  const baseCls = 'movie-details-card';
+  const getColClasses = (size) => `col-sm-12 col-md-${size} col-lg-${size} col-xl-${size}`;
 
   return (
-    <div className="container">
-      <div className="row">
+    <Fragment>
+      <div className={`container ${baseCls}`}>
 
-        {/* левая колонка */}
-        <div className="col">
-          {/* poster */}
-          {poster_path
-            ? <img src={`${TMDB_IMAGE_URL.medium}/${poster_path}`} />
-            : <p>Нет постера</p>}
-        </div>
+        {/* row start */}
+        <div className="row">
 
-        {/* правая колонка */}
-        <div className="col">
-          <h1>{title}</h1>
-          {tagline && <p><b>{tagline}</b></p>}
+          {/* col start */}
+          <div className={`${embedCls} ${baseCls}__column--left ${getColClasses(3)}`}>
+            {poster_path
+              ? <img
+                className={`${embedCls}-item ${baseCls}__poster`}
+                src={`${TMDB_IMAGE_URL.large}/${poster_path}`}
+              />
+              : <p>Нет постера</p>}
+          </div>
+          {/* col end */}
 
-          {/* released */}
-          {release_date
-            ? <MovieField
-              label="Released"
-              value={moment(release_date).format('YYYY')} />
-            : ''}
-
-          {/* country */}
-          {isNotEmpty(production_countries)
-            ? <MovieField
-              label="Country"
-              value={production_countries}
-              mapWithSemicolons />
-            : ''}
-
-          {/* genre */}
-          {isNotEmpty(genres)
-            ? <MovieField
-              label="Genre"
-              value={genres}
-              mapWithSemicolons />
-            : ''}
-
-          {/* director */}
-          <CrewNames
-            label="Director"
-            searchParams={{ department: 'Directing', job: 'Director' }}
-          />
-
-          {/* screenplay */}
-          <CrewNames
-            label="Screenplay"
-            searchParams={{ department: 'Writing', job: 'Screenplay' }}
-          />
-
-          {/* duration */}
-          {runtime
-            ? <MovieField
-              label="Duration"
-              value={getDurationStr(runtime)} />
-            : ''}
-
-          {/* vote_average */}
-          {vote_average
-            ? <MovieField
-              label="Rating"
-              value={vote_average} />
-            : ''}
-
-          {/* overview */}
-          {overview
-            ? <div className="border-top mt-3 pt-3">
-              {overview}
+          {/* col start */}
+          <div className={`${getColClasses(9)}`}>
+            <div className={`${embedCls} ${embedCls}-16by9`}>
+              <MoviePlayer
+                videos={videos}
+                searchParams={{ site: 'YouTube', type: 'Trailer' }}
+              />
             </div>
-            : ''}
+          </div>
+          {/* col end */}
+
         </div>
+        {/* row end */}
+
+        {/* row start */}
+        <div className="row mt-2">
+          <div className="col p-0">
+            <MovieInfo
+              movie={movie}
+            />
+          </div>
+        </div>
+        {/* row end */}
 
       </div>
-    </div>
+    </Fragment>
   );
 };
 
 MovieCard.propTypes = {
   movie: PT.shape({
-    title: PT.string,
-    overview: PT.string,
     poster_path: PT.string,
   }).isRequired,
 };

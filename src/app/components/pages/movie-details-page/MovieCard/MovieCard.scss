@@ -1,0 +1,23 @@
+.movie-details-card {
+  &__column--left {
+    @media (max-width: 768px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__poster {
+    // fix image 16by9 width proportion
+    width: auto !important;
+
+    @media (max-width: 768px) {
+      // fix image 16by9 width proportion
+      position: relative !important;
+
+      display: block;
+      max-height: 350px;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+}

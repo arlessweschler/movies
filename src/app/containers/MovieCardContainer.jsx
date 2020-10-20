@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PTS from 'app_services/PropTypesService';
-import { MovieCard, MoviePlayer, Credits } from 'app_components/pages';
+import { MovieCard, Credits } from 'app_components/pages';
 import {
   getMovieDetails,
   getCredits,
@@ -64,17 +64,16 @@ class MovieCardContainer extends Component {
     const { movieDetails } = this.props;
     const { movie, credits, videos } = movieDetails;
 
-    console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
+    // console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
 
     return (
       <Fragment>
         <CrewContextProvider value={credits.data}>
-          <MovieCard movie={movie.data} />
+          <MovieCard
+            movie={movie.data}
+            videos={videos.data}
+          />
         </CrewContextProvider>
-        <MoviePlayer
-          videos={videos.data}
-          searchParams={{ site: 'YouTube', type: 'Trailer' }}
-        />
         <Credits credits={credits.data} />
       </Fragment>
     );
