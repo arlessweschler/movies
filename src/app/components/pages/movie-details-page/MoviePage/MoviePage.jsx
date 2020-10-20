@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
 import { col_classes } from 'app_services/FormatterService';
-import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages';
+import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-details-page/blocks';
 
 function MoviePage({ movie }) {
   const { poster_path, overview } = movie;

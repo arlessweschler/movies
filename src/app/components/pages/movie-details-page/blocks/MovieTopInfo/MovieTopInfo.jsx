@@ -1,4 +1,4 @@
-import 'app_components/pages/movie-details-page/MovieTopInfo/MovieTopInfo.scss';
+import './MovieTopInfo.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';

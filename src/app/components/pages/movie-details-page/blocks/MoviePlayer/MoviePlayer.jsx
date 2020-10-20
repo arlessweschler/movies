@@ -1,4 +1,4 @@
-import 'app_components/pages/movie-details-page/MoviePlayer/MoviePlayer.scss';
+import './MoviePlayer.scss';
 
 import React, { Fragment, useState } from 'react';
 import PT from 'prop-types';
