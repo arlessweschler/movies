@@ -8,8 +8,15 @@
   border: 0;
 }
 
-.movie-player {
-  .react-player__preview {
-    @include embed-responsive-item;
+.movie-details-card {
+  .movie-player {
+    .react-player__preview {
+      @include embed-responsive-item;
+    }
+  }
+
+  // movie player progress bar
+  .cstm-progress {
+    top: 0px;
   }
 }

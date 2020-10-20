@@ -1,7 +1,11 @@
 .movie-details-card {
-  &__column--left {
-    @media (max-width: 768px) {
-      margin-bottom: 20px;
+  &__column {
+    padding: 0px !important;
+
+    &--left {
+      @media (max-width: 768px) {
+        margin: 20px 0px !important;
+      }
     }
   }
 
@@ -19,9 +23,5 @@
       height: auto;
       margin: 0 auto;
     }
-  }
-
-  .cstm-progress {
-    top: 0px;
   }
 }

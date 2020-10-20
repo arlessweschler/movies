@@ -4,8 +4,7 @@ import React, { Fragment } from 'react';
 import PT from 'prop-types';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { MoviePlayer } from 'app_components/pages';
-import MovieInfo from './MovieInfo';
+import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages';
 
 function MovieCard({ movie, videos }) {
   const { poster_path, overview } = movie;
@@ -20,21 +19,23 @@ function MovieCard({ movie, videos }) {
     <Fragment>
       <div className={`container ${baseCls}`}>
 
-        {/* row start */}
-        <div className="row mt-2">
-          <div className="col p-0">
-            <MovieInfo
-              movie={movie}
-            />
-          </div>
-        </div>
+        {/* row start: top info */}
+        <MovieTopInfo movie={movie} />
         {/* row end */}
 
-        {/* row start */}
+        {/* row start: overview */}
+        {overview
+          ? <div className="row mb-3">
+            {overview}
+          </div>
+          : ''}
+        {/* row end */}
+
+        {/* row start: poster and player */}
         <div className="row">
 
-          {/* col start */}
-          <div className={`${embedCls} ${baseCls}__column--left ${getColClasses(3)}`}>
+          {/* col start: poster */}
+          <div className={`${embedCls} ${baseCls}__column ${baseCls}__column--left ${getColClasses(4)}`}>
             {poster_path
               ? <img
                 className={`${embedCls}-item ${baseCls}__poster`}
@@ -44,8 +45,8 @@ function MovieCard({ movie, videos }) {
           </div>
           {/* col end */}
 
-          {/* col start */}
-          <div className={`${getColClasses(9)}`}>
+          {/* col start: player*/}
+          <div className={`${baseCls}__column ${getColClasses(8)}`}>
             <div className={`${embedCls} ${embedCls}-16by9`}>
               <MoviePlayer
                 videos={videos}
@@ -58,14 +59,21 @@ function MovieCard({ movie, videos }) {
         </div>
         {/* row end */}
 
-        {/* row start */}
+        {/* row start: director */}
         <div className="row mt-2">
-          {/* overview */}
-          {overview
-            ? <div className="border-top mt-3 pt-3">
-              {overview}
-            </div>
-            : ''}
+          <CrewNames
+            label="Director"
+            searchParams={{ department: 'Directing', job: 'Director' }}
+          />
+        </div>
+        {/* row end */}
+
+        {/* row start: screenplay */}
+        <div className="row">
+          <CrewNames
+            label="Screenplay"
+            searchParams={{ department: 'Writing', job: 'Screenplay' }}
+          />
         </div>
         {/* row end */}
 

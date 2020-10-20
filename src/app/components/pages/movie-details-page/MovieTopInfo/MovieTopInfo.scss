@@ -1,0 +1,55 @@
+.movie-details-card {
+
+  // movie release year
+  &__year {
+    color: #868e96;
+    padding-left: 10px;
+    font-size: calc(1.375rem + 0.5vw);
+    font-weight: 400;
+  }
+
+  // movie top tags
+  &__top-text {
+    margin-bottom: 10px;
+
+    .item {
+      position: relative;
+      margin: 10px 5px 10px 10px;
+
+      @media (max-width: 768px) {
+        display: block;
+        margin: 0 0 5px 0;
+        line-height: 1.2;
+      }
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      .item-icon {
+        color: #afb5ba;
+      }
+
+      .item-text {
+        margin-left: 5px;
+        color: #868e96;
+      }
+    }
+  }
+
+  // movie rating
+  &__rating {
+    float: right;
+    font-size: calc(1rem + 1.2vw);
+
+    &-icon {
+      margin-right: 5px;
+      color: #FFA500;
+    }
+
+    .out-of-10 {
+      font-size: calc(0.8rem + 0.3vw);
+      color: #868e96;
+    }
+  }
+}

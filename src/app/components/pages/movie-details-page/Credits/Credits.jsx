@@ -13,7 +13,7 @@ function Credits({ credits }) {
   // console.log('-- Credits.render(), credits:', credits);
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-2 pl-0 pr-0">
       {
         isNotEmpty(cast)
           ?
