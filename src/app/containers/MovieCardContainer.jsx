@@ -68,10 +68,13 @@ class MovieCardContainer extends Component {
 
     return (
       <Fragment>
-        <MovieCardContextProvider value={credits.data}>
+        <MovieCardContextProvider
+          credits={credits.data}
+          videos={videos.data}
+          movie={movie.data}
+        >
           <MoviePage
             movie={movie.data}
-            videos={videos.data}
           />
         </MovieCardContextProvider>
         <Credits credits={credits.data} />

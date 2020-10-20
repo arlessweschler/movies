@@ -6,10 +6,14 @@ import ReactPlayer from 'react-player/youtube'
 
 import { isEmpty } from 'app_services/UtilsService';
 import { ProgressBar } from 'app_components/layout';
+import { withMovieCardContext } from 'app_hocs';
 
-function MoviePlayer({ videos, searchParams }) {
-  const host = 'https://www.youtube.com';
+function MoviePlayer(props) {
+  const { searchParams, context } = props;
+  const { videos } = context;
+
   const [isLoading, setLoading] = useState(true);
+  const host = 'https://www.youtube.com';
   const showPreview = false;
 
   const trailer = videos.find((video) => {
@@ -40,11 +44,14 @@ function MoviePlayer({ videos, searchParams }) {
 };
 
 MoviePlayer.propTypes = {
-  videos: PT.array.isRequired,
   searchParams: PT.shape({
     site: PT.string.isRequired,
     type: PT.string.isRequired
+  }).isRequired,
+
+  context: PT.shape({
+    videos: PT.array.isRequired
   }).isRequired
 };
 
-export default MoviePlayer;
+export default withMovieCardContext(MoviePlayer);

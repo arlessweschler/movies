@@ -11,8 +11,10 @@ import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
 import { b_col } from 'app_services/FormatterService';
+import { withMovieCardContext } from 'app_hocs';
 
-function MovieTopInfo({ movie }) {
+function MovieTopInfo({ context }) {
+  const { movie } = context;
   const { title, production_countries, genres, release_date, runtime, vote_average } = movie;
 
   const getDuration = mins => {
@@ -47,7 +49,6 @@ function MovieTopInfo({ movie }) {
   const b = b_.with('movie-details');
   const b_top = b_.with('movie-details-top');
   const b_rate = b_.with('movie-details-rating');
-  // b_col = b_col
 
   return (
     <Fragment>
@@ -105,14 +106,16 @@ function MovieTopInfo({ movie }) {
 };
 
 MovieTopInfo.propTypes = {
-  movie: PT.shape({
-    title: PT.string,
-    production_countries: PT.array,
-    genres: PT.array,
-    release_date: PT.string,
-    runtime: PT.number,
-    vote_average: PT.number
-  }).isRequired,
+  context: PT.shape({
+    movie: PT.shape({
+      title: PT.string,
+      production_countries: PT.array,
+      genres: PT.array,
+      release_date: PT.string,
+      runtime: PT.number,
+      vote_average: PT.number
+    }).isRequired
+  }).isRequired
 };
 
-export default MovieTopInfo;
+export default withMovieCardContext(MovieTopInfo);

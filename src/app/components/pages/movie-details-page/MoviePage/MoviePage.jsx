@@ -9,7 +9,7 @@ import { TMDB_IMAGE_URL } from 'app_config';
 import { col_classes } from 'app_services/FormatterService';
 import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages';
 
-function MoviePage({ movie, videos }) {
+function MoviePage({ movie }) {
   const { poster_path, overview } = movie;
 
   // console.log('-- MoviePage.render(), movie:', movie);
@@ -22,7 +22,7 @@ function MoviePage({ movie, videos }) {
       <div className={cn(b(), 'container')}>
 
         {/* row start: top info */}
-        <MovieTopInfo movie={movie} />
+        <MovieTopInfo />
         {/* row end */}
 
         {/* row start: overview */}
@@ -50,7 +50,6 @@ function MoviePage({ movie, videos }) {
           {/* col start: player*/}
           <div className={cn(b('column'), col_classes(8), cls_embed, `${cls_embed}-16by9`)}>
             <MoviePlayer
-              videos={videos}
               searchParams={{ site: 'YouTube', type: 'Trailer' }}
             />
           </div>

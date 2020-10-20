@@ -1,11 +1,13 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import PT from 'prop-types';
 
-import MovieCardContext from 'app_contexts/MovieCardContext';
+import { withMovieCardContext } from 'app_hocs';
 
-function CrewNames({ label, searchParams }) {
-  const { getNames } = useContext(MovieCardContext);
-  const names = getNames(searchParams);
+function CrewNames(props) {
+  const { label, searchParams, context } = props;
+  const { getCrewNames } = context;
+
+  const names = getCrewNames(searchParams);
 
   return (
     <Fragment>
@@ -31,7 +33,11 @@ CrewNames.propTypes = {
   searchParams: PT.shape({
     department: PT.string.isRequired,
     job: PT.string.isRequired
+  }).isRequired,
+
+  context: PT.shape({
+    getCrewNames: PT.func.isRequired
   }).isRequired
 };
 
-export default CrewNames;
+export default withMovieCardContext(CrewNames);

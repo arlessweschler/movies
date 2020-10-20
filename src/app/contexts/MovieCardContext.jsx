@@ -5,8 +5,8 @@ import { isEmpty } from 'app_services/UtilsService';
 const MovieCardContext = createContext();
 
 class MovieCardContextProvider extends Component {
-  getNames = ({ department, job }) => {
-    const { value: credits } = this.props;
+  getCrewNames = ({ department, job }) => {
+    const { credits } = this.props;
     const { crew } = credits;
 
     if (isEmpty(credits) || isEmpty(crew)) {
@@ -31,10 +31,14 @@ class MovieCardContextProvider extends Component {
   };
 
   render() {
+    const { movie, videos, credits } = this.props;
+
     return (
       <MovieCardContext.Provider value={{
-        credits: this.props.value,
-        getNames: this.getNames
+        movie,
+        videos,
+        credits,
+        getCrewNames: this.getCrewNames
       }} >
         {this.props.children}
       </MovieCardContext.Provider>
