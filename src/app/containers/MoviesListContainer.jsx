@@ -14,7 +14,7 @@ import {
   getGenres,
   resetMovieDetails
 } from 'redux_actions';
-import { MiniMovieContextProvider } from 'app_contexts/MiniMovieContext';
+import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -102,7 +102,7 @@ class MoviesListContainer extends Component {
           pageCount={data.total_pages}
           onPageChange={this.onPageChange}
         />
-        <MiniMovieContextProvider
+        <MoviesListContextProvider
           genres={moviesGenres.data}
           linkMovie={this.linkMovie}
         >
@@ -111,7 +111,7 @@ class MoviesListContainer extends Component {
             isLoading={isLoading}
             error={error}
           />
-        </MiniMovieContextProvider>
+        </MoviesListContextProvider>
       </Fragment>
     );
   }

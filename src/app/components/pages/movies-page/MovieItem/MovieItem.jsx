@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import PT from 'prop-types';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import MiniMovieContext from 'app_contexts/MiniMovieContext';
+import MoviesListContext from 'app_contexts/MoviesListContext';
 
 function MovieItem({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;
-  const { printGenres, linkMovie } = useContext(MiniMovieContext);
+  const { printGenres, linkMovie } = useContext(MoviesListContext);
 
   return (
     <div

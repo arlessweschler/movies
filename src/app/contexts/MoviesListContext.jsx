@@ -2,9 +2,9 @@ import React, { Component, createContext } from 'react';
 
 import { isEmpty } from 'app_services/UtilsService';
 
-const MiniMovieContext = createContext();
+const MoviesListContext = createContext();
 
-class MiniMovieContextProvider extends Component {
+class MoviesListContextProvider extends Component {
   printGenres = ({ ids, cls }) => {
     const { genres } = this.props;
 
@@ -30,16 +30,16 @@ class MiniMovieContextProvider extends Component {
 
   render() {
     return (
-      <MiniMovieContext.Provider value={{
+      <MoviesListContext.Provider value={{
         genres: this.props.genres,
         linkMovie: this.props.linkMovie,
         printGenres: this.printGenres
       }} >
         {this.props.children}
-      </MiniMovieContext.Provider>
+      </MoviesListContext.Provider>
     );
   }
 }
 
-export { MiniMovieContextProvider };
-export default MiniMovieContext;
+export { MoviesListContextProvider };
+export default MoviesListContext;

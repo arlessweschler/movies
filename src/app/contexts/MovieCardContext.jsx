@@ -2,9 +2,9 @@ import React, { Component, createContext } from 'react';
 
 import { isEmpty } from 'app_services/UtilsService';
 
-const CrewContext = createContext();
+const MovieCardContext = createContext();
 
-class CrewContextProvider extends Component {
+class MovieCardContextProvider extends Component {
   getNames = ({ department, job }) => {
     const { value: credits } = this.props;
     const { crew } = credits;
@@ -32,15 +32,15 @@ class CrewContextProvider extends Component {
 
   render() {
     return (
-      <CrewContext.Provider value={{
+      <MovieCardContext.Provider value={{
         credits: this.props.value,
         getNames: this.getNames
       }} >
         {this.props.children}
-      </CrewContext.Provider>
+      </MovieCardContext.Provider>
     );
   }
 }
 
-export { CrewContextProvider };
-export default CrewContext;
+export { MovieCardContextProvider };
+export default MovieCardContext;

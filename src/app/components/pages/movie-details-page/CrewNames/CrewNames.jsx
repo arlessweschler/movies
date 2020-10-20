@@ -1,10 +1,10 @@
 import React, { Fragment, useContext } from 'react';
 import PT from 'prop-types';
 
-import CrewContext from 'app_contexts/CrewContext';
+import MovieCardContext from 'app_contexts/MovieCardContext';
 
 function CrewNames({ label, searchParams }) {
-  const { getNames } = useContext(CrewContext);
+  const { getNames } = useContext(MovieCardContext);
   const names = getNames(searchParams);
 
   return (

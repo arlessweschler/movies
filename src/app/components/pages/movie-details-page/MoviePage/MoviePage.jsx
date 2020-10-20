@@ -1,4 +1,4 @@
-import 'app_components/pages/movie-details-page/MovieCard/MovieCard.scss';
+import 'app_components/pages/movie-details-page/MoviePage/MoviePage.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -9,10 +9,10 @@ import { TMDB_IMAGE_URL } from 'app_config';
 import { col_classes } from 'app_services/FormatterService';
 import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages';
 
-function MovieCard({ movie, videos }) {
+function MoviePage({ movie, videos }) {
   const { poster_path, overview } = movie;
 
-  // console.log('-- MovieCard.render(), movie:', movie);
+  // console.log('-- MoviePage.render(), movie:', movie);
 
   const b = b_.B({ modSeparator: '--' }).with('movie-details');
   const cls_embed = 'embed-responsive';
@@ -82,11 +82,11 @@ function MovieCard({ movie, videos }) {
   );
 };
 
-MovieCard.propTypes = {
+MoviePage.propTypes = {
   movie: PT.shape({
     poster_path: PT.string,
     overview: PT.string,
   }).isRequired,
 };
 
-export default MovieCard;
+export default MoviePage;

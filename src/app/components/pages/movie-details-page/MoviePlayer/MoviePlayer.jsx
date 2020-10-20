@@ -10,7 +10,7 @@ import { ProgressBar } from 'app_components/layout';
 function MoviePlayer({ videos, searchParams }) {
   const host = 'https://www.youtube.com';
   const [isLoading, setLoading] = useState(true);
-  const showPreview = true;
+  const showPreview = false;
 
   const trailer = videos.find((video) => {
     return (

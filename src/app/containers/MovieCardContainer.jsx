@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import PTS from 'app_services/PropTypesService';
-import { MovieCard, Credits } from 'app_components/pages';
+import { isEmpty } from 'app_services/UtilsService';
+import { MoviePage, Credits } from 'app_components/pages';
+import { MovieCardContextProvider } from 'app_contexts/MovieCardContext';
 import {
   getMovieDetails,
   getCredits,
   getVideos
 } from 'redux_actions';
-import { CrewContextProvider } from 'app_contexts/CrewContext';
-import { isEmpty } from 'app_services/UtilsService';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
@@ -43,19 +43,19 @@ class MovieCardContainer extends Component {
 
   componentDidMount() {
     const { actions, match, movieDetails } = this.props;
-    const { movie, credits } = movieDetails;
+    const { movie, credits, videos } = movieDetails;
     const { movie_id } = match.params;
-    const isOutdated = (movie_id != movie.data.id);
+    const emptyOrPrevious = (data) => isEmpty(data) || (movie_id != movie.data.id);
 
-    if (isEmpty(movie.data) || isOutdated) {
+    if (emptyOrPrevious(movie.data)) {
       actions.getMovieDetails(movie_id);
     }
 
-    if (isEmpty(credits.data) || isOutdated) {
+    if (emptyOrPrevious(credits.data)) {
       actions.getCredits(movie_id);
     }
 
-    if (isEmpty(credits.data) || isOutdated) {
+    if (emptyOrPrevious(videos.data)) {
       actions.getVideos(movie_id);
     }
   }
@@ -68,12 +68,12 @@ class MovieCardContainer extends Component {
 
     return (
       <Fragment>
-        <CrewContextProvider value={credits.data}>
-          <MovieCard
+        <MovieCardContextProvider value={credits.data}>
+          <MoviePage
             movie={movie.data}
             videos={videos.data}
           />
-        </CrewContextProvider>
+        </MovieCardContextProvider>
         <Credits credits={credits.data} />
       </Fragment>
     );
