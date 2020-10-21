@@ -2,10 +2,10 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { withMovieCardContext } from 'app_hocs';
-import { Title, Tags, Rating } from 'app_components/pages/movie-page/blocks';
+import { Title, Tags, Rating } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function TopSection({ cls_base, context }) {
+function DescriptionSection({ cls_base, context }) {
   const { movie } = context;
   const { title, production_countries, genres, release_date, runtime, vote_average, overview } = movie;
 
@@ -38,7 +38,7 @@ function TopSection({ cls_base, context }) {
   );
 };
 
-TopSection.propTypes = {
+DescriptionSection.propTypes = {
   cls_base: PT.string.isRequired,
 
   context: PT.shape({
@@ -54,4 +54,4 @@ TopSection.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(TopSection);
+export default withMovieCardContext(DescriptionSection);

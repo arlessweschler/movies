@@ -6,8 +6,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
-import { TopSection, MiddleSection } from 'app_components/pages/movie-page/sections';
-import { CrewNames } from 'app_components/pages/movie-page/blocks';
+import { DescriptionSection, MediaSection } from 'app_components/pages/movie-page/_sections';
+import { CrewNames } from 'app_components/pages/movie-page/_blocks';
 import { Row } from 'app_components/layout';
 
 function MoviePage({ movie, isLoading }) {
@@ -26,9 +26,9 @@ function MoviePage({ movie, isLoading }) {
       {isNotEmpty(movie) &&
         <Fragment>
 
-          <TopSection cls_base={cls_base} />
+          <DescriptionSection cls_base={cls_base} />
 
-          <MiddleSection cls_base={cls_base} />
+          <MediaSection cls_base={cls_base} />
 
           <Row cls="mt-2">
             <CrewNames

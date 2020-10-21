@@ -4,14 +4,14 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { withMovieCardContext } from 'app_hocs';
-import { MoviePlayer, Poster } from 'app_components/pages/movie-page/blocks';
+import { MoviePlayer, Poster } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function MiddleSection({ cls_base, context }) {
+function MediaSection({ cls_base, context }) {
   const { movie } = context;
   const { poster_path } = movie;
 
-  console.log('-- MiddleSection.render(), context:', context);
+  console.log('-- MediaSection.render(), context:', context);
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
@@ -58,7 +58,7 @@ function MiddleSection({ cls_base, context }) {
   );
 };
 
-MiddleSection.propTypes = {
+MediaSection.propTypes = {
   cls_base: PT.string.isRequired,
 
   context: PT.shape({
@@ -68,4 +68,4 @@ MiddleSection.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(MiddleSection);
+export default withMovieCardContext(MediaSection);
