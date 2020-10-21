@@ -1,0 +1,5 @@
+$movie-page-cls: 'movie-details';
+
+:export {
+  moviePageCls: unquote($movie-page-cls);
+}

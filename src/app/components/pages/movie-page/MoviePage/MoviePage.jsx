@@ -1,4 +1,5 @@
 import './MoviePage.scss';
+import { moviePageCls } from 'app_assets/css/variables';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -6,11 +7,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { isNotEmpty } from 'app_services/UtilsService';
-import { col_classes } from 'app_services/FormatterService';
+import { isNotEmpty, imageNotAvailable, col_classes } from 'app_services/UtilsService';
 import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-page/blocks';
-import noImageAvailable from 'app_assets/img/image_not_available.png';
-// import { ProgressBar } from 'app_components/layout';
 
 function MoviePage({ movie, isLoading }) {
   const { poster_path, overview } = movie;
@@ -18,7 +16,7 @@ function MoviePage({ movie, isLoading }) {
   // console.log('-- MoviePage.render(), movie:', movie);
 
   // base component class
-  const b = b_.B({ modSeparator: '--' }).with('movie-details');
+  const b = b_.B({ modSeparator: '--' }).with(moviePageCls);
 
   // classes for keeping 16by9 aspect ration
   const cls_embed = 'embed-responsive';
@@ -66,7 +64,7 @@ function MoviePage({ movie, isLoading }) {
                 className={cls.image}
                 src={poster_path
                   ? `${TMDB_IMAGE_URL.large}/${poster_path}`
-                  : noImageAvailable
+                  : imageNotAvailable
                 }
               />
             </div>

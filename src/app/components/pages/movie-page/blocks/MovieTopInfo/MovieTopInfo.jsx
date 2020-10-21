@@ -1,4 +1,5 @@
 import './MovieTopInfo.scss';
+import { moviePageCls } from 'app_assets/css/variables';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -9,8 +10,7 @@ import { faHistory, faVideo, faGlobe, faStar } from '@fortawesome/free-solid-svg
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { isNotEmpty } from 'app_services/UtilsService';
-import { b_col } from 'app_services/FormatterService';
+import { isNotEmpty, b_col } from 'app_services/UtilsService';
 import { withMovieCardContext } from 'app_hocs';
 
 function MovieTopInfo({ context }) {
@@ -46,9 +46,9 @@ function MovieTopInfo({ context }) {
     }
   });
 
-  const b = b_.with('movie-details');
-  const b_top = b_.with('movie-details-top');
-  const b_rate = b_.with('movie-details-rating');
+  const b = b_.with(moviePageCls);
+  const b_top = b_.with(`${moviePageCls}-top`);
+  const b_rate = b_.with(`${moviePageCls}-rating`);
 
   return (
     <Fragment>

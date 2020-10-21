@@ -25,7 +25,17 @@ const rules = {
           options: { publicPath },
         }
         : 'style-loader',
-      'css-loader'
+
+      // allows Interoperable CSS (required for sass :export syntax)
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          modules: {
+            compileType: 'icss'
+          }
+        }
+      }
     ];
   },
   css: function (params = {}) {

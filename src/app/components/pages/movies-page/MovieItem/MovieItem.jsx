@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
 import MoviesListContext from 'app_contexts/MoviesListContext';
-import imageNotAvailable from 'app_assets/img/image_not_available.png';
+import { imageNotAvailable } from 'app_services/UtilsService';
 
 function MovieItem({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;

@@ -1,4 +1,6 @@
-$b: 'movie-details';
+@import 'app_assets/css/variables';
+
+$b: $movie-page-cls;
 $gray: #868e96;
 $lightgray: #afb5ba;
 $yellow: #FFA500;
