@@ -6,33 +6,16 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
-import { MoviePlayer, CrewNames, MovieTopInfo, Poster } from 'app_components/pages/movie-page/blocks';
-import { Row, Column } from 'app_components/layout';
+import { TopSection, MiddleSection } from 'app_components/pages/movie-page/sections';
+import { CrewNames } from 'app_components/pages/movie-page/blocks';
+import { Row } from 'app_components/layout';
 
 function MoviePage({ movie, isLoading }) {
-  const { poster_path, overview } = movie;
-
   // console.log('-- MoviePage.render(), movie:', movie);
 
   // base component class
-  const b = b_.B({ modSeparator: '--' }).with('movie-details');
-
-  // classes for keeping 16by9 aspect ration
-  const cls_embed = 'embed-responsive';
-  const keepAspectRatio = true;
-
-  const cls = {
-    poster_col: cn(b('column', { left: true }), {
-      [cls_embed]: keepAspectRatio
-    }),
-    poster: cn({
-      [`${cls_embed}-item`]: keepAspectRatio
-    }),
-    player_col: cn(b('column'), {
-      [cls_embed]: keepAspectRatio,
-      [`${cls_embed}-16by9`]: keepAspectRatio
-    })
-  };
+  const cls_base = 'movie-details';
+  const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
   return (
     <div className={cn(b(), 'container')}>
@@ -42,34 +25,10 @@ function MoviePage({ movie, isLoading }) {
 
       {isNotEmpty(movie) &&
         <Fragment>
-          {/* row start: top info */}
-          <MovieTopInfo />
-          {/* row end */}
 
-          <Row cls="mb-3">
-            {overview}
-          </Row>
+          <TopSection cls_base={cls_base} />
 
-          <Row>
-            <Column
-              cls={cls.poster_col}
-              size={4} smallFullWidth
-            >
-              <Poster
-                cls={cn(b('poster'), cls.poster)}
-                data={{ poster_path }}
-              />
-            </Column>
-
-            <Column
-              cls={cls.player_col}
-              size={8} smallFullWidth
-            >
-              <MoviePlayer
-                searchParams={{ site: 'YouTube', type: 'Trailer' }}
-              />
-            </Column>
-          </Row>
+          <MiddleSection cls_base={cls_base} />
 
           <Row cls="mt-2">
             <CrewNames
@@ -92,9 +51,8 @@ function MoviePage({ movie, isLoading }) {
 
 MoviePage.propTypes = {
   movie: PT.shape({
-    poster_path: PT.string,
-    overview: PT.string,
-  }).isRequired,
+    poster_path: PT.string
+  }).isRequired
 };
 
 export default MoviePage;

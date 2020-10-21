@@ -29,7 +29,7 @@ Poster.propTypes = {
   cls: PT.string,
 
   data: PT.shape({
-    vote_average: PT.number
+    poster_path: PT.string
   }).isRequired
 };
 
