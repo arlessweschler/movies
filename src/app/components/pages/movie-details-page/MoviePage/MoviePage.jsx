@@ -16,6 +16,7 @@ function MoviePage({ movie }) {
 
   const b = b_.B({ modSeparator: '--' }).with('movie-details');
   const cls_embed = 'embed-responsive';
+  const keepAspectRatio = true;
 
   return (
     <Fragment>
@@ -37,10 +38,17 @@ function MoviePage({ movie }) {
         <div className="row">
 
           {/* col start: poster */}
-          <div className={cn(b('column', { left: true }), col_classes(4), cls_embed)}>
+          <div className={cn(
+            col_classes(4),
+            b('column', { left: true }),
+            { [cls_embed]: keepAspectRatio }
+          )}>
             {poster_path
               ? <img
-                className={cn(b('poster'), `${cls_embed}-item`)}
+                className={cn(
+                  b('poster'),
+                  { [`${cls_embed}-item`]: keepAspectRatio }
+                )}
                 src={`${TMDB_IMAGE_URL.large}/${poster_path}`}
               />
               : <p>Нет постера</p>}
@@ -48,7 +56,11 @@ function MoviePage({ movie }) {
           {/* col end */}
 
           {/* col start: player*/}
-          <div className={cn(b('column'), col_classes(8), cls_embed, `${cls_embed}-16by9`)}>
+          <div className={cn(
+            b('column'),
+            col_classes(8),
+            { [cls_embed]: keepAspectRatio, [`${cls_embed}-16by9`]: keepAspectRatio }
+          )}>
             <MoviePlayer
               searchParams={{ site: 'YouTube', type: 'Trailer' }}
             />

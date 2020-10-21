@@ -13,18 +13,23 @@ $b: 'movie-details';
   }
 
   .#{$b}__poster {
-    // fix image 16by9 width proportion
-    width: auto !important;
+    // fit parent column width if no responsive needed
+    width: 100%;
 
-    @media (max-width: 768px) {
+    &.embed-responsive-item {
       // fix image 16by9 width proportion
-      position: relative !important;
+      width: auto !important;
 
-      display: block;
-      max-height: 350px;
-      width: auto;
-      height: auto;
-      margin: 0 auto;
+      @media (max-width: 768px) {
+        // fix image 16by9 width proportion
+        position: relative !important;
+
+        display: block;
+        max-height: 350px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+      }
     }
   }
 

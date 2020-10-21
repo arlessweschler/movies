@@ -10,20 +10,13 @@ import { withMovieCardContext } from 'app_hocs';
 
 function MoviePlayer(props) {
   const { searchParams, context } = props;
-  const { videos } = context;
+  const { getTrailer } = context;
+
+  const trailer = getTrailer(searchParams);
+  if (isEmpty(trailer)) return null;
 
   const [isLoading, setLoading] = useState(true);
   const host = 'https://www.youtube.com';
-  const showPreview = false;
-
-  const trailer = videos.find((video) => {
-    return (
-      (video.site == searchParams.site) &&
-      (video.type == searchParams.type)
-    )
-  });
-
-  if (isEmpty(trailer)) return null;
 
   return (
     <Fragment>
@@ -36,8 +29,8 @@ function MoviePlayer(props) {
         playing={false}
         controls={true}
         onReady={() => setLoading(false)}
-        // устанавливает превью изображение, при клике на которое загружается плеер
-        light={showPreview}
+      // устанавливает превью изображение, при клике на которое загружается плеер
+      // light
       />
     </Fragment>
   );
@@ -50,7 +43,7 @@ MoviePlayer.propTypes = {
   }).isRequired,
 
   context: PT.shape({
-    videos: PT.array.isRequired
+    getTrailer: PT.func.isRequired
   }).isRequired
 };
 

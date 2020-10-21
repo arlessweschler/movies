@@ -30,6 +30,17 @@ class MovieCardContextProvider extends Component {
     );
   };
 
+  getTrailer = (searchParams) => {
+    const { videos } = this.props;
+
+    return videos.find((video) => {
+      return (
+        (video.site == searchParams.site) &&
+        (video.type == searchParams.type)
+      )
+    });
+  };
+
   render() {
     const { movie, videos, credits } = this.props;
 
@@ -38,7 +49,8 @@ class MovieCardContextProvider extends Component {
         movie,
         videos,
         credits,
-        getCrewNames: this.getCrewNames
+        getCrewNames: this.getCrewNames,
+        getTrailer: this.getTrailer
       }} >
         {this.props.children}
       </MovieCardContext.Provider>
