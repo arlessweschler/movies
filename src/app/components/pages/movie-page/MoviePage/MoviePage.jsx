@@ -6,8 +6,9 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { isNotEmpty, imageNotAvailable, col_classes } from 'app_services/UtilsService';
+import { isNotEmpty, imageNotAvailable } from 'app_services/UtilsService';
 import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-page/blocks';
+import { Row, Column } from 'app_components/layout';
 
 function MoviePage({ movie, isLoading }) {
   const { poster_path, overview } = movie;
@@ -22,14 +23,14 @@ function MoviePage({ movie, isLoading }) {
   const keepAspectRatio = true;
 
   const cls = {
-    poster: cn(col_classes(4), b('column', { left: true }), {
+    poster: cn(b('column', { left: true }), {
       [cls_embed]: keepAspectRatio
     }),
     image: cn(b('poster'), {
       [`${cls_embed}-item`]: keepAspectRatio,
       'no-image': !poster_path
     }),
-    player: cn(col_classes(8), b('column'), {
+    player: cn(b('column'), {
       [cls_embed]: keepAspectRatio,
       [`${cls_embed}-16by9`]: keepAspectRatio
     })
@@ -37,6 +38,7 @@ function MoviePage({ movie, isLoading }) {
 
   return (
     <div className={cn(b(), 'container')}>
+      
       {/* TODO: обеспечить абсолютное позиционирование чтобы избежать прыжка контента при окончании загрузки даных  */}
       {/* {isLoading && <ProgressBar />} */}
 
@@ -46,19 +48,15 @@ function MoviePage({ movie, isLoading }) {
           <MovieTopInfo />
           {/* row end */}
 
-          {/* row start: overview */}
-          {overview
-            ? <div className="row mb-3">
-              {overview}
-            </div>
-            : ''}
-          {/* row end */}
+          <Row cls="mb-3">
+            {overview}
+          </Row>
 
-          {/* row start: poster and player */}
-          <div className="row">
-
-            {/* col start: poster */}
-            <div className={cls.poster}>
+          <Row>
+            <Column
+              cls={cls.poster}
+              size={4} smallFullWidth
+            >
               <img
                 className={cls.image}
                 src={poster_path
@@ -66,37 +64,31 @@ function MoviePage({ movie, isLoading }) {
                   : imageNotAvailable
                 }
               />
-            </div>
-            {/* col end */}
+            </Column>
 
-            {/* col start: player*/}
-            <div className={cls.player}>
+            <Column
+              cls={cls.player}
+              size={8} smallFullWidth
+            >
               <MoviePlayer
                 searchParams={{ site: 'YouTube', type: 'Trailer' }}
               />
-            </div>
-            {/* col end */}
+            </Column>
+          </Row>
 
-          </div>
-          {/* row end */}
-
-          {/* row start: director */}
-          <div className="row mt-2">
+          <Row cls="mt-2">
             <CrewNames
               label="Director"
               searchParams={{ department: 'Directing', job: 'Director' }}
             />
-          </div>
-          {/* row end */}
+          </Row>
 
-          {/* row start: screenplay */}
-          <div className="row">
+          <Row>
             <CrewNames
               label="Screenplay"
               searchParams={{ department: 'Writing', job: 'Screenplay' }}
             />
-          </div>
-          {/* row end */}
+          </Row>
         </Fragment>
       }
     </div>
