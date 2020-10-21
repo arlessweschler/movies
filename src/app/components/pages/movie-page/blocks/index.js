@@ -4,6 +4,7 @@ import MovieTopInfo from 'app_components/pages/movie-page/blocks/MovieTopInfo/Mo
 import Title from 'app_components/pages/movie-page/blocks/Title/Title';
 import Tags from 'app_components/pages/movie-page/blocks/Tags/Tags';
 import Rating from 'app_components/pages/movie-page/blocks/Rating/Rating';
+import Poster from 'app_components/pages/movie-page/blocks/Poster/Poster';
 
 export {
   CrewNames,
@@ -12,5 +13,6 @@ export {
 
   Title,
   Tags,
-  Rating
+  Rating,
+  Poster
 };

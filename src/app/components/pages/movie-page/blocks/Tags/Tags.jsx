@@ -3,9 +3,9 @@ import './Tags.scss';
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import b_ from 'b_';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHistory, faVideo, faGlobe } from '@fortawesome/free-solid-svg-icons'
-import b_ from 'b_';
 
 import { isNotEmpty } from 'app_services/UtilsService';
 

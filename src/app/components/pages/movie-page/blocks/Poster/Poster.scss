@@ -1,0 +1,31 @@
+@import 'app_assets/css/variables';
+
+$b: $movie-page-cls;
+
+.#{$b} {
+  .#{$b}__poster {
+    // fit parent column width if no responsive needed
+    width: 100%;
+
+    &.no-image {
+      border: 1px solid lightgray;
+    }
+
+    &.embed-responsive-item {
+      // fix image 16by9 width proportion
+      width: auto !important;
+
+      @media (max-width: 768px) {
+        // fix image 16by9 width proportion
+        position: relative !important;
+
+        display: block;
+        max-height: 350px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+
+}

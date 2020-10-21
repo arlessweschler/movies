@@ -2,9 +2,9 @@ import './Rating.scss';
 
 import React from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import b_ from 'b_';
 
 function Rating({ cls, data }) {
   const { vote_average } = data;

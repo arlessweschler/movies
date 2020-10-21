@@ -5,9 +5,8 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { TMDB_IMAGE_URL } from 'app_config';
-import { isNotEmpty, imageNotAvailable } from 'app_services/UtilsService';
-import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-page/blocks';
+import { isNotEmpty } from 'app_services/UtilsService';
+import { MoviePlayer, CrewNames, MovieTopInfo, Poster } from 'app_components/pages/movie-page/blocks';
 import { Row, Column } from 'app_components/layout';
 
 function MoviePage({ movie, isLoading }) {
@@ -23,14 +22,13 @@ function MoviePage({ movie, isLoading }) {
   const keepAspectRatio = true;
 
   const cls = {
-    poster: cn(b('column', { left: true }), {
+    poster_col: cn(b('column', { left: true }), {
       [cls_embed]: keepAspectRatio
     }),
-    image: cn(b('poster'), {
-      [`${cls_embed}-item`]: keepAspectRatio,
-      'no-image': !poster_path
+    poster: cn({
+      [`${cls_embed}-item`]: keepAspectRatio
     }),
-    player: cn(b('column'), {
+    player_col: cn(b('column'), {
       [cls_embed]: keepAspectRatio,
       [`${cls_embed}-16by9`]: keepAspectRatio
     })
@@ -38,7 +36,7 @@ function MoviePage({ movie, isLoading }) {
 
   return (
     <div className={cn(b(), 'container')}>
-      
+
       {/* TODO: обеспечить абсолютное позиционирование чтобы избежать прыжка контента при окончании загрузки даных  */}
       {/* {isLoading && <ProgressBar />} */}
 
@@ -54,20 +52,17 @@ function MoviePage({ movie, isLoading }) {
 
           <Row>
             <Column
-              cls={cls.poster}
+              cls={cls.poster_col}
               size={4} smallFullWidth
             >
-              <img
-                className={cls.image}
-                src={poster_path
-                  ? `${TMDB_IMAGE_URL.large}/${poster_path}`
-                  : imageNotAvailable
-                }
+              <Poster
+                cls={cn(b('poster'), cls.poster)}
+                data={{ poster_path }}
               />
             </Column>
 
             <Column
-              cls={cls.player}
+              cls={cls.player_col}
               size={8} smallFullWidth
             >
               <MoviePlayer
