@@ -1,5 +1,4 @@
 import './MovieTopInfo.scss';
-import { moviePageCls } from 'app_assets/css/variables';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -46,6 +45,7 @@ function MovieTopInfo({ context }) {
     }
   });
 
+  const moviePageCls = 'movie-details';
   const b = b_.with(moviePageCls);
   const b_top = b_.with(`${moviePageCls}-top`);
   const b_rate = b_.with(`${moviePageCls}-rating`);

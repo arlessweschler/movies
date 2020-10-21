@@ -7,18 +7,27 @@ import createSagaMiddleware, { END } from 'redux-saga';
 import rootReducer from 'redux_reducers';
 import SagaManager from 'app_redux/sagas/SagaManager';
 
+const IS_CLIENT = (typeof window !== 'undefined');
 
 export function configureStore(initialState = {}, startSagas = false) {
   const sagaMiddleware = createSagaMiddleware();
 
   let middlewares = [
     sagaMiddleware,
-    thunk,
-    // logger must be last
-    createLogger({
-      collapsed: (getState, action, logEntry) => !logEntry.error
-    })
+    thunk
   ];
+
+  const logger = createLogger({
+    level: {
+      prevState: IS_CLIENT ? 'log' : false,
+      action: 'log',
+      nextState: IS_CLIENT ? 'log' : false
+    },
+    collapsed: (getState, action, logEntry) => !logEntry.error
+  });
+
+  // logger must be last
+  middlewares.push(logger);
 
   const store = createStore(
     rootReducer,
@@ -54,7 +63,7 @@ export function configureStore(initialState = {}, startSagas = false) {
   return store;
 }
 
-let initialState = (typeof window !== 'undefined' && window.__PRELOADED_STATE__)
+let initialState = (IS_CLIENT && window.__PRELOADED_STATE__)
   ? window.__PRELOADED_STATE__
   : {};
 

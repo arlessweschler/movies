@@ -1,5 +1,4 @@
 import './MoviePage.scss';
-import { moviePageCls } from 'app_assets/css/variables';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -16,7 +15,7 @@ function MoviePage({ movie, isLoading }) {
   // console.log('-- MoviePage.render(), movie:', movie);
 
   // base component class
-  const b = b_.B({ modSeparator: '--' }).with(moviePageCls);
+  const b = b_.B({ modSeparator: '--' }).with('movie-details');
 
   // classes for keeping 16by9 aspect ration
   const cls_embed = 'embed-responsive';
