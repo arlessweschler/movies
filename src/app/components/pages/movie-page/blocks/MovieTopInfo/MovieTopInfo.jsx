@@ -1,107 +1,45 @@
-import './MovieTopInfo.scss';
-
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
-import moment from 'moment';
-import { v4 as uuidv4 } from 'uuid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHistory, faVideo, faGlobe, faStar } from '@fortawesome/free-solid-svg-icons'
-import b_ from 'b_';
 import cn from 'classnames';
 
-import { isNotEmpty, b_col } from 'app_services/UtilsService';
+import { b_col } from 'app_services/UtilsService';
 import { withMovieCardContext } from 'app_hocs';
+import { Title, Tags, Rating } from 'app_components/pages/movie-page/blocks';
 
 function MovieTopInfo({ context }) {
   const { movie } = context;
   const { title, production_countries, genres, release_date, runtime, vote_average } = movie;
 
-  const getDuration = mins => {
-    let h = Math.floor(mins / 60);
-    let m = mins % 60;
-    m = m < 10 ? '0' + m : m;
-    return `${h}h ${m}m`;
-  };
-
-  const mapWithSemicolons = (list) => list.map((item, i) => (
-    <Fragment key={uuidv4()}>
-      {i != (list.length - 1)
-        ? `${item.name}, `
-        : item.name}
-    </Fragment>
-  ));
-
-  let tags = [];
-
-  const fields = [
-    { value: runtime, icon: faHistory, func: getDuration },
-    { value: genres, icon: faVideo, func: mapWithSemicolons },
-    { value: production_countries, icon: faGlobe, func: mapWithSemicolons },
-  ];
-
-  fields.forEach(({ value, icon, func }) => {
-    if (isNotEmpty(value)) {
-      tags.push({ icon, text: func(value) });
-    }
-  });
-
   const moviePageCls = 'movie-details';
-  const b = b_.with(moviePageCls);
-  const b_top = b_.with(`${moviePageCls}-top`);
-  const b_rate = b_.with(`${moviePageCls}-rating`);
 
   return (
-    <Fragment>
-      <div className="row">
+    <div className="row">
 
-        {/* col start */}
-        <div className={cn(b_col(9), 'p-0')}>
+      {/* col start */}
+      <div className={cn(b_col(9), 'p-0')}>
+        {/* title */}
+        <Title
+          cls={moviePageCls}
+          data={{ title, release_date }}
+        />
 
-          {/* title */}
-          <h1>
-            {title}
-            <span className={b('year')}>
-              ({moment(release_date).format('YYYY')})
-              </span>
-          </h1>
-
-          {/* tags */}
-          <div className={b_top()}>
-            {tags.map((item) => (
-              <Fragment key={uuidv4()}>
-                <span className={b_top('item')} >
-                  <FontAwesomeIcon
-                    className={b_top('icon')}
-                    icon={item.icon}
-                  />
-                  <span className={b_top('text')}>
-                    {item.text}
-                  </span>
-                </span>
-              </Fragment>
-            ))}
-          </div>
-        </div>
-        {/* col end */}
-
-        {/* col start: rating */}
-        <div className={cn(b_col(3), 'p-0')}>
-          {vote_average
-            ? (<div className={b_rate()}>
-              <FontAwesomeIcon
-                className={b_rate('icon')}
-                icon={faStar}
-              />
-              {vote_average}
-              <span className={b_rate('scale')}>
-                /10
-              </span>
-            </div>)
-            : ''}
-        </div>
-        {/* col end */}
+        {/* tags */}
+        <Tags
+          cls={`${moviePageCls}-top`}
+          data={{ production_countries, genres, runtime }}
+        />
       </div>
-    </Fragment>
+      {/* col end */}
+
+      {/* col start: rating */}
+      <div className={cn(b_col(3), 'p-0')}>
+        <Rating
+          cls={`${moviePageCls}-rating`}
+          data={{ vote_average }}
+        />
+      </div>
+      {/* col end */}
+    </div>
   );
 };
 

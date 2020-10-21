@@ -1,5 +1,9 @@
 $movie-page-cls: 'movie-details';
 
+$gray: #868e96;
+$lightgray: #afb5ba;
+$yellow: #FFA500;
+
 :export {
   moviePageCls: unquote($movie-page-cls);
 }

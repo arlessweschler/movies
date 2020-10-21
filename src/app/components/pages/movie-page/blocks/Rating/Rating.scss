@@ -1,0 +1,21 @@
+@import 'app_assets/css/variables';
+
+$b: $movie-page-cls;
+$b_rate: #{$b}-rating;
+
+.#{$b} {
+  .#{$b_rate} {
+    float: right;
+    font-size: calc(1rem + 1.2vw);
+
+    .#{$b_rate}__icon {
+      margin-right: 5px;
+      color: $yellow;
+    }
+
+    .#{$b_rate}__scale {
+      font-size: calc(0.8rem + 0.3vw);
+      color: $gray;
+    }
+  }
+}
