@@ -11,7 +11,7 @@ function MediaSection({ cls_base, context }) {
   const { movie } = context;
   const { poster_path } = movie;
 
-  console.log('-- MediaSection.render(), context:', context);
+  // console.log('-- MediaSection.render(), context:', context);
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
@@ -33,7 +33,7 @@ function MediaSection({ cls_base, context }) {
   };
 
   return (
-    <section>
+    <section className="mb-3">
       <Row>
         <Column
           cls={cls.poster_col}

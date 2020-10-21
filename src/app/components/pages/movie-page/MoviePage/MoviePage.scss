@@ -4,6 +4,10 @@ $b: $movie-page-cls;
 
 .#{$b} {
   position: relative;
+  &.container {
+
+    // padding: 0;
+  }
 
   .#{$b}__column {
     padding: 0px !important;

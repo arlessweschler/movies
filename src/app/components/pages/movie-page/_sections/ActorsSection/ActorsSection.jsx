@@ -1,25 +1,28 @@
-import './Credits.scss';
+import './ActorsSection.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-import { isNotEmpty } from 'app_services/UtilsService';
 import { TMDB_IMAGE_URL } from 'app_config';
+import { withMovieCardContext } from 'app_hocs';
+import { isNotEmpty } from 'app_services/UtilsService';
 
-function Credits({ credits }) {
+function ActorsSection({ context }) {
+  const { credits } = context;
   const { cast } = credits;
 
-  // console.log('-- Credits.render(), credits:', credits);
-
   return (
-    <div className="container mt-2 pl-0 pr-0">
+    <section>
       {
         isNotEmpty(cast)
           ?
           <Fragment>
-            <h2>Actors:</h2>
             <div className="row">
+              <h2>Actors:</h2>
+            </div>
+
+            <div className="row actors-row">
 
               {cast.map((person) =>
                 <div
@@ -36,7 +39,7 @@ function Credits({ credits }) {
                   ) : (
                       <div className="cast-image no-image" />
                     )}
-                    
+
                   {/* name */}
                   <div className="cast-name">
                     {person.name}
@@ -55,12 +58,16 @@ function Credits({ credits }) {
           </Fragment>
           : ''
       }
-    </div>
+    </section>
   );
 };
 
-Credits.propTypes = {
-  cast: PT.array,
+ActorsSection.propTypes = {
+  context: PT.shape({
+    credits: PT.shape({
+      cast: PT.array
+    }).isRequired
+  }).isRequired
 };
 
-export default Credits;
+export default withMovieCardContext(ActorsSection);

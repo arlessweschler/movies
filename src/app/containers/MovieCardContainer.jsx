@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 
 import PTS from 'app_services/PropTypesService';
 import { isEmpty } from 'app_services/UtilsService';
-import { MoviePage, Credits } from 'app_components/pages';
+import { MoviePage } from 'app_components/pages';
+import { ActorsSection } from 'app_components/pages/movie-page/_sections';
 import { MovieCardContextProvider } from 'app_contexts/MovieCardContext';
 import {
   getMovieDetails,
@@ -78,7 +79,6 @@ class MovieCardContainer extends Component {
             isLoading={movie.isLoading}
           />
         </MovieCardContextProvider>
-        <Credits credits={credits.data} />
       </Fragment>
     );
   }
