@@ -1,4 +1,4 @@
-import 'app_components/pages/movie-details-page/MoviePage/MoviePage.scss';
+import './MoviePage.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -8,7 +8,7 @@ import cn from 'classnames';
 import { TMDB_IMAGE_URL } from 'app_config';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { col_classes } from 'app_services/FormatterService';
-import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-details-page/blocks';
+import { MoviePlayer, CrewNames, MovieTopInfo } from 'app_components/pages/movie-page/blocks';
 import noImageAvailable from 'app_assets/img/image_not_available.png';
 // import { ProgressBar } from 'app_components/layout';
 

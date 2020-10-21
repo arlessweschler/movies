@@ -1,4 +1,4 @@
-import 'app_components/pages/movie-details-page/Credits/Credits.scss';
+import './Credits.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';

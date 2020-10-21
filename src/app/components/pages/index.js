@@ -16,8 +16,8 @@ import MovieItem from 'app_components/pages/movies-page/MovieItem/MovieItem';
 import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPaging';
 
 // карточка фильма
-import MoviePage from 'app_components/pages/movie-details-page/MoviePage/MoviePage';
-import Credits from 'app_components/pages/movie-details-page/Credits/Credits';
+import MoviePage from 'app_components/pages/movie-page/MoviePage/MoviePage';
+import Credits from 'app_components/pages/movie-page/Credits/Credits';
 
 export {
   HomePage,
