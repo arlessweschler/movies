@@ -86,8 +86,8 @@ function MovieTopInfo({ context }) {
 
         {/* col start: rating */}
         <div className={cn(b_col(3), 'p-0')}>
-          {vote_average && (
-            <div className={b_rate()}>
+          {vote_average
+            ? (<div className={b_rate()}>
               <FontAwesomeIcon
                 className={b_rate('icon')}
                 icon={faStar}
@@ -96,8 +96,8 @@ function MovieTopInfo({ context }) {
               <span className={b_rate('scale')}>
                 /10
               </span>
-            </div>
-          )}
+            </div>)
+            : ''}
         </div>
         {/* col end */}
       </div>

@@ -75,6 +75,7 @@ class MovieCardContainer extends Component {
         >
           <MoviePage
             movie={movie.data}
+            isLoading={movie.isLoading}
           />
         </MovieCardContextProvider>
         <Credits credits={credits.data} />

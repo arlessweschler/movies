@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import PT from 'prop-types';
+import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
 import MoviesListContext from 'app_contexts/MoviesListContext';
+import imageNotAvailable from 'app_assets/img/image_not_available.png';
 
 function MovieItem({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;
@@ -13,9 +15,12 @@ function MovieItem({ movie }) {
       className="card movie-link"
       onClick={() => linkMovie(id)}
     >
-      {poster_path
-        ? <img src={`${TMDB_IMAGE_URL.small}/${poster_path}`} />
-        : <div className="no-image" />}
+      <img
+        className={cn({ 'no-image': !poster_path })}
+        src={poster_path
+          ? `${TMDB_IMAGE_URL.small}/${poster_path}`
+          : imageNotAvailable}
+      />
 
       <div className="card-body">
         {(vote_average > 0) && (

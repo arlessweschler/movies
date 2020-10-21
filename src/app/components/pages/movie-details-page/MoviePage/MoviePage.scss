@@ -1,6 +1,7 @@
 $b: 'movie-details';
 
 .#{$b} {
+  position: relative;
 
   .#{$b}__column {
     padding: 0px !important;
@@ -15,6 +16,10 @@ $b: 'movie-details';
   .#{$b}__poster {
     // fit parent column width if no responsive needed
     width: 100%;
+
+    &.no-image {
+      border: 1px solid lightgray;
+    }
 
     &.embed-responsive-item {
       // fix image 16by9 width proportion
