@@ -14,9 +14,25 @@ function MoviePage({ movie }) {
 
   // console.log('-- MoviePage.render(), movie:', movie);
 
+  // base component class
   const b = b_.B({ modSeparator: '--' }).with('movie-details');
+
+  // classes for keeping 16by9 aspect ration
   const cls_embed = 'embed-responsive';
   const keepAspectRatio = true;
+
+  const cls = {
+    poster: cn(col_classes(4), b('column', { left: true }), {
+      [cls_embed]: keepAspectRatio
+    }),
+    image: cn(b('poster'), {
+      [`${cls_embed}-item`]: keepAspectRatio
+    }),
+    player: cn(col_classes(8), b('column'), {
+      [cls_embed]: keepAspectRatio,
+      [`${cls_embed}-16by9`]: keepAspectRatio
+    })
+  };
 
   return (
     <Fragment>
@@ -38,17 +54,10 @@ function MoviePage({ movie }) {
         <div className="row">
 
           {/* col start: poster */}
-          <div className={cn(
-            col_classes(4),
-            b('column', { left: true }),
-            { [cls_embed]: keepAspectRatio }
-          )}>
+          <div className={cls.poster}>
             {poster_path
               ? <img
-                className={cn(
-                  b('poster'),
-                  { [`${cls_embed}-item`]: keepAspectRatio }
-                )}
+                className={cls.image}
                 src={`${TMDB_IMAGE_URL.large}/${poster_path}`}
               />
               : <p>Нет постера</p>}
@@ -56,11 +65,7 @@ function MoviePage({ movie }) {
           {/* col end */}
 
           {/* col start: player*/}
-          <div className={cn(
-            b('column'),
-            col_classes(8),
-            { [cls_embed]: keepAspectRatio, [`${cls_embed}-16by9`]: keepAspectRatio }
-          )}>
+          <div className={cls.player}>
             <MoviePlayer
               searchParams={{ site: 'YouTube', type: 'Trailer' }}
             />
