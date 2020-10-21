@@ -17,14 +17,14 @@
         "legacy": true
       }
     ],
-    [
+/*     [
       "transform-remove-console",
       {
         "exclude": [
           "log"
         ]
       }
-    ],
+    ], */
     "@babel/plugin-proposal-class-properties"
   ]
 }

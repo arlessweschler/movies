@@ -46,7 +46,6 @@ export const createReducer = (
   };
 };
 
-console.warn('-- helpers/reducers.helper.js, initialAsyncState{}');
 const initialAsyncState = {
   data: {},
   isLoading: false,
@@ -59,7 +58,6 @@ export const createAsyncReducer = (
   params = {}
 ) => {
   const { initialState = initialAsyncState } = params;
-  console.warn('-- helpers/reducers.helper.js, createAsyncReducer(), actionKey:', actionKey);
 
   return createReducer(
     initialState,

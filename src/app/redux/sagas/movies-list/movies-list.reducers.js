@@ -38,7 +38,5 @@ const moviesReducer = {
   )
 };
 
-console.warn('-- sagas/movies-list/movies-list.reducers.js, moviesReducer {}');
-
 // export { moviesReducer };
 export default moviesReducer;

@@ -5,16 +5,12 @@ export const createActionCreator = (type, actionProps) => {
     ...actionProps
   };
 
-  console.warn('-- helpers/actions.helper.js, createActionCreator(), type:', type);
-
   return actionCreator;
 };
 
 export const createActionsForAsyncAction = (
   actionKey
 ) => {
-  console.warn('-- helpers/actions.helper.js, createActionsForAsyncAction(), actionKey:', actionKey);
-
   const actionsForAsyncAction = {
     start: request => createActionCreator(`${actionKey}_START`, { request }),
     success: data => createActionCreator(`${actionKey}_SUCCESS`, { data }),

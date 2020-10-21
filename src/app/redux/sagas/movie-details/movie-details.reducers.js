@@ -18,6 +18,4 @@ const movieDetailsReducer = combineReducers({
   )
 });
 
-console.warn('-- sagas/movie-details/movie-details.reducers.js, movieDetailsReducer {}');
-
 export default movieDetailsReducer;

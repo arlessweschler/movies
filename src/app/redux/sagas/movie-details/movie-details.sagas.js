@@ -7,7 +7,6 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie
 
 // watchers
 export function* watchMovieDetails() {
-  console.warn('-- sagas/movie-details/movie-details.sagas.js, *watchMovieDetails()');
   yield all([
     takeEvery(actionKeys.MOVIE_DETAILS, getMovieDetailsSaga),
     takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
@@ -22,8 +21,6 @@ function* getMovieDetailsSaga({
   movieId
 }) {
   const actions = asyncActionMaps[type];
-
-  console.warn('-- sagas/movie-details/movie-details.sagas.js, *getMovieDetailsSaga(), type:', type);
 
   yield put(actions.start({ movieId }));
   try {
@@ -43,8 +40,6 @@ function* getCreditsSaga({
 }) {
   const actions = asyncActionMaps[type];
 
-  console.warn('-- sagas/movie-details/movie-details.sagas.js, *getCreditsSaga(), type:', type);
-
   yield put(actions.start({ movieId }));
   try {
     const data = yield ApiService.fetch({
@@ -62,8 +57,6 @@ function* getVideosSaga({
   movieId
 }) {
   const actions = asyncActionMaps[type];
-
-  console.warn('-- sagas/movie-details/movie-details.sagas.js, *getVideosSaga(), type:', type);
 
   yield put(actions.start({ movieId }));
   try {

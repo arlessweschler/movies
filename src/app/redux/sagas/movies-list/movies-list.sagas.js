@@ -8,7 +8,6 @@ import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.red
 
 // watchers
 export function* watchMovieBrowser() {
-  console.warn('-- sagas/movies-list/movies-list.sagas.js, *watchMovieBrowser()');
   yield all([
     takeEvery(actionKeys.GET_MOVIES, getMoviesSaga),
     takeEvery(actionKeys.GET_GENRES, getGenresSaga),
@@ -22,8 +21,6 @@ function* getMoviesSaga({
   page = 1
 }) {
   const actions = asyncActionMaps[type];
-
-  console.warn('-- sagas/movies-list/movies-list.sagas.js, *getMoviesSaga(), type:', type);
 
   yield put(actions.start({ moviesType, page }));
   try {
@@ -40,8 +37,6 @@ function* getMoviesSaga({
 
 function* getGenresSaga({ type }) {
   const actions = asyncActionMaps[type];
-
-  console.warn('-- sagas/movies-list/movies-list.sagas.js, *getGenresSaga(), type:', type);
 
   yield put(actions.start());
   try {

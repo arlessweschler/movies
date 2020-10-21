@@ -5,7 +5,7 @@ const history = (typeof window !== 'undefined' && window.document)
   : createMemoryHistory();
 
 function redirect(url) {
-  console.log('-- redirect, url:', url);
+  // console.log('-- redirect, url:', url);
   history.push(url);
 }
 
