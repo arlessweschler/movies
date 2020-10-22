@@ -1,0 +1,28 @@
+$linkColor: #000;
+
+.footer {
+  color: #000;
+
+  &__link-wrapper {
+    display: inline;
+    @media (max-width: 575.98px) {
+      display: block;
+    }
+  }
+
+  &__link {
+    color: $linkColor;
+
+    &:hover {
+      color: $linkColor;
+      text-decoration: none;
+    }
+  }
+
+  .tmdb-logo {
+    img {
+      width: 85px;
+      margin-top: -3px;
+    }
+  }
+}

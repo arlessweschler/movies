@@ -7,7 +7,7 @@ const rules = {
     use: 'babel-loader'
   },
   images: {
-    test: /\.(jpe?g|jpg|png|gif)$/,
+    test: /\.(jpe?g|jpg|png|gif|svg)$/,
     loader: 'file-loader',
     options: {
       name: '[name].[ext]',
