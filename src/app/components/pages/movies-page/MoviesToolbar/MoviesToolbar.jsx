@@ -13,7 +13,7 @@ function MoviesToolbar({
   activeFilter = DEFAULT_MOVIES_TYPE
 }) {
   return (
-    <ButtonGroup className="movies-filter mb-3">
+    <ButtonGroup className="movies-filter">
       {TMDB_MOVIES_TYPES.map(filter => (
         <Button
           key={uuidv4()}

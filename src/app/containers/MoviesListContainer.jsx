@@ -15,6 +15,7 @@ import {
   resetMovieDetails
 } from 'redux_actions';
 import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -52,13 +53,18 @@ class MoviesListContainer extends Component {
   componentDidMount() {
     const { moviesType, page } = this.getUrlParams();
     const { moviesList, moviesGenres, actions } = this.props;
+    const { data, request } = moviesList
 
     if (isEmpty(moviesGenres.data)) {
       actions.getGenres();
     };
 
-    // запрашиваем фильмы, если их нет или если есть фильтр из url и список имеющихся фильмов отличается от их типа фильтрации
-    if (isEmpty(moviesList.data.results)) {
+    // запрашиваем фильмы, если их нет или если фильтр в url отличается от фильтра последнего запроса на список фильмов 
+    if (
+      isEmpty(data.results) ||
+      (moviesType && moviesType !== request.moviesType) ||
+      (!moviesType && request.moviesType !== DEFAULT_MOVIES_TYPE)
+    ) {
       actions.getMovies({ moviesType, page });
     };
   }

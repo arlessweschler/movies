@@ -10,11 +10,13 @@ import SearchForm from './SearchForm';
 
 const NavigationFixed = (props) => {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
       <div className="container">
 
-        <Link to='/'>
-          <FontAwesomeIcon color="white" icon={faFilm} />
+        <Link to='/' className="link-home">
+          <FontAwesomeIcon className="mr-1" 
+          icon={faFilm} />
+          Movies
         </Link>
         <NavToggle>
           <SearchForm />
