@@ -1,13 +1,12 @@
 import RootRoute from 'app_root/routing/RootRoute';
 
 import {
-  HomePage,
   NotFoundPage
 } from 'app_components/pages';
 
 import {
-  UsersListContainer,
-  UserCardContainer,
+/*   UsersListContainer,
+  UserCardContainer, */
   MoviesListContainer,
   MovieCardContainer
 } from 'app_containers';
@@ -20,7 +19,7 @@ const routes = [
       {
         path: '/',
         exact: true,
-        component: HomePage
+        component: MoviesListContainer
       },
 
       {
@@ -35,7 +34,7 @@ const routes = [
         component: MovieCardContainer
       },
 
-      {
+/*       {
         path: '/users',
         exact: true,
         component: UsersListContainer
@@ -45,7 +44,7 @@ const routes = [
         path: '/users/:user_id',
         exact: true,
         component: UserCardContainer
-      },
+      }, */
 
       {
         path: '*',

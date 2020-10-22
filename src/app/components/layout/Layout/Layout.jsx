@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Navigation } from 'app_components/layout';
+import { Navigation, NavigationFixed } from 'app_components/layout';
 
 const Layout = (props) => {
   return (
-    <div className="layout-wrapper container-fluid pt-3">
-      <Navigation />
-      <div className="layout-content">
-        {props.children}
+    <Fragment>
+      <NavigationFixed />
+      <div className="layout-wrapper container pt-3">
+        {/* <Navigation /> */}
+        <div className="layout-content">
+          {props.children}
+        </div>
       </div>
-    </div>
+    </Fragment>
   );
 }
 

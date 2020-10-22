@@ -1,5 +1,4 @@
 // общие компоненты
-import HomePage from 'app_components/pages/home-page/HomePage';
 import NotFoundPage from 'app_components/pages/not-found-page/NotFoundPage';
 
 // список пользователей
@@ -19,7 +18,6 @@ import MoviesPaging from 'app_components/pages/movies-page/MoviesPaging/MoviesPa
 import MoviePage from 'app_components/pages/movie-page/MoviePage/MoviePage';
 
 export {
-  HomePage,
   NotFoundPage,
 
   UsersToolbar,
