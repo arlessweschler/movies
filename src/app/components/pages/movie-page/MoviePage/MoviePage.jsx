@@ -12,10 +12,10 @@ function MoviePage({ movie, isLoading }) {
 
   // base component class
   const cls_base = 'movie-details';
-  const b = b_.B({ modSeparator: '--' }).with(cls_base);
+  const b = b_.with(cls_base);
 
   return (
-    <div className={cn(b(), 'container')}>
+    <div className={cn(b())}>
 
       {/* TODO: обеспечить абсолютное позиционирование чтобы избежать прыжка контента при окончании загрузки даных  */}
       {/* {isLoading && <ProgressBar />} */}
@@ -32,7 +32,7 @@ function MoviePage({ movie, isLoading }) {
           />
 
           <CrewSection />
-          
+
           <ActorsSection />
         </Fragment>
       }

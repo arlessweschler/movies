@@ -1,18 +1,19 @@
+import './Layout.scss';
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Navigation, NavigationFixed } from 'app_components/layout';
+import { NavigationFixed } from 'app_components/layout';
 
 const Layout = (props) => {
   return (
     <Fragment>
       <NavigationFixed />
-      <div className="layout-wrapper container pt-3">
-        {/* <Navigation /> */}
-        <div className="layout-content">
+      <main className="layout">
+        <div className="container p-0">
           {props.children}
         </div>
-      </div>
+      </main>
     </Fragment>
   );
 }

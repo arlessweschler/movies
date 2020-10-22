@@ -1,26 +1,18 @@
-$linkColor:  #FFD700;
-
-body {
-  padding-top: 3.2rem;
-}
+$linkColor: #ffd700;
 
 .navbar {
   background-color: #292d32;
-}
 
-.link-home {
-  color: $linkColor;
-  font-size: 1.8rem;
-  line-height: 0;
-  font-weight: 500;
-  font-family: 'Bebas Neue', cursive;
-
-  &:hover {
+  .link-home {
     color: $linkColor;
-    text-decoration: none;
-  }
+    font-size: 1.8rem;
+    line-height: 0;
+    font-weight: 500;
+    font-family: "Bebas Neue", cursive;
 
-  svg {
-    color: $linkColor;
+    &:hover {
+      color: $linkColor;
+      text-decoration: none;
+    }
   }
 }

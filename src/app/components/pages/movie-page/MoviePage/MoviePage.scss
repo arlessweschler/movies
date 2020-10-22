@@ -1,12 +1,13 @@
-@import 'app_assets/css/variables';
+@import "app_assets/css/variables";
 
 $b: $movie-page-cls;
 
 .#{$b} {
   position: relative;
-  &.container {
 
-    // padding: 0;
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .#{$b}__column {

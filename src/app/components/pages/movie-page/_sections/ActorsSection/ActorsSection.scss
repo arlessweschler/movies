@@ -1,29 +1,28 @@
 .actors-row {
-  margin: 0px -30px !important;
-
+  
   .cast-item {
     margin-bottom: 10px;
     display: inline;
     float: left;
-  
+
     &.col {
       flex-grow: initial;
     }
-  
+
     .cast-image {
       width: 100px;
       border: 1px solid lightgray;
-  
+
       &.no-image {
         width: 100px;
         height: 150px;
-        background-image: url('~app_assets/img/no_photo.png');
+        background-image: url("~app_assets/img/no_photo.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
       }
     }
-  
+
     .cast-name {
       line-height: 1.2;
       margin-top: 3px;
