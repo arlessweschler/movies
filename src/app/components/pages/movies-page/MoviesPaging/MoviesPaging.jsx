@@ -20,7 +20,7 @@ function MoviesPaging(props) {
       disableInitialCallback={true}
       initialPage={props.initialPage}
       forcePage={props.initialPage}
-      containerClassName={"pagination"}
+      containerClassName={"pagination m-0"}
       activeClassName={"active"}
     />
   );

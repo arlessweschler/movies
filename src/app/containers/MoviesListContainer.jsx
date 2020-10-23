@@ -8,13 +8,16 @@ import qs from 'query-string';
 import { redirect } from 'app_history';
 import { isEmpty } from 'app_services/UtilsService';
 import PTS from 'app_services/PropTypesService';
-import { MoviesToolbar, MoviesPaging, MoviesList } from 'app_components/pages';
+import { MoviesToolbar, MoviesPaging, MoviesList } from
+  'app_components/pages';
+import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
+import { Row, Column } from 'app_components/layout';
+
 import {
   getMovies,
   getGenres,
   resetMovieDetails
 } from 'redux_actions';
-import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 // маппинг редюсеров
@@ -99,15 +102,21 @@ class MoviesListContainer extends Component {
 
     return (
       <Fragment>
-        <MoviesToolbar
-          activeFilter={moviesType}
-          handleFilter={this.handleFilter}
-        />
-        <MoviesPaging
-          initialPage={data.page - 1}
-          pageCount={data.total_pages}
-          onPageChange={this.onPageChange}
-        />
+        <Row cls="mb-2">
+          <MoviesToolbar
+            activeFilter={moviesType}
+            handleFilter={this.handleFilter}
+          />
+        </Row>
+
+        <Row cls="mb-2">
+          <MoviesPaging
+            initialPage={data.page - 1}
+            pageCount={data.total_pages}
+            onPageChange={this.onPageChange}
+          />
+        </Row>
+
         <MoviesListContextProvider
           genres={moviesGenres.data}
           linkMovie={this.linkMovie}
