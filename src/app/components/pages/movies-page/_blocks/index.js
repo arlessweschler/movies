@@ -1,11 +1,11 @@
-import MoviesToolbar from 'app_components/pages/movies-page/_blocks/MoviesToolbar/MoviesToolbar';
-import MoviesList from 'app_components/pages/movies-page/_blocks/MoviesList/MoviesList';
-import MovieItem from 'app_components/pages/movies-page/_blocks/MovieItem/MovieItem';
-import MoviesPaging from 'app_components/pages/movies-page/_blocks/MoviesPaging/MoviesPaging';
+import ToolbarBlock from 'app_components/pages/movies-page/_blocks/ToolbarBlock/ToolbarBlock';
+import ListBlock from 'app_components/pages/movies-page/_blocks/ListBlock/ListBlock';
+import ItemBlock from 'app_components/pages/movies-page/_blocks/ItemBlock/ItemBlock';
+import PagingBlock from 'app_components/pages/movies-page/_blocks/PagingBlock/PagingBlock';
 
 export {
-  MoviesToolbar,
-  MoviesList,
-  MovieItem,
-  MoviesPaging
+  ToolbarBlock,
+  ListBlock,
+  ItemBlock,
+  PagingBlock
 };

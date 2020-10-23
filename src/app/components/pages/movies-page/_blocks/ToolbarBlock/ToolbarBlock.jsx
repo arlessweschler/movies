@@ -1,4 +1,4 @@
-import './MoviesToolbar.scss';
+import './ToolbarBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -8,7 +8,7 @@ import { Button, ButtonGroup } from "reactstrap";
 import { TMDB_MOVIES_TYPES } from 'app_config';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
-function MoviesToolbar({
+function ToolbarBlock({
   handleFilter,
   activeFilter = DEFAULT_MOVIES_TYPE
 }) {
@@ -29,9 +29,9 @@ function MoviesToolbar({
   );
 }
 
-MoviesToolbar.propTypes = {
+ToolbarBlock.propTypes = {
   handleFilter: PT.func.isRequired,
   activeFilter: PT.string
 };
 
-export default MoviesToolbar;
+export default ToolbarBlock;

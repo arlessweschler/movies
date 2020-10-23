@@ -1,4 +1,4 @@
-import './MoviesPaging.scss';
+import './PagingBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -6,7 +6,7 @@ import ReactPaginate from "react-paginate";
 
 import PTS from 'app_services/PropTypesService';
 
-function MoviesPaging(props) {
+function PagingBlock(props) {
   return (
     <ReactPaginate
       previousLabel="&larr;"
@@ -26,10 +26,10 @@ function MoviesPaging(props) {
   );
 };
 
-MoviesPaging.propTypes = {
+PagingBlock.propTypes = {
   initialPage: PT.number.isRequired,
   pageCount: PTS.nullOrNumber,
   onPageChange: PT.func.isRequired
 };
 
-export default MoviesPaging;
+export default PagingBlock;

@@ -1,4 +1,4 @@
-import './MoviesList.scss';
+import './ListBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -8,10 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { MovieItem } from 'app_components/pages/movies-page/_blocks';
+import { ItemBlock } from 'app_components/pages/movies-page/_blocks';
 import { ProgressBar } from 'app_components/layout';
 
-function MoviesList(props) {
+function ListBlock(props) {
 
   // base component class
   const cls_base = 'movies-list';
@@ -28,7 +28,7 @@ function MoviesList(props) {
         isNotEmpty(movies)
           ? <div className={cn(b(), 'd-flex flex-wrap justify-content-between')}>
             {movies.map((movie) =>
-              <MovieItem
+              <ItemBlock
                 key={uuidv4()}
                 movie={movie}
               />
@@ -40,10 +40,10 @@ function MoviesList(props) {
   );
 };
 
-MoviesList.propTypes = {
+ListBlock.propTypes = {
   isLoading: PT.bool.isRequired,
   error: PTS.nullOrString,
   movies: PT.array
 };
 
-export default MoviesList;
+export default ListBlock;

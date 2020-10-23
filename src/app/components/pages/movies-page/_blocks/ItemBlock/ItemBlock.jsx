@@ -6,7 +6,7 @@ import { TMDB_IMAGE_URL } from 'app_config';
 import MoviesListContext from 'app_contexts/MoviesListContext';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
-function MovieItem({ movie }) {
+function ItemBlock({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;
   const { printGenres, linkMovie } = useContext(MoviesListContext);
 
@@ -41,7 +41,7 @@ function MovieItem({ movie }) {
   );
 };
 
-MovieItem.propTypes = {
+ItemBlock.propTypes = {
   movie: PT.shape({
     poster_path: PT.string,
     title: PT.string.isRequired,
@@ -50,4 +50,4 @@ MovieItem.propTypes = {
   }).isRequired
 };
 
-export default MovieItem;
+export default ItemBlock;
