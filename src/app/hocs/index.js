@@ -1,5 +1,5 @@
-import withMovieCardContext from 'app_hocs/withMovieCardContext';
+import withMDetailsContext from 'app_hocs/withMDetailsContext';
 
 export {
-  withMovieCardContext
+  withMDetailsContext
 };

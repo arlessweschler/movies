@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PTS from 'app_services/PropTypesService';
 import { isEmpty } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
-import { MovieCardContextProvider } from 'app_contexts/MovieCardContext';
+import { MDetailsContextProvider } from 'app_contexts/MDetailsContext';
 import {
   getMovieDetails,
   getCredits,
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class MovieCardContainer extends Component {
+class MDetailsContainer extends Component {
 
   static fetchData(store, urlParams) {
     const movie_id = urlParams[0].split('/').pop();
@@ -64,10 +64,10 @@ class MovieCardContainer extends Component {
     const { movieDetails } = this.props;
     const { movie, credits, videos } = movieDetails;
 
-    // console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
+    // console.log('-- MDetailsContainer.render(), movieDetails:', movieDetails);
 
     return (
-      <MovieCardContextProvider
+      <MDetailsContextProvider
         credits={credits.data}
         videos={videos.data}
         movie={movie.data}
@@ -76,12 +76,12 @@ class MovieCardContainer extends Component {
           movie={movie.data}
           isLoading={movie.isLoading}
         />
-      </MovieCardContextProvider>
+      </MDetailsContextProvider>
     );
   }
 };
 
-MovieCardContainer.propTypes = {
+MDetailsContainer.propTypes = {
   movieDetails: PT.shape({
     movie: PT.shape({
       isLoading: PT.bool.isRequired,
@@ -103,4 +103,4 @@ MovieCardContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MDetailsContainer);

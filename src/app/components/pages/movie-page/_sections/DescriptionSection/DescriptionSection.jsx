@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withMovieCardContext } from 'app_hocs';
+import { withMDetailsContext } from 'app_hocs';
 import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
@@ -65,4 +65,4 @@ DescriptionSection.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(DescriptionSection);
+export default withMDetailsContext(DescriptionSection);

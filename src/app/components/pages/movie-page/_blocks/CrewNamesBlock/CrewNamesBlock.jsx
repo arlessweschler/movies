@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 
-import { withMovieCardContext } from 'app_hocs';
+import { withMDetailsContext } from 'app_hocs';
 
 function CrewNamesBlock(props) {
   const { cls_label = '', cls_value = '', label, searchParams, context } = props;
@@ -41,4 +41,4 @@ CrewNamesBlock.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(CrewNamesBlock);
+export default withMDetailsContext(CrewNamesBlock);

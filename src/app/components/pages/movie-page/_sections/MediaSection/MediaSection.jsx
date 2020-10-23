@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withMovieCardContext } from 'app_hocs';
+import { withMDetailsContext } from 'app_hocs';
 import { PlayerBlock, PosterBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
@@ -70,4 +70,4 @@ MediaSection.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(MediaSection);
+export default withMDetailsContext(MediaSection);

@@ -3,9 +3,9 @@ import PT from 'prop-types';
 
 import { isEmpty } from 'app_services/UtilsService';
 
-const MovieCardContext = createContext();
+const MDetailsContext = createContext();
 
-class MovieCardContextProvider extends Component {
+class MDetailsContextProvider extends Component {
   getCrewNames = ({ department, job }) => {
     const { credits } = this.props;
     const { crew } = credits;
@@ -58,7 +58,7 @@ class MovieCardContextProvider extends Component {
     const { movie, videos, credits } = this.props;
 
     return (
-      <MovieCardContext.Provider value={{
+      <MDetailsContext.Provider value={{
         movie,
         videos,
         credits,
@@ -66,12 +66,12 @@ class MovieCardContextProvider extends Component {
         getTrailer: this.getTrailer
       }} >
         {this.props.children}
-      </MovieCardContext.Provider>
+      </MDetailsContext.Provider>
     );
   }
 }
 
-MovieCardContextProvider.propTypes = {
+MDetailsContextProvider.propTypes = {
   movie: PT.shape({
     title: PT.string,
     production_countries: PT.array,
@@ -91,5 +91,5 @@ MovieCardContextProvider.propTypes = {
   videos: PT.array.isRequired
 };
 
-export { MovieCardContextProvider };
-export default MovieCardContext;
+export { MDetailsContextProvider };
+export default MDetailsContext;
