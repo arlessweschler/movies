@@ -23,12 +23,12 @@ $b_top: #{$b}-top;
     }
 
     .#{$b_top}__icon {
-      color: $lightgray;
+      color: $gray;
     }
 
     .#{$b_top}__text {
       margin-left: 5px;
-      color: $gray;
+      color: $lightgray;
     }
   }
 }

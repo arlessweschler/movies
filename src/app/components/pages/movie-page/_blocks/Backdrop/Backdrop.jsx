@@ -10,15 +10,14 @@ const Backdrop = ({ data }) => {
   const bgImagePath = `${TMDB_IMAGE_URL.large}${backdrop_path}`;
 
   return (
-    <Fragment>
-      <div
-        className="movie-backdrop w-100 h-100 position-fixed fixed-top"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage: `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0, .5)), url("${bgImagePath}")`
-        }}
-      />
-    </Fragment>
+    <div
+      className="movie-backdrop w-100 h-100 position-fixed fixed-top"
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: backdrop_path ? `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0, .5)), url("${bgImagePath}")` : "none",
+        backgroundColor: backdrop_path ? "none" : "black"
+      }}
+    />
   );
 }
 

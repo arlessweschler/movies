@@ -4,35 +4,36 @@ import PT from 'prop-types';
 import { withMovieCardContext } from 'app_hocs';
 
 function CrewNames(props) {
-  const { label, searchParams, context } = props;
+  const { cls_label = '', cls_value = '', label, searchParams, context } = props;
   const { getCrewNames } = context;
 
   const names = getCrewNames(searchParams);
+  if (!names) return null;
 
   return (
     <Fragment>
-      {names
-        ? (
-          <div className="mb-2">
-            <span className="text-secondary">
-              {label}:
-            </span>
+      <div className={cls_label}>
+        {label}:
+      </div>
 
-            <span className="p-1">
-              {names}
-            </span>
-          </div>
-        )
-        : ''}
+      <div className={cls_value}>
+        {names}
+      </div>
     </Fragment>
   );
 };
 
 CrewNames.propTypes = {
+  cls_label: PT.string,
+  cls_value: PT.string,
+
   label: PT.string.isRequired,
   searchParams: PT.shape({
     department: PT.string.isRequired,
-    job: PT.string.isRequired
+    job: PT.oneOfType([
+      PT.array,
+      PT.string
+    ]).isRequired
   }).isRequired,
 
   context: PT.shape({

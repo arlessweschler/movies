@@ -34,8 +34,8 @@ function MediaSection({ cls_base, transparent, context }) {
 
 
   return (
-    <section className={cn(b('section', { "is-transparent": transparent }), 'px-0 pt-4 pb-4')}>
-      <Row cls="px-4">
+    <section className={cn(b('section', { "is-transparent": transparent }), 'px-0 pt-1 pb-4')}>
+      <Row cls="px-3">
         <Column
           cls={cls.poster_col}
           size={4} smallFullWidth

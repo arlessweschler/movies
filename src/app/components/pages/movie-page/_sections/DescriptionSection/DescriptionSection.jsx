@@ -4,7 +4,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { withMovieCardContext } from 'app_hocs';
-import { Title, Tags, Rating } from 'app_components/pages/movie-page/_blocks';
+import { Title, Tags, Rating, CrewNamesList } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
 function DescriptionSection({ cls_base, transparent, context }) {
@@ -34,6 +34,10 @@ function DescriptionSection({ cls_base, transparent, context }) {
           />
         </Column>
       </Row>
+
+      <CrewNamesList
+        cls={`${cls_base}-crew`}
+      />
 
       <hr />
 

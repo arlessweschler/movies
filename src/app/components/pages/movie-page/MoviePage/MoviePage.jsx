@@ -5,7 +5,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
-import { DescriptionSection, MediaSection, CrewSection, ActorsSection } from 'app_components/pages/movie-page/_sections';
+import { DescriptionSection, MediaSection, ActorsSection } from 'app_components/pages/movie-page/_sections';
 import { Backdrop } from 'app_components/pages/movie-page/_blocks';
 
 function MoviePage({ movie, isLoading }) {
@@ -36,11 +36,6 @@ function MoviePage({ movie, isLoading }) {
             <MediaSection
               cls_base={cls_base}
               transparent={true}
-            />
-
-            <CrewSection
-              cls_base={cls_base}
-              transparent={false}
             />
 
             <ActorsSection

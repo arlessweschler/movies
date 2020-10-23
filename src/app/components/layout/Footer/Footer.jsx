@@ -34,7 +34,7 @@ const Footer = () => {
             href="https://www.themoviedb.org/"
             target="_blank"
           >
-            Data API provided by
+            API powered by
           <img
               className="ml-1"
               src={tmdbLogo}

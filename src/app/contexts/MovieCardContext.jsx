@@ -13,20 +13,28 @@ class MovieCardContextProvider extends Component {
       return null;
     }
 
-    const persons = crew.filter(item =>
-      (item.department === department) &&
-      (item.job === job)
-    );
+    const isJobsArray = Array.isArray(job);
+
+    const persons = [...new Set(crew.filter(item => {
+      return (
+        (item.department === department) &&
+        (isJobsArray
+          ? job.includes(item.job)
+          : (item.job === job)
+        )
+      );
+    }
+    ).map(p => p.name))];
 
     if (isEmpty(persons)) {
       return null;
     }
 
     return persons.map(
-      (item, i) =>
+      (person, i) =>
         i != (persons.length - 1)
-          ? `${item.name}, `
-          : item.name
+          ? `${person}, `
+          : person
     );
   };
 

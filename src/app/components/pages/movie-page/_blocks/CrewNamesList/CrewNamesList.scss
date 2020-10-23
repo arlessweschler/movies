@@ -1,0 +1,15 @@
+@import "app_assets/css/variables";
+
+$b: $movie-page-cls;
+$b_crew: #{$b}-crew;
+
+.#{$b} {
+  .#{$b_crew} {
+    .#{$b_crew}__label {
+      color: $gray;
+    }
+    .#{$b_crew}__value {
+      color: $lightgray;
+    }
+  }
+}

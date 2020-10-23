@@ -1,7 +1,7 @@
 import './Layout.scss';
 
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import PT from 'prop-types';
 
 import { Header, Footer } from 'app_components/layout';
 
@@ -20,9 +20,9 @@ const Layout = (props) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
   ])
 };
 

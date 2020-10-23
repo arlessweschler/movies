@@ -17,11 +17,11 @@ function ActorsSection({ cls_base, transparent, context }) {
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
   return (
-    <section className={b('section', { "is-transparent": transparent })}>
+    <Fragment>
       {
         isNotEmpty(cast)
           ?
-          <Fragment>
+          <section className={b('section', { "is-transparent": transparent })}>
             <div className="row">
               <h2>Actors:</h2>
             </div>
@@ -59,10 +59,11 @@ function ActorsSection({ cls_base, transparent, context }) {
               )}
 
             </div>
-          </Fragment>
+          </section>
           : ''
       }
-    </section>
+
+    </Fragment>
   );
 };
 

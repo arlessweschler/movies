@@ -36,7 +36,7 @@ const commonConfig = {
     rules: [
       rules.jsx,
       {
-        test: /\.(jpe?g|jpg|png|gif)$/,
+        test: /\.(jpe?g|jpg|png|gif|svg)$/,
         use: ['url-loader']
       },
       {
