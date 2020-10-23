@@ -1,63 +1,60 @@
 $image-width: 173px;
 $image-height: 260px;
 
-.cstm-list {
+.movies-list {
+  margin-top: 20px;
   position: relative;
   display: flex;
 
-  .movies-list {
-    margin-top: 20px;
+  .card {
+    width: 175px;
+    margin-bottom: 20px;
 
-    .card {
-      width: 175px;
-      margin-bottom: 20px;
+    &.movie-link {
+      transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 
-      &.movie-link {
-        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12);
-
-        &:hover {
-          text-decoration: none;
-          transform: scale(1.05);
-        }
-      }
-
-      &-body {
-        position: relative;
-        padding: 0.85rem;
-        background-color: #222943;
-        color: #fff;
-      }
-
-      &-title {
-        line-height: 1.2;
-      }
-
-      &-rating {
-        position: absolute;
-        min-width: 35px;
-        right: 7px;
-        top: 7px;
-        padding: 5px;
-        font-size: 0.8em;
-        text-align: center;
-        background-color: #212529;
-        color: #ffc107;
-        border: 2px #343a40 solid;
-        border-radius: 50%;
-      }
-
-      &-genres {
-        color: lightslategray;
-      }
-
-      img {
-        width: $image-width;
-        height: $image-height;
+      &:hover {
+        text-decoration: none;
+        transform: scale(1.05);
       }
     }
 
-    .no-image {
-      object-fit: contain;
+    &-body {
+      position: relative;
+      padding: 0.85rem;
+      background-color: #222943;
+      color: #fff;
     }
+
+    &-title {
+      line-height: 1.2;
+    }
+
+    &-rating {
+      position: absolute;
+      min-width: 35px;
+      right: 7px;
+      top: 7px;
+      padding: 5px;
+      font-size: 0.8em;
+      text-align: center;
+      background-color: #212529;
+      color: #ffc107;
+      border: 2px #343a40 solid;
+      border-radius: 50%;
+    }
+
+    &-genres {
+      color: lightslategray;
+    }
+
+    img {
+      width: $image-width;
+      height: $image-height;
+    }
+  }
+
+  .no-image {
+    object-fit: contain;
   }
 }

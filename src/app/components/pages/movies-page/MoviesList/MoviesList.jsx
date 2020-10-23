@@ -15,12 +15,12 @@ function MoviesListPage(props) {
     <Fragment>
       {error && <p>{error}</p>}
 
-      <div className="cstm-list">
+      {/* <div className="cstm-list"> */}
         {isLoading && <ProgressBar />}
 
         {
           isNotEmpty(movies)
-            ? <div className="d-flex flex-wrap justify-content-between movies-list">
+            ? <div className="movies-list d-flex flex-wrap justify-content-between">
               {movies.map((movie) =>
                 <MovieItem
                   key={uuidv4()}
@@ -30,7 +30,7 @@ function MoviesListPage(props) {
             </div>
             : ''
         }
-      </div>
+      {/* </div> */}
     </Fragment >
   );
 };

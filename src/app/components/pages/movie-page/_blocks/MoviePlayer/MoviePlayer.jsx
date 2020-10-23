@@ -29,8 +29,8 @@ function MoviePlayer(props) {
         playing={false}
         controls={true}
         onReady={() => setLoading(false)}
-      // устанавливает превью изображение, при клике на которое загружается плеер
-      // light
+        // устанавливает превью изображение, при клике на которое загружается плеер
+        light
       />
     </Fragment>
   );

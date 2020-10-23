@@ -1,6 +1,7 @@
-@import 'app_assets/css/variables';
+@import 'app_assets/css/variables/base_classes';
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-page-cls;
+$b: $movie-details-base-cls;
 $b_rate: #{$b}-rating;
 
 .#{$b} {

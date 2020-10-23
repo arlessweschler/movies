@@ -1,6 +1,6 @@
-@import "app_assets/css/variables";
+@import "app_assets/css/variables/base_classes";
 
-$b: $movie-page-cls;
+$b: $movie-details-base-cls;
 
 @mixin embed-responsive-item {
   position: absolute;

@@ -121,11 +121,13 @@ class MoviesListContainer extends Component {
           genres={moviesGenres.data}
           linkMovie={this.linkMovie}
         >
-          <MoviesList
-            movies={data.results}
-            isLoading={isLoading}
-            error={error}
-          />
+          <Row>
+            <MoviesList
+              movies={data.results}
+              isLoading={isLoading}
+              error={error}
+            />
+          </Row>
         </MoviesListContextProvider>
       </Fragment>
     );
