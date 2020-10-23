@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import MListContext from 'app_contexts/MListContext';
+import { withMListContext } from 'app_hocs';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
-function ItemBlock({ movie }) {
+function ItemBlock(props) {
+  const { movie, context } = props;
   const { id, poster_path, title, genre_ids, vote_average } = movie;
-  const { printGenres, linkMovie } = useContext(MListContext);
+  const { printGenres, linkMovie } = context;
 
   return (
     <div
@@ -47,7 +48,12 @@ ItemBlock.propTypes = {
     title: PT.string.isRequired,
     genre_ids: PT.array,
     vote_average: PT.number,
+  }).isRequired,
+
+  context: PT.shape({
+    printGenres: PT.func.isRequired,
+    linkMovie: PT.func.isRequired
   }).isRequired
 };
 
-export default ItemBlock;
+export default withMListContext(ItemBlock);

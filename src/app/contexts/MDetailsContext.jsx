@@ -55,7 +55,7 @@ class MDetailsContextProvider extends Component {
   };
 
   render() {
-    const { movie, videos, credits } = this.props;
+    const { movie, videos, credits, children } = this.props;
 
     return (
       <MDetailsContext.Provider value={{
@@ -65,7 +65,7 @@ class MDetailsContextProvider extends Component {
         getCrewNames: this.getCrewNames,
         getTrailer: this.getTrailer
       }} >
-        {this.props.children}
+        {children}
       </MDetailsContext.Provider>
     );
   }

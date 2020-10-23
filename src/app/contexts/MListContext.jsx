@@ -30,13 +30,15 @@ class MListContextProvider extends Component {
   };
 
   render() {
+    const { genres, linkMovie, children } = this.props;
+
     return (
       <MListContext.Provider value={{
-        genres: this.props.genres,
-        linkMovie: this.props.linkMovie,
+        genres,
+        linkMovie,
         printGenres: this.printGenres
       }} >
-        {this.props.children}
+        {children}
       </MListContext.Provider>
     );
   }
