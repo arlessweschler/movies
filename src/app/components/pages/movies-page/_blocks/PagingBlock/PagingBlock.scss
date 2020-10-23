@@ -1,27 +1,21 @@
 @import "app_assets/css/variables/colors";
 
 ul.pagination {
-  a {
-    color: $lightgray;
-
-    &:hover {
-      color: $black;
-      font-weight: bold;
-      text-decoration: none;
-    }
-  }
-
   li {
     padding: 5px;
     border: 1px solid transparent;
 
     @media (max-width: 576px) {
-      padding: 3px;
+      padding: 4px;
     }
 
     &.active {
       border-color: lightgray;
-      
+
+      @media (max-width: 576px) {
+        border-color: transparent;
+      }
+
       a {
         color: $black;
         font-weight: bold;
@@ -38,10 +32,19 @@ ul.pagination {
       padding: 5px;
       outline: none;
       cursor: pointer;
-      // color: lightgray;
+      color: $lightgray;
 
       @media (max-width: 576px) {
-        padding: 3px;
+        padding: 0px;
+      }
+
+      &:hover {
+        color: $black;
+        text-decoration: none;
+
+        &:not(.pagination__link--prev):not(.pagination__link--next) {
+          font-weight: bold;
+        }
       }
     }
   }
