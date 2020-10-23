@@ -11,17 +11,18 @@ function PagingBlock(props) {
     <ReactPaginate
       previousLabel="&larr;"
       nextLabel="&rarr;"
-      breakLabel={"..."}
-      breakClassName={"break-me"}
+      breakLabel="..."
+      breakClassName="break-me"
       pageCount={props.pageCount}
       marginPagesDisplayed={2}
-      pageRangeDisplayed={5}
+      pageRangeDisplayed={3}
       onPageChange={props.onPageChange}
       disableInitialCallback={true}
       initialPage={props.initialPage}
       forcePage={props.initialPage}
-      containerClassName={"pagination m-0"}
-      activeClassName={"active"}
+      containerClassName="pagination m-0"
+      pageLinkClassName="pagination__link"
+      activeClassName="active"
     />
   );
 };

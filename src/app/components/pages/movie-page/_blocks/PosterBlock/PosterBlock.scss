@@ -1,10 +1,11 @@
 @import 'app_assets/css/variables/base_classes';
+@import "app_assets/css/variables/colors";
 
 $b: $movie-details-base-cls;
 
 .#{$b} {
   .#{$b}__poster {
-    border: 1px solid #212529 !important;
+    border: 1px solid $black !important;
 
     // fit parent column width if no responsive needed
     width: 100%;

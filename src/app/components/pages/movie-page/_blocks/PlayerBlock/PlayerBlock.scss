@@ -1,4 +1,5 @@
 @import "app_assets/css/variables/base_classes";
+@import "app_assets/css/variables/colors";
 
 $b: $movie-details-base-cls;
 
@@ -19,7 +20,7 @@ $b: $movie-details-base-cls;
     }
 
     iframe {
-      border: 1px solid #212529;
+      border: 1px solid $black;
     }
   }
 

@@ -1,12 +1,31 @@
+@import "app_assets/css/variables/colors";
+
 ul.pagination {
-  color: gray;
+  a {
+    color: $lightgray;
+
+    &:hover {
+      color: $black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
 
   li {
-    padding: 10px;
+    padding: 5px;
     border: 1px solid transparent;
 
+    @media (max-width: 576px) {
+      padding: 3px;
+    }
+
     &.active {
-      border: 1px solid lightgray;
+      border-color: lightgray;
+      
+      a {
+        color: $black;
+        font-weight: bold;
+      }
     }
 
     &.disabled {
@@ -19,7 +38,11 @@ ul.pagination {
       padding: 5px;
       outline: none;
       cursor: pointer;
-    }
+      // color: lightgray;
 
+      @media (max-width: 576px) {
+        padding: 3px;
+      }
+    }
   }
 }
