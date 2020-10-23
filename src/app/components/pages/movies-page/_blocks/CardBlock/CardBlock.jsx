@@ -6,7 +6,7 @@ import { TMDB_IMAGE_URL } from 'app_config';
 import { withMListContext } from 'app_hocs';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
-function ItemBlock(props) {
+function CardBlock(props) {
   const { movie, context } = props;
   const { id, poster_path, title, genre_ids, vote_average } = movie;
   const { printGenres, linkMovie } = context;
@@ -42,7 +42,7 @@ function ItemBlock(props) {
   );
 };
 
-ItemBlock.propTypes = {
+CardBlock.propTypes = {
   movie: PT.shape({
     poster_path: PT.string,
     title: PT.string.isRequired,
@@ -56,4 +56,4 @@ ItemBlock.propTypes = {
   }).isRequired
 };
 
-export default withMListContext(ItemBlock);
+export default withMListContext(CardBlock);

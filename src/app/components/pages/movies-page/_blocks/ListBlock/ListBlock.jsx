@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { ItemBlock } from 'app_components/pages/movies-page/_blocks';
+import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 import { ProgressBar } from 'app_components/layout';
 
 function ListBlock(props) {
@@ -28,7 +28,7 @@ function ListBlock(props) {
         isNotEmpty(movies)
           ? <div className={cn(b(), 'd-flex flex-wrap justify-content-between')}>
             {movies.map((movie) =>
-              <ItemBlock
+              <CardBlock
                 key={uuidv4()}
                 movie={movie}
               />
