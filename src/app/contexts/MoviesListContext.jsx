@@ -1,4 +1,5 @@
 import React, { Component, createContext } from 'react';
+import PT from 'prop-types';
 
 import { isEmpty } from 'app_services/UtilsService';
 
@@ -40,6 +41,11 @@ class MoviesListContextProvider extends Component {
     );
   }
 }
+
+MoviesListContextProvider.propTypes = {
+  genres: PT.array.isRequired,
+  linkMovie: PT.func.isRequired
+};
 
 export { MoviesListContextProvider };
 export default MoviesListContext;

@@ -1,4 +1,5 @@
 import React, { Component, createContext } from 'react';
+import PT from 'prop-types';
 
 import { isEmpty } from 'app_services/UtilsService';
 
@@ -41,6 +42,10 @@ class MovieCardContextProvider extends Component {
   getTrailer = (searchParams) => {
     const { videos } = this.props;
 
+    if (isEmpty(videos) || (typeof videos.find !== 'function')) {
+      return null;
+    }
+
     return videos.find((video) => {
       return (
         (video.site == searchParams.site) &&
@@ -65,6 +70,26 @@ class MovieCardContextProvider extends Component {
     );
   }
 }
+
+MovieCardContextProvider.propTypes = {
+  movie: PT.shape({
+    title: PT.string,
+    production_countries: PT.array,
+    genres: PT.array,
+    release_date: PT.string,
+    runtime: PT.number,
+    vote_average: PT.number,
+    overview: PT.string,
+    poster_path: PT.string
+  }).isRequired,
+
+  credits: PT.shape({
+    crew: PT.array,
+    cast: PT.array
+  }).isRequired,
+
+  videos: PT.array.isRequired
+};
 
 export { MovieCardContextProvider };
 export default MovieCardContext;
