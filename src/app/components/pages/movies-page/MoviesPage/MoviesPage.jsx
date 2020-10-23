@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import PTS from 'app_services/PropTypesService';
 import { Row } from 'app_components/layout';
-import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
+import { MListContextProvider } from 'app_contexts/MListContext';
 import { ToolbarBlock, PagingBlock, ListBlock } from
 'app_components/pages/movies-page/_blocks';
 
@@ -19,11 +19,11 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
         <PagingBlock {...data_paging} />
       </Row>
 
-      <MoviesListContextProvider {...data_genresContext}>
+      <MListContextProvider {...data_genresContext}>
         <Row>
           <ListBlock {...data_moviesList} />
         </Row>
-      </MoviesListContextProvider>
+      </MListContextProvider>
     </Fragment>
   );
 };

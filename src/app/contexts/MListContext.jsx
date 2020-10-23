@@ -3,9 +3,9 @@ import PT from 'prop-types';
 
 import { isEmpty } from 'app_services/UtilsService';
 
-const MoviesListContext = createContext();
+const MListContext = createContext();
 
-class MoviesListContextProvider extends Component {
+class MListContextProvider extends Component {
   printGenres = ({ ids, cls }) => {
     const { genres } = this.props;
 
@@ -31,21 +31,21 @@ class MoviesListContextProvider extends Component {
 
   render() {
     return (
-      <MoviesListContext.Provider value={{
+      <MListContext.Provider value={{
         genres: this.props.genres,
         linkMovie: this.props.linkMovie,
         printGenres: this.printGenres
       }} >
         {this.props.children}
-      </MoviesListContext.Provider>
+      </MListContext.Provider>
     );
   }
 }
 
-MoviesListContextProvider.propTypes = {
+MListContextProvider.propTypes = {
   genres: PT.array.isRequired,
   linkMovie: PT.func.isRequired
 };
 
-export { MoviesListContextProvider };
-export default MoviesListContext;
+export { MListContextProvider };
+export default MListContext;

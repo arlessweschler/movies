@@ -3,12 +3,12 @@ import PT from 'prop-types';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import MoviesListContext from 'app_contexts/MoviesListContext';
+import MListContext from 'app_contexts/MListContext';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
 function ItemBlock({ movie }) {
   const { id, poster_path, title, genre_ids, vote_average } = movie;
-  const { printGenres, linkMovie } = useContext(MoviesListContext);
+  const { printGenres, linkMovie } = useContext(MListContext);
 
   return (
     <div

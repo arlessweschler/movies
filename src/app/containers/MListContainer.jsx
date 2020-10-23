@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class MoviesListContainer extends Component {
+class MListContainer extends Component {
   constructor() {
     super();
     this.getUrlParams = this.getUrlParams.bind(this);
@@ -124,7 +124,7 @@ class MoviesListContainer extends Component {
   }
 };
 
-MoviesListContainer.propTypes = {
+MListContainer.propTypes = {
   actions: PT.shape({
     getMovies: PT.func.isRequired,
     getGenres: PT.func.isRequired,
@@ -152,4 +152,4 @@ MoviesListContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MListContainer);
