@@ -1,16 +1,23 @@
+import './MoviesPage.scss';
+
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
 
 import PTS from 'app_services/PropTypesService';
-import { Row } from 'app_components/layout';
+import { Row, Column } from 'app_components/layout';
 import { MListContextProvider } from 'app_contexts/MListContext';
 import { ToolbarBlock, PagingBlock, ListBlock } from
-'app_components/pages/movies-page/_blocks';
+  'app_components/pages/movies-page/_blocks';
 
 function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_moviesList }) {
 
+  // base component class
+  const cls_base = 'movies-list';
+  const b = b_.with(cls_base);
+
   return (
-    <Fragment>
+    <div className={b()}>
       <Row cls="mb-2">
         <ToolbarBlock {...data_toolbar} />
       </Row>
@@ -24,7 +31,7 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
           <ListBlock {...data_moviesList} />
         </Row>
       </MListContextProvider>
-    </Fragment>
+    </div>
   );
 };
 

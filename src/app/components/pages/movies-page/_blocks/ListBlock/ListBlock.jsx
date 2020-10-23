@@ -2,8 +2,6 @@ import './ListBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
-import b_ from 'b_';
-import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import PTS from 'app_services/PropTypesService';
@@ -12,12 +10,8 @@ import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 import { ProgressBar } from 'app_components/layout';
 
 function ListBlock(props) {
-
-  // base component class
-  const cls_base = 'movies-list';
-  const b = b_.with(cls_base);
-
   const { isLoading, error, movies } = props;
+
   return (
     <Fragment>
       {error && <p>{error}</p>}
@@ -26,7 +20,7 @@ function ListBlock(props) {
 
       {
         isNotEmpty(movies)
-          ? <div className={cn(b(), 'd-flex flex-wrap justify-content-between')}>
+          ? <div className="d-flex flex-wrap justify-content-between mt-3">
             {movies.map((movie) =>
               <CardBlock
                 key={uuidv4()}

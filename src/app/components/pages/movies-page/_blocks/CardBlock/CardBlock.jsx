@@ -1,3 +1,5 @@
+import './CardBlock.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
