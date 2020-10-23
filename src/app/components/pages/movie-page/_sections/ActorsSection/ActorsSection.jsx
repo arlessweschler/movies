@@ -67,6 +67,9 @@ function ActorsSection({ cls_base, transparent, context }) {
 };
 
 ActorsSection.propTypes = {
+  cls_base: PT.string.isRequired,
+  transparent: PT.bool.isRequired,
+
   context: PT.shape({
     credits: PT.shape({
       cast: PT.array

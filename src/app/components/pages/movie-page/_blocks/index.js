@@ -4,13 +4,14 @@ import Title from 'app_components/pages/movie-page/_blocks/Title/Title';
 import Tags from 'app_components/pages/movie-page/_blocks/Tags/Tags';
 import Rating from 'app_components/pages/movie-page/_blocks/Rating/Rating';
 import Poster from 'app_components/pages/movie-page/_blocks/Poster/Poster';
+import Backdrop from 'app_components/pages/movie-page/_blocks/Backdrop/Backdrop';
 
 export {
   CrewNames,
   MoviePlayer,
-
   Title,
   Tags,
   Rating,
-  Poster
+  Poster,
+  Backdrop
 };

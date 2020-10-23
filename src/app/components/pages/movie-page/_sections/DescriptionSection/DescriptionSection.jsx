@@ -46,6 +46,7 @@ function DescriptionSection({ cls_base, transparent, context }) {
 
 DescriptionSection.propTypes = {
   cls_base: PT.string.isRequired,
+  transparent: PT.bool.isRequired,
 
   context: PT.shape({
     movie: PT.shape({

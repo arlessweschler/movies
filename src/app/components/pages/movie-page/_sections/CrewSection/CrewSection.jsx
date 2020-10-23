@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
@@ -25,6 +26,11 @@ function CrewSection({ cls_base, transparent }) {
       </Row>
     </section>
   );
+};
+
+CrewSection.propTypes = {
+  cls_base: PT.string.isRequired,
+  transparent: PT.bool.isRequired
 };
 
 export default CrewSection;

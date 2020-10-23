@@ -61,6 +61,7 @@ function MediaSection({ cls_base, transparent, context }) {
 
 MediaSection.propTypes = {
   cls_base: PT.string.isRequired,
+  transparent: PT.bool.isRequired,
 
   context: PT.shape({
     movie: PT.shape({
