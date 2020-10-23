@@ -3,7 +3,6 @@ import './ActorsSection.scss';
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
-import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TMDB_IMAGE_URL } from 'app_config';
