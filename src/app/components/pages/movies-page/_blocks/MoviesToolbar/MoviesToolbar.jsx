@@ -1,4 +1,4 @@
-import 'app_components/pages/movies-page/MoviesToolbar/MoviesToolbar.scss';
+import './MoviesToolbar.scss';
 
 import React from 'react';
 import PT from 'prop-types';

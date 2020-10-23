@@ -5,7 +5,7 @@ import PTS from 'app_services/PropTypesService';
 import { Row } from 'app_components/layout';
 import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
 import { MoviesToolbar, MoviesPaging, MoviesList } from
-  'app_components/pages';
+'app_components/pages/movies-page/_blocks';
 
 function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_moviesList }) {
 

@@ -1,4 +1,4 @@
-import 'app_components/pages/movies-page/MoviesList/MoviesList.scss';
+import './MoviesList.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -8,10 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { MovieItem } from 'app_components/pages';
+import { MovieItem } from 'app_components/pages/movies-page/_blocks';
 import { ProgressBar } from 'app_components/layout';
 
-function MoviesListPage(props) {
+function MoviesList(props) {
 
   // base component class
   const cls_base = 'movies-list';
@@ -40,10 +40,10 @@ function MoviesListPage(props) {
   );
 };
 
-MoviesListPage.propTypes = {
+MoviesList.propTypes = {
   isLoading: PT.bool.isRequired,
   error: PTS.nullOrString,
   movies: PT.array
 };
 
-export default MoviesListPage;
+export default MoviesList;
