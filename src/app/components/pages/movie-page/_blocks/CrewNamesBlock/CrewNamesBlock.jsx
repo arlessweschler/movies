@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import { withMovieCardContext } from 'app_hocs';
 
-function CrewNames(props) {
+function CrewNamesBlock(props) {
   const { cls_label = '', cls_value = '', label, searchParams, context } = props;
   const { getCrewNames } = context;
 
@@ -23,7 +23,7 @@ function CrewNames(props) {
   );
 };
 
-CrewNames.propTypes = {
+CrewNamesBlock.propTypes = {
   cls_label: PT.string,
   cls_value: PT.string,
 
@@ -41,4 +41,4 @@ CrewNames.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(CrewNames);
+export default withMovieCardContext(CrewNamesBlock);

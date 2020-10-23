@@ -1,19 +1,19 @@
-import CrewNames from 'app_components/pages/movie-page/_blocks/CrewNames/CrewNames';
-import CrewNamesList from 'app_components/pages/movie-page/_blocks/CrewNamesList/CrewNamesList';
-import MoviePlayer from 'app_components/pages/movie-page/_blocks/MoviePlayer/MoviePlayer';
-import Title from 'app_components/pages/movie-page/_blocks/Title/Title';
-import Tags from 'app_components/pages/movie-page/_blocks/Tags/Tags';
-import Rating from 'app_components/pages/movie-page/_blocks/Rating/Rating';
-import Poster from 'app_components/pages/movie-page/_blocks/Poster/Poster';
-import Backdrop from 'app_components/pages/movie-page/_blocks/Backdrop/Backdrop';
+import CrewNamesBlock from 'app_components/pages/movie-page/_blocks/CrewNamesBlock/CrewNamesBlock';
+import CrewListBlock from 'app_components/pages/movie-page/_blocks/CrewListBlock/CrewListBlock';
+import PlayerBlock from 'app_components/pages/movie-page/_blocks/PlayerBlock/PlayerBlock';
+import TitleBlock from 'app_components/pages/movie-page/_blocks/TitleBlock/TitleBlock';
+import TagsBlock from 'app_components/pages/movie-page/_blocks/TagsBlock/TagsBlock';
+import RatingBlock from 'app_components/pages/movie-page/_blocks/RatingBlock/RatingBlock';
+import PosterBlock from 'app_components/pages/movie-page/_blocks/PosterBlock/PosterBlock';
+import BackdropBlock from 'app_components/pages/movie-page/_blocks/BackdropBlock/BackdropBlock';
 
 export {
-  CrewNames,
-  CrewNamesList,
-  MoviePlayer,
-  Title,
-  Tags,
-  Rating,
-  Poster,
-  Backdrop
+  CrewNamesBlock,
+  CrewListBlock,
+  PlayerBlock,
+  TitleBlock,
+  TagsBlock,
+  RatingBlock,
+  PosterBlock,
+  BackdropBlock
 };

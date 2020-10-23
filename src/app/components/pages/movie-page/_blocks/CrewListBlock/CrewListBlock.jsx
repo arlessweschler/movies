@@ -1,4 +1,4 @@
-import './CrewNamesList.scss';
+import './CrewListBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -6,10 +6,10 @@ import b_ from 'b_';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-import { CrewNames } from 'app_components/pages/movie-page/_blocks';
+import { CrewNamesBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row } from 'app_components/layout';
 
-function CrewNamesList({ cls }) {
+function CrewListBlock({ cls }) {
   const b = b_.with(cls);
   const cls_defaults = {
     cls_label: cn(b('label'), 'pr-1 col-12 col-md-auto p-0'),
@@ -42,7 +42,7 @@ function CrewNamesList({ cls }) {
           key={uuidv4()}
           cls={b()}
         >
-          <CrewNames
+          <CrewNamesBlock
             {...cls_defaults}
             label={item.label}
             searchParams={item.searchParams}
@@ -53,8 +53,8 @@ function CrewNamesList({ cls }) {
   );
 };
 
-CrewNamesList.propTypes = {
+CrewListBlock.propTypes = {
   cls: PT.string.isRequired
 };
 
-export default CrewNamesList;
+export default CrewListBlock;

@@ -1,4 +1,4 @@
-import './Rating.scss';
+import './RatingBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -6,7 +6,7 @@ import b_ from 'b_';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-function Rating({ cls, data }) {
+function RatingBlock({ cls, data }) {
   const { vote_average } = data;
   const b = b_.with(cls);
 
@@ -26,7 +26,7 @@ function Rating({ cls, data }) {
   );
 };
 
-Rating.propTypes = {
+RatingBlock.propTypes = {
   cls: PT.string.isRequired,
 
   data: PT.shape({
@@ -34,4 +34,4 @@ Rating.propTypes = {
   }).isRequired
 };
 
-export default Rating;
+export default RatingBlock;

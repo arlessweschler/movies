@@ -4,7 +4,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { withMovieCardContext } from 'app_hocs';
-import { Title, Tags, Rating, CrewNamesList } from 'app_components/pages/movie-page/_blocks';
+import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
 function DescriptionSection({ cls_base, transparent, context }) {
@@ -17,25 +17,25 @@ function DescriptionSection({ cls_base, transparent, context }) {
     <section className={cn(b('section', { "is-transparent": transparent }))}>
       <Row>
         <Column size={9} cls="p-0">
-          <Title
+          <TitleBlock
             cls={cls_base}
             data={{ title, release_date }}
           />
-          <Tags
+          <TagsBlock
             cls={`${cls_base}-top`}
             data={{ production_countries, genres, runtime }}
           />
         </Column>
 
         <Column size={3} cls="p-0">
-          <Rating
+          <RatingBlock
             cls={`${cls_base}-rating`}
             data={{ vote_average }}
           />
         </Column>
       </Row>
 
-      <CrewNamesList
+      <CrewListBlock
         cls={`${cls_base}-crew`}
       />
 

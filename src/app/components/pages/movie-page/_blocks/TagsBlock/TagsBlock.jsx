@@ -1,4 +1,4 @@
-import './Tags.scss';
+import './TagsBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
@@ -9,7 +9,7 @@ import { faHistory, faVideo, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
 import { isNotEmpty } from 'app_services/UtilsService';
 
-function Tags({ cls, data }) {
+function TagsBlock({ cls, data }) {
   const { production_countries, genres, runtime } = data;
 
   const getDuration = mins => {
@@ -63,7 +63,7 @@ function Tags({ cls, data }) {
   );
 };
 
-Tags.propTypes = {
+TagsBlock.propTypes = {
   cls: PT.string.isRequired,
 
   data: PT.shape({
@@ -73,4 +73,4 @@ Tags.propTypes = {
   }).isRequired
 };
 
-export default Tags;
+export default TagsBlock;

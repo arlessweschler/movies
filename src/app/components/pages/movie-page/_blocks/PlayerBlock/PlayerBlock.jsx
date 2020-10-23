@@ -1,4 +1,4 @@
-import './MoviePlayer.scss';
+import './PlayerBlock.scss';
 
 import React, { Fragment, useState } from 'react';
 import PT from 'prop-types';
@@ -8,7 +8,7 @@ import { isEmpty } from 'app_services/UtilsService';
 import { ProgressBar } from 'app_components/layout';
 import { withMovieCardContext } from 'app_hocs';
 
-function MoviePlayer(props) {
+function PlayerBlock(props) {
   const { searchParams, context } = props;
   const { getTrailer } = context;
 
@@ -36,7 +36,7 @@ function MoviePlayer(props) {
   );
 };
 
-MoviePlayer.propTypes = {
+PlayerBlock.propTypes = {
   searchParams: PT.shape({
     site: PT.string.isRequired,
     type: PT.string.isRequired
@@ -47,4 +47,4 @@ MoviePlayer.propTypes = {
   }).isRequired
 };
 
-export default withMovieCardContext(MoviePlayer);
+export default withMovieCardContext(PlayerBlock);

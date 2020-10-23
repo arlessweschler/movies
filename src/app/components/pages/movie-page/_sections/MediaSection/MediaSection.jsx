@@ -4,7 +4,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { withMovieCardContext } from 'app_hocs';
-import { MoviePlayer, Poster } from 'app_components/pages/movie-page/_blocks';
+import { PlayerBlock, PosterBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
 function MediaSection({ cls_base, transparent, context }) {
@@ -40,7 +40,7 @@ function MediaSection({ cls_base, transparent, context }) {
           cls={cls.poster_col}
           size={4} smallFullWidth
         >
-          <Poster
+          <PosterBlock
             cls={cn(b('poster'), cls.poster)}
             data={{ poster_path }}
           />
@@ -50,7 +50,7 @@ function MediaSection({ cls_base, transparent, context }) {
           cls={cls.player_col}
           size={8} smallFullWidth
         >
-          <MoviePlayer
+          <PlayerBlock
             searchParams={{ site: 'YouTube', type: 'Trailer' }}
           />
         </Column>

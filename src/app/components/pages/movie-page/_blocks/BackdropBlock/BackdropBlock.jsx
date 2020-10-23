@@ -1,11 +1,11 @@
-import './Backdrop.scss';
+import './BackdropBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 
 import { TMDB_IMAGE_URL } from 'app_config'
 
-const Backdrop = ({ data }) => {
+const BackdropBlock = ({ data }) => {
   const { backdrop_path } = data;
   const bgImagePath = `${TMDB_IMAGE_URL.large}${backdrop_path}`;
 
@@ -21,10 +21,10 @@ const Backdrop = ({ data }) => {
   );
 }
 
-Backdrop.propTypes = {
+BackdropBlock.propTypes = {
   data: PT.shape({
     backdrop_path: PT.string
   }).isRequired
 };
 
-export default Backdrop;
+export default BackdropBlock;

@@ -1,4 +1,4 @@
-import './Poster.scss';
+import './PosterBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -7,7 +7,7 @@ import cn from 'classnames';
 import { TMDB_IMAGE_URL } from 'app_config';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
-function Poster({ cls, data }) {
+function PosterBlock({ cls, data }) {
   const { poster_path } = data;
 
   const classes = cn(cls, {
@@ -25,7 +25,7 @@ function Poster({ cls, data }) {
   );
 };
 
-Poster.propTypes = {
+PosterBlock.propTypes = {
   cls: PT.string,
 
   data: PT.shape({
@@ -33,4 +33,4 @@ Poster.propTypes = {
   }).isRequired
 };
 
-export default Poster;
+export default PosterBlock;

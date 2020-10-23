@@ -1,11 +1,11 @@
-import './Title.scss';
+import './TitleBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
 import moment from 'moment';
 import b_ from 'b_';
 
-function Title({ cls, data }) {
+function TitleBlock({ cls, data }) {
   const { title, release_date } = data;
   const b = b_.with(cls);
 
@@ -21,7 +21,7 @@ function Title({ cls, data }) {
   );
 };
 
-Title.propTypes = {
+TitleBlock.propTypes = {
   cls: PT.string.isRequired,
 
   data: PT.shape({
@@ -30,4 +30,4 @@ Title.propTypes = {
   }).isRequired
 };
 
-export default Title;
+export default TitleBlock;
