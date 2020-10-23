@@ -37,12 +37,3 @@ $b: $movie-details-base-cls;
     background-color: rgba(245, 245, 245, 0.2);
   }
 }
-
-.movie-backdrop {
-  background-color: #000;
-  animation: animateOpacity 1s ease;
-  animation-iteration-count: 1;
-  animation-fill-mode: none;
-  animation-play-state: running;
-  z-index: -1 !important;
-}

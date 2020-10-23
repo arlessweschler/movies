@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import PTS from 'app_services/PropTypesService';
 import { isEmpty } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
-import { ActorsSection } from 'app_components/pages/movie-page/_sections';
 import { MovieCardContextProvider } from 'app_contexts/MovieCardContext';
 import {
   getMovieDetails,
@@ -68,18 +67,16 @@ class MovieCardContainer extends Component {
     // console.log('-- MovieCardContainer.render(), movieDetails:', movieDetails);
 
     return (
-      <Fragment>
-        <MovieCardContextProvider
-          credits={credits.data}
-          videos={videos.data}
+      <MovieCardContextProvider
+        credits={credits.data}
+        videos={videos.data}
+        movie={movie.data}
+      >
+        <MoviePage
           movie={movie.data}
-        >
-          <MoviePage
-            movie={movie.data}
-            isLoading={movie.isLoading}
-          />
-        </MovieCardContextProvider>
-      </Fragment>
+          isLoading={movie.isLoading}
+        />
+      </MovieCardContextProvider>
     );
   }
 };

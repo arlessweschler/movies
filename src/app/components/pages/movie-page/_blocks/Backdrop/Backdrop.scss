@@ -1,0 +1,8 @@
+.movie-backdrop {
+  background-color: #000;
+  animation: animateOpacity 1s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  z-index: -1 !important;
+}

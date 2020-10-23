@@ -1,7 +1,10 @@
+@import "app_assets/css/variables/base_classes";
+
+$b: $movies-list-base-cls;
 $image-width: 173px;
 $image-height: 260px;
 
-.movies-list {
+.#{$b} {
   margin-top: 20px;
   position: relative;
   display: flex;

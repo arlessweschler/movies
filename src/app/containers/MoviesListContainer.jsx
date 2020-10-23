@@ -1,17 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 
-
+import PTS from 'app_services/PropTypesService';
 import { redirect } from 'app_history';
 import { isEmpty } from 'app_services/UtilsService';
-import PTS from 'app_services/PropTypesService';
-import { MoviesToolbar, MoviesPaging, MoviesList } from
-  'app_components/pages';
-import { MoviesListContextProvider } from 'app_contexts/MoviesListContext';
-import { Row, Column } from 'app_components/layout';
+import { MoviesPage } from 'app_components/pages';
 
 import {
   getMovies,
@@ -101,35 +97,29 @@ class MoviesListContainer extends Component {
     const { moviesType } = this.getUrlParams();
 
     return (
-      <Fragment>
-        <Row cls="mb-2">
-          <MoviesToolbar
-            activeFilter={moviesType}
-            handleFilter={this.handleFilter}
-          />
-        </Row>
+      <MoviesPage
+        data_toolbar={{
+          activeFilter: moviesType,
+          handleFilter: this.handleFilter
+        }}
 
-        <Row cls="mb-2">
-          <MoviesPaging
-            initialPage={data.page - 1}
-            pageCount={data.total_pages}
-            onPageChange={this.onPageChange}
-          />
-        </Row>
+        data_paging={{
+          initialPage: (data.page - 1),
+          pageCount: data.total_pages,
+          onPageChange: this.onPageChange
+        }}
 
-        <MoviesListContextProvider
-          genres={moviesGenres.data}
-          linkMovie={this.linkMovie}
-        >
-          <Row>
-            <MoviesList
-              movies={data.results}
-              isLoading={isLoading}
-              error={error}
-            />
-          </Row>
-        </MoviesListContextProvider>
-      </Fragment>
+        data_genresContext={{
+          genres: moviesGenres.data,
+          linkMovie: this.linkMovie
+        }}
+
+        data_moviesList={{
+          movies: data.results,
+          isLoading: isLoading,
+          error: error
+        }}
+      />
     );
   }
 };

@@ -9,6 +9,7 @@ import UsersPage from 'app_components/pages/users-page/UsersPage/UsersPage';
 import UserCardPage from 'app_components/pages/user-card-page/UserCardPage';
 
 // список фильмов
+import MoviesPage from 'app_components/pages/movies-page/MoviesPage/MoviesPage';
 import MoviesToolbar from 'app_components/pages/movies-page/MoviesToolbar/MoviesToolbar';
 import MoviesList from 'app_components/pages/movies-page/MoviesList/MoviesList';
 import MovieItem from 'app_components/pages/movies-page/MovieItem/MovieItem';
@@ -24,6 +25,7 @@ export {
   UsersPage,
   UserCardPage,
 
+  MoviesPage,
   MoviesToolbar,
   MoviesList,
   MovieItem,
