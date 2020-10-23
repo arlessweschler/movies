@@ -9,13 +9,11 @@ const Layout = (props) => {
   return (
     <Fragment>
       <Header />
-
       <main className="layout">
         <div className="container p-0">
           {props.children}
         </div>
       </main>
-
       <Footer />
     </Fragment>
   );

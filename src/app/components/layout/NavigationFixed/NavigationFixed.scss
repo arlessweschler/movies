@@ -1,17 +1,17 @@
-$linkColor: #ffd700;
+@import "app_assets/css/variables";
 
 .navbar {
   background-color: #292d32;
 
   .link-home {
-    color: $linkColor;
+    color: $yellow;
     font-size: 1.8rem;
     line-height: 0;
     font-weight: 500;
     font-family: "Bebas Neue", cursive;
 
     &:hover {
-      color: $linkColor;
+      color: $yellow;
       text-decoration: none;
     }
   }

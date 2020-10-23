@@ -1,4 +1,4 @@
-@import 'app_assets/css/variables';
+@import "app_assets/css/variables";
 
 $b: $movie-page-cls;
 
@@ -16,6 +16,10 @@ $b: $movie-page-cls;
   .movie-player {
     .react-player__preview {
       @include embed-responsive-item;
+    }
+
+    iframe {
+      border: 1px solid #212529;
     }
   }
 

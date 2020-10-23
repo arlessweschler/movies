@@ -1,16 +1,20 @@
 import React from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
+import cn from 'classnames';
 
 import { withMovieCardContext } from 'app_hocs';
 import { Title, Tags, Rating } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function DescriptionSection({ cls_base, context }) {
+function DescriptionSection({ cls_base, transparent, context }) {
   const { movie } = context;
   const { title, production_countries, genres, release_date, runtime, vote_average, overview } = movie;
 
+  const b = b_.B({ modSeparator: '--' }).with(cls_base);
+
   return (
-    <section className="mb-3">
+    <section className={cn(b('section', { "is-transparent": transparent }))}>
       <Row>
         <Column size={9} cls="p-0">
           <Title
@@ -30,6 +34,8 @@ function DescriptionSection({ cls_base, context }) {
           />
         </Column>
       </Row>
+
+      <hr />
 
       <Row>
         {overview}

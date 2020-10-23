@@ -1,20 +1,22 @@
-$linkColor: #000;
+@import "app_assets/css/variables";
 
-.footer {
-  color: #000;
+$b: "footer";
 
+.#{$b} {
   &__link-wrapper {
     display: inline;
+    color: $lightgray;
+
     @media (max-width: 575.98px) {
       display: block;
     }
   }
 
-  &__link {
-    color: $linkColor;
-
+  .#{$b}__link {
+    color: $lightgray;
+    
     &:hover {
-      color: $linkColor;
+      color: $white;
       text-decoration: none;
     }
   }
@@ -22,7 +24,7 @@ $linkColor: #000;
   .tmdb-logo {
     img {
       width: 85px;
-      margin-top: -3px;
+      margin-top: -2px;
     }
   }
 }

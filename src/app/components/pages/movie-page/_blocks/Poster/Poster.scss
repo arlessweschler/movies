@@ -4,6 +4,8 @@ $b: $movie-page-cls;
 
 .#{$b} {
   .#{$b}__poster {
+    border: 1px solid #212529 !important;
+
     // fit parent column width if no responsive needed
     width: 100%;
 

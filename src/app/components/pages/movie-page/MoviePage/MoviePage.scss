@@ -19,4 +19,34 @@ $b: $movie-page-cls;
       }
     }
   }
+
+  &__section {
+    padding: 20px 15px;
+    color: #212529;
+    background-color: #fff;
+    // background-color: #F5F5F5;
+
+    
+    // background-color: rgba(245, 245, 245, 0.9);
+    // background-color: rgba(245, 245, 245, 0.9);
+    // background-color: rgba(248, 248, 255, 0.9);
+  }
+
+  &__section--is-transparent {
+    color: #dee2e6;
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+
+  hr {
+    background-color: rgba(245, 245, 245, 0.2);
+  }
+}
+
+.movie-backdrop {
+  background-color: #000;
+  animation: animateOpacity 1s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  z-index: -1 !important;
 }

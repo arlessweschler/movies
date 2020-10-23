@@ -7,7 +7,7 @@ import { withMovieCardContext } from 'app_hocs';
 import { MoviePlayer, Poster } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function MediaSection({ cls_base, context }) {
+function MediaSection({ cls_base, transparent, context }) {
   const { movie } = context;
   const { poster_path } = movie;
 
@@ -32,9 +32,10 @@ function MediaSection({ cls_base, context }) {
     })
   };
 
+
   return (
-    <section className="mb-3">
-      <Row>
+    <section className={cn(b('section', { "is-transparent": transparent }), 'px-0 pt-4 pb-4')}>
+      <Row cls="px-4">
         <Column
           cls={cls.poster_col}
           size={4} smallFullWidth

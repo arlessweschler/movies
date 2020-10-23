@@ -2,18 +2,22 @@ import './ActorsSection.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
+import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TMDB_IMAGE_URL } from 'app_config';
 import { withMovieCardContext } from 'app_hocs';
 import { isNotEmpty } from 'app_services/UtilsService';
 
-function ActorsSection({ context }) {
+function ActorsSection({ cls_base, transparent, context }) {
   const { credits } = context;
   const { cast } = credits;
 
+  const b = b_.B({ modSeparator: '--' }).with(cls_base);
+
   return (
-    <section>
+    <section className={b('section', { "is-transparent": transparent })}>
       {
         isNotEmpty(cast)
           ?

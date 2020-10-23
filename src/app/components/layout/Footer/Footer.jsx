@@ -8,7 +8,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import tmdbLogo from 'app_assets/img/tmdb_logo.svg';
 
 const Footer = () => {
-  const b = b_.with('footer');
+  const b = b_.B({ modSeparator: '--' }).with('footer');
 
   return (
     <footer className={cn(b(), 'font-small pt-2')}>
@@ -16,15 +16,16 @@ const Footer = () => {
         <div className={cn(b('link-wrapper'), 'mr-2')}>
           <span>© 2020,</span>
           <a
-            className={b('link')}
+            className={b('link', { "github": true })}
             href="https://github.com/nk11dev"
             target="_blank"
           >
             <FontAwesomeIcon
               className="mx-1"
               icon={faGithub} />
-                nk11dev;
+                nk11dev
           </a>
+          <span>;</span>
         </div>
 
         <div className={cn(b('link-wrapper'), 'tmdb-logo')}>

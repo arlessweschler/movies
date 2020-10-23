@@ -1,8 +1,16 @@
 $movie-page-cls: 'movie-details';
 
+// footer links (on hover)
+$white: #fff;
+
+// movie details tags (text), movie details rating (number)
 $gray: #868e96;
+
+// movie details title (release year), movie details tags (icons), footer links (without hover)
 $lightgray: #afb5ba;
-$yellow: #FFA500;
+
+// logo, movie details title, movie details rating (star)
+$yellow: #F5CD00;
 
 :export {
   moviePageCls: unquote($movie-page-cls);

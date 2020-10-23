@@ -11,7 +11,9 @@ function Title({ cls, data }) {
 
   return (
     <h1>
-      {title}
+      <span className={b('title')}>
+        {title}
+      </span>
       <span className={b('year')}>
         ({moment(release_date).format('YYYY')})
       </span>
