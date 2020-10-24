@@ -7,11 +7,11 @@ $b_card: "#{$b}-card";
 
 // after media width: 991px
 $card-width: 200px;
-$image-height: 297px;
+$image-height: 300px;
 
 // before media width: 991px
 $card-width--sm: 300px;
-$image-height--sm: 447px;
+$image-height--sm: auto;
 
 $title-text-color: $white_mod;
 // $genres-text-color: #94a1af;
@@ -34,7 +34,7 @@ $image-border-radius: 8px;
     justify-content: space-between;
 
     @media screen and (max-width: 576px) {
-      grid-template-columns: repeat(auto-fill, $card-width--sm);
+      grid-template-columns: repeat(auto-fill, 100%);
     }
   }
 
@@ -71,19 +71,23 @@ $image-border-radius: 8px;
       position: absolute;
       min-width: 35px;
       right: 7px;
-      top: 7px;
+      bottom: 7px;
       padding: 5px;
       font-size: 0.8em;
       text-align: center;
-      background-color: $black_mod;
       color: $yellow;
-      border: 2px solid $rating-border-color;
-      border-radius: 50%;
+      border-radius: 5px;
+
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     &__genres {
       @include text-ellipsis;
       color: $genres-text-color;
+    }
+
+    &__image-wrapper {
+      position: relative;
     }
 
     &__image {
@@ -96,8 +100,8 @@ $image-border-radius: 8px;
         height: $image-height--sm;
       }
 
-      .no-image {
-        object-fit: contain;
+      &.no-image {
+        object-fit: cover;
       }
     }
   }

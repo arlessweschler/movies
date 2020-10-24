@@ -4,6 +4,8 @@ import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import { TMDB_IMAGE_URL } from 'app_config';
 import { withMListContext } from 'app_hocs';
@@ -18,23 +20,27 @@ function CardBlock(props) {
 
   return (
     <div
-      className={b()}
+      className={cn(b(), 'mx-auto')}
       onClick={() => linkMovie(id)}
     >
-      <img
-        className={cn(b('image'), { 'no-image': !poster_path })}
-        src={poster_path
-          ? `${TMDB_IMAGE_URL.medium}/${poster_path}`
-          : imageNotAvailable}
-      />
+      <div className={b('image-wrapper')}>
+        <img
+          className={cn(b('image'), { 'no-image': !poster_path })}
+          src={poster_path
+            ? `${TMDB_IMAGE_URL.medium}/${poster_path}`
+            : imageNotAvailable}
+        />
+        {(vote_average > 0) && (
+          <span className={b('rating')}>
+            <FontAwesomeIcon
+              className={cn(b('icon'), 'mr-1')}
+              icon={faStar}
+            />
+            {vote_average}
+          </span>)}
+      </div>
 
       <div className={b('body')}>
-{/*         {(vote_average > 0) && (
-          <span className={b('rating')}>
-            {vote_average}
-          </span>)} */}
-
-        {/* <div className={cn(b('title'), 'mb-1 mr-4')}> */}
         <div className={cn(b('title'), 'mb-1')}>
           {title}
         </div>

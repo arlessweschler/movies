@@ -22,6 +22,10 @@ $border-color: #0a0c0d;
   .btn {
     color: $white_mod;
     z-index: 0 !important;
+    
+    @media (max-width: 576px) {
+      line-height: 1;
+    }
 
     &-light {
       color: gray;

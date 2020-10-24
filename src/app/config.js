@@ -14,5 +14,6 @@ export const TMDB_IMAGE_URL = {
 export const TMDB_MOVIES_TYPES = [
   { key: "now_playing", value: "Now playing" },
   { key: "popular", value: "Popular" },
-  { key: "top_rated", value: "Top rated" }
+  { key: "top_rated", value: "Top rated" },
+  { key: "upcoming", value: "Upcoming" }
 ];
