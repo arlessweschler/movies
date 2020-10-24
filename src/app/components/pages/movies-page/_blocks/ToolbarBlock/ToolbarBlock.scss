@@ -1,10 +1,27 @@
-.movies-filter {
+@import "app_assets/css/variables/colors";
 
+$border-radius: 6px;
+
+.movies-filter {
   .btn {
-    border: 1px solid lightgray;
+    border: 1px solid $gray;
+    color: $white_mod;
 
     &-light {
       color: gray;
+    }
+
+    &:hover {
+      background-color: #212529;
+      border: 1px solid $gray;
+      color: $white_mod;
+    }
+
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
     }
   }
 }

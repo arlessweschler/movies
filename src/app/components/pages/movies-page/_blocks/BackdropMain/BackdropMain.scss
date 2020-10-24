@@ -1,0 +1,10 @@
+.main-backdrop {
+  background-color: #000;
+  animation: animateOpacity 1s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  z-index: -1 !important;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~app_assets/img/main_backdrop.jpg");
+}

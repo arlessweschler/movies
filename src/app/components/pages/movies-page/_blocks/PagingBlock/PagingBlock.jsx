@@ -33,6 +33,7 @@ function PagingBlock(props) {
       pageLinkClassName={b('link')}
       previousLinkClassName={b('link', { prev: true })}
       nextLinkClassName={b('link', { next: true })}
+      breakLinkClassName={b('link', { break: true })}
     />
   );
 };

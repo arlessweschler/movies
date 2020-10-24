@@ -4,7 +4,12 @@
 $b: $movie-navbar-cls;
 
 .#{$b}.navbar {
-  background-color: #292d32;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+
+  // background-color: #2B3D7C;
+  // background-color: #363763;
+  // background-color: rgba(54, 55, 99, .8);
+  
   padding: 0.8rem 1rem;
 
   @media (max-width: 576px) {

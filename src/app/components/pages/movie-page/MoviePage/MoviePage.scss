@@ -23,14 +23,14 @@ $b: $movie-details-base-cls;
 
   &__section {
     padding: 20px 15px;
-    color: $black;
+    color: $black_mod;
     background-color: #fff;
     // background-color: rgba(245, 245, 245, 0.9);
     // background-color: rgba(248, 248, 255, 0.9);
   }
 
   &__section--is-transparent {
-    color: #dee2e6;
+    color: $white_mod;
     background-color: rgba(0, 0, 0, 0.55);
   }
 

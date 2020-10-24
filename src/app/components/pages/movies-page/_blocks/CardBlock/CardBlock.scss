@@ -13,9 +13,19 @@ $image-height: 297px;
 $card-width--sm: 300px;
 $image-height--sm: 447px;
 
-$body-text-color: #fff;
-$genres-text-color: lightslategray;
+$title-text-color: $white_mod;
+$genres-text-color: #94a1af;
+// $genres-text-color: lightslategray;
+// $genres-text-color: #8ea6c5;
 $rating-border-color: #343a40;
+$image-border-radius: 8px;
+
+@mixin text-ellipsis {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 .#{$b} {
   .#{$b_grid} {
@@ -23,7 +33,7 @@ $rating-border-color: #343a40;
     grid-template-columns: repeat(auto-fill, $card-width);
     justify-content: space-between;
 
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 576px) {
       grid-template-columns: repeat(auto-fill, $card-width--sm);
     }
   }
@@ -33,28 +43,28 @@ $rating-border-color: #343a40;
     flex-direction: column;
     width: $card-width;
     margin: 10px 10px 10px 0px;
-    border: 1px solid rgba(0, 0, 0, 0.125);
     transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 576px) {
       width: $card-width--sm;
     }
 
     &:hover {
       text-decoration: none;
       transform: scale(1.05);
+      cursor: pointer;
     }
 
     &__body {
       flex: 1 1 auto;
       position: relative;
-      padding: 0.85rem;
-      background-color: $darkblue;
-      color: $body-text-color;
+      padding: 0.3rem;
     }
 
     &__title {
+      @include text-ellipsis;
       line-height: 1.2;
+      color: $title-text-color;
     }
 
     &__rating {
@@ -65,21 +75,24 @@ $rating-border-color: #343a40;
       padding: 5px;
       font-size: 0.8em;
       text-align: center;
-      background-color: $black;
+      background-color: $black_mod;
       color: $yellow;
       border: 2px solid $rating-border-color;
       border-radius: 50%;
     }
 
     &__genres {
+      @include text-ellipsis;
       color: $genres-text-color;
     }
 
     &__image {
       width: 100%;
       height: $image-height;
+      border-radius: $image-border-radius;
+      border: 1px solid $black_mod;
 
-      @media screen and (max-width: 991px) {
+      @media screen and (max-width: 576px) {
         height: $image-height--sm;
       }
 

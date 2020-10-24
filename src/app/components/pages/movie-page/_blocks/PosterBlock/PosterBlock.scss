@@ -5,7 +5,7 @@ $b: $movie-details-base-cls;
 
 .#{$b} {
   .#{$b}__poster {
-    border: 1px solid $black !important;
+    border: 1px solid $black_mod !important;
 
     // fit parent column width if no responsive needed
     width: 100%;

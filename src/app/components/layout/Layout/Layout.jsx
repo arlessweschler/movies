@@ -10,7 +10,7 @@ const Layout = (props) => {
     <Fragment>
       <Header />
       <main className="layout">
-        <div className="container p-0">
+        <div className="container position-relative p-0">
           {props.children}
         </div>
       </main>

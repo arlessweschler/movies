@@ -1,5 +1,10 @@
 @import "app_assets/css/variables/colors";
 
+$li-border-radius: 5px;
+$a-color: $white_mod;
+$a-color--active: $black_mod;
+$a-color--hover: $black_mod;
+
 ul.pagination {
   @media (max-width: 768px) {
     margin-top: 10px !important;
@@ -8,6 +13,7 @@ ul.pagination {
   li {
     padding: 5px;
     border: 1px solid transparent;
+    border-radius: $li-border-radius;
 
     @media (max-width: 576px) {
       padding: 4px;
@@ -21,7 +27,7 @@ ul.pagination {
       }
 
       a {
-        color: $black;
+        color: $a-color--active;
         font-weight: bold;
       }
     }
@@ -36,14 +42,14 @@ ul.pagination {
       padding: 5px;
       outline: none;
       cursor: pointer;
-      color: $lightgray;
+      color: $a-color;
 
       @media (max-width: 576px) {
         padding: 0px;
       }
 
       &:hover {
-        color: $black;
+        color: $a-color--hover;
         text-decoration: none;
 
         &:not(.pagination__link--prev):not(.pagination__link--next) {

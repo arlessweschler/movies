@@ -1,8 +1,11 @@
 // footer links (on hover)
-$white: #fff;
+$white_base: #fff;
+
+// movie details (text in transparent sections), movies list (toolbar buttons in default state and on hover, paging links in default state, card title text)
+$white_mod: #dee2e6;
 
 // movie list (active page, card rating background), movie details (text in non transparent sections, poster border, player iframe border) 
-$black: #212529;
+$black_mod: #212529;
 
 // movie details tags (icons), movie details rating (number), movie details crew names (label)
 $gray: #868e96;

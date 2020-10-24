@@ -29,12 +29,13 @@ function CardBlock(props) {
       />
 
       <div className={b('body')}>
-        {(vote_average > 0) && (
+{/*         {(vote_average > 0) && (
           <span className={b('rating')}>
             {vote_average}
-          </span>)}
+          </span>)} */}
 
-        <div className={cn(b('title'), 'mb-1 mr-4')}>
+        {/* <div className={cn(b('title'), 'mb-1 mr-4')}> */}
+        <div className={cn(b('title'), 'mb-1')}>
           {title}
         </div>
 
