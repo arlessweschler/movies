@@ -24,15 +24,30 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
   return (
     <div className={b()}>
 
-      <Row cls="mb-2">
-        <ToolbarBlock {...data_toolbar} />
-      </Row>
+      <Row cls="mb-md-2">
+        <Column
+          size={6}
+          smallFullWidth
+          cls="p-0"
+        >
+          <ToolbarBlock {...data_toolbar} />
+        </Column>
 
-      {hasMovies
-        ? <Row cls="mb-2">
-          <PagingBlock {...data_paging} />
-        </Row>
-        : ''}
+        {hasMovies
+          ? (
+            <Column
+              size={6}
+              smallFullWidth
+              cls="p-0"
+            >
+              <PagingBlock
+                cls="m-0 float-md-right"
+                {...data_paging}
+              />
+            </Column>
+          )
+          : ''}
+      </Row>
 
       <MListContextProvider {...data_genresContext}>
         <Row>
@@ -45,7 +60,7 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
             : ''}
         </Row>
       </MListContextProvider>
-    </div>
+    </div >
   );
 };
 

@@ -1,6 +1,10 @@
 @import "app_assets/css/variables/colors";
 
 ul.pagination {
+  @media (max-width: 768px) {
+    margin-top: 10px !important;
+  }
+
   li {
     padding: 5px;
     border: 1px solid transparent;

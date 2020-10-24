@@ -9,6 +9,8 @@ import ReactPaginate from "react-paginate";
 import PTS from 'app_services/PropTypesService';
 
 function PagingBlock(props) {
+  const { cls, initialPage, pageCount, onPageChange } = props;
+
   const cls_base = 'pagination';
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
@@ -18,14 +20,14 @@ function PagingBlock(props) {
       nextLabel="&rarr;"
       breakLabel="..."
       breakClassName="break-me"
-      pageCount={props.pageCount}
+      pageCount={pageCount}
       marginPagesDisplayed={2}
       pageRangeDisplayed={3}
-      onPageChange={props.onPageChange}
+      onPageChange={onPageChange}
       disableInitialCallback={true}
-      initialPage={props.initialPage}
-      forcePage={props.initialPage}
-      containerClassName={cn(b(), 'm-0')}
+      initialPage={initialPage}
+      forcePage={initialPage}
+      containerClassName={cn(b(), cls)}
       activeClassName="active"
       // we need specify that classes because of bootstrap reboot styles (for not to override them)
       pageLinkClassName={b('link')}
@@ -36,6 +38,8 @@ function PagingBlock(props) {
 };
 
 PagingBlock.propTypes = {
+  cls: PT.string,
+
   initialPage: PT.number.isRequired,
   pageCount: PTS.nullOrNumber,
   onPageChange: PT.func.isRequired
