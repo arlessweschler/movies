@@ -2,16 +2,21 @@ import './ListBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
+import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 
-function ListBlock(props) {
+function ListBlock({ cls_base, movies }) {
+  const b = b_.with(cls_base);
+
   return (
-    <div className="d-flex flex-wrap justify-content-between mt-3">
-      {props.movies.map((movie) =>
+    <div className={cn(`${cls_base}-grid`, 'mt-3')}>
+      {movies.map((movie) =>
         <CardBlock
           key={uuidv4()}
+          cls={`${cls_base}-card`}
           movie={movie}
         />)}
     </div>

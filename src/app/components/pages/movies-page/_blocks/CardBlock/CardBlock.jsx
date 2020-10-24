@@ -2,6 +2,7 @@ import './CardBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
+import b_ from 'b_';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from 'app_config';
@@ -9,35 +10,37 @@ import { withMListContext } from 'app_hocs';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
 function CardBlock(props) {
-  const { movie, context } = props;
+  const { cls, movie, context } = props;
   const { id, poster_path, title, genre_ids, vote_average } = movie;
   const { printGenres, linkMovie } = context;
 
+  const b = b_.with(cls);
+
   return (
     <div
-      className="card movie-link"
+      className={b()}
       onClick={() => linkMovie(id)}
     >
       <img
-        className={cn({ 'no-image': !poster_path })}
+        className={cn(b('image'), { 'no-image': !poster_path })}
         src={poster_path
-          ? `${TMDB_IMAGE_URL.small}/${poster_path}`
+          ? `${TMDB_IMAGE_URL.medium}/${poster_path}`
           : imageNotAvailable}
       />
 
-      <div className="card-body">
+      <div className={b('body')}>
         {(vote_average > 0) && (
-          <span className="card-rating">
+          <span className={b('rating')}>
             {vote_average}
           </span>)}
 
-        <div className="card-title mb-1 mr-5">
+        <div className={cn(b('title'), 'mb-1 mr-4')}>
           {title}
         </div>
 
         {genre_ids && printGenres({
           ids: genre_ids,
-          cls: 'card-genres small'
+          cls: cn(b('genres'), 'small')
         })}
       </div>
     </div>

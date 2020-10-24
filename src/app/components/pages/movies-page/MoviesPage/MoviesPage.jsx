@@ -50,15 +50,16 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
       </Row>
 
       <MListContextProvider {...data_genresContext}>
-        <Row>
-          {error && <p>{error}</p>}
+        {error && <p>{error}</p>}
 
-          {isLoading && <ProgressBar />}
+        {isLoading && <ProgressBar />}
 
-          {hasMovies
-            ? <ListBlock movies={movies} />
-            : ''}
-        </Row>
+        {hasMovies
+          ? <ListBlock
+            cls_base={cls_base}
+            movies={movies}
+          />
+          : ''}
       </MListContextProvider>
     </div >
   );

@@ -2,36 +2,62 @@
 @import "app_assets/css/variables/colors";
 
 $b: $movies-list-base-cls;
-$image-width: 173px;
-$image-height: 260px;
+$b_grid: "#{$b}-grid";
+$b_card: "#{$b}-card";
+
+// after media width: 991px
+$card-width: 200px;
+$image-height: 297px;
+
+// before media width: 991px
+$card-width--sm: 300px;
+$image-height--sm: 447px;
+
+$body-text-color: #fff;
+$genres-text-color: lightslategray;
+$rating-border-color: #343a40;
 
 .#{$b} {
+  .#{$b_grid} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, $card-width);
+    justify-content: space-between;
 
-  .card {
-    width: 175px;
-    margin-bottom: 20px;
+    @media screen and (max-width: 991px) {
+      grid-template-columns: repeat(auto-fill, $card-width--sm);
+    }
+  }
 
-    &.movie-link {
-      transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  .#{$b_card} {
+    display: flex;
+    flex-direction: column;
+    width: $card-width;
+    margin: 10px 10px 10px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 
-      &:hover {
-        text-decoration: none;
-        transform: scale(1.05);
-      }
+    @media screen and (max-width: 991px) {
+      width: $card-width--sm;
     }
 
-    &-body {
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.05);
+    }
+
+    &__body {
+      flex: 1 1 auto;
       position: relative;
       padding: 0.85rem;
-      background-color: #222943;
-      color: #fff;
+      background-color: $darkblue;
+      color: $body-text-color;
     }
 
-    &-title {
+    &__title {
       line-height: 1.2;
     }
 
-    &-rating {
+    &__rating {
       position: absolute;
       min-width: 35px;
       right: 7px;
@@ -40,22 +66,26 @@ $image-height: 260px;
       font-size: 0.8em;
       text-align: center;
       background-color: $black;
-      color: #ffc107;
-      border: 2px #343a40 solid;
+      color: $yellow;
+      border: 2px solid $rating-border-color;
       border-radius: 50%;
     }
 
-    &-genres {
-      color: lightslategray;
+    &__genres {
+      color: $genres-text-color;
     }
 
-    img {
-      width: $image-width;
+    &__image {
+      width: 100%;
       height: $image-height;
-    }
-  }
 
-  .no-image {
-    object-fit: contain;
+      @media screen and (max-width: 991px) {
+        height: $image-height--sm;
+      }
+
+      .no-image {
+        object-fit: contain;
+      }
+    }
   }
 }
