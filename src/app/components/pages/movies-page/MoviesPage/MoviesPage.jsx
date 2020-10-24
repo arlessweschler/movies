@@ -6,7 +6,7 @@ import b_ from 'b_';
 
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { Row, Column } from 'app_components/layout';
+import { Row } from 'app_components/layout';
 import { MListContextProvider } from 'app_contexts/MListContext';
 import { BackdropMain, ToolbarBlock, PagingBlock, ListBlock } from
   'app_components/pages/movies-page/_blocks';
@@ -26,26 +26,19 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
       <BackdropMain />
 
       <Row cls="mb-md-2">
-        <Column
-          size={6}
-          smallFullWidth
-          cls="p-0"
-        >
+        <div className="col-12 col-md-auto pl-0 toolbar-wrapper">
           <ToolbarBlock {...data_toolbar} />
-        </Column>
+        </div>
 
         {hasMovies
           ? (
-            <Column
-              size={6}
-              smallFullWidth
-              cls="p-0"
-            >
+            <div className="col-12 col-md p-0 pagination-wrapper">
               <PagingBlock
                 cls="m-0 float-md-right"
                 {...data_paging}
               />
-            </Column>
+            </div>
+
           )
           : ''}
       </Row>

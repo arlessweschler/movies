@@ -1,27 +1,48 @@
 @import "app_assets/css/variables/colors";
 
 $border-radius: 6px;
+$border-color: #0a0c0d;
+
+@mixin dark-btn-style {
+  color: $white_mod !important;
+  border-color: $border-color !important;
+  background-color: $black_mod !important;
+}
+
+.toolbar-wrapper {
+  @media (max-width: 576px) {
+    padding-right: 0px !important;
+  }
+}
 
 .movies-filter {
+  border-radius: 8px;
+
+  width: 100%;
   .btn {
-    border: 1px solid $gray;
     color: $white_mod;
+    z-index: 0 !important;
 
     &-light {
       color: gray;
+      border-color: $gray;
+    }
+
+    &-dark {
+      @include dark-btn-style;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+      @include dark-btn-style;
+    }
+    &:active {
+      box-shadow: none !important;
+      @include dark-btn-style;
     }
 
     &:hover {
-      background-color: #212529;
-      border: 1px solid $gray;
-      color: $white_mod;
-    }
-
-    &:first-child {
-      border-radius: $border-radius 0 0 $border-radius;
-    }
-    &:last-child {
-      border-radius: 0 $border-radius $border-radius 0;
+      @include dark-btn-style;
     }
   }
 }

@@ -22,7 +22,7 @@ function PagingBlock(props) {
       breakClassName="break-me"
       pageCount={pageCount}
       marginPagesDisplayed={2}
-      pageRangeDisplayed={3}
+      pageRangeDisplayed={2}
       onPageChange={onPageChange}
       disableInitialCallback={true}
       initialPage={initialPage}

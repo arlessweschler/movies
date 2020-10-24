@@ -1,27 +1,29 @@
 @import "app_assets/css/variables/colors";
 
 $li-border-radius: 5px;
-$a-color: $white_mod;
-$a-color--active: $black_mod;
-$a-color--hover: $black_mod;
+$a-color: $lightgray;
+$a-color--active: $white_mod;
+$a-color--hover: $white_mod;
 
-ul.pagination {
+.pagination-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+
   @media (max-width: 768px) {
     margin-top: 10px !important;
   }
+}
+
+ul.pagination {
+  @media (max-width: 576px) {
+    padding:0px 5px;
+  }
 
   li {
-    padding: 5px;
-    border: 1px solid transparent;
+    padding: 7px 5px;
     border-radius: $li-border-radius;
 
-    @media (max-width: 576px) {
-      padding: 4px;
-    }
-
     &.active {
-      border-color: lightgray;
-
       @media (max-width: 576px) {
         border-color: transparent;
       }
