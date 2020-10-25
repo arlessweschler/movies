@@ -1,10 +1,13 @@
 @import "app_assets/css/variables/base_classes";
+@import "app_assets/css/variables/colors";
 
 $b: $movies-list-base-cls;
 $image-width: 173px;
 $image-height: 260px;
 
 .#{$b} {
+  color: $white_mod;
+  
   .row {
     margin-left: 0px;
     margin-right: 0px;
