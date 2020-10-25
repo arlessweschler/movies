@@ -1,0 +1,20 @@
+{
+  "search_placeholder": "Поиск по названию фильма",
+  "movie_types": {
+    "now_playing": "В кино",
+    "popular": "Популярные",
+    "top_rated": "Лучшие",
+    "upcoming": "Скоро"
+  },
+  "movie_details": {
+    "crew": {
+      "director": "Режиссер",
+      "writing": "Сценарий",
+      "director_of_photography": "Оператор",
+      "original_music_composer": "Композитор"
+    },
+    "actors": {
+      "section_label": "Актеры"
+    }
+  }
+}

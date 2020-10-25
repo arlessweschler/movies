@@ -1,9 +1,12 @@
 import './SearchForm.scss';
 
 import React from 'react';
+import PT from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
-const SearchForm = () => {
-  const searchText = 'Search by movie title';
+const SearchForm = (props) => {
+  const { t } = props;
+  const searchText = t('search_placeholder');
 
   return (
     <form className="search-form">
@@ -17,4 +20,8 @@ const SearchForm = () => {
   );
 }
 
-export default SearchForm;
+SearchForm.propTypes = {
+  t: PT.func.isRequired
+};
+
+export default withTranslation()(SearchForm);

@@ -1,0 +1,20 @@
+{
+  "search_placeholder": "Search by movie title",
+  "movie_types": {
+    "now_playing": "Now playing",
+    "popular": "Popular",
+    "top_rated": "Top rated",
+    "upcoming": "Upcoming"
+  },
+  "movie_details": {
+    "crew_labels": {
+      "director": "Director",
+      "writing": "Writing",
+      "director_of_photography": "Director of photography",
+      "original_music_composer": "Original music composer"
+    },
+    "actors": {
+      "section_label": "Actors"
+    }
+  }
+}

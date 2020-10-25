@@ -1,5 +1,3 @@
-require('isomorphic-fetch');
-
 export const TMDB_API_HOST = 'https://api.themoviedb.org/3';
 export const TMDB_API_KEY = '22daca9c2a01a7ed9ccd7e750061dddb';
 export const TMDB_LANGUAGE = 'language=en-US';

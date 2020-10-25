@@ -4,6 +4,8 @@ module.exports = function ({ srcPath }) {
   let list = {
     app_root: 'app/root',
     app_config: 'app/config',
+    app_i18n: 'app/i18n',
+    app_locales: 'locales',
     app_components: 'app/components',
     app_containers: 'app/containers',
     app_contexts: 'app/contexts',
