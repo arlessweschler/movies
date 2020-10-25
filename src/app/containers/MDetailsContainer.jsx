@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PTS from 'app_services/PropTypesService';
 import { isEmpty } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
-import { MDetailsContextProvider } from 'app_contexts/MDetailsContext';
+import { MDetailsContextProvider } from 'app_contexts';
 import {
   getMovieDetails,
   getCredits,

@@ -6,7 +6,7 @@ import b_ from 'b_';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { withMDetailsContext } from 'app_hocs';
+import { withMDetailsContext } from 'app_contexts';
 import { isNotEmpty } from 'app_services/UtilsService';
 
 function ActorsSection({ cls_base, transparent, context }) {

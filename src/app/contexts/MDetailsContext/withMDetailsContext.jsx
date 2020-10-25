@@ -1,5 +1,5 @@
 import React from 'react';
-import MDetailsContext from 'app_contexts/MDetailsContext';
+import { MDetailsContext } from 'app_contexts';
 
 function withMDetailsContext(Component) {
   return function WrapperComponent(props) {

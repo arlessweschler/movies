@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import { TMDB_IMAGE_URL } from 'app_config';
-import { withMListContext } from 'app_hocs';
+import { withMListContext } from 'app_contexts';
 import { imageNotAvailable } from 'app_services/UtilsService';
 
 function CardBlock(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import MListContext from 'app_contexts/MListContext';
+import { MListContext } from 'app_contexts';
 
 function withMListContext(Component) {
   return function WrapperComponent(props) {

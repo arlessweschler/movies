@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withMDetailsContext } from 'app_hocs';
+import { withMDetailsContext } from 'app_contexts';
 import { PlayerBlock, PosterBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 

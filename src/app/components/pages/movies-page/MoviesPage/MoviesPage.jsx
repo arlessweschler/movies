@@ -7,7 +7,7 @@ import b_ from 'b_';
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Row } from 'app_components/layout';
-import { MListContextProvider } from 'app_contexts/MListContext';
+import { MListContextProvider } from 'app_contexts';
 import { BackdropMain, ToolbarBlock, PagingBlock, ListBlock } from
   'app_components/pages/movies-page/_blocks';
 import { ProgressBar } from 'app_components/layout';
