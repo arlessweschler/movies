@@ -95,13 +95,10 @@ $image-border-radius: 8px;
       height: $image-height;
       border-radius: $image-border-radius;
       border: 1px solid $black_mod;
+      object-fit: cover;
 
       @media screen and (max-width: 576px) {
         height: $image-height--sm;
-      }
-
-      &.no-image {
-        object-fit: cover;
       }
     }
   }

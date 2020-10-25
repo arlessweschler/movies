@@ -3,6 +3,10 @@
 $b: "footer";
 
 .#{$b} {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
   &__link-wrapper {
     display: inline;
     color: $lightgray;
@@ -14,7 +18,7 @@ $b: "footer";
 
   .#{$b}__link {
     color: $lightgray;
-    
+
     &:hover {
       color: $white_base;
       text-decoration: none;

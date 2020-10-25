@@ -11,7 +11,7 @@ const Footer = () => {
   const b = b_.B({ modSeparator: '--' }).with('footer');
 
   return (
-    <footer className={cn(b(), 'font-small pt-2')}>
+    <footer className={cn(b(), 'font-small')}>
       <div className="text-center py-3">
         <div className={cn(b('link-wrapper'), 'mr-2')}>
           <span>© 2020,</span>
