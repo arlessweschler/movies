@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { NavigationFixed } from 'app_components/layout';
+import { Navigation } from 'app_components/layout';
 
 const Header = () => {
   return (
     <header className="fixed-top">
-      <NavigationFixed />
+      <Navigation />
     </header>
   );
 }

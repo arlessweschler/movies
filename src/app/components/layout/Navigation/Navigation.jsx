@@ -1,4 +1,4 @@
-import './NavigationFixed.scss';
+import './Navigation.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -10,9 +10,9 @@ import {
   NavToggle,
   LocaleDropdown,
   SearchForm
-} from 'app_components/layout/NavigationFixed/_blocks/';
+} from 'app_components/layout/Navigation/_blocks/';
 
-const NavigationFixed = () => {
+const Navigation = () => {
   const cls_base = 'movies-navbar';
 
   return (
@@ -36,4 +36,4 @@ const NavigationFixed = () => {
   );
 }
 
-export default NavigationFixed;
+export default Navigation;
