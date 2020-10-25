@@ -1,13 +1,12 @@
 @import "app_assets/css/variables/colors";
 
-$li-border-radius: 5px;
 $a-color: $lightgray;
 $a-color--active: $white_mod;
 $a-color--hover: $white_mod;
 
 .pagination-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  border-radius: 5px;
 
   @media (max-width: 768px) {
     margin-top: 10px !important;
@@ -21,7 +20,6 @@ ul.pagination {
 
   li {
     padding: 7px 5px;
-    border-radius: $li-border-radius;
 
     &.active {
       @media (max-width: 576px) {
