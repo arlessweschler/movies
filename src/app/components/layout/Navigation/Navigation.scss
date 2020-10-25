@@ -4,7 +4,8 @@
 $b: $movie-navbar-cls;
 
 .#{$b}.navbar {
-  background-color: #363763;
+  background-color: $purple;
+  border-bottom: 1px solid $black-btn-border;
 
   // background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
   // background-color: rgba(54, 55, 99, .8);

@@ -29,7 +29,7 @@ ul.pagination {
       }
 
       a {
-        color: $a-color--active;
+        color: $yellow;
         font-weight: bold;
       }
     }
@@ -47,11 +47,12 @@ ul.pagination {
       color: $a-color;
 
       @media (max-width: 576px) {
-        padding: 0px;
+        padding: 1px;
+        font-size: 14px;
       }
 
       &:hover {
-        color: $a-color--hover;
+        color: $yellow;
         text-decoration: none;
 
         &:not(.pagination__link--prev):not(.pagination__link--next) {

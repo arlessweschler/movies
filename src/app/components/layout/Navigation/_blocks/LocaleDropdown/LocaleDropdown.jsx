@@ -14,7 +14,7 @@ const LocaleDropdown = () => {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          RU
+          EN
       </button>
 
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

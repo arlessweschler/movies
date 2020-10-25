@@ -1,7 +1,55 @@
+@import "app_assets/css/variables/colors";
+
+$border-color: $black-btn-border;
+
+@mixin btn-style {
+  color: $yellow !important;
+  border-color: $border-color !important;
+  background-color: $black_mod !important;
+}
+
 .locale-dropdown__wrapper {
   width: 60px;
 
   @media (max-width: 576px) {
     padding-right: 0px;
+    width: 55px;
+  }
+
+  .dropdown-menu {
+    width: auto;
+    min-width: auto;
+    background-color: $black_mod;
+    border-color: $border-color;
+
+    @media (max-width: 576px) {
+      font-size: 14px;
+    }
+
+    .dropdown-item {
+      color: $lightgray;
+
+      &:hover {
+        color: $yellow !important;
+        background-color: $purple;
+      }
+    }
+  }
+
+  .btn {
+    @include btn-style;
+
+    @media (max-width: 576px) {
+      font-size: 14px;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+      @include btn-style;
+    }
+    &:active {
+      box-shadow: none !important;
+      @include btn-style;
+    }
   }
 }
