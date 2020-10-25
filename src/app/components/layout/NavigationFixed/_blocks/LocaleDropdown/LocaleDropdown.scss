@@ -1,0 +1,7 @@
+.locale-dropdown__wrapper {
+  width: 60px;
+
+  @media (max-width: 576px) {
+    padding-right: 0px;
+  }
+}

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import './NavToggle.scss';
 
-// import NavLinks from './NavLinks';
+import React, { Fragment } from 'react';
 
 const NavToggle = (props) => {
   return (
@@ -20,9 +20,9 @@ const NavToggle = (props) => {
         className="collapse navbar-collapse"
         id="moviesNavbarToggle"
       >
-        {/* <NavLinks /> */}
-
-        {props.children}
+        <div className="row nav-toggle__row">
+          {props.children}
+        </div>
       </div>
     </Fragment>
   );

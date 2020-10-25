@@ -1,10 +1,12 @@
+import './SearchForm.scss';
+
 import React from 'react';
 
-const SearchForm = (props) => {
+const SearchForm = () => {
   const searchText = 'Search by movie title';
 
   return (
-    <form className="my-0 col-12 col-md-12 col-lg-6">
+    <form className="search-form">
       <input
         className="form-control"
         type="text"

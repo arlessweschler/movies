@@ -26,7 +26,7 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
       <BackdropMain />
 
       <Row cls="mb-md-2">
-        <div className="col-12 col-md-auto pl-0 toolbar-wrapper">
+        <div className="col-12 col-md-auto p-0 pr-md-2 toolbar-wrapper">
           <ToolbarBlock {...data_toolbar} />
         </div>
 

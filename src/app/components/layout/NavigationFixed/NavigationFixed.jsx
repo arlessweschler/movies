@@ -6,8 +6,11 @@ import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
-import NavToggle from './NavToggle';
-import SearchForm from './SearchForm';
+import {
+  NavToggle,
+  LocaleDropdown,
+  SearchForm
+} from 'app_components/layout/NavigationFixed/_blocks/';
 
 const NavigationFixed = () => {
   const cls_base = 'movies-navbar';
@@ -24,7 +27,8 @@ const NavigationFixed = () => {
           </Link>
 
         <NavToggle>
-          <SearchForm />
+            <SearchForm />
+            <LocaleDropdown />
         </NavToggle>
 
       </div>
