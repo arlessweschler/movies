@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
 class MListContainer extends Component {
   constructor() {
     super();
-    this.getUrlParams = this.getUrlParams.bind(this);
+    this.geUrlSearchObject = this.geUrlSearchObject.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.linkMovie = this.linkMovie.bind(this);
@@ -50,7 +50,7 @@ class MListContainer extends Component {
   }
 
   componentDidMount() {
-    const { moviesType, page } = this.getUrlParams();
+    const { moviesType, page } = this.geUrlSearchObject();
     const { moviesList, moviesGenres, actions } = this.props;
     const { data, request } = moviesList
 
@@ -68,33 +68,43 @@ class MListContainer extends Component {
     };
   }
 
-  getUrlParams() {
+  geUrlSearchObject() {
     return qs.parse(this.props.history.location.search);
   }
 
   handleFilter(moviesType) {
-    redirect(`/movies?moviesType=${moviesType}`);
-    this.props.actions.getMovies({ moviesType });
+    const { lng } = this.geUrlSearchObject();
+    const nextSearchObj = { lng, moviesType };
+
+    redirect(`/movies?${qs.stringify(nextSearchObj)}`);
+    this.props.actions.getMovies(nextSearchObj);
   }
 
   onPageChange({ selected }) {
-    const { moviesType } = this.getUrlParams();
-    const urlParams = { moviesType, page: selected + 1 };
+    const searchObj = this.geUrlSearchObject();
 
-    redirect(`/movies?${qs.stringify(urlParams)}`);
-    this.props.actions.getMovies(urlParams);
+    const nextSearchObj = {
+      ...searchObj,
+      page: selected + 1
+    };
+
+    redirect(`/movies?${qs.stringify(nextSearchObj)}`);
+    this.props.actions.getMovies(nextSearchObj);
   }
 
   linkMovie(id) {
+    const { lng } = this.geUrlSearchObject();
+    const nextSearchObj = { lng };
+
     this.props.actions.resetMovieDetails();
-    redirect(`/movies/${id}`);
+    redirect(`/movies/${id}?${qs.stringify(nextSearchObj)}`);
   }
 
   render() {
     const { moviesList, moviesGenres } = this.props;
     const { data, isLoading, error } = moviesList;
 
-    const { moviesType } = this.getUrlParams();
+    const { moviesType } = this.geUrlSearchObject();
 
     return (
       <MoviesPage

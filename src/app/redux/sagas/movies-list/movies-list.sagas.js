@@ -1,10 +1,9 @@
 import { put, takeEvery, all } from "redux-saga/effects";
 
-
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
+import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-
 
 // watchers
 export function* watchMovieBrowser() {
@@ -15,14 +14,15 @@ export function* watchMovieBrowser() {
 }
 
 // workers
-function* getMoviesSaga({
-  type,
-  moviesType = DEFAULT_MOVIES_TYPE,
-  page = 1
-}) {
+function* getMoviesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
+  const {
+    moviesType = DEFAULT_MOVIES_TYPE,
+    page = 1,
+    lng = DEFAULT_LANGUAGE
+  } = payload;
 
-  yield put(actions.start({ moviesType, page }));
+  yield put(actions.start({ moviesType, page, lng }));
   try {
     const data = yield ApiService.fetch({
       useMoviesApi: true,

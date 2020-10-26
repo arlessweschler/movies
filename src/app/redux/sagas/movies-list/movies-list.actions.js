@@ -14,8 +14,11 @@ export const asyncActionMaps = {
 };
 
 const actions = {
-  getMovies: ({ page, moviesType }) => {
-    return createActionCreator(actionKeys.GET_MOVIES, { page, moviesType })
+  getMovies: ({ page, moviesType, lng }) => {
+    return createActionCreator(
+      actionKeys.GET_MOVIES,
+      { page, moviesType, lng }
+    );
   },
   getGenres: () => {
     return createActionCreator(actionKeys.GET_GENRES)

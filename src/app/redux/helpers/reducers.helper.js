@@ -4,29 +4,40 @@ export const createAsyncReducerMap = (
 ) => {
   const { initialState = initialAsyncState } = params;
 
-  const startReducerFn = (state, action) => ({
-    ...state,
-    isLoading: true,
-    error: null,
-    request: action.request
-  });
+  const startReducerFn = (state, action) => {
+    const { request } = action.payload;
+    return {
+      ...state,
+      isLoading: true,
+      error: null,
+      request
+    }
+  };
 
-  const successReducerFn = (state, action) => ({
-    ...state,
-    isLoading: false,
-    error: null,
-    data: action.data
-  });
+  const successReducerFn = (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      isLoading: false,
+      error: null,
+      data
+    }
+  };
 
-  const failReducerFn = (state, action) => ({
-    ...state,
-    isLoading: false,
-    error: action.error
-  });
+  const failReducerFn = (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      isLoading: false,
+      error
+    }
+  };
 
-  const resetReducerFn = () => ({
-    ...initialState
-  });
+  const resetReducerFn = () => {
+    return {
+      ...initialState
+    }
+  };
 
   return {
     [`${actionKey}_START`]: startReducerFn,

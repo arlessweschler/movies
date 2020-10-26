@@ -1,8 +1,8 @@
-export const createActionCreator = (type, actionProps) => {
+export const createActionCreator = (type, actionProps = {}) => {
 
   const actionCreator = {
     type,
-    ...actionProps
+    payload: actionProps
   };
 
   return actionCreator;

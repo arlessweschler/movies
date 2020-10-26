@@ -16,11 +16,9 @@ export function* watchMovieDetails() {
 }
 
 // workers
-function* getMovieDetailsSaga({
-  type,
-  movieId
-}) {
+function* getMovieDetailsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
+  const { movieId } = payload;
 
   yield put(actions.start({ movieId }));
   try {
@@ -34,11 +32,9 @@ function* getMovieDetailsSaga({
   }
 }
 
-function* getCreditsSaga({
-  type,
-  movieId
-}) {
+function* getCreditsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
+  const { movieId } = payload;
 
   yield put(actions.start({ movieId }));
   try {
@@ -52,11 +48,9 @@ function* getCreditsSaga({
   }
 }
 
-function* getVideosSaga({
-  type,
-  movieId
-}) {
+function* getVideosSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
+  const { movieId } = payload;
 
   yield put(actions.start({ movieId }));
   try {
@@ -70,9 +64,8 @@ function* getVideosSaga({
   }
 }
 
-function* resetMovieDetailsSaga({
-  resetList
-}) {
+function* resetMovieDetailsSaga({ payload }) {
+  const { resetList } = payload;
   let actions;
 
   for (let item of resetList) {

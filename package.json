@@ -49,6 +49,7 @@
     "file-loader": "6.1.0",
     "html-webpack-plugin": "4.4.1",
     "i18next": "19.8.2",
+    "i18next-browser-languagedetector": "^6.0.1",
     "i18next-xhr-backend": "3.2.2",
     "imports-loader": "1.1.0",
     "isomorphic-fetch": "3.0.0",
