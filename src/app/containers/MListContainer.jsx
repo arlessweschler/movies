@@ -8,13 +8,13 @@ import PTS from 'app_services/PropTypesService';
 import { redirect } from 'app_history';
 import { isEmpty } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 import {
   getMovies,
   getGenres,
   resetMovieDetails
 } from 'redux_actions';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesGenres, moviesList }) => {
@@ -39,6 +39,7 @@ class MListContainer extends Component {
   constructor() {
     super();
     this.geUrlSearchObject = this.geUrlSearchObject.bind(this);
+    this.hasDiffs = this.hasDiffs.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.linkMovie = this.linkMovie.bind(this);
@@ -49,23 +50,57 @@ class MListContainer extends Component {
     store.dispatch(getMovies(urlQuery));
   }
 
+  componentDidUpdate() {
+    const searchObject = this.geUrlSearchObject();
+    const { actions } = this.props;
+
+    if (this.hasDiffs('lng')) {
+      actions.getMovies(searchObject);
+    };
+  }
+
   componentDidMount() {
-    const { moviesType, page } = this.geUrlSearchObject();
+    const searchObject = this.geUrlSearchObject();
     const { moviesList, moviesGenres, actions } = this.props;
-    const { data, request } = moviesList
 
     if (isEmpty(moviesGenres.data)) {
       actions.getGenres();
     };
 
-    // запрашиваем фильмы, если их нет или если фильтр в url отличается от фильтра последнего запроса на список фильмов 
+    // запрашиваем фильмы, если их нет или если есть разлчия параметров последнего запроса (ключи объекта request) в store с: 
+    // 1. значениями этих параметров из url search query или 
+    // (опционально) 2. дефолтными значениями этих из редюсера
     if (
-      isEmpty(data.results) ||
-      (moviesType && moviesType !== request.moviesType) ||
-      (!moviesType && request.moviesType !== DEFAULT_MOVIES_TYPE)
+      isEmpty(moviesList.data.results) ||
+      this.hasDiffs('lng') ||
+      this.hasDiffs('moviesType', {
+        compareWithDefault: true,
+        defaultValue: DEFAULT_MOVIES_TYPE
+      })
     ) {
-      actions.getMovies({ moviesType, page });
+      actions.getMovies(searchObject);
     };
+  }
+
+  hasDiffs(key, options = {}) {
+    const {
+      compareWithDefault = false,
+      defaultValue = null
+    } = options;
+
+    const searchObject = this.geUrlSearchObject();
+    const { moviesList: { request } } = this.props;
+
+    const sValue = searchObject[key];
+    const rValue = request[key];
+
+    const searchQueryDiff = Boolean(sValue && sValue !== rValue);
+
+    const defaultDiff = compareWithDefault
+      ? Boolean(typeof sValue == 'undefined' && rValue !== defaultValue)
+      : false;
+
+    return searchQueryDiff || defaultDiff;
   }
 
   geUrlSearchObject() {

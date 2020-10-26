@@ -6,14 +6,14 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import en from 'app_locales/en.json';
 import ru from 'app_locales/ru.json';
 
+const default_language = 'en';
+
 export const LANGUAGES = [
-  { value: 'en', label: 'EN' },
-  { value: 'ru', label: 'RU' }
+  { value: 'en', region: 'US', label: 'EN' },
+  { value: 'ru', region: 'RU', label: 'RU' }
 ];
 
-export const DEFAULT_LANGUAGE = 'en';
-
-export const DEFAULT_LANGUAGE_OBJ = LANGUAGES.find(i => i.value == DEFAULT_LANGUAGE)
+export const DEFAULT_LANGUAGE = LANGUAGES.find(i => i.value == default_language)
 
 i18n
   .use(initReactI18next)
@@ -24,7 +24,7 @@ i18n
       en: { translation: en },
       ru: { translation: ru }
     },
-    fallbackLng: DEFAULT_LANGUAGE,
+    fallbackLng: default_language,
     debug: true,
     interpolation: {
       escapeValue: false

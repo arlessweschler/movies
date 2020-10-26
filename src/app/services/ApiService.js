@@ -1,11 +1,7 @@
 require('isomorphic-fetch');
 
-import {
-  TMDB_API_HOST,
-  TMDB_API_KEY,
-  TMDB_LANGUAGE
-} from 'app_config';
-
+import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
+import { TMDB_API_HOST, TMDB_API_KEY, } from 'app_config';
 
 function* fetchJson(url, { method }) {
   const response = yield fetch(url, { method });
@@ -22,6 +18,7 @@ function* fetchJson(url, { method }) {
 export default {
   fetch: function ({
     useMoviesApi = false,
+    tmdbOptions = {},
     url = '',
     urlParams = ''
   }) {
@@ -29,13 +26,23 @@ export default {
     let fetchFunc;
     const fetchParams = { method: 'GET' };
 
-    if (useMoviesApi) {
-      fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${TMDB_LANGUAGE}${urlParams}`;
-      fetchFunc = fetchJson;
+    try {
+      if (useMoviesApi) {
+        const language = tmdbOptions.lng
+          ? LANGUAGES.find(i => i.value == tmdbOptions.lng)
+          : DEFAULT_LANGUAGE;
 
-    } else {
-      fetchUrl = `${process.env.API_PATH}${url}`;
-      fetchFunc = fetch;
+        const queryLanguage = `language=${language.value}-${language.region}`;
+
+        fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${queryLanguage}${urlParams}`;
+        fetchFunc = fetchJson;
+
+      } else {
+        fetchUrl = `${process.env.API_PATH}${url}`;
+        fetchFunc = fetch;
+      }
+    } catch (error) {
+      console.log('-- ApiService, error:', error);
     }
 
     // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);

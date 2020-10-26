@@ -24,6 +24,7 @@ $border-color: $black-btn-border;
     z-index: 0 !important;
     min-height: 38px;
     line-height: 1;
+    word-break: break-all;
     
     @media (max-width: 576px) {
       font-size: 14px;

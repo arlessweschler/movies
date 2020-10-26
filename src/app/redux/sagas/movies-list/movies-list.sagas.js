@@ -19,7 +19,7 @@ function* getMoviesSaga({ type, payload }) {
   const {
     moviesType = DEFAULT_MOVIES_TYPE,
     page = 1,
-    lng = DEFAULT_LANGUAGE
+    lng = DEFAULT_LANGUAGE.value
   } = payload;
 
   yield put(actions.start({ moviesType, page, lng }));
@@ -27,7 +27,8 @@ function* getMoviesSaga({ type, payload }) {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
       url: `/movie/${moviesType}`,
-      urlParams: `&page=${page}`
+      urlParams: `&page=${page}`,
+      tmdbOptions: { lng }
     });
     yield put(actions.success(data));
   } catch (error) {

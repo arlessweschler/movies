@@ -18,7 +18,7 @@ const DEFAULT_MOVIES_STATE = {
   },
   isLoading: false,
   error: null,
-  request: null
+  request: {}
 };
 
 const DEFAULT_GENRES_STATE = {

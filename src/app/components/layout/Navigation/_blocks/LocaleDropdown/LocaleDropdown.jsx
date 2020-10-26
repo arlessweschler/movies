@@ -9,48 +9,39 @@ import qs from 'query-string';
 
 import { redirect } from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { 
-  LANGUAGES, 
-  DEFAULT_LANGUAGE_OBJ
-} from 'app_i18n';
+import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
 
 const LocaleDropdown = (props) => {
   const { i18n } = props;
-  const { search: searchQuery } = useLocation();
-  const { lng: langQuery } = qs.parse(searchQuery);
+  const location = useLocation();
+  const { lng: langQuery } = qs.parse(location.search);
 
-  const getDefaultLang = (queryValue) => {
-    if (!queryValue) return DEFAULT_LANGUAGE_OBJ;
+  const defaultLang = getDefaultLang(langQuery);
+  const [lang, setLang] = useState(defaultLang);
+
+  function getDefaultLang(queryValue) {
+    if (!queryValue) return DEFAULT_LANGUAGE;
 
     const result = LANGUAGES.find(i => i.value == queryValue);
 
     return isNotEmpty(result)
       ? result
-      : DEFAULT_LANGUAGE_OBJ;
+      : DEFAULT_LANGUAGE;
   }
 
-  // console.log('-- LocaleDropdown()');
-  // console.log('langQuery:', langQuery);
-
-  const defaultLang = getDefaultLang(langQuery);
-  const [lang, setLang] = useState(defaultLang);
-  // console.log('defaultLang:', defaultLang);
-
-  const onLangChange = (e, query, nextLang) => {
+  function onLangChange(e, location, nextLang) {
     e.preventDefault();
 
-    const searchObj = qs.parse(query)
+    const { pathname, search } = location;
+    const searchObj = qs.parse(search);
     const nextSearchQuery = qs.stringify({
       ...searchObj,
       lng: nextLang.value
-    })
-
-    // console.log('-- onLangChange()');
-    // console.log('nextSearchQuery:', nextSearchQuery);
+    });
 
     setLang(nextLang);
     i18n.changeLanguage(nextLang.value);
-    redirect(`/movies?${nextSearchQuery}`);
+    redirect(`${pathname}?${nextSearchQuery}`);
   };
 
   return (
@@ -61,21 +52,17 @@ const LocaleDropdown = (props) => {
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
         >
           {lang.label}
         </button>
 
-        <div
-          className="dropdown-menu" aria-labelledby="dropdownMenuButton"
-        >
+        <div className="dropdown-menu">
           {LANGUAGES.map((item) =>
             <a
               key={uuidv4()}
               className="dropdown-item"
               href=""
-              onClick={(e) => onLangChange(e, searchQuery, item)}
+              onClick={(e) => onLangChange(e, location, item)}
             >
               {item.label}
             </a>

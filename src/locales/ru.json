@@ -1,7 +1,7 @@
 {
   "search_placeholder": "Поиск по названию фильма",
   "movie_types": {
-    "now_playing": "В кино",
+    "now_playing": "В кинотеатрах",
     "popular": "Популярные",
     "top_rated": "Лучшие",
     "upcoming": "Скоро"
