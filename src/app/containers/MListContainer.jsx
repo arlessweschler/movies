@@ -47,6 +47,7 @@ class MListContainer extends Component {
   }
 
   static fetchData(store, urlParams, urlQuery) {
+    console.log('-- MListContainer.fetchData(), urlQuery:', urlQuery);
     store.dispatch(getGenres());
     store.dispatch(getMovies(urlQuery));
   }
@@ -56,7 +57,7 @@ class MListContainer extends Component {
   }
 
   componentDidUpdate() {
-    // console.log('\n -- MListContainer.componentDidUpdate');
+    // console.log('\n -- MListContainer.componentDidUpdate()');
     const { moviesList, actions, history } = this.props;
     const searchObject = qs.parse(history.location.search);
 
@@ -66,7 +67,7 @@ class MListContainer extends Component {
   }
 
   componentDidMount() {
-    // console.log('\n -- MListContainer.componentDidMount');
+    // console.log('\n -- MListContainer.componentDidMount()');
 
     const { moviesList, moviesGenres, history, actions } = this.props;
     const searchObject = qs.parse(history.location.search);

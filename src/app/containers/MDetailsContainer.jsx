@@ -35,20 +35,22 @@ const mapDispatchToProps = (dispatch) => {
 
 class MDetailsContainer extends Component {
 
-  static fetchData(store, urlParams) {
+  static fetchData(store, urlParams, urlQuery) {
+    console.log('-- MDetailsContainer.fetchData(), urlQuery:', urlQuery);
     const movie_id = urlParams[0].split('/').pop();
+    const methods = [getMovieDetails, getCredits, getVideos];
 
-    store.dispatch(getMovieDetails(movie_id));
-    store.dispatch(getCredits(movie_id));
-    store.dispatch(getVideos(movie_id));
+    methods.forEach((method) => {
+      store.dispatch(method(movie_id, urlQuery));
+    });
   }
 
   componentWillUnmount() {
-    // console.log('\n -- MDetailsContainer.componentWillUnmount');
+    // console.log('\n -- MDetailsContainer.componentWillUnmount()');
   }
 
   componentDidUpdate() {
-    // console.log('\n -- MDetailsContainer.componentDidUpdate');
+    // console.log('\n -- MDetailsContainer.componentDidUpdate()');
 
     const { history, movieDetails, match, actions } = this.props;
     const { lng } = qs.parse(history.location.search);
@@ -70,21 +72,25 @@ class MDetailsContainer extends Component {
   }
 
   componentDidMount() {
-    // console.log('\n -- MDetailsContainer.componentDidMount');
+    // console.log('\n -- MDetailsContainer.componentDidMount()');
 
     const { actions, match, movieDetails, history } = this.props;
-    const { movie, credits, videos } = movieDetails;
     const { movie_id } = match.params;
     const { lng } = qs.parse(history.location.search);
 
     const list = [
-      { data: movie.data, methodName: 'getMovieDetails' },
-      { data: credits.data, methodName: 'getCredits' },
-      { data: videos.data, methodName: 'getVideos' }
+      { name: 'movie', methodName: 'getMovieDetails' },
+      { name: 'credits', methodName: 'getCredits' },
+      { name: 'videos', methodName: 'getVideos' }
     ];
 
-    list.forEach(({ data, methodName }) => {
-      if (isEmpty(data) || (movie_id != data.id)) {
+    let segment;
+    list.forEach(({ name, methodName }) => {
+      segment = movieDetails[name];
+      if (
+        (movie_id != segment.request.movieId) ||
+        (movie_id == segment.request.movieId && lng != segment.request.lng)
+      ) {
         actions[methodName](movie_id, { lng });
       }
     });
