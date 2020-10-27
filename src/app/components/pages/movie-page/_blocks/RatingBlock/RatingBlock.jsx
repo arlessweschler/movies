@@ -30,10 +30,10 @@ function RatingBlock({ t, cls, data }) {
       {vote_count
         ? (
           <div className={b('votes')}>
-            <span className="mr-1">
+            <span>
               {vote_count}
             </span>
-            <span>
+            <span className="ml-1">
               {t('movie_details.votes', { count: vote_count })}
             </span>
           </div>

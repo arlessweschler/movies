@@ -21,10 +21,6 @@ function DescriptionSection({ cls_base, transparent, context }) {
             cls={cls_base}
             data={{ title, release_date, original_title }}
           />
-          <TagsBlock
-            cls={`${cls_base}-top`}
-            data={{ production_countries, genres, runtime }}
-          />
         </Column>
 
         <Column size={3} cls="p-0">
@@ -34,6 +30,11 @@ function DescriptionSection({ cls_base, transparent, context }) {
           />
         </Column>
       </Row>
+
+      <TagsBlock
+            cls={`${cls_base}-top`}
+            data={{ production_countries, genres, runtime }}
+          />
 
       <CrewListBlock
         cls={`${cls_base}-crew`}
