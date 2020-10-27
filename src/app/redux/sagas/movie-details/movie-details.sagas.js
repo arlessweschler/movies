@@ -3,7 +3,7 @@ import { put, takeEvery, all } from "redux-saga/effects";
 
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie-details.actions';
-
+import { DEFAULT_LANGUAGE } from 'app_i18n';
 
 // watchers
 export function* watchMovieDetails() {
@@ -18,13 +18,17 @@ export function* watchMovieDetails() {
 // workers
 function* getMovieDetailsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const { movieId } = payload;
+  const {
+    movieId,
+    lng = DEFAULT_LANGUAGE.value
+  } = payload;
 
-  yield put(actions.start({ movieId }));
+  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
-      url: `/movie/${movieId}`
+      url: `/movie/${movieId}`,
+      tmdbOptions: { lng }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -34,13 +38,17 @@ function* getMovieDetailsSaga({ type, payload }) {
 
 function* getCreditsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const { movieId } = payload;
+  const {
+    movieId,
+    lng = DEFAULT_LANGUAGE.value
+  } = payload;
 
-  yield put(actions.start({ movieId }));
+  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
-      url: `/movie/${movieId}/credits`
+      url: `/movie/${movieId}/credits`,
+      tmdbOptions: { lng }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -50,13 +58,17 @@ function* getCreditsSaga({ type, payload }) {
 
 function* getVideosSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const { movieId } = payload;
+  const {
+    movieId,
+    lng = DEFAULT_LANGUAGE.value
+  } = payload;
 
-  yield put(actions.start({ movieId }));
+  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
-      url: `/movie/${movieId}/videos`
+      url: `/movie/${movieId}/videos`,
+      tmdbOptions: { lng }
     });
     yield put(actions.success(data.results));
   } catch (error) {

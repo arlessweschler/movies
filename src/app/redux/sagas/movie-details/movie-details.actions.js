@@ -17,14 +17,17 @@ export const asyncActionMaps = {
 };
 
 const actions = {
-  getMovieDetails: (movieId) => {
-    return createActionCreator(actionKeys.MOVIE_DETAILS, { movieId })
+  getMovieDetails: (movieId, params = {}) => {
+    const { lng } = params;
+    return createActionCreator(actionKeys.MOVIE_DETAILS, { movieId, lng });
   },
-  getCredits: (movieId) => {
-    return createActionCreator(actionKeys.MOVIE_CREDITS, { movieId })
+  getCredits: (movieId, params = {}) => {
+    const { lng } = params;
+    return createActionCreator(actionKeys.MOVIE_CREDITS, { movieId, lng })
   },
-  getVideos: (movieId) => {
-    return createActionCreator(actionKeys.MOVIE_VIDEOS, { movieId })
+  getVideos: (movieId, params = {}) => {
+    const { lng } = params;
+    return createActionCreator(actionKeys.MOVIE_VIDEOS, { movieId, lng })
   },
   resetMovieDetails: () => {
     return createActionCreator(

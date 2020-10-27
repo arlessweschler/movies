@@ -7,7 +7,7 @@
     "upcoming": "Upcoming"
   },
   "movie_details": {
-    "crew_labels": {
+    "crew": {
       "director": "Director",
       "writing": "Writing",
       "director_of_photography": "Director of photography",

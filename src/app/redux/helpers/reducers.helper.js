@@ -61,7 +61,7 @@ const initialAsyncState = {
   data: {},
   isLoading: false,
   error: null,
-  request: null
+  request: {}
 };
 
 export const createAsyncReducer = (

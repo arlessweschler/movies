@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { redirect } from 'app_history';
-import { isEmpty } from 'app_services/UtilsService';
-import { MoviesPage } from 'app_components/pages';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
+import { DEFAULT_LANGUAGE } from 'app_i18n';
+import { redirect } from 'app_history';
+import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
+import { MoviesPage } from 'app_components/pages';
 
 import {
   getMovies,
@@ -38,11 +39,11 @@ const mapDispatchToProps = (dispatch) => {
 class MListContainer extends Component {
   constructor() {
     super();
-    this.geUrlSearchObject = this.geUrlSearchObject.bind(this);
-    this.hasDiffs = this.hasDiffs.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.linkMovie = this.linkMovie.bind(this);
+    this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
+    this.update = this.update.bind(this);
   }
 
   static fetchData(store, urlParams, urlQuery) {
@@ -50,96 +51,89 @@ class MListContainer extends Component {
     store.dispatch(getMovies(urlQuery));
   }
 
-  componentDidUpdate() {
-    const searchObject = this.geUrlSearchObject();
-    const { actions } = this.props;
+  componentWillUnmount() {
+    // console.warn('\n -- MListContainer.componentWillUnmount');
+  }
 
-    if (this.hasDiffs('lng')) {
+  componentDidUpdate() {
+    // console.log('\n -- MListContainer.componentDidUpdate');
+    const { moviesList, actions, history } = this.props;
+    const searchObject = qs.parse(history.location.search);
+
+    if (this.hasUrlQueryDiffs(moviesList.request)) {
       actions.getMovies(searchObject);
     };
   }
 
   componentDidMount() {
-    const searchObject = this.geUrlSearchObject();
-    const { moviesList, moviesGenres, actions } = this.props;
+    // console.log('\n -- MListContainer.componentDidMount');
+
+    const { moviesList, moviesGenres, history, actions } = this.props;
+    const searchObject = qs.parse(history.location.search);
 
     if (isEmpty(moviesGenres.data)) {
       actions.getGenres();
     };
 
-    // запрашиваем фильмы, если их нет или если есть разлчия параметров последнего запроса (ключи объекта request) в store с: 
-    // 1. значениями этих параметров из url search query или 
-    // (опционально) 2. дефолтными значениями этих из редюсера
     if (
       isEmpty(moviesList.data.results) ||
-      this.hasDiffs('lng') ||
-      this.hasDiffs('moviesType', {
-        compareWithDefault: true,
-        defaultValue: DEFAULT_MOVIES_TYPE
-      })
+      this.hasUrlQueryDiffs(moviesList.request)
     ) {
       actions.getMovies(searchObject);
     };
   }
 
-  hasDiffs(key, options = {}) {
-    const {
-      compareWithDefault = false,
-      defaultValue = null
-    } = options;
+  // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
+  // 1. значениями этих параметров из url search query или 
+  // (опционально) 2. дефолтными значениями этих из редюсера
+  hasUrlQueryDiffs(request) {
+    const hasDiffs = getDiffMethod(request);
 
-    const searchObject = this.geUrlSearchObject();
-    const { moviesList: { request } } = this.props;
+    const list = [
+      { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
+      { key: 'page', defaultValue: 1 },
+      { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE }
+    ];
 
-    const sValue = searchObject[key];
-    const rValue = request[key];
-
-    const searchQueryDiff = Boolean(sValue && sValue !== rValue);
-
-    const defaultDiff = compareWithDefault
-      ? Boolean(typeof sValue == 'undefined' && rValue !== defaultValue)
-      : false;
-
-    return searchQueryDiff || defaultDiff;
-  }
-
-  geUrlSearchObject() {
-    return qs.parse(this.props.history.location.search);
-  }
-
-  handleFilter(moviesType) {
-    const { lng } = this.geUrlSearchObject();
-    const nextSearchObj = { lng, moviesType };
-
-    redirect(`/movies?${qs.stringify(nextSearchObj)}`);
-    this.props.actions.getMovies(nextSearchObj);
-  }
-
-  onPageChange({ selected }) {
-    const searchObj = this.geUrlSearchObject();
-
-    const nextSearchObj = {
-      ...searchObj,
-      page: selected + 1
-    };
-
-    redirect(`/movies?${qs.stringify(nextSearchObj)}`);
-    this.props.actions.getMovies(nextSearchObj);
+    return list.some(
+      (item) => hasDiffs(item.key, {
+        withDefault: true,
+        defaultValue: item.defaultValue
+      })
+    );
   }
 
   linkMovie(id) {
-    const { lng } = this.geUrlSearchObject();
-    const nextSearchObj = { lng };
+    const { history, actions } = this.props;
+    const { lng } = qs.parse(history.location.search);
+    const nextParams = { lng };
 
-    this.props.actions.resetMovieDetails();
-    redirect(`/movies/${id}?${qs.stringify(nextSearchObj)}`);
+    actions.resetMovieDetails();
+    redirect(`/movies/${id}?${qs.stringify(nextParams)}`);
+  }
+
+  update(nextValues) {
+    const { history, actions } = this.props;
+    const values = qs.parse(history.location.search);
+    const nextParams = { ...values, ...nextValues };
+
+    redirect(`/movies?${qs.stringify(nextParams)}`);
+    actions.getMovies(nextParams);
+  }
+
+  handleFilter(moviesType) {
+    this.update({ moviesType, page: 1 })
+  }
+
+  onPageChange({ selected }) {
+    this.update({ page: selected + 1 })
   }
 
   render() {
-    const { moviesList, moviesGenres } = this.props;
+    const { moviesList, moviesGenres, history } = this.props;
     const { data, isLoading, error } = moviesList;
 
-    const { moviesType } = this.geUrlSearchObject();
+    const { moviesType } = qs.parse(history.location.search);
 
     return (
       <MoviesPage

@@ -1,31 +1,56 @@
 import './LocaleDropdown.scss';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PT from 'prop-types';
-import { useLocation } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
-import { redirect } from 'app_history';
+import history, { redirect } from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
 
 const LocaleDropdown = (props) => {
+  // console.warn('-- LocaleDropdown.render()');
+
   const { i18n } = props;
-  const location = useLocation();
+  const location = history.location;
   const { lng: langQuery } = qs.parse(location.search);
 
-  const defaultLang = getDefaultLang(langQuery);
+  const defaultLang = findLang(langQuery);
   const [lang, setLang] = useState(defaultLang);
 
-  function getDefaultLang(queryValue) {
+  useEffect(() => {
+    // console.warn('-- LocaleDropdown.useEffect()');
+
+    const unlisten = history.listen((location, action) => {
+      // console.warn('\n LocaleDropdown.listen()');
+
+      if (action == 'POP') {
+        const { lng } = qs.parse(location.search);
+
+        if (
+          Boolean(lng && lng !== lang.value) ||
+          Boolean(typeof lng == 'undefined' && lang.value !== DEFAULT_LANGUAGE.value)
+        ) {
+          setLang(findLang(lng));
+        }
+      }
+    });
+
+    return () => {
+      // console.warn('-- LocaleDropdown.unmount()');
+      unlisten();
+    };
+  });
+
+  function findLang(queryValue) {
     if (!queryValue) return DEFAULT_LANGUAGE;
 
-    const result = LANGUAGES.find(i => i.value == queryValue);
+    const finded = LANGUAGES.find(i => i.value == queryValue);
 
-    return isNotEmpty(result)
-      ? result
+    return isNotEmpty(finded)
+      ? finded
       : DEFAULT_LANGUAGE;
   }
 
@@ -33,9 +58,8 @@ const LocaleDropdown = (props) => {
     e.preventDefault();
 
     const { pathname, search } = location;
-    const searchObj = qs.parse(search);
     const nextSearchQuery = qs.stringify({
-      ...searchObj,
+      ...qs.parse(search),
       lng: nextLang.value
     });
 

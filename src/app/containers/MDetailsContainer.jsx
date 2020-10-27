@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty } from 'app_services/UtilsService';
+import { DEFAULT_LANGUAGE } from 'app_i18n';
+import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
 import {
@@ -41,30 +43,56 @@ class MDetailsContainer extends Component {
     store.dispatch(getVideos(movie_id));
   }
 
+  componentWillUnmount() {
+    // console.log('\n -- MDetailsContainer.componentWillUnmount');
+  }
+
+  componentDidUpdate() {
+    // console.log('\n -- MDetailsContainer.componentDidUpdate');
+
+    const { history, movieDetails, match, actions } = this.props;
+    const { lng } = qs.parse(history.location.search);
+    const { movie_id } = match.params;
+    const { movie, credits, videos } = movieDetails;
+
+    const list = [
+      { request: movie.request, methodName: 'getMovieDetails' },
+      { request: credits.request, methodName: 'getCredits' },
+      { request: videos.request, methodName: 'getVideos' }
+    ];
+
+    list.forEach(({ request, methodName }) => {
+      if (getDiffMethod(request)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
+      ) {
+        actions[methodName](movie_id, { lng });
+      }
+    });
+  }
+
   componentDidMount() {
-    const { actions, match, movieDetails } = this.props;
+    // console.log('\n -- MDetailsContainer.componentDidMount');
+
+    const { actions, match, movieDetails, history } = this.props;
     const { movie, credits, videos } = movieDetails;
     const { movie_id } = match.params;
-    const emptyOrPrevious = (data) => isEmpty(data) || (movie_id != movie.data.id);
+    const { lng } = qs.parse(history.location.search);
 
-    if (emptyOrPrevious(movie.data)) {
-      actions.getMovieDetails(movie_id);
-    }
+    const list = [
+      { data: movie.data, methodName: 'getMovieDetails' },
+      { data: credits.data, methodName: 'getCredits' },
+      { data: videos.data, methodName: 'getVideos' }
+    ];
 
-    if (emptyOrPrevious(credits.data)) {
-      actions.getCredits(movie_id);
-    }
-
-    if (emptyOrPrevious(videos.data)) {
-      actions.getVideos(movie_id);
-    }
+    list.forEach(({ data, methodName }) => {
+      if (isEmpty(data) || (movie_id != data.id)) {
+        actions[methodName](movie_id, { lng });
+      }
+    });
   }
 
   render() {
     const { movieDetails } = this.props;
     const { movie, credits, videos } = movieDetails;
-
-    // console.log('-- MDetailsContainer.render(), movieDetails:', movieDetails);
 
     return (
       <MDetailsContextProvider

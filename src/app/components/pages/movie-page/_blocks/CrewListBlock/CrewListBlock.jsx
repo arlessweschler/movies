@@ -2,6 +2,7 @@ import './CrewListBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
+import { withTranslation } from 'react-i18next';
 import b_ from 'b_';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { CrewNamesBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row } from 'app_components/layout';
 
-function CrewListBlock({ cls }) {
+function CrewListBlock({ cls, t }) {
   const b = b_.with(cls);
   const cls_defaults = {
     cls_label: cn(b('label'), 'pr-1 col-12 col-md-auto p-0'),
@@ -18,19 +19,19 @@ function CrewListBlock({ cls }) {
 
   const crewList = [
     {
-      label: "Director",
+      label: t('movie_details.crew.director'),
       searchParams: { department: 'Directing', job: 'Director' }
     },
     {
-      label: "Writing",
+      label: t('movie_details.crew.writing'),
       searchParams: { department: 'Directing', job: 'Director' }
     },
     {
-      label: "Director of Photography",
+      label: t('movie_details.crew.director_of_photography'),
       searchParams: { department: 'Writing', job: ['Screenplay', 'Writer', 'Novel', 'Storyboard', 'Comic Book'] }
     },
     {
-      label: "Original Music Composer",
+      label: t('movie_details.crew.original_music_composer'),
       searchParams: { department: 'Sound', job: 'Original Music Composer' }
     }
   ];
@@ -54,7 +55,8 @@ function CrewListBlock({ cls }) {
 };
 
 CrewListBlock.propTypes = {
-  cls: PT.string.isRequired
+  cls: PT.string.isRequired,
+  t: PT.func.isRequired
 };
 
-export default CrewListBlock;
+export default withTranslation()(CrewListBlock);

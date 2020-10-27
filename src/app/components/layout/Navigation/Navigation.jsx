@@ -1,11 +1,12 @@
 import './Navigation.scss';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
+import history, { redirect } from 'app_history';
 import {
   NavToggle,
   LocaleDropdown,
@@ -15,20 +16,30 @@ import {
 const Navigation = () => {
   const cls_base = 'movies-navbar';
 
+  const goHome = (e) => {
+    e.preventDefault();
+    const { lng } = qs.parse(history.location.search);
+
+    redirect(`/?${qs.stringify({ lng })}`);
+  }
+
   return (
     <nav className={cn(cls_base, 'navbar navbar-expand-sm navbar-dark')}>
       <div className="container p-0">
-
-        <Link to='/' className="link-home">
+        <a
+          href="/"
+          className="link-home"
+          onClick={(e) => goHome(e)}
+        >
           <FontAwesomeIcon
             className="mr-1"
             icon={faFilm} />
               Movies
-          </Link>
+          </a>
 
         <NavToggle>
-            <SearchForm />
-            <LocaleDropdown />
+          <SearchForm />
+          <LocaleDropdown />
         </NavToggle>
 
       </div>

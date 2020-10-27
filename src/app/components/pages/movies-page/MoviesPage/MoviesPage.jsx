@@ -26,15 +26,15 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
       <BackdropMain />
 
       <Row cls="mb-md-2">
-        <div className="col-12 col-md-auto p-0 pr-md-2 toolbar-wrapper">
+        <div className="col-12 col-lg-auto p-0 pr-lg-2 toolbar-wrapper">
           <ToolbarBlock {...data_toolbar} />
         </div>
 
         {hasMovies
           ? (
-            <div className="col-12 col-md p-0 pagination-wrapper">
+            <div className="col-12 col-lg p-0 pagination-wrapper">
               <PagingBlock
-                cls="m-0 float-md-right"
+                cls="m-0 float-lg-right"
                 {...data_paging}
               />
             </div>
