@@ -27,6 +27,10 @@ const Utils = {
 
   getDiffMethod(request) {
     return function (key, options = {}) {
+      /*       console.log('\n hasDiffs()');
+            console.log('key:', key);
+            console.log('request:', request); */
+
       const {
         withDefault = false,
         defaultValue = null
@@ -43,12 +47,10 @@ const Utils = {
         ? Boolean(typeof sValue == 'undefined' && rValue !== defaultValue)
         : false;
 
-      /*     console.log('\n hasDiffs()');
-          console.log('key:', key);
-          console.log('sValue:', sValue);
-          console.log('rValue:', rValue);
-          console.log('searchQueryDiff:', searchQueryDiff);
-          console.log('defaultDiff:', defaultDiff); */
+      /*           console.log('sValue:', sValue);
+                console.log('rValue:', rValue);
+                console.log('searchQueryDiff:', searchQueryDiff);
+                console.log('defaultDiff:', defaultDiff); */
 
       return searchQueryDiff || defaultDiff;
     }

@@ -1,11 +1,7 @@
-import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
-// import { combineReducers } from 'redux';
-import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
+import { combineReducers } from 'redux';
 
-/* const moviesReducer = combineReducers({
-  movies: createAsyncReducer(actionKeys.GET_MOVIES),
-  genres: createAsyncReducer(actionKeys.GET_GENRES)
-}); */
+import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
+import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
 
 export const DEFAULT_MOVIES_TYPE = 'now_playing';
 
@@ -24,10 +20,11 @@ const DEFAULT_MOVIES_STATE = {
 const DEFAULT_GENRES_STATE = {
   data: [],
   isLoading: false,
-  error: null
+  error: null,
+  request: {}
 };
 
-const moviesReducer = {
+const moviesListReducer = combineReducers({
   movies: createAsyncReducer(
     actionKeys.GET_MOVIES,
     { initialState: DEFAULT_MOVIES_STATE }
@@ -36,7 +33,6 @@ const moviesReducer = {
     actionKeys.GET_GENRES,
     { initialState: DEFAULT_GENRES_STATE }
   )
-};
+});
 
-// export { moviesReducer };
-export default moviesReducer;
+export default moviesListReducer;

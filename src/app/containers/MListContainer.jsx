@@ -18,9 +18,8 @@ import {
 } from 'redux_actions';
 
 // маппинг редюсеров
-const mapStateToProps = ({ moviesGenres, moviesList }) => {
+const mapStateToProps = ({ moviesList }) => {
   return {
-    moviesGenres,
     moviesList
   };
 };
@@ -48,7 +47,8 @@ class MListContainer extends Component {
 
   static fetchData(store, urlParams, urlQuery) {
     console.log('-- MListContainer.fetchData(), urlQuery:', urlQuery);
-    store.dispatch(getGenres());
+
+    store.dispatch(getGenres(urlQuery));
     store.dispatch(getMovies(urlQuery));
   }
 
@@ -57,29 +57,33 @@ class MListContainer extends Component {
   }
 
   componentDidUpdate() {
-    // console.log('\n -- MListContainer.componentDidUpdate()');
+    console.log('\n -- MListContainer.componentDidUpdate()');
     const { moviesList, actions, history } = this.props;
+    const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
-    if (this.hasUrlQueryDiffs(moviesList.request)) {
+    if (this.hasUrlQueryDiffs(genres.request, ['lng'])) {
+      actions.getGenres(searchObject);
+    };
+
+    if (this.hasUrlQueryDiffs(movies.request)) {
       actions.getMovies(searchObject);
     };
   }
 
   componentDidMount() {
-    // console.log('\n -- MListContainer.componentDidMount()');
+    console.log('\n -- MListContainer.componentDidMount()');
 
-    const { moviesList, moviesGenres, history, actions } = this.props;
+    const { moviesList, history, actions } = this.props;
+    const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
-    if (isEmpty(moviesGenres.data)) {
-      actions.getGenres();
+    if (isEmpty(genres.data) ||
+      this.hasUrlQueryDiffs(genres.request, ['lng'])) {
+      actions.getGenres(searchObject);
     };
 
-    if (
-      isEmpty(moviesList.data.results) ||
-      this.hasUrlQueryDiffs(moviesList.request)
-    ) {
+    if (isEmpty(movies.data.results) || this.hasUrlQueryDiffs(movies.request)) {
       actions.getMovies(searchObject);
     };
   }
@@ -87,16 +91,20 @@ class MListContainer extends Component {
   // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
   // 1. значениями этих параметров из url search query или 
   // (опционально) 2. дефолтными значениями этих из редюсера
-  hasUrlQueryDiffs(request) {
+  hasUrlQueryDiffs(request, list) {
     const hasDiffs = getDiffMethod(request);
 
-    const list = [
+    let params = [
       { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
       { key: 'page', defaultValue: 1 },
       { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE }
     ];
 
-    return list.some(
+    if (list) {
+      params = params.filter(i => list.includes(i.key));
+    }
+
+    return params.some(
       (item) => hasDiffs(item.key, {
         withDefault: true,
         defaultValue: item.defaultValue
@@ -131,8 +139,9 @@ class MListContainer extends Component {
   }
 
   render() {
-    const { moviesList, moviesGenres, history } = this.props;
-    const { data, isLoading, error } = moviesList;
+    const { moviesList, history } = this.props;
+    const { movies, genres } = moviesList;
+    const { data, isLoading, error } = movies;
 
     const { moviesType } = qs.parse(history.location.search);
 
@@ -150,7 +159,7 @@ class MListContainer extends Component {
         }}
 
         data_genresContext={{
-          genres: moviesGenres.data,
+          genres: genres.data,
           linkMovie: this.linkMovie
         }}
 
@@ -171,18 +180,20 @@ MListContainer.propTypes = {
   }).isRequired,
 
   moviesList: PT.shape({
-    isLoading: PT.bool.isRequired,
-    error: PTS.nullOrString,
-    data: PT.shape({
-      page: PT.number.isRequired,
-      total_pages: PTS.nullOrNumber,
-      total_results: PTS.nullOrNumber,
-      results: PT.array.isRequired,
-    }).isRequired
-  }).isRequired,
+    movies: PT.shape({
+      isLoading: PT.bool.isRequired,
+      error: PTS.nullOrString,
+      data: PT.shape({
+        page: PT.number.isRequired,
+        total_pages: PTS.nullOrNumber,
+        total_results: PTS.nullOrNumber,
+        results: PT.array.isRequired,
+      }).isRequired
+    }).isRequired,
 
-  moviesGenres: PT.shape({
-    data: PT.array.isRequired
+    genres: PT.shape({
+      data: PT.array.isRequired
+    }).isRequired,
   }).isRequired,
 
   history: PT.shape({

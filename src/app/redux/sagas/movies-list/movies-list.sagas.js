@@ -36,14 +36,18 @@ function* getMoviesSaga({ type, payload }) {
   }
 }
 
-function* getGenresSaga({ type }) {
+function* getGenresSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
+  const {
+    lng = DEFAULT_LANGUAGE.value
+  } = payload;
 
-  yield put(actions.start());
+  yield put(actions.start({ lng }));
   try {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
-      url: '/genre/movie/list'
+      url: '/genre/movie/list',
+      tmdbOptions: { lng }
     });
     yield put(actions.success(data.genres));
   } catch (error) {
