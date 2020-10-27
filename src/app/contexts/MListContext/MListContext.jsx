@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import PT from 'prop-types';
 
-import { isEmpty } from 'app_services/UtilsService';
+import { isEmpty, capitalize } from 'app_services/UtilsService';
 
 const MListContext = createContext();
 
@@ -17,7 +17,7 @@ class MListContextProvider extends Component {
       .map(id => {
         const item = genres.find(item => item.id === id);
         return item
-          ? item.name
+          ? capitalize(item.name)
           : null;
       })
       .join(', ');

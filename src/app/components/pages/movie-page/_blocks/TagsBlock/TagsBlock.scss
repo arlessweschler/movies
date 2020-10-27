@@ -1,5 +1,5 @@
-@import 'app_assets/css/variables/base_classes';
-@import 'app_assets/css/variables/colors';
+@import "app_assets/css/variables/base_classes";
+@import "app_assets/css/variables/colors";
 
 $b: $movie-details-base-cls;
 $b_top: #{$b}-top;
@@ -11,6 +11,18 @@ $b_top: #{$b}-top;
     .#{$b_top}__item {
       position: relative;
       margin: 10px 15px 10px 0px;
+
+      &--genres {
+        .tag-value {
+          background-color: rgba(90, 92, 165, 0.4);
+          padding: 0px 3px;
+          border-radius: 5px;
+
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
 
       &:first-child {
         margin-left: 0px;
@@ -30,6 +42,10 @@ $b_top: #{$b}-top;
     .#{$b_top}__text {
       margin-left: 5px;
       color: $lightgray;
+
+      .tag-semicolon {
+        margin-right: 5px;
+      }
     }
   }
 }

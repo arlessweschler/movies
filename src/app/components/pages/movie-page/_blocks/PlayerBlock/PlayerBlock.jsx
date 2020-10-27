@@ -11,6 +11,7 @@ import { withMDetailsContext } from 'app_contexts';
 function PlayerBlock(props) {
   const { searchParams, context } = props;
   const { getTrailer } = context;
+  const isLight = true;
 
   const trailer = getTrailer(searchParams);
   if (isEmpty(trailer)) return null;
@@ -20,7 +21,7 @@ function PlayerBlock(props) {
 
   return (
     <Fragment>
-      {isLoading && <ProgressBar />}
+      {!isLight && isLoading && <ProgressBar />}
       <ReactPlayer
         width="100%"
         height="100%"
@@ -30,7 +31,7 @@ function PlayerBlock(props) {
         controls={true}
         onReady={() => setLoading(false)}
         // устанавливает превью изображение, при клике на которое загружается плеер
-        light
+        light={isLight}
       />
     </Fragment>
   );

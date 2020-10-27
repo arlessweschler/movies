@@ -7,6 +7,11 @@
     "upcoming": "Upcoming"
   },
   "movie_details": {
+    "original_title": "Original title",
+    "votes": "vote",
+    "votes_plural": "votes",
+    "hours": "h",
+    "minutes": "m",
     "crew": {
       "director": "Director",
       "writing": "Writing",

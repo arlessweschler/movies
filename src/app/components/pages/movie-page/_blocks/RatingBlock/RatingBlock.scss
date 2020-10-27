@@ -14,7 +14,8 @@ $b_rate: #{$b}-rating;
       color: $yellow;
     }
 
-    .#{$b_rate}__scale {
+    .#{$b_rate}__scale,
+    .#{$b_rate}__votes {
       font-size: calc(0.8rem + 0.3vw);
       color: $gray;
     }

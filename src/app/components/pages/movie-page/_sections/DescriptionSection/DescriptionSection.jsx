@@ -9,7 +9,7 @@ import { Row, Column } from 'app_components/layout';
 
 function DescriptionSection({ cls_base, transparent, context }) {
   const { movie } = context;
-  const { title, production_countries, genres, release_date, runtime, vote_average, overview } = movie;
+  const { title, original_title, production_countries, genres, release_date, runtime, vote_average, vote_count, tagline, overview } = movie;
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
@@ -19,7 +19,7 @@ function DescriptionSection({ cls_base, transparent, context }) {
         <Column size={9} cls="p-0">
           <TitleBlock
             cls={cls_base}
-            data={{ title, release_date }}
+            data={{ title, release_date, original_title }}
           />
           <TagsBlock
             cls={`${cls_base}-top`}
@@ -30,7 +30,7 @@ function DescriptionSection({ cls_base, transparent, context }) {
         <Column size={3} cls="p-0">
           <RatingBlock
             cls={`${cls_base}-rating`}
-            data={{ vote_average }}
+            data={{ vote_average, vote_count }}
           />
         </Column>
       </Row>
@@ -40,6 +40,10 @@ function DescriptionSection({ cls_base, transparent, context }) {
       />
 
       <hr />
+
+      <Row cls="tagline">
+        {tagline}
+      </Row>
 
       <Row>
         {overview}

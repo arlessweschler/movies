@@ -41,12 +41,14 @@ export default {
         fetchUrl = `${process.env.API_PATH}${url}`;
         fetchFunc = fetch;
       }
+
+      // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
+
+      return fetchFunc(fetchUrl, fetchParams);
+
     } catch (error) {
       console.log('-- ApiService, error:', error);
+      throw new Error('Error in ApiService!');
     }
-
-    // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
-
-    return fetchFunc(fetchUrl, fetchParams);
   }
 };

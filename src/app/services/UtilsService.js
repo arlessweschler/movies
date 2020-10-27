@@ -4,6 +4,10 @@ import history from 'app_history';
 import imageNotAvailable from 'app_assets/img/image_not_available.png';
 
 const Utils = {
+  capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  },
+
   isEmpty(value) {
     if (
       value && (
@@ -57,14 +61,16 @@ const Utils = {
   }
 }
 
-const getDiffMethod = Utils.getDiffMethod;
+const capitalize = Utils.capitalize;
 const isEmpty = Utils.isEmpty;
+const getDiffMethod = Utils.getDiffMethod;
 const isNotEmpty = (value) => !Utils.isEmpty(value);
 
 export default Utils;
 
 export {
   imageNotAvailable,
+  capitalize,
   getDiffMethod,
   isEmpty,
   isNotEmpty
