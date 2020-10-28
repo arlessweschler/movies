@@ -3,7 +3,9 @@ import './ActorsSection.scss';
 import React, { Fragment, useState } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
+import cn from 'classnames';
 
+import noPhoto from 'app_assets/img/no_photo.png';
 import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
 import { TMDB_IMAGE_URL } from 'app_config';
@@ -28,34 +30,30 @@ function ActorsSection({ t, cls_base, transparent, context }) {
       {
         isNotEmpty(cast)
           ?
-          <section className={b('section', { "is-transparent": transparent })}>
+          <section className={cn(b('section', { "is-transparent": transparent }), 'pt-3')}>
             <div className="row d-flex justify-content-between">
               <h2>
                 {t('movie_details.actors.section_label')}:
               </h2>
 
-              <ToggleBlock
+              {(cast.length > 6) && <ToggleBlock
                 cls={b('toggle')}
                 handleToggle={() => setShowAll(!showAll)}
-              />
+              />}
             </div>
-
-            <div className="row actors-row justify-content-center">
+            <div className="actors-grid">
               {list.map((person, index) =>
                 <div
                   key={index}
-                  className="col cast-item"
+                  className="actors-card"
                 >
-
                   {/* photo */}
-                  {person.profile_path ? (
-                    <img
-                      className="cast-image"
-                      src={`${TMDB_IMAGE_URL.small + person.profile_path}`}
-                    />
-                  ) : (
-                      <div className="cast-image no-image" />
-                    )}
+                  {<img
+                    className={cn('cast-image', { "no-image": !person.profile_path })}
+                    src={person.profile_path
+                      ? `${TMDB_IMAGE_URL.small + person.profile_path}`
+                      : noPhoto}
+                  />}
 
                   {/* name */}
                   <div className="cast-name">

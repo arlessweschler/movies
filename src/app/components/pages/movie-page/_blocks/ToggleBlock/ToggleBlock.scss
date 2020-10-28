@@ -5,9 +5,17 @@ $b: $movie-details-base-cls;
 
 .#{$b} {
   .#{$b}__toggle {
-    .custom-control-input:checked ~ .custom-control-label::before {
-      border-color: $lightpurple;
-      background-color: $lightpurple;
+    .custom-control-label {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &::before {
+        border-color: $lightpurple;
+        background-color: $lightpurple;
+      }
     }
   }
 }
