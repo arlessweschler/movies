@@ -1,19 +1,27 @@
 import './ActorsSection.scss';
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
-import { v4 as uuidv4 } from 'uuid';
 
-import { TMDB_IMAGE_URL } from 'app_config';
+import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
+import { TMDB_IMAGE_URL } from 'app_config';
 import { isNotEmpty } from 'app_services/UtilsService';
+import { ToggleBlock } from 'app_components/pages/movie-page/_blocks';
 
-function ActorsSection({ cls_base, transparent, context }) {
+function ActorsSection({ t, cls_base, transparent, context }) {
   const { credits } = context;
   const { cast } = credits;
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
+  const [showAll, setShowAll] = useState(false);
+
+  if (!cast || cast.length < 1) return null;
+
+  const list = showAll
+    ? cast
+    : cast.slice(0, 6);
 
   return (
     <Fragment>
@@ -21,15 +29,21 @@ function ActorsSection({ cls_base, transparent, context }) {
         isNotEmpty(cast)
           ?
           <section className={b('section', { "is-transparent": transparent })}>
-            <div className="row">
-              <h2>Actors:</h2>
+            <div className="row d-flex justify-content-between">
+              <h2>
+                {t('movie_details.actors.section_label')}:
+              </h2>
+
+              <ToggleBlock
+                cls={b('toggle')}
+                handleToggle={() => setShowAll(!showAll)}
+              />
             </div>
 
-            <div className="row actors-row">
-
-              {cast.map((person) =>
+            <div className="row actors-row justify-content-center">
+              {list.map((person, index) =>
                 <div
-                  key={uuidv4()}
+                  key={index}
                   className="col cast-item"
                 >
 
@@ -67,6 +81,7 @@ function ActorsSection({ cls_base, transparent, context }) {
 };
 
 ActorsSection.propTypes = {
+  t: PT.func.isRequired,
   cls_base: PT.string.isRequired,
   transparent: PT.bool.isRequired,
 
@@ -77,4 +92,6 @@ ActorsSection.propTypes = {
   }).isRequired
 };
 
-export default withMDetailsContext(ActorsSection);
+export default
+  withTranslation()
+    (withMDetailsContext(ActorsSection));

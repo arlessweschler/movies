@@ -10,12 +10,11 @@
     }
 
     .cast-image {
-      width: 100px;
+      width: 150px;
+      height: 225px;
       border: 1px solid lightgray;
 
       &.no-image {
-        width: 100px;
-        height: 150px;
         background-image: url("~app_assets/img/no_photo.png");
         background-repeat: no-repeat;
         background-size: cover;

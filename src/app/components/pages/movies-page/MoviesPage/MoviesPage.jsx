@@ -34,7 +34,7 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
           ? (
             <div className="col-12 col-lg p-0 pagination-wrapper">
               <PagingBlock
-                cls="m-0 float-lg-right"
+                cls="m-0 justify-content-center justify-content-lg-end"
                 {...data_paging}
               />
             </div>
@@ -55,6 +55,10 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
           />
           : ''}
       </MListContextProvider>
+
+      <Row cls="pagination-wrapper justify-content-center mt-4">
+        <PagingBlock cls="m-0" {...data_paging} />
+      </Row>
     </div >
   );
 };

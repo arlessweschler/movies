@@ -20,7 +20,8 @@
       "original_music_composer": "Композитор"
     },
     "actors": {
-      "section_label": "Актеры"
+      "section_label": "Актеры",
+      "toggle_label": "Показать всех"
     }
   }
 }

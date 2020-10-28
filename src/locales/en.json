@@ -19,7 +19,8 @@
       "original_music_composer": "Original music composer"
     },
     "actors": {
-      "section_label": "Actors"
+      "section_label": "Actors",
+      "toggle_label": "Show all"
     }
   }
 }

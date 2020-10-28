@@ -40,8 +40,8 @@ function TitleBlock({ t, cls, data }) {
 };
 
 TitleBlock.propTypes = {
-  cls: PT.string.isRequired,
   t: PT.func.isRequired,
+  cls: PT.string.isRequired,
 
   data: PT.shape({
     title: PT.string,
