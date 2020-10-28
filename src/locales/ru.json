@@ -6,6 +6,9 @@
     "top_rated": "Лучшие",
     "upcoming": "Скоро"
   },
+  "movie_list": {
+    "empty_poster": "Постер отсутствует"
+  },
   "movie_details": {
     "original_title": "Оригинальное название",
     "votes_0": "голос",

@@ -57,7 +57,7 @@ class MListContainer extends Component {
   }
 
   componentDidUpdate() {
-    console.log('\n -- MListContainer.componentDidUpdate()');
+    // console.warn('\n -- MListContainer.componentDidUpdate()');
     const { moviesList, actions, history } = this.props;
     const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
@@ -71,8 +71,33 @@ class MListContainer extends Component {
     };
   }
 
+/*   shouldComponentUpdate(nextProps, nextState) {
+    console.warn('\n -- MListContainer.shouldComponentUpdate()');
+
+    const { moviesList, history } = this.props;
+    const { movies, genres } = moviesList;
+
+    const { moviesList: nextMoviesList, history:nextHistory } = nextProps;
+    const {
+      movies: nextMovies,
+      genres: nextGenres
+    } = nextMoviesList;
+
+    const searchObject = history.location.search;
+    const nextSearchObject = nextHistory.location.search;
+
+    const moviesHasLoaded = movies.isLoading && !nextMovies.isLoading;
+    const genresHasLoaded = genres.isLoading && !nextGenres.isLoading;
+    
+    console.log('searchObject:', searchObject);
+    console.log('nextSearchObject:', nextSearchObject);
+
+    // return moviesHasLoaded || genresHasLoaded;
+    return true;
+  } */
+
   componentDidMount() {
-    console.log('\n -- MListContainer.componentDidMount()');
+    // console.log('\n -- MListContainer.componentDidMount()');
 
     const { moviesList, history, actions } = this.props;
     const { movies, genres } = moviesList;

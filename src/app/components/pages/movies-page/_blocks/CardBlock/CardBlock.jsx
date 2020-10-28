@@ -4,41 +4,30 @@ import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-import { TMDB_IMAGE_URL } from 'app_config';
+import { withTranslation } from 'react-i18next';
 import { withMListContext } from 'app_contexts';
-import { imageNotAvailable } from 'app_services/UtilsService';
+import { CardImageBlock } from
+  'app_components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
   const { cls, movie, context } = props;
-  const { id, poster_path, title, genre_ids, vote_average } = movie;
+  const { id, title, genre_ids } = movie;
   const { printGenres, linkMovie } = context;
 
   const b = b_.with(cls);
+
+  // console.log('-- CardBlock.render()');
 
   return (
     <div
       className={cn(b(), 'mx-auto')}
       onClick={() => linkMovie(id)}
     >
-      <div className={b('image-wrapper')}>
-        <img
-          className={cn(b('image'), { 'no-image': !poster_path })}
-          src={poster_path
-            ? `${TMDB_IMAGE_URL.medium}/${poster_path}`
-            : imageNotAvailable}
-        />
-        {(vote_average > 0) && (
-          <span className={b('rating')}>
-            <FontAwesomeIcon
-              className={cn(b('icon'), 'mr-1')}
-              icon={faStar}
-            />
-            {vote_average}
-          </span>)}
-      </div>
+      <CardImageBlock
+        cls={cls}
+        movie={movie}
+      />
 
       <div className={b('body')}>
         <div className={cn(b('title'), 'mb-1')}>

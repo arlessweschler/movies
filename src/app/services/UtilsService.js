@@ -31,9 +31,8 @@ const Utils = {
 
   getDiffMethod(request) {
     return function (key, options = {}) {
-      /*       console.log('\n hasDiffs()');
-            console.log('key:', key);
-            console.log('request:', request); */
+/*       console.log('\n hasDiffs()');
+      console.log('key:', key); */
 
       const {
         withDefault = false,
@@ -42,19 +41,25 @@ const Utils = {
 
       const location = history.location;
       const searchObject = qs.parse(location.search);
+
+/*       console.log('searchObject:', searchObject);
+      console.log('request:', request);
+      console.log('searchObject[key]:', searchObject[key]);
+      console.log('request[key]:', request[key]); */
+
       const sValue = searchObject[key];
       const rValue = request[key];
 
-      const searchQueryDiff = Boolean(sValue && sValue !== rValue);
+      const searchQueryDiff = Boolean(sValue && sValue != rValue);
 
       const defaultDiff = withDefault
-        ? Boolean(typeof sValue == 'undefined' && rValue !== defaultValue)
+        ? Boolean(typeof sValue == 'undefined' && rValue != defaultValue)
         : false;
 
-      /*           console.log('sValue:', sValue);
-                console.log('rValue:', rValue);
-                console.log('searchQueryDiff:', searchQueryDiff);
-                console.log('defaultDiff:', defaultDiff); */
+/*       console.log('sValue:', sValue);
+      console.log('rValue:', rValue);
+      console.log('searchQueryDiff:', searchQueryDiff);
+      console.log('defaultDiff:', defaultDiff); */
 
       return searchQueryDiff || defaultDiff;
     }

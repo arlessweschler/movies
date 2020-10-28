@@ -12,7 +12,7 @@ function ListBlock({ cls_base, movies }) {
     <div className={cn(`${cls_base}-grid`, 'mt-3')}>
       {movies.map((movie) =>
         <CardBlock
-          key={uuidv4()}
+          key={movie.id}
           cls={`${cls_base}-card`}
           movie={movie}
         />)}

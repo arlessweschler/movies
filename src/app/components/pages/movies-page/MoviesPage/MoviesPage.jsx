@@ -46,7 +46,8 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
       <MListContextProvider {...data_genresContext}>
         {error && <p>{error}</p>}
 
-        {isLoading && <ProgressBar />}
+        {/* {isLoading && <ProgressBar />} */}
+        {<ProgressBar />}
 
         {hasMovies
           ? <ListBlock

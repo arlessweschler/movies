@@ -5,20 +5,11 @@ $b: $movies-list-base-cls;
 $b_grid: "#{$b}-grid";
 $b_card: "#{$b}-card";
 
-// after media width: 991px
 $card-width: 200px;
-$image-height: 300px;
-
-// before media width: 991px
 $card-width--sm: 300px;
-$image-height--sm: auto;
 
 $title-text-color: $white_mod;
-// $genres-text-color: #94a1af;
-// $genres-text-color: lightslategray;
-$genres-text-color: #8ea6c5;
-$rating-border-color: #343a40;
-$image-border-radius: 8px;
+$genres-text-color: $lightblue;;
 
 @mixin text-ellipsis {
   width: 100%;
@@ -67,39 +58,9 @@ $image-border-radius: 8px;
       color: $title-text-color;
     }
 
-    &__rating {
-      position: absolute;
-      min-width: 35px;
-      right: 7px;
-      bottom: 7px;
-      padding: 5px;
-      font-size: 0.8em;
-      text-align: center;
-      color: $yellow;
-      border-radius: 5px;
-
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
     &__genres {
       @include text-ellipsis;
       color: $genres-text-color;
-    }
-
-    &__image-wrapper {
-      position: relative;
-    }
-
-    &__image {
-      width: 100%;
-      height: $image-height;
-      border-radius: $image-border-radius;
-      border: 1px solid $black_mod;
-      object-fit: cover;
-
-      @media screen and (max-width: 576px) {
-        height: $image-height--sm;
-      }
     }
   }
 }

@@ -6,6 +6,9 @@
     "top_rated": "Top rated",
     "upcoming": "Upcoming"
   },
+  "movie_list": {
+    "empty_poster": "No poster"
+  },
   "movie_details": {
     "original_title": "Original title",
     "votes": "vote",
