@@ -5,8 +5,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { isNotEmpty } from 'app_services/UtilsService';
+import { Backdrop } from 'app_components/layout';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from 'app_components/pages/movie-page/_sections';
-import { BackdropBlock } from 'app_components/pages/movie-page/_blocks';
 
 function MoviePage({ movie }) {
   const { backdrop_path } = movie;
@@ -21,7 +21,7 @@ function MoviePage({ movie }) {
     <Fragment>
       {isNotEmpty(movie) &&
         <Fragment>
-          <BackdropBlock data={{ backdrop_path }} />
+          <Backdrop backdrop_path={backdrop_path} />
 
           <div className={cn(b())}>
             <DescriptionSection

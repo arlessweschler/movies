@@ -8,9 +8,8 @@ import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Row } from 'app_components/layout';
 import { MListContextProvider } from 'app_contexts';
-import { BackdropMain, ToolbarBlock, PagingBlock, ListBlock } from
+import { ToolbarBlock, PagingBlock, ListBlock } from
   'app_components/pages/movies-page/_blocks';
-import { ProgressBar } from 'app_components/layout';
 
 function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_moviesList }) {
 
@@ -23,7 +22,6 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
 
   return (
     <div className={b()}>
-      <BackdropMain />
 
       <Row>
         <div className="col-12 col-lg-auto p-0 pr-lg-2 toolbar-wrapper">

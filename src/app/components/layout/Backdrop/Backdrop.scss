@@ -1,0 +1,15 @@
+.backdrop {
+  /*   animation: animateOpacity 1s ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: none;
+  animation-play-state: running; */
+
+  width: 100%;
+  height: 100%;
+  z-index: -1 !important;
+  background-size: cover;
+
+  &--main {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url("~app_assets/img/main_backdrop.jpg");
+  }
+}

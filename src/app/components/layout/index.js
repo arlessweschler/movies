@@ -5,6 +5,7 @@ import Footer from 'app_components/layout/Footer/Footer';
 import ProgressBar from 'app_components/layout/ProgressBar/ProgressBar';
 import Row from 'app_components/layout/Row/Row';
 import Column from 'app_components/layout/Column/Column';
+import Backdrop from 'app_components/layout/Backdrop/Backdrop';
 
 export {
   Layout,
@@ -13,5 +14,6 @@ export {
   Footer,
   ProgressBar,
   Row,
-  Column
+  Column,
+  Backdrop
 };

@@ -3,7 +3,7 @@ import './Layout.scss';
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
 
-import { Header, Footer } from 'app_components/layout';
+import { Header, Footer, Backdrop } from 'app_components/layout';
 
 const Layout = (props) => {
   return (
@@ -11,6 +11,7 @@ const Layout = (props) => {
       <Header />
       <main className="layout">
         <div className="container position-relative p-0">
+          <Backdrop />
           {props.children}
         </div>
       </main>

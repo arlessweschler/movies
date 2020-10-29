@@ -5,7 +5,6 @@ import TitleBlock from 'app_components/pages/movie-page/_blocks/TitleBlock/Title
 import TagsBlock from 'app_components/pages/movie-page/_blocks/TagsBlock/TagsBlock';
 import RatingBlock from 'app_components/pages/movie-page/_blocks/RatingBlock/RatingBlock';
 import PosterBlock from 'app_components/pages/movie-page/_blocks/PosterBlock/PosterBlock';
-import BackdropBlock from 'app_components/pages/movie-page/_blocks/BackdropBlock/BackdropBlock';
 import ToggleBlock from 'app_components/pages/movie-page/_blocks/ToggleBlock/ToggleBlock';
 
 export {
@@ -16,6 +15,5 @@ export {
   TagsBlock,
   RatingBlock,
   PosterBlock,
-  BackdropBlock,
   ToggleBlock
 };
