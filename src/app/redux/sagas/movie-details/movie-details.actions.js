@@ -7,13 +7,15 @@ export const actionKeys = {
   MOVIE_DETAILS: 'MOVIE_DETAILS',
   MOVIE_CREDITS: 'MOVIE_CREDITS',
   MOVIE_VIDEOS: 'MOVIE_VIDEOS',
+  MOVIE_IMAGES: 'MOVIE_IMAGES',
   RESET_MOVIE_CARD: 'RESET_MOVIE_CARD',
 };
 
 export const asyncActionMaps = {
   [actionKeys.MOVIE_DETAILS]: createActionsForAsyncAction(actionKeys.MOVIE_DETAILS),
   [actionKeys.MOVIE_CREDITS]: createActionsForAsyncAction(actionKeys.MOVIE_CREDITS),
-  [actionKeys.MOVIE_VIDEOS]: createActionsForAsyncAction(actionKeys.MOVIE_VIDEOS)
+  [actionKeys.MOVIE_VIDEOS]: createActionsForAsyncAction(actionKeys.MOVIE_VIDEOS),
+  [actionKeys.MOVIE_IMAGES]: createActionsForAsyncAction(actionKeys.MOVIE_IMAGES)
 };
 
 const actions = {
@@ -28,6 +30,10 @@ const actions = {
   getVideos: (movieId, params = {}) => {
     const { lng } = params;
     return createActionCreator(actionKeys.MOVIE_VIDEOS, { movieId, lng })
+  },
+  getImages: (movieId, params = {}) => {
+    const { lng } = params;
+    return createActionCreator(actionKeys.MOVIE_IMAGES, { movieId, lng })
   },
   resetMovieDetails: () => {
     return createActionCreator(
@@ -47,5 +53,6 @@ export const {
   getMovieDetails,
   getCredits,
   getVideos,
+  getImages,
   resetMovieDetails
 } = actions;

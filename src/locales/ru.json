@@ -25,6 +25,9 @@
     "actors": {
       "section_label": "Актеры",
       "toggle_label": "Показать всех"
+    },
+    "images": {
+      "section_label": "Изображения"
     }
   }
 }

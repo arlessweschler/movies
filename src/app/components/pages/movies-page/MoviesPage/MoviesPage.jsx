@@ -53,9 +53,13 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
           : ''}
       </MListContextProvider>
 
-      <Row cls="pagination-wrapper justify-content-center mt-3">
-        <PagingBlock cls="m-0" {...data_paging} />
-      </Row>
+      {hasMovies
+        ? (
+          <Row cls="pagination-wrapper justify-content-center mt-3">
+            <PagingBlock cls="m-0" {...data_paging} />
+          </Row>
+        )
+        : ''}
     </div >
   );
 };

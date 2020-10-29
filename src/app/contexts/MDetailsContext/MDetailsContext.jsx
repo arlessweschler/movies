@@ -55,13 +55,14 @@ class MDetailsContextProvider extends Component {
   };
 
   render() {
-    const { movie, videos, credits, children } = this.props;
+    const { movie, videos, credits, images, children } = this.props;
 
     return (
       <MDetailsContext.Provider value={{
         movie,
         videos,
         credits,
+        images,
         getCrewNames: this.getCrewNames,
         getTrailer: this.getTrailer
       }} >
@@ -88,7 +89,9 @@ MDetailsContextProvider.propTypes = {
     cast: PT.array
   }).isRequired,
 
-  videos: PT.array.isRequired
+  videos: PT.array.isRequired,
+
+  images: PT.array.isRequired
 };
 
 export { MDetailsContextProvider };

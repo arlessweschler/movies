@@ -1,0 +1,13 @@
+@import "app_assets/css/variables/base_classes";
+
+$b: $movie-details-base-cls;
+
+.#{$b} {
+  .#{$b}__gallery {
+    img {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid lightgray;
+    }
+  }
+}

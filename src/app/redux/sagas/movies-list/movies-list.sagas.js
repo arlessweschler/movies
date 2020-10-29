@@ -1,9 +1,11 @@
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, all } from 'redux-saga/effects';
+
+import { DEFAULT_LANGUAGE } from 'app_i18n';
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
+import { lngUrlValue } from 'app_redux/helpers/sagas.helper';
 
 // watchers
 export function* watchMovieBrowser() {
@@ -27,8 +29,7 @@ function* getMoviesSaga({ type, payload }) {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
       url: `/movie/${moviesType}`,
-      urlParams: `&page=${page}`,
-      tmdbOptions: { lng }
+      urlParams: `&page=${page}&language=${lngUrlValue(lng)}`
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -47,7 +48,7 @@ function* getGenresSaga({ type, payload }) {
     const data = yield ApiService.fetch({
       useMoviesApi: true,
       url: '/genre/movie/list',
-      tmdbOptions: { lng }
+      urlParams: `&language=${lngUrlValue(lng)}`
     });
     yield put(actions.success(data.genres));
   } catch (error) {

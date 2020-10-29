@@ -10,12 +10,23 @@ const DEFAULT_VIDEOS_STATE = {
   request: {}
 };
 
+const DEFAULT_IMAGES_STATE = {
+  data: [],
+  isLoading: false,
+  error: null,
+  request: {}
+};
+
 const movieDetailsReducer = combineReducers({
   movie: createAsyncReducer(actionKeys.MOVIE_DETAILS),
   credits: createAsyncReducer(actionKeys.MOVIE_CREDITS),
   videos: createAsyncReducer(
     actionKeys.MOVIE_VIDEOS,
     { initialState: DEFAULT_VIDEOS_STATE }
+  ),
+  images: createAsyncReducer(
+    actionKeys.MOVIE_IMAGES,
+    { initialState: DEFAULT_IMAGES_STATE }
   )
 });
 

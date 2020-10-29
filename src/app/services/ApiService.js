@@ -1,6 +1,5 @@
 require('isomorphic-fetch');
 
-import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
 import { TMDB_API_HOST, TMDB_API_KEY, } from 'app_config';
 
 function* fetchJson(url, { method }) {
@@ -18,7 +17,6 @@ function* fetchJson(url, { method }) {
 export default {
   fetch: function ({
     useMoviesApi = false,
-    tmdbOptions = {},
     url = '',
     urlParams = ''
   }) {
@@ -28,13 +26,7 @@ export default {
 
     try {
       if (useMoviesApi) {
-        const language = tmdbOptions.lng
-          ? LANGUAGES.find(i => i.value == tmdbOptions.lng)
-          : DEFAULT_LANGUAGE;
-
-        const queryLanguage = `language=${language.value}-${language.region}`;
-
-        fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${queryLanguage}${urlParams}`;
+        fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${urlParams}`;
         fetchFunc = fetchJson;
 
       } else {

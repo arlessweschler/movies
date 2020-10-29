@@ -6,13 +6,14 @@ import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
+import { getDiffMethod } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
 import {
   getMovieDetails,
   getCredits,
-  getVideos
+  getVideos,
+  getImages
 } from 'redux_actions';
 import { ProgressBar } from 'app_components/layout';
 
@@ -29,7 +30,8 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       getMovieDetails,
       getCredits,
-      getVideos
+      getVideos,
+      getImages
     }, dispatch)
   };
 };
@@ -39,7 +41,7 @@ class MDetailsContainer extends Component {
   static fetchData(store, urlParams, urlQuery) {
     console.log('-- MDetailsContainer.fetchData(), urlQuery:', urlQuery);
     const movie_id = urlParams[0].split('/').pop();
-    const methods = [getMovieDetails, getCredits, getVideos];
+    const methods = [getMovieDetails, getCredits, getVideos, getImages];
 
     methods.forEach((method) => {
       store.dispatch(method(movie_id, urlQuery));
@@ -82,7 +84,8 @@ class MDetailsContainer extends Component {
     const list = [
       { name: 'movie', methodName: 'getMovieDetails' },
       { name: 'credits', methodName: 'getCredits' },
-      { name: 'videos', methodName: 'getVideos' }
+      { name: 'videos', methodName: 'getVideos' },
+      { name: 'images', methodName: 'getImages' }
     ];
 
     let segment;
@@ -99,7 +102,7 @@ class MDetailsContainer extends Component {
 
   render() {
     const { movieDetails } = this.props;
-    const { movie, credits, videos } = movieDetails;
+    const { movie, credits, videos, images } = movieDetails;
 
     return (
       <Fragment>
@@ -111,6 +114,7 @@ class MDetailsContainer extends Component {
           credits={credits.data}
           videos={videos.data}
           movie={movie.data}
+          images={images.data}
         >
           <MoviePage movie={movie.data}/>
         </MDetailsContextProvider>
@@ -134,6 +138,12 @@ MDetailsContainer.propTypes = {
     }).isRequired,
 
     videos: PT.shape({
+      isLoading: PT.bool.isRequired,
+      error: PTS.nullOrString,
+      data: PT.array.isRequired
+    }).isRequired,
+
+    images: PT.shape({
       isLoading: PT.bool.isRequired,
       error: PTS.nullOrString,
       data: PT.array.isRequired

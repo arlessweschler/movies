@@ -17,6 +17,7 @@ import {
   getMovieDetails,
   getCredits,
   getVideos,
+  getImages,
   resetMovieDetails
 } from 'app_redux/sagas/movie-details/movie-details.actions';
 
@@ -33,5 +34,6 @@ export {
   getMovieDetails,
   getCredits,
   getVideos,
+  getImages,
   resetMovieDetails
 };
