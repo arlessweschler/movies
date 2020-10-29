@@ -12,6 +12,7 @@ function Backdrop(props) {
   const style = backdrop_path
     ? {
       backgroundImage: `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0, .5)), url("${TMDB_IMAGE_URL.large}${backdrop_path}")`,
+      animation: "animateOpacity 0.5s ease"
     }
     : null;
 

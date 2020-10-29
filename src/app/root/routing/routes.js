@@ -5,8 +5,6 @@ import {
 } from 'app_components/pages';
 
 import {
-/*   UsersListContainer,
-  UserCardContainer, */
   MListContainer,
   MDetailsContainer
 } from 'app_containers';
@@ -33,18 +31,6 @@ const routes = [
         exact: true,
         component: MDetailsContainer
       },
-
-/*       {
-        path: '/users',
-        exact: true,
-        component: UsersListContainer
-      },
-
-      {
-        path: '/users/:user_id',
-        exact: true,
-        component: UserCardContainer
-      }, */
 
       {
         path: '*',

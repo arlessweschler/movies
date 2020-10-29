@@ -21,9 +21,6 @@ app.use(appResponseHeaders);
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 console.log('EXPRESS_ROUTES:', EXPRESS_ROUTES);
 
-// API
-app.use('/api', require('server_api/users'));
-
 // серверный рендеринг
 if (IS_SSR) {
   const RESOURCES = ['js', 'css', 'assets'];

@@ -25,19 +25,10 @@ $image-border-radius: 8px;
         height: $image-height--sm;
       }
 
-      // for element, created by lazy loading plugin
-      .lazy-wrapper {
-        height: 100%;
-
-        img {
-          @include card-image;
-          object-fit: cover;
-        }
-      }
-
       .#{$b_card}__image {
         @include card-image;
         object-fit: cover;
+        animation: animateOpacity 0.7s ease;
       }
 
       .no-image-text {

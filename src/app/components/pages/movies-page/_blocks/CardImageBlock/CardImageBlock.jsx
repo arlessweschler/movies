@@ -1,9 +1,8 @@
 import './CardImageBlock.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { withTranslation } from 'react-i18next';
 import { withMListContext } from 'app_contexts';
@@ -16,27 +15,16 @@ function CardImageBlock(props) {
   const { poster_path, vote_average } = movie;
 
   const b = b_.with(cls);
-  const imageSrc = `${TMDB_IMAGE_URL.medium}/${poster_path}`;
 
   return (
     <div className={b('image-wrapper')}>
 
       {poster_path
         ? (
-          <Fragment>
-            {
-              (typeof window == 'undefined')
-                ? (<img
-                  className={b('image')}
-                  src={imageSrc}
-                />)
-                : (<LazyLoadImage
-                  src={imageSrc}
-                  effect="black-and-white"
-                  wrapperClassName="lazy-wrapper"
-                />)
-            }
-          </Fragment>
+          <img
+            className={b('image')}
+            src={`${TMDB_IMAGE_URL.medium}/${poster_path}`}
+          />
         )
         : (
           <div className="no-image-text">

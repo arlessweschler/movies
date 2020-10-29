@@ -1,13 +1,3 @@
-import {
-  loadUsersList,
-  clearUsersList
-} from 'app_redux/users-list/users-list.action';
-
-import {
-  loadUserDetails,
-  clearUserDetails
-} from 'app_redux/user-details/user-details.action';
-
 import { 
   getMovies, 
   getGenres 
@@ -22,12 +12,6 @@ import {
 } from 'app_redux/sagas/movie-details/movie-details.actions';
 
 export {
-  loadUsersList,
-  clearUsersList,
-
-  loadUserDetails,
-  clearUserDetails,
-
   getMovies,
   getGenres,
 
