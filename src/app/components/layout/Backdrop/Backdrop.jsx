@@ -25,7 +25,7 @@ function Backdrop(props) {
   );
 };
 
-BackdropBlock.propTypes = {
+Backdrop.propTypes = {
   backdrop_path: PT.string
 };
 
