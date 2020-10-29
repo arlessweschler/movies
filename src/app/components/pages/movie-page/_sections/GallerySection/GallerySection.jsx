@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
+import ImageGallery from 'react-image-gallery';
 
 import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
@@ -18,6 +19,11 @@ function GallerySection({ t, cls_base, transparent, context }) {
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
+  const imagesForGallery = images.map(img => ({
+    original: TMDB_IMAGE_URL.original + img.file_path,
+    thumbnail: TMDB_IMAGE_URL.small + img.file_path
+  }));
+
   return (
     <Fragment>
       {
@@ -31,13 +37,14 @@ function GallerySection({ t, cls_base, transparent, context }) {
             </div>
 
             <div className={cn(b('gallery'), 'row')}>
-              {images.map((image, index) => (
+{/*               {images.map((image, index) => (
                 <img
                   key={index}
                   className="gallery-image"
                   src={`${TMDB_IMAGE_URL.small + image.file_path}`}
                 />
-              ))}
+              ))} */}
+              <ImageGallery items={imagesForGallery} />
             </div>
           </section>
           : ''
