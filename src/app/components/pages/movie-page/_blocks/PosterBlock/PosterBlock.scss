@@ -17,6 +17,7 @@ $b: $movie-details-base-cls;
     &.embed-responsive-item {
       // fix image 16by9 width proportion
       width: auto !important;
+      animation: animateOpacity 0.5s ease;
 
       @media (max-width: 768px) {
         // fix image 16by9 width proportion

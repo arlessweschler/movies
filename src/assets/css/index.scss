@@ -1,6 +1,15 @@
 @import '~react-lazy-load-image-component/src/effects/black-and-white.css';
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
+@keyframes animateOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 html {
   overflow-y: scroll !important;
 }
