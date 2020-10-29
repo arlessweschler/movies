@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { redirect } from 'app_history';
 import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
+import { ProgressBar } from 'app_components/layout';
 
 import {
   getMovies,
@@ -71,30 +72,30 @@ class MListContainer extends Component {
     };
   }
 
-/*   shouldComponentUpdate(nextProps, nextState) {
-    console.warn('\n -- MListContainer.shouldComponentUpdate()');
-
-    const { moviesList, history } = this.props;
-    const { movies, genres } = moviesList;
-
-    const { moviesList: nextMoviesList, history:nextHistory } = nextProps;
-    const {
-      movies: nextMovies,
-      genres: nextGenres
-    } = nextMoviesList;
-
-    const searchObject = history.location.search;
-    const nextSearchObject = nextHistory.location.search;
-
-    const moviesHasLoaded = movies.isLoading && !nextMovies.isLoading;
-    const genresHasLoaded = genres.isLoading && !nextGenres.isLoading;
-    
-    console.log('searchObject:', searchObject);
-    console.log('nextSearchObject:', nextSearchObject);
-
-    // return moviesHasLoaded || genresHasLoaded;
-    return true;
-  } */
+  /*   shouldComponentUpdate(nextProps, nextState) {
+      console.warn('\n -- MListContainer.shouldComponentUpdate()');
+  
+      const { moviesList, history } = this.props;
+      const { movies, genres } = moviesList;
+  
+      const { moviesList: nextMoviesList, history:nextHistory } = nextProps;
+      const {
+        movies: nextMovies,
+        genres: nextGenres
+      } = nextMoviesList;
+  
+      const searchObject = history.location.search;
+      const nextSearchObject = nextHistory.location.search;
+  
+      const moviesHasLoaded = movies.isLoading && !nextMovies.isLoading;
+      const genresHasLoaded = genres.isLoading && !nextGenres.isLoading;
+      
+      console.log('searchObject:', searchObject);
+      console.log('nextSearchObject:', nextSearchObject);
+  
+      // return moviesHasLoaded || genresHasLoaded;
+      return true;
+    } */
 
   componentDidMount() {
     // console.log('\n -- MListContainer.componentDidMount()');
@@ -166,34 +167,39 @@ class MListContainer extends Component {
   render() {
     const { moviesList, history } = this.props;
     const { movies, genres } = moviesList;
-    const { data, isLoading, error } = movies;
+    const { data, error } = movies;
 
     const { moviesType } = qs.parse(history.location.search);
 
     return (
-      <MoviesPage
-        data_toolbar={{
-          activeFilter: moviesType,
-          handleFilter: this.handleFilter
-        }}
+      <Fragment>
+        {
+          (movies.isLoading || genres.isLoading) && <ProgressBar />
+        }
 
-        data_paging={{
-          initialPage: (data.page - 1),
-          pageCount: data.total_pages,
-          onPageChange: this.onPageChange
-        }}
+        <MoviesPage
+          data_toolbar={{
+            activeFilter: moviesType,
+            handleFilter: this.handleFilter
+          }}
 
-        data_genresContext={{
-          genres: genres.data,
-          linkMovie: this.linkMovie
-        }}
+          data_paging={{
+            initialPage: (data.page - 1),
+            pageCount: data.total_pages,
+            onPageChange: this.onPageChange
+          }}
 
-        data_moviesList={{
-          movies: data.results,
-          isLoading: isLoading,
-          error: error
-        }}
-      />
+          data_genresContext={{
+            genres: genres.data,
+            linkMovie: this.linkMovie
+          }}
+
+          data_moviesList={{
+            movies: data.results,
+            error: error
+          }}
+        />
+      </Fragment>
     );
   }
 };

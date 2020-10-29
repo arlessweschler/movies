@@ -8,7 +8,7 @@ import { isNotEmpty } from 'app_services/UtilsService';
 import { DescriptionSection, MediaSection, ActorsSection } from 'app_components/pages/movie-page/_sections';
 import { BackdropBlock } from 'app_components/pages/movie-page/_blocks';
 
-function MoviePage({ movie, isLoading }) {
+function MoviePage({ movie }) {
   const { backdrop_path } = movie;
 
   // console.log('-- MoviePage.render(), movie:', movie);
@@ -24,10 +24,6 @@ function MoviePage({ movie, isLoading }) {
           <BackdropBlock data={{ backdrop_path }} />
 
           <div className={cn(b())}>
-
-            {/* TODO: обеспечить абсолютное позиционирование чтобы избежать прыжка контента при окончании загрузки даных  */}
-            {/* {isLoading && <ProgressBar />} */}
-
             <DescriptionSection
               cls_base={cls_base}
               transparent={true}
@@ -42,7 +38,6 @@ function MoviePage({ movie, isLoading }) {
               cls_base={cls_base}
               transparent={false}
             />
-
           </div>
         </Fragment>
       }

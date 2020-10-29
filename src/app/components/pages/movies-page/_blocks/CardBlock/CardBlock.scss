@@ -5,11 +5,8 @@ $b: $movies-list-base-cls;
 $b_grid: "#{$b}-grid";
 $b_card: "#{$b}-card";
 
-$card-width: 200px;
-$card-width--sm: 300px;
-
 $title-text-color: $white_mod;
-$genres-text-color: $lightblue;;
+$genres-text-color: $lightblue;
 
 @mixin text-ellipsis {
   width: 100%;
@@ -19,27 +16,7 @@ $genres-text-color: $lightblue;;
 }
 
 .#{$b} {
-  .#{$b_grid} {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, $card-width);
-    justify-content: space-between;
-
-    @media screen and (max-width: 576px) {
-      grid-template-columns: repeat(auto-fill, 100%);
-    }
-  }
-
   .#{$b_card} {
-    display: flex;
-    flex-direction: column;
-    width: $card-width;
-    margin: 10px 10px 10px 0px;
-    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
-
-    @media screen and (max-width: 576px) {
-      width: $card-width--sm;
-    }
-
     &:hover {
       text-decoration: none;
       transform: scale(1.05);

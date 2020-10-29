@@ -9,7 +9,7 @@ import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 
 function ListBlock({ cls_base, movies }) {
   return (
-    <div className={cn(`${cls_base}-grid`, 'mt-3')}>
+    <div className={cn(`${cls_base}-grid`)}>
       {movies.map((movie) =>
         <CardBlock
           key={movie.id}

@@ -11,7 +11,7 @@ import { withMDetailsContext } from 'app_contexts';
 function PlayerBlock(props) {
   const { searchParams, context } = props;
   const { getTrailer } = context;
-  const isLight = true;
+  const isLight = false;
 
   const trailer = getTrailer(searchParams);
   if (isEmpty(trailer)) return null;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,6 +14,7 @@ import {
   getCredits,
   getVideos
 } from 'redux_actions';
+import { ProgressBar } from 'app_components/layout';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
@@ -101,16 +102,19 @@ class MDetailsContainer extends Component {
     const { movie, credits, videos } = movieDetails;
 
     return (
-      <MDetailsContextProvider
-        credits={credits.data}
-        videos={videos.data}
-        movie={movie.data}
-      >
-        <MoviePage
+      <Fragment>
+        {
+          (movie.isLoading || credits.isLoading || videos.isLoading)
+          && <ProgressBar />
+        }
+        <MDetailsContextProvider
+          credits={credits.data}
+          videos={videos.data}
           movie={movie.data}
-          isLoading={movie.isLoading}
-        />
-      </MDetailsContextProvider>
+        >
+          <MoviePage movie={movie.data}/>
+        </MDetailsContextProvider>
+      </Fragment>
     );
   }
 };

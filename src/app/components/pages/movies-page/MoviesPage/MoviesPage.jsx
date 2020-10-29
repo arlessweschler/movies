@@ -18,14 +18,14 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
   const cls_base = 'movies-list';
   const b = b_.with(cls_base);
 
-  const { isLoading, error, movies } = data_moviesList;
+  const { error, movies } = data_moviesList;
   const hasMovies = isNotEmpty(movies);
 
   return (
     <div className={b()}>
       <BackdropMain />
 
-      <Row cls="mb-md-2">
+      <Row>
         <div className="col-12 col-lg-auto p-0 pr-lg-2 toolbar-wrapper">
           <ToolbarBlock {...data_toolbar} />
         </div>
@@ -45,10 +45,6 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
 
       <MListContextProvider {...data_genresContext}>
         {error && <p>{error}</p>}
-
-        {/* {isLoading && <ProgressBar />} */}
-        {<ProgressBar />}
-
         {hasMovies
           ? <ListBlock
             cls_base={cls_base}
@@ -57,7 +53,7 @@ function MoviesPage({ data_toolbar, data_paging, data_genresContext, data_movies
           : ''}
       </MListContextProvider>
 
-      <Row cls="pagination-wrapper justify-content-center mt-4">
+      <Row cls="pagination-wrapper justify-content-center mt-3">
         <PagingBlock cls="m-0" {...data_paging} />
       </Row>
     </div >
@@ -82,7 +78,6 @@ MoviesPage.propTypes = {
   }).isRequired,
 
   data_moviesList: PT.shape({
-    isLoading: PT.bool.isRequired,
     error: PTS.nullOrString,
     movies: PT.array.isRequired
   }).isRequired,
