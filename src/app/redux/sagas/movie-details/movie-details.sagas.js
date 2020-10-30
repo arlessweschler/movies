@@ -13,6 +13,7 @@ export function* watchMovieDetails() {
     takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
     takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
     takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
+    takeEvery(actionKeys.MOVIE_RECOMMENDATIONS, getRecommendationsSaga),
     takeEvery(actionKeys.RESET_MOVIE_CARD, resetMovieDetailsSaga)
   ]);
 }
@@ -89,6 +90,25 @@ function* getImagesSaga({ type, payload }) {
       urlParams: `&language=null`
     });
     yield put(actions.success(data.backdrops));
+  } catch (error) {
+    yield put(actions.fail(error.message));
+  }
+}
+
+function* getRecommendationsSaga({ type, payload }) {
+  const actions = asyncActionMaps[type];
+  const {
+    movieId,
+    lng = DEFAULT_LANGUAGE.value
+  } = payload;
+
+  yield put(actions.start({ movieId, lng }));
+  try {
+    const data = yield ApiService.fetch({
+      url: `/movie/${movieId}/recommendations`,
+      urlParams: `&page=1&language=${lngUrlValue(lng)}`
+    });
+    yield put(actions.success(data));
   } catch (error) {
     yield put(actions.fail(error.message));
   }

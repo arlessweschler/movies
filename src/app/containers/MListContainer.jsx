@@ -205,9 +205,16 @@ class MListContainer extends Component {
 };
 
 MListContainer.propTypes = {
+  history: PT.shape({
+    location: PT.shape({
+      search: PT.string.isRequired
+    }).isRequired
+  }).isRequired,
+
   actions: PT.shape({
     getMovies: PT.func.isRequired,
     getGenres: PT.func.isRequired,
+    resetMovieDetails: PT.func.isRequired,
   }).isRequired,
 
   moviesList: PT.shape({
@@ -225,12 +232,6 @@ MListContainer.propTypes = {
     genres: PT.shape({
       data: PT.array.isRequired
     }).isRequired,
-  }).isRequired,
-
-  history: PT.shape({
-    location: PT.shape({
-      search: PT.string.isRequired
-    }).isRequired
   }).isRequired
 };
 

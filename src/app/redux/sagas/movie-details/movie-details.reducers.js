@@ -17,6 +17,18 @@ const DEFAULT_IMAGES_STATE = {
   request: {}
 };
 
+const DEFAULT_RECOMMENDATIONS_STATE = {
+  data: {
+    page: 1,
+    total_pages: null,
+    total_results: null,
+    results: []
+  },
+  isLoading: false,
+  error: null,
+  request: {}
+};
+
 const movieDetailsReducer = combineReducers({
   movie: createAsyncReducer(actionKeys.MOVIE_DETAILS),
   credits: createAsyncReducer(actionKeys.MOVIE_CREDITS),
@@ -27,6 +39,10 @@ const movieDetailsReducer = combineReducers({
   images: createAsyncReducer(
     actionKeys.MOVIE_IMAGES,
     { initialState: DEFAULT_IMAGES_STATE }
+  ),
+  recommendations: createAsyncReducer(
+    actionKeys.MOVIE_RECOMMENDATIONS,
+    { initialState: DEFAULT_RECOMMENDATIONS_STATE }
   )
 });
 

@@ -4,9 +4,11 @@ import React, { Fragment } from 'react';
 import b_ from 'b_';
 import cn from 'classnames';
 
+import history from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Backdrop } from 'app_components/layout';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from 'app_components/pages/movie-page/_sections';
+import { MRecommendationsContainer } from 'app_containers';
 
 function MoviePage({ movie }) {
   const { backdrop_path } = movie;
@@ -42,6 +44,10 @@ function MoviePage({ movie }) {
             <GallerySection
               cls_base={cls_base}
               transparent={false}
+            />
+
+            <MRecommendationsContainer
+              // history={history}
             />
           </div>
         </Fragment>

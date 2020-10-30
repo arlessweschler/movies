@@ -13,7 +13,9 @@ import {
   getMovieDetails,
   getCredits,
   getVideos,
-  getImages
+  getImages,
+  getRecommendations,
+  getGenres
 } from 'redux_actions';
 import { ProgressBar } from 'app_components/layout';
 
@@ -31,7 +33,9 @@ const mapDispatchToProps = (dispatch) => {
       getMovieDetails,
       getCredits,
       getVideos,
-      getImages
+      getImages,
+      getRecommendations,
+      getGenres
     }, dispatch)
   };
 };
@@ -41,10 +45,10 @@ class MDetailsContainer extends Component {
   static fetchData(store, urlParams, urlQuery) {
     console.log('-- MDetailsContainer.fetchData(), urlQuery:', urlQuery);
     const movie_id = urlParams[0].split('/').pop();
-    const methods = [getMovieDetails, getCredits, getVideos, getImages];
+    const methods = [getMovieDetails, getCredits, getVideos, getImages, getRecommendations, getGenres];
 
     methods.forEach((method) => {
-      store.dispatch(method(movie_id, urlQuery));
+      store.dispatch(method({ movieId: movie_id, ...urlQuery }));
     });
   }
 
@@ -58,24 +62,25 @@ class MDetailsContainer extends Component {
     const { history, movieDetails, match, actions } = this.props;
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
-    const { movie, credits, videos } = movieDetails;
+    const { movie, credits, videos, images } = movieDetails;
 
     const list = [
       { request: movie.request, methodName: 'getMovieDetails' },
       { request: credits.request, methodName: 'getCredits' },
-      { request: videos.request, methodName: 'getVideos' }
+      { request: videos.request, methodName: 'getVideos' },
+      { request: images.request, methodName: 'getImages' }
     ];
 
     list.forEach(({ request, methodName }) => {
       if (getDiffMethod(request)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
       ) {
-        actions[methodName](movie_id, { lng });
+        actions[methodName]({ movieId: movie_id, lng });
       }
     });
   }
 
   componentDidMount() {
-    // console.log('\n -- MDetailsContainer.componentDidMount()');
+    // console.warn('\n -- MDetailsContainer.componentDidMount()');
 
     const { actions, match, movieDetails, history } = this.props;
     const { movie_id } = match.params;
@@ -91,11 +96,12 @@ class MDetailsContainer extends Component {
     let segment;
     list.forEach(({ name, methodName }) => {
       segment = movieDetails[name];
+
       if (
         (movie_id != segment.request.movieId) ||
-        (movie_id == segment.request.movieId && lng != segment.request.lng)
+        (movie_id == segment.request.movieId && typeof lng !== 'undefined' && lng != segment.request.lng)
       ) {
-        actions[methodName](movie_id, { lng });
+        actions[methodName]({ movieId:movie_id, lng });
       }
     });
   }
@@ -116,7 +122,7 @@ class MDetailsContainer extends Component {
           movie={movie.data}
           images={images.data}
         >
-          <MoviePage movie={movie.data}/>
+          <MoviePage movie={movie.data} />
         </MDetailsContextProvider>
       </Fragment>
     );
@@ -124,6 +130,27 @@ class MDetailsContainer extends Component {
 };
 
 MDetailsContainer.propTypes = {
+  match: PT.shape({
+    params: PT.shape({
+      movie_id: PT.string.isRequired
+    })
+  }),
+
+  history: PT.shape({
+    location: PT.shape({
+      search: PT.string.isRequired
+    }).isRequired
+  }).isRequired,
+
+  actions: PT.shape({
+    getMovieDetails: PT.func.isRequired,
+    getCredits: PT.func.isRequired,
+    getVideos: PT.func.isRequired,
+    getImages: PT.func.isRequired,
+    getRecommendations: PT.func.isRequired,
+    getGenres: PT.func.isRequired,
+  }).isRequired,
+
   movieDetails: PT.shape({
     movie: PT.shape({
       isLoading: PT.bool.isRequired,
