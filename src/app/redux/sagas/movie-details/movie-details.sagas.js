@@ -28,7 +28,6 @@ function* getMovieDetailsSaga({ type, payload }) {
   yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: `/movie/${movieId}`,
       urlParams: `&language=${lngUrlValue(lng)}`
     });
@@ -48,7 +47,6 @@ function* getCreditsSaga({ type, payload }) {
   yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: `/movie/${movieId}/credits`,
       urlParams: `&language=${lngUrlValue(lng)}`
     });
@@ -68,7 +66,6 @@ function* getVideosSaga({ type, payload }) {
   yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: `/movie/${movieId}/videos`,
       urlParams: `&language=${lngUrlValue(lng)}`
     });
@@ -88,7 +85,6 @@ function* getImagesSaga({ type, payload }) {
   yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: `/movie/${movieId}/images`,
       urlParams: `&language=null`
     });

@@ -27,7 +27,6 @@ function* getMoviesSaga({ type, payload }) {
   yield put(actions.start({ moviesType, page, lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: `/movie/${moviesType}`,
       urlParams: `&page=${page}&language=${lngUrlValue(lng)}`
     });
@@ -46,7 +45,6 @@ function* getGenresSaga({ type, payload }) {
   yield put(actions.start({ lng }));
   try {
     const data = yield ApiService.fetch({
-      useMoviesApi: true,
       url: '/genre/movie/list',
       urlParams: `&language=${lngUrlValue(lng)}`
     });

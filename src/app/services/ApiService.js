@@ -16,27 +16,18 @@ function* fetchJson(url, { method }) {
 
 export default {
   fetch: function ({
-    useMoviesApi = false,
     url = '',
     urlParams = ''
   }) {
     let fetchUrl;
-    let fetchFunc;
     const fetchParams = { method: 'GET' };
 
     try {
-      if (useMoviesApi) {
-        fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${urlParams}`;
-        fetchFunc = fetchJson;
-
-      } else {
-        fetchUrl = `${process.env.API_PATH}${url}`;
-        fetchFunc = fetch;
-      }
+      fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${urlParams}`;
 
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 
-      return fetchFunc(fetchUrl, fetchParams);
+      return fetchJson(fetchUrl, fetchParams);
 
     } catch (error) {
       console.log('-- ApiService, error:', error);
