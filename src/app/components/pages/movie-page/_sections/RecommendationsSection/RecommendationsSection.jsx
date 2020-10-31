@@ -1,6 +1,6 @@
 import './RecommendationsSection.scss';
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
@@ -22,18 +22,21 @@ function RecommendationsSection({ t, data_genresContext, data_moviesList }) {
   const hasMovies = isNotEmpty(movies);
 
   return (
-    <div className={cn(b(), 'mt-3')}>
-      <h2>{t('movie_details.recommendations.section_label')}:</h2>
-      <MListContextProvider {...data_genresContext}>
-        {error && <p>{error}</p>}
-        {hasMovies
-          ? <ListBlock
-            cls_base={cls_base}
-            movies={movies}
-          />
-          : ''}
-      </MListContextProvider>
-    </div >
+    <MListContextProvider {...data_genresContext}>
+      {error && <p>{error}</p>}
+      {hasMovies
+        ? (
+          <div className={cn(b(), 'mt-3')}>
+            <h2>{t('movie_details.recommendations.section_label')}:</h2>
+            <ListBlock
+              cls_base={cls_base}
+              movies={movies}
+
+            />
+          </div >
+        )
+        : ''}
+    </MListContextProvider>
   );
 };
 

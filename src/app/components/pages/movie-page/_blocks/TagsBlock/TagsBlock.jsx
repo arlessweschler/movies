@@ -13,6 +13,8 @@ import { isNotEmpty, capitalize } from 'app_services/UtilsService';
 function TagsBlock({ t, cls, data }) {
   const { production_countries, genres, runtime } = data;
 
+  if (production_countries.length < 1 || genres.length < 1 || !runtime) return null;
+
   const getDuration = mins => {
     let h = Math.floor(mins / 60);
     let m = mins % 60;
@@ -55,7 +57,7 @@ function TagsBlock({ t, cls, data }) {
       {tags.map((item) => (
         <span
           key={uuidv4()}
-          className={b('item', {[item.cls]: true})}
+          className={b('item', { [item.cls]: true })}
         >
           <FontAwesomeIcon
             className={b('icon')}

@@ -32,15 +32,15 @@ function DescriptionSection({ cls_base, transparent, context }) {
       </Row>
 
       <TagsBlock
-            cls={`${cls_base}-top`}
-            data={{ production_countries, genres, runtime }}
-          />
+        cls={`${cls_base}-top`}
+        data={{ production_countries, genres, runtime }}
+      />
 
       <CrewListBlock
         cls={`${cls_base}-crew`}
       />
 
-      <hr />
+      {(tagline || overview) && <hr />}
 
       <Row cls="tagline">
         {tagline}
