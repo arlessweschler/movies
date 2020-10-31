@@ -11,10 +11,14 @@
   },
   "movie_details": {
     "original_title": "Original title",
-    "votes": "vote",
-    "votes_plural": "votes",
-    "hours": "h",
-    "minutes": "m",
+    "rating": {
+      "votes": "vote",
+      "votes_plural": "votes"
+    },
+    "duration": {
+      "hours": "h",
+      "minutes": "m"
+    },
     "crew": {
       "director": "Director",
       "writing": "Writing",
@@ -27,6 +31,9 @@
     },
     "images": {
       "section_label": "Images"
+    },
+    "recommendations": {
+      "section_label": "Recommendations"
     }
   }
 }

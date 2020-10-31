@@ -11,11 +11,15 @@
   },
   "movie_details": {
     "original_title": "Оригинальное название",
-    "votes_0": "голос",
-    "votes_1": "голосa",
-    "votes_2": "голосов",
-    "hours": "ч",
-    "minutes": "м",
+    "rating": {
+      "votes_0": "голос",
+      "votes_1": "голосa",
+      "votes_2": "голосов"
+    },
+    "duration": {
+      "hours": "ч",
+      "minutes": "м"
+    },
     "crew": {
       "director": "Режиссер",
       "writing": "Сценарий",
@@ -28,6 +32,9 @@
     },
     "images": {
       "section_label": "Изображения"
+    },
+    "recommendations": {
+      "section_label": "Рекоммендации"
     }
   }
 }

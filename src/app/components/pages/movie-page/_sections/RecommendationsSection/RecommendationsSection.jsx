@@ -3,14 +3,16 @@ import './RecommendationsSection.scss';
 import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
+import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
+import { withTranslation } from 'react-i18next';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { MListContextProvider } from 'app_contexts';
 import { ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
-function RecommendationsSection({ data_genresContext, data_moviesList }) {
+function RecommendationsSection({ t, data_genresContext, data_moviesList }) {
 
   // base component class
   const cls_base = 'movies-list';
@@ -20,7 +22,8 @@ function RecommendationsSection({ data_genresContext, data_moviesList }) {
   const hasMovies = isNotEmpty(movies);
 
   return (
-    <div className={b()}>
+    <div className={cn(b(), 'mt-3')}>
+      <h2>{t('movie_details.recommendations.section_label')}:</h2>
       <MListContextProvider {...data_genresContext}>
         {error && <p>{error}</p>}
         {hasMovies
@@ -35,6 +38,8 @@ function RecommendationsSection({ data_genresContext, data_moviesList }) {
 };
 
 RecommendationsSection.propTypes = {
+  t: PT.func.isRequired,
+
   data_genresContext: PT.shape({
     genres: PT.array.isRequired,
     linkMovie: PT.func.isRequired
@@ -46,4 +51,4 @@ RecommendationsSection.propTypes = {
   }).isRequired,
 };
 
-export default RecommendationsSection;
+export default withTranslation()(RecommendationsSection);

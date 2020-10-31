@@ -8,7 +8,7 @@ import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { redirect } from 'app_history';
-import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
+import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
 import { ProgressBar } from 'app_components/layout';
 
@@ -57,19 +57,25 @@ class MListContainer extends Component {
     // console.warn('\n -- MListContainer.componentWillUnmount');
   }
 
-  componentDidUpdate() {
-    // console.warn('\n -- MListContainer.componentDidUpdate()');
+  componentDidUpdate(prevProps) {
+    // console.warn('\n-- MListContainer.componentDidUpdate()');
+
+    // const diffs = difference(this.props, prevProps);
+    // console.warn('difference:', diffs);
+
     const { moviesList, actions, history } = this.props;
     const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
-    if (this.hasUrlQueryDiffs(genres.request, ['lng'])) {
-      actions.getGenres(searchObject);
-    };
+    if ((prevProps.location.search !== this.props.location.search)) {
+      if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
+        actions.getGenres(searchObject);
+      };
 
-    if (this.hasUrlQueryDiffs(movies.request)) {
-      actions.getMovies(searchObject);
-    };
+      if (this.hasUrlQueryDiffs(movies.request, 'getMovies check')) {
+        actions.getMovies(searchObject);
+      };
+    }
   }
 
   /*   shouldComponentUpdate(nextProps, nextState) {
@@ -98,18 +104,23 @@ class MListContainer extends Component {
     } */
 
   componentDidMount() {
-    // console.log('\n -- MListContainer.componentDidMount()');
+    // console.warn('\n-- MListContainer.componentDidMount()');
 
     const { moviesList, history, actions } = this.props;
     const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
-    if (isEmpty(genres.data) ||
-      this.hasUrlQueryDiffs(genres.request, ['lng'])) {
+    if (
+      isEmpty(genres.data)
+      // || this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])
+    ) {
       actions.getGenres(searchObject);
     };
 
-    if (isEmpty(movies.data.results) || this.hasUrlQueryDiffs(movies.request)) {
+    if (
+      isEmpty(movies.data.results)
+      || this.hasUrlQueryDiffs(movies.request, 'getMovies check')
+    ) {
       actions.getMovies(searchObject);
     };
   }
@@ -117,8 +128,11 @@ class MListContainer extends Component {
   // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
   // 1. значениями этих параметров из url search query или 
   // (опционально) 2. дефолтными значениями этих из редюсера
-  hasUrlQueryDiffs(request, list) {
-    const hasDiffs = getDiffMethod(request);
+  hasUrlQueryDiffs(request, message, list) {
+    if (message) {
+      message = `MListContainer, ${message}`
+    }
+    const checkDiffs = getDiffMethod(request, message);
 
     let params = [
       { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
@@ -131,7 +145,7 @@ class MListContainer extends Component {
     }
 
     return params.some(
-      (item) => hasDiffs(item.key, {
+      (item) => checkDiffs(item.key, {
         withDefault: true,
         defaultValue: item.defaultValue
       })
@@ -153,7 +167,7 @@ class MListContainer extends Component {
     const nextParams = { ...values, ...nextValues };
 
     redirect(`/movies?${qs.stringify(nextParams)}`);
-    actions.getMovies(nextParams);
+    // actions.getMovies(nextParams);
   }
 
   handleFilter(moviesType) {

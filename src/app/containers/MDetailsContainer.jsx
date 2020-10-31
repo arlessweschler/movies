@@ -6,7 +6,7 @@ import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { getDiffMethod } from 'app_services/UtilsService';
+import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
 import {
@@ -56,31 +56,43 @@ class MDetailsContainer extends Component {
     // console.log('\n -- MDetailsContainer.componentWillUnmount()');
   }
 
-  componentDidUpdate() {
-    // console.log('\n -- MDetailsContainer.componentDidUpdate()');
+  componentDidUpdate(prevProps) {
+    // console.warn('\n-- MDetailsContainer.componentDidUpdate()');
+
+    const diffs = difference(this.props, prevProps);
+    // console.warn('difference:', diffs);
 
     const { history, movieDetails, match, actions } = this.props;
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
-    const { movie, credits, videos, images } = movieDetails;
 
     const list = [
-      { request: movie.request, methodName: 'getMovieDetails' },
-      { request: credits.request, methodName: 'getCredits' },
-      { request: videos.request, methodName: 'getVideos' },
-      { request: images.request, methodName: 'getImages' }
+      { name: 'movie', methodName: 'getMovieDetails' },
+      { name: 'credits', methodName: 'getCredits' },
+      { name: 'videos', methodName: 'getVideos' },
+      { name: 'images', methodName: 'getImages' }
     ];
 
-    list.forEach(({ request, methodName }) => {
-      if (getDiffMethod(request)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
-      ) {
-        actions[methodName]({ movieId: movie_id, lng });
-      }
-    });
+    let segment;
+
+    if (
+      (prevProps.match.params !== this.props.match.params)
+      || (prevProps.location.search !== this.props.location.search)
+    ) {
+      list.forEach(({ name, methodName }) => {
+        segment = movieDetails[name];
+        if (
+          (movie_id != segment.request.movieId)
+          || getDiffMethod(segment.request, `MDetailsContainer, ${methodName} check`)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
+        ) {
+          actions[methodName]({ movieId: movie_id, lng });
+        }
+      });
+    }
   }
 
   componentDidMount() {
-    // console.warn('\n -- MDetailsContainer.componentDidMount()');
+    // console.warn('\n-- MDetailsContainer.componentDidMount()');
 
     const { actions, match, movieDetails, history } = this.props;
     const { movie_id } = match.params;
@@ -98,10 +110,11 @@ class MDetailsContainer extends Component {
       segment = movieDetails[name];
 
       if (
-        (movie_id != segment.request.movieId) ||
-        (movie_id == segment.request.movieId && typeof lng !== 'undefined' && lng != segment.request.lng)
+        isEmpty(segment.data)
+        || (movie_id != segment.request.movieId)
+        || (typeof lng !== 'undefined' && lng != segment.request.lng)
       ) {
-        actions[methodName]({ movieId:movie_id, lng });
+        actions[methodName]({ movieId: movie_id, lng });
       }
     });
   }

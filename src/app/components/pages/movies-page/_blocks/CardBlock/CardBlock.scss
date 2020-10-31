@@ -19,7 +19,7 @@ $genres-text-color: $lightblue;
   .#{$b_card} {
     &:hover {
       text-decoration: none;
-      transform: scale(1.05);
+      transform: scale(1.1);
       cursor: pointer;
     }
 

@@ -9,7 +9,7 @@ import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { redirect } from 'app_history';
-import { isEmpty, getDiffMethod } from 'app_services/UtilsService';
+import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
@@ -45,38 +45,47 @@ class MRecommendationsContainer extends Component {
     this.linkMovie = this.linkMovie.bind(this);
   }
 
-  componentDidUpdate() {
-    // console.warn('\n -- MRecommendationsContainer.componentDidUpdate()');
+  componentDidUpdate(prevProps) {
+    // console.warn('\n-- MRecommendationsContainer.componentDidUpdate()');
+
+    // const diffs = difference(this.props, prevProps);
+    // console.warn('difference:', diffs);
 
     const { recommendations, genres, actions, history, match } = this.props;
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
 
-    if (this.hasUrlQueryDiffs(genres.request, ['lng'])) {
-      actions.getGenres({ lng });
-    };
+    if ((prevProps.location.search !== this.props.location.search)) {
+      if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
+        actions.getGenres({ lng });
+      };
 
-    if (this.hasUrlQueryDiffs(recommendations.request, ['lng'])) {
-      actions.getRecommendations({ movieId: movie_id, lng });
+      if (this.hasUrlQueryDiffs(recommendations.request, 'getRecommendations check', ['lng'])) {
+
+        actions.getRecommendations({ movieId: movie_id, lng });
+      }
     };
   }
 
   componentDidMount() {
-    // console.warn('\n -- MRecommendationsContainer.componentDidMount()');
+    // console.warn('\n-- MRecommendationsContainer.componentDidMount()');
 
     const { recommendations, genres, match, history, actions } = this.props;
 
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
 
-    if (isEmpty(genres.data) ||
-      this.hasUrlQueryDiffs(genres.request, ['lng'])) {
+    if (
+      isEmpty(genres.data)
+      // || this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])
+      ) {
       actions.getGenres({ lng });
     };
 
     if (
-      (movie_id != recommendations.request.movieId) ||
-      (movie_id == recommendations.request.movieId && typeof lng !== 'undefined' && lng != recommendations.request.lng)
+      isEmpty(recommendations.data.results) ||
+      (movie_id != recommendations.request.movieId)
+      // || (typeof lng !== 'undefined' && lng != recommendations.request.lng)
     ) {
       actions.getRecommendations({ movieId: movie_id, lng });
     }
@@ -85,8 +94,11 @@ class MRecommendationsContainer extends Component {
   // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
   // 1. значениями этих параметров из url search query или 
   // (опционально) 2. дефолтными значениями этих из редюсера
-  hasUrlQueryDiffs(request, list) {
-    const hasDiffs = getDiffMethod(request);
+  hasUrlQueryDiffs(request, message, list) {
+    if (message) {
+      message = `MRecommendationsContainer, ${message}`
+    }
+    const checkDiffs = getDiffMethod(request, message);
 
     let params = [
       { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
@@ -99,7 +111,7 @@ class MRecommendationsContainer extends Component {
     }
 
     return params.some(
-      (item) => hasDiffs(item.key, {
+      (item) => checkDiffs(item.key, {
         withDefault: true,
         defaultValue: item.defaultValue
       })

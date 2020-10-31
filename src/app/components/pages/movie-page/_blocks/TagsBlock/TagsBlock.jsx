@@ -17,7 +17,7 @@ function TagsBlock({ t, cls, data }) {
     let h = Math.floor(mins / 60);
     let m = mins % 60;
     m = m < 10 ? '0' + m : m;
-    return `${h}${t('movie_details.hours')} ${m}${t('movie_details.minutes')}`;
+    return `${h}${t('movie_details.duration.hours')} ${m}${t('movie_details.duration.minutes')}`;
   };
 
   const mapWithSemicolons = (list) => list.map((item, i) => {

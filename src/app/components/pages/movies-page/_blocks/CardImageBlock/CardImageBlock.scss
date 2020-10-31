@@ -29,6 +29,7 @@ $image-height--sm: 400px;
         @include card-image;
         object-fit: cover;
         animation: animateOpacity 0.7s ease;
+        border: 1px solid $black_mod;
       }
 
       .no-image-text {
@@ -42,6 +43,7 @@ $image-height--sm: 400px;
         word-break: break-word;
         color: $lightgray;
         background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid $black_mod;
       }
     }
   }
