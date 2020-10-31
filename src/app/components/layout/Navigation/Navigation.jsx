@@ -1,12 +1,14 @@
 import './Navigation.scss';
 
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import history, { redirect } from 'app_history';
+import { resetMovies } from 'redux_actions';
 import {
   NavToggle,
   LocaleDropdown,
@@ -15,11 +17,13 @@ import {
 
 const Navigation = () => {
   const cls_base = 'movies-navbar';
+  const dispatch = useDispatch();
 
   const goHome = (e) => {
     e.preventDefault();
     const { lng } = qs.parse(history.location.search);
 
+    dispatch(resetMovies());
     redirect(`/?${qs.stringify({ lng })}`);
   }
 

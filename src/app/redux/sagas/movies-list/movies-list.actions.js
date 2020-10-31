@@ -5,7 +5,8 @@ import {
 
 export const actionKeys = {
   GET_MOVIES: 'GET_MOVIES',
-  GET_GENRES: 'GET_GENRES'
+  GET_GENRES: 'GET_GENRES',
+  RESET_MOVIES: 'RESET_MOVIES'
 };
 
 export const asyncActionMaps = {
@@ -24,15 +25,27 @@ const actions = {
   getGenres: (params = {}) => {
     const { page, moviesType, lng } = params;
     return createActionCreator(actionKeys.GET_GENRES, { page, moviesType, lng })
+  },
+  resetMovies: () => {
+    return createActionCreator(
+      actionKeys.RESET_MOVIES,
+      {
+        resetList: [
+          actionKeys.GET_MOVIES
+        ]
+      }
+    )
   }
 };
 
 const getMovies = actions.getMovies;
 const getGenres = actions.getGenres;
+const resetMovies = actions.resetMovies;
 
 export default actions;
 
 export {
   getMovies,
-  getGenres
+  getGenres,
+  resetMovies
 };

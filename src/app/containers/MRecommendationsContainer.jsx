@@ -55,12 +55,18 @@ class MRecommendationsContainer extends Component {
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
 
-    if ((prevProps.location.search !== this.props.location.search)) {
+    if (
+      (prevProps.match.params !== this.props.match.params)
+      || (prevProps.location.search !== this.props.location.search)
+    ) {
       if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
         actions.getGenres({ lng });
       };
 
-      if (this.hasUrlQueryDiffs(recommendations.request, 'getRecommendations check', ['lng'])) {
+      if (
+        (movie_id != recommendations.request.movieId)
+        || this.hasUrlQueryDiffs(recommendations.request, 'getRecommendations check', ['lng'])
+      ) {
 
         actions.getRecommendations({ movieId: movie_id, lng });
       }
@@ -78,7 +84,7 @@ class MRecommendationsContainer extends Component {
     if (
       isEmpty(genres.data)
       // || this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])
-      ) {
+    ) {
       actions.getGenres({ lng });
     };
 

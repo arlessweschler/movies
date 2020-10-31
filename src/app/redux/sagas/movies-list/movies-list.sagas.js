@@ -12,6 +12,7 @@ export function* watchMovieBrowser() {
   yield all([
     takeEvery(actionKeys.GET_MOVIES, getMoviesSaga),
     takeEvery(actionKeys.GET_GENRES, getGenresSaga),
+    takeEvery(actionKeys.RESET_MOVIES, resetMoviesSaga)
   ]);
 }
 
@@ -51,5 +52,19 @@ function* getGenresSaga({ type, payload }) {
     yield put(actions.success(data.genres));
   } catch (error) {
     yield put(actions.fail(error.message));
+  }
+}
+
+function* resetMoviesSaga({ payload }) {
+  const { resetList } = payload;
+  let actions;
+
+  for (let item of resetList) {
+    actions = asyncActionMaps[item];
+    try {
+      yield put(actions.reset());
+    } catch (error) {
+      yield put(actions.fail(error.message));
+    }
   }
 }

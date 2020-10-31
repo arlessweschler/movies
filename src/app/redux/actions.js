@@ -1,6 +1,7 @@
 import { 
   getMovies, 
-  getGenres 
+  getGenres,
+  resetMovies
 } from 'app_redux/sagas/movies-list/movies-list.actions';
 
 import { 
@@ -15,6 +16,7 @@ import {
 export {
   getMovies,
   getGenres,
+  resetMovies,
 
   getMovieDetails,
   getCredits,

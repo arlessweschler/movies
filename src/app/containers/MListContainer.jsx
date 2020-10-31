@@ -8,13 +8,14 @@ import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { redirect } from 'app_history';
-import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
+import { isEmpty, isNotEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
 import { ProgressBar } from 'app_components/layout';
 
 import {
   getMovies,
   getGenres,
+  resetMovies,
   resetMovieDetails
 } from 'redux_actions';
 
@@ -31,6 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     actions: bindActionCreators({
       getMovies,
       getGenres,
+      resetMovies,
       resetMovieDetails
     }, dispatch)
   };
@@ -53,21 +55,30 @@ class MListContainer extends Component {
     store.dispatch(getMovies(urlQuery));
   }
 
-  componentWillUnmount() {
-    // console.warn('\n -- MListContainer.componentWillUnmount');
-  }
+  /*   componentWillUnmount() {
+      console.warn('\n --MListContainer.componentWillUnmount');
+    } */
+
+  /*   shouldComponentUpdate(nextProps, nextState) {
+  console.warn('\n --MListContainer.shouldComponentUpdate()');
+
+  return true;
+} */
 
   componentDidUpdate(prevProps) {
-    // console.warn('\n-- MListContainer.componentDidUpdate()');
+    console.warn('\n--MListContainer.componentDidUpdate()');
 
-    // const diffs = difference(this.props, prevProps);
-    // console.warn('difference:', diffs);
+    const diffs = difference(this.props, prevProps);
+    console.warn('difference:', diffs);
 
     const { moviesList, actions, history } = this.props;
     const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
-    if ((prevProps.location.search !== this.props.location.search)) {
+    if (isEmpty(movies.data.results) && !movies.isLoading) {
+      actions.getMovies(searchObject);
+
+    } else if ((prevProps.location.search !== this.props.location.search)) {
       if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
         actions.getGenres(searchObject);
       };
@@ -78,33 +89,8 @@ class MListContainer extends Component {
     }
   }
 
-  /*   shouldComponentUpdate(nextProps, nextState) {
-      console.warn('\n -- MListContainer.shouldComponentUpdate()');
-  
-      const { moviesList, history } = this.props;
-      const { movies, genres } = moviesList;
-  
-      const { moviesList: nextMoviesList, history:nextHistory } = nextProps;
-      const {
-        movies: nextMovies,
-        genres: nextGenres
-      } = nextMoviesList;
-  
-      const searchObject = history.location.search;
-      const nextSearchObject = nextHistory.location.search;
-  
-      const moviesHasLoaded = movies.isLoading && !nextMovies.isLoading;
-      const genresHasLoaded = genres.isLoading && !nextGenres.isLoading;
-      
-      console.log('searchObject:', searchObject);
-      console.log('nextSearchObject:', nextSearchObject);
-  
-      // return moviesHasLoaded || genresHasLoaded;
-      return true;
-    } */
-
   componentDidMount() {
-    // console.warn('\n-- MListContainer.componentDidMount()');
+    console.warn('\n--MListContainer.componentDidMount()');
 
     const { moviesList, history, actions } = this.props;
     const { movies, genres } = moviesList;
@@ -166,7 +152,7 @@ class MListContainer extends Component {
     const values = qs.parse(history.location.search);
     const nextParams = { ...values, ...nextValues };
 
-    redirect(`/movies?${qs.stringify(nextParams)}`);
+    redirect(`/?${qs.stringify(nextParams)}`);
     // actions.getMovies(nextParams);
   }
 

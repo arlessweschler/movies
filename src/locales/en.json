@@ -1,5 +1,6 @@
 {
   "search_placeholder": "Search by movie title",
+  "page_404": "404 - Sorry. We don't have relative page for this route",
   "movie_types": {
     "now_playing": "Now playing",
     "popular": "Popular",
