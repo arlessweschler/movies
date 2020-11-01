@@ -67,8 +67,8 @@ const SearchForm = ({ t, history }) => {
       />
       <DebounceInput
         debounceTimeout={300}
-        autocomplete="off"
-        spellcheck={false}
+        autoComplete="off"
+        spellCheck={false}
         className={cn('form-control', { "active": searchText })}
         type="text"
         name="search"

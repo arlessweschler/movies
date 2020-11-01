@@ -5,8 +5,8 @@ import {
 } from 'app_components/pages';
 
 import {
-  MListContainer,
-  MDetailsContainer
+  MListRouteContainer,
+  MDetailsRouteContainer
 } from 'app_containers';
 
 const routes = [
@@ -17,19 +17,19 @@ const routes = [
       {
         path: '/',
         exact: true,
-        component: MListContainer
+        component: MListRouteContainer
       },
 
       {
         path: '/movies',
         exact: true,
-        component: MListContainer
+        component: MListRouteContainer
       },
 
       {
         path: '/movies/:movie_id',
         exact: true,
-        component: MDetailsContainer
+        component: MDetailsRouteContainer
       },
 
       {

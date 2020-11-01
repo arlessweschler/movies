@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
@@ -41,16 +42,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class MDetailsContainer extends Component {
-
-  static fetchData(store, urlParams, urlQuery) {
-    console.log('-- MDetailsContainer.fetchData(), urlQuery:', urlQuery);
-    const movie_id = urlParams[0].split('/').pop();
-    const methods = [getMovieDetails, getCredits, getVideos, getImages, getRecommendations, getGenres];
-
-    methods.forEach((method) => {
-      store.dispatch(method({ movieId: movie_id, ...urlQuery }));
-    });
-  }
 
   componentWillUnmount() {
     // console.log('\n -- MDetailsContainer.componentWillUnmount()');
@@ -192,4 +183,6 @@ MDetailsContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MDetailsContainer);
+export default
+  connect(mapStateToProps, mapDispatchToProps)
+    (withRouter(MDetailsContainer));

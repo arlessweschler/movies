@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
@@ -46,13 +47,6 @@ class MListContainer extends Component {
     this.linkMovie = this.linkMovie.bind(this);
     this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
     this.update = this.update.bind(this);
-  }
-
-  static fetchData(store, urlParams, urlQuery) {
-    console.log('-- MListContainer.fetchData(), urlQuery:', urlQuery);
-
-    store.dispatch(getGenres(urlQuery));
-    store.dispatch(getMovies(urlQuery));
   }
 
   /*   componentWillUnmount() {
@@ -236,4 +230,6 @@ MListContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MListContainer);
+export default
+  connect(mapStateToProps, mapDispatchToProps)
+    (withRouter(MListContainer));
