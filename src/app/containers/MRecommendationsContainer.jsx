@@ -15,15 +15,13 @@ import { ProgressBar } from 'app_components/layout';
 
 import {
   getRecommendations,
-  getGenres,
   resetMovieDetails
 } from 'redux_actions';
 
 // маппинг редюсеров
-const mapStateToProps = ({ movieDetails, moviesList }) => {
+const mapStateToProps = ({ movieDetails }) => {
   return {
-    recommendations: movieDetails.recommendations,
-    genres: moviesList.genres
+    recommendations: movieDetails.recommendations
   };
 };
 
@@ -32,7 +30,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       getRecommendations,
-      getGenres,
       resetMovieDetails
     }, dispatch)
   };
@@ -51,7 +48,7 @@ class MRecommendationsContainer extends Component {
     // const diffs = difference(this.props, prevProps);
     // console.warn('difference:', diffs);
 
-    const { recommendations, genres, actions, history, match } = this.props;
+    const { recommendations, actions, history, match } = this.props;
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
 
@@ -59,9 +56,6 @@ class MRecommendationsContainer extends Component {
       (prevProps.match.params !== this.props.match.params)
       || (prevProps.location.search !== this.props.location.search)
     ) {
-      if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
-        actions.getGenres({ lng });
-      };
 
       if (
         (movie_id != recommendations.request.movieId)
@@ -76,17 +70,10 @@ class MRecommendationsContainer extends Component {
   componentDidMount() {
     // console.warn('\n-- MRecommendationsContainer.componentDidMount()');
 
-    const { recommendations, genres, match, history, actions } = this.props;
+    const { recommendations, match, history, actions } = this.props;
 
     const { lng } = qs.parse(history.location.search);
     const { movie_id } = match.params;
-
-    if (
-      isEmpty(genres.data)
-      // || this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])
-    ) {
-      actions.getGenres({ lng });
-    };
 
     if (
       // isEmpty(recommendations.data.results) ||
@@ -134,18 +121,15 @@ class MRecommendationsContainer extends Component {
   }
 
   render() {
-    const { recommendations, genres } = this.props;
+    const { recommendations } = this.props;
     const { data, error } = recommendations;
 
     return (
       <Fragment>
-        {
-          (recommendations.isLoading || genres.isLoading) && <ProgressBar />
-        }
+        {recommendations.isLoading && <ProgressBar />}
 
         <RecommendationsSection
           data_genresContext={{
-            genres: genres.data,
             linkMovie: this.linkMovie
           }}
 
@@ -174,7 +158,6 @@ MRecommendationsContainer.propTypes = {
 
   actions: PT.shape({
     getRecommendations: PT.func.isRequired,
-    getGenres: PT.func.isRequired,
     resetMovieDetails: PT.func.isRequired,
   }).isRequired,
 
@@ -187,10 +170,6 @@ MRecommendationsContainer.propTypes = {
       total_results: PTS.nullOrNumber,
       results: PT.array.isRequired,
     }).isRequired
-  }).isRequired,
-
-  genres: PT.shape({
-    data: PT.array.isRequired
   }).isRequired
 };
 

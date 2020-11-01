@@ -15,8 +15,7 @@ import {
   getCredits,
   getVideos,
   getImages,
-  getRecommendations,
-  getGenres
+  getRecommendations
 } from 'redux_actions';
 import { ProgressBar } from 'app_components/layout';
 
@@ -35,8 +34,7 @@ const mapDispatchToProps = (dispatch) => {
       getCredits,
       getVideos,
       getImages,
-      getRecommendations,
-      getGenres
+      getRecommendations
     }, dispatch)
   };
 };
@@ -153,7 +151,6 @@ MDetailsContainer.propTypes = {
     getVideos: PT.func.isRequired,
     getImages: PT.func.isRequired,
     getRecommendations: PT.func.isRequired,
-    getGenres: PT.func.isRequired,
   }).isRequired,
 
   movieDetails: PT.shape({

@@ -8,6 +8,7 @@ module.exports = function ({ srcPath }) {
     app_locales: 'locales',
     app_components: 'app/components',
     app_containers: 'app/containers',
+    app_hocs: 'app/hocs',
     app_contexts: 'app/contexts',
     app_services: 'app/services',
     app_history: 'app/services/HistoryService',

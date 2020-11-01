@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
 import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
 
@@ -24,7 +22,7 @@ const DEFAULT_GENRES_STATE = {
   request: {}
 };
 
-const moviesListReducer = combineReducers({
+const moviesReducer = {
   movies: createAsyncReducer(
     actionKeys.GET_MOVIES,
     { initialState: DEFAULT_MOVIES_STATE }
@@ -33,6 +31,6 @@ const moviesListReducer = combineReducers({
     actionKeys.GET_GENRES,
     { initialState: DEFAULT_GENRES_STATE }
   )
-});
+};
 
-export default moviesListReducer;
+export default moviesReducer;

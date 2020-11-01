@@ -106,7 +106,7 @@ function* getRecommendationsSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}/recommendations`,
-      params: { page, language: lngUrlValue(lng) }
+      params: { page: 1, language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
   } catch (error) {

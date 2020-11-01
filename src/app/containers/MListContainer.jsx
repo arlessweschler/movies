@@ -15,7 +15,6 @@ import { ProgressBar } from 'app_components/layout';
 
 import {
   getMovies,
-  getGenres,
   resetMovies,
   resetMovieDetails
 } from 'redux_actions';
@@ -32,7 +31,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       getMovies,
-      getGenres,
       resetMovies,
       resetMovieDetails
     }, dispatch)
@@ -65,15 +63,10 @@ class MListContainer extends Component {
     // console.log('difference:', diffs);
 
     const { moviesList, actions, location } = this.props;
-    const { movies, genres } = moviesList;
     const searchObject = qs.parse(location.search);
 
     if ((prevProps.location.search !== this.props.location.search)) {
-      if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
-        actions.getGenres(searchObject);
-      };
-
-      if (this.hasUrlQueryDiffs(movies.request, 'getMovies check')) {
+      if (this.hasUrlQueryDiffs(moviesList.request, 'getMovies check')) {
         actions.getMovies(searchObject);
       };
     }
@@ -83,19 +76,11 @@ class MListContainer extends Component {
     // console.warn('\n--MListContainer.componentDidMount()');
 
     const { moviesList, history, actions } = this.props;
-    const { movies, genres } = moviesList;
     const searchObject = qs.parse(history.location.search);
 
     if (
-      isEmpty(genres.data)
-      // || this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])
-    ) {
-      actions.getGenres(searchObject);
-    };
-
-    if (
-      isEmpty(movies.data.results)
-      || this.hasUrlQueryDiffs(movies.request, 'getMovies check')
+      isEmpty(moviesList.data.results)
+      || this.hasUrlQueryDiffs(moviesList.request, 'getMovies check')
     ) {
       actions.getMovies(searchObject);
     };
@@ -157,16 +142,13 @@ class MListContainer extends Component {
 
   render() {
     const { moviesList, history } = this.props;
-    const { movies, genres } = moviesList;
-    const { data, error } = movies;
+    const { data, error } = moviesList;
 
     const { moviesType, search } = qs.parse(history.location.search);
 
     return (
       <Fragment>
-        {
-          (movies.isLoading || genres.isLoading) && <ProgressBar />
-        }
+        {moviesList.isLoading && <ProgressBar />}
 
         <MoviesPage
           data_toolbar={{
@@ -182,7 +164,6 @@ class MListContainer extends Component {
           }}
 
           data_genresContext={{
-            genres: genres.data,
             linkMovie: this.linkMovie
           }}
 
@@ -208,25 +189,18 @@ MListContainer.propTypes = {
 
   actions: PT.shape({
     getMovies: PT.func.isRequired,
-    getGenres: PT.func.isRequired,
     resetMovieDetails: PT.func.isRequired,
   }).isRequired,
 
   moviesList: PT.shape({
-    movies: PT.shape({
-      isLoading: PT.bool.isRequired,
-      error: PTS.nullOrString,
-      data: PT.shape({
-        page: PT.number.isRequired,
-        total_pages: PTS.nullOrNumber,
-        total_results: PTS.nullOrNumber,
-        results: PT.array.isRequired,
-      }).isRequired
-    }).isRequired,
-
-    genres: PT.shape({
-      data: PT.array.isRequired
-    }).isRequired,
+    isLoading: PT.bool.isRequired,
+    error: PTS.nullOrString,
+    data: PT.shape({
+      page: PT.number.isRequired,
+      total_pages: PTS.nullOrNumber,
+      total_results: PTS.nullOrNumber,
+      results: PT.array.isRequired,
+    }).isRequired
   }).isRequired
 };
 

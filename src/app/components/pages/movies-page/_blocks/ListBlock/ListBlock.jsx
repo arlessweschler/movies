@@ -3,17 +3,18 @@ import './ListBlock.scss';
 import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
-import { v4 as uuidv4 } from 'uuid';
 
+import withGenres from 'app_hocs/withGenres';
 import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 
-function ListBlock({ cls_base, movies }) {
+function ListBlock({ cls_base, movies, printGenres }) {
   return (
     <div className={cn(`${cls_base}-grid`)}>
       {movies.map((movie) =>
         <CardBlock
           key={movie.id}
           cls={`${cls_base}-card`}
+          printGenres={printGenres}
           movie={movie}
         />)}
     </div>
@@ -21,7 +22,8 @@ function ListBlock({ cls_base, movies }) {
 };
 
 ListBlock.propTypes = {
+  printGenres: PT.func.isRequired,
   movies: PT.array
 };
 
-export default ListBlock;
+export default withGenres(ListBlock);

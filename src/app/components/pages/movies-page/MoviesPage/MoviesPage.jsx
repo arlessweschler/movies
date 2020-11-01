@@ -88,7 +88,6 @@ MoviesPage.propTypes = {
   }).isRequired,
 
   data_genresContext: PT.shape({
-    genres: PT.array.isRequired,
     linkMovie: PT.func.isRequired
   }).isRequired,
 

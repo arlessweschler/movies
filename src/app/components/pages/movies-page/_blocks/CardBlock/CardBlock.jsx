@@ -10,13 +10,11 @@ import { CardImageBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
-  const { cls, movie, context } = props;
+  const { cls, movie, printGenres, context } = props;
   const { id, title, genre_ids } = movie;
-  const { printGenres, linkMovie } = context;
+  const { linkMovie } = context;
 
   const b = b_.with(cls);
-
-  // console.log('-- CardBlock.render()');
 
   return (
     <div
@@ -43,6 +41,7 @@ function CardBlock(props) {
 };
 
 CardBlock.propTypes = {
+  printGenres: PT.func.isRequired,
   movie: PT.shape({
     poster_path: PT.string,
     title: PT.string.isRequired,
@@ -51,7 +50,6 @@ CardBlock.propTypes = {
   }).isRequired,
 
   context: PT.shape({
-    printGenres: PT.func.isRequired,
     linkMovie: PT.func.isRequired
   }).isRequired
 };

@@ -1,42 +1,15 @@
 import React, { Component, createContext } from 'react';
 import PT from 'prop-types';
 
-import { isEmpty, capitalize } from 'app_services/UtilsService';
-
 const MListContext = createContext();
 
 class MListContextProvider extends Component {
-  printGenres = ({ ids, cls }) => {
-    const { genres } = this.props;
-
-    if (isEmpty(genres) || (typeof genres.find !== 'function')) {
-      return null;
-    }
-
-    const text = ids
-      .map(id => {
-        const item = genres.find(item => item.id === id);
-        return item
-          ? capitalize(item.name)
-          : null;
-      })
-      .join(', ');
-
-    return (
-      <div className={cls}>
-        {text}
-      </div>
-    )
-  };
-
   render() {
-    const { genres, linkMovie, children } = this.props;
+    const { linkMovie, children } = this.props;
 
     return (
       <MListContext.Provider value={{
-        genres,
         linkMovie,
-        printGenres: this.printGenres
       }} >
         {children}
       </MListContext.Provider>
@@ -45,7 +18,6 @@ class MListContextProvider extends Component {
 }
 
 MListContextProvider.propTypes = {
-  genres: PT.array.isRequired,
   linkMovie: PT.func.isRequired
 };
 
