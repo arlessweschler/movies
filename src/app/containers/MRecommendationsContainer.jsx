@@ -89,7 +89,7 @@ class MRecommendationsContainer extends Component {
     };
 
     if (
-      isEmpty(recommendations.data.results) ||
+      // isEmpty(recommendations.data.results) ||
       (movie_id != recommendations.request.movieId)
       // || (typeof lng !== 'undefined' && lng != recommendations.request.lng)
     ) {

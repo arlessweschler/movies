@@ -30,7 +30,7 @@ function* getMovieDetailsSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}`,
-      urlParams: `&language=${lngUrlValue(lng)}`
+      params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -49,7 +49,7 @@ function* getCreditsSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}/credits`,
-      urlParams: `&language=${lngUrlValue(lng)}`
+      params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -68,7 +68,7 @@ function* getVideosSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}/videos`,
-      urlParams: `&language=${lngUrlValue(lng)}`
+      params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data.results));
   } catch (error) {
@@ -87,7 +87,7 @@ function* getImagesSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}/images`,
-      urlParams: `&language=null`
+      params: { language: null }
     });
     yield put(actions.success(data.backdrops));
   } catch (error) {
@@ -106,7 +106,7 @@ function* getRecommendationsSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movieId}/recommendations`,
-      urlParams: `&page=1&language=${lngUrlValue(lng)}`
+      params: { page, language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
   } catch (error) {

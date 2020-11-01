@@ -32,9 +32,9 @@ function* getMoviesSaga({ type, payload }) {
       url: search
         ? '/search/movie'
         : `/movie/${moviesType}`,
-      urlParams: search
-        ? `&page=${page}&query=${search}`
-        : `&page=${page}&language=${lngUrlValue(lng)}`
+      params: search
+        ? { page, query: search }
+        : { page, language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -52,7 +52,7 @@ function* getGenresSaga({ type, payload }) {
   try {
     const data = yield ApiService.fetch({
       url: '/genre/movie/list',
-      urlParams: `&language=${lngUrlValue(lng)}`
+      params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data.genres));
   } catch (error) {

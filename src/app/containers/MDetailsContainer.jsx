@@ -111,8 +111,8 @@ class MDetailsContainer extends Component {
       segment = movieDetails[name];
 
       if (
-        isEmpty(segment.data)
-        || (movie_id != segment.request.movieId)
+        // isEmpty(segment.data) ||
+        (movie_id != segment.request.movieId)
         || (typeof lng !== 'undefined' && lng != segment.request.lng)
       ) {
         actions[methodName]({ movieId: movie_id, lng });

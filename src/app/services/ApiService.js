@@ -1,4 +1,5 @@
 require('isomorphic-fetch');
+import qs from 'query-string';
 
 import { TMDB_API_HOST, TMDB_API_KEY, } from 'app_config';
 
@@ -17,17 +18,19 @@ function* fetchJson(url, { method }) {
 export default {
   fetch: function ({
     url = '',
-    urlParams = ''
+    params = {}
   }) {
-    let fetchUrl;
-    const fetchParams = { method: 'GET' };
-
     try {
-      fetchUrl = `${TMDB_API_HOST}${url}?api_key=${TMDB_API_KEY}&${urlParams}`;
+      const urlParams = qs.stringify({
+        ...params,
+        api_key: TMDB_API_KEY
+      });
+
+      const fetchUrl = `${TMDB_API_HOST}${url}?${urlParams}`;
 
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 
-      return fetchJson(fetchUrl, fetchParams);
+      return fetchJson(fetchUrl, { method: 'GET' });
 
     } catch (error) {
       console.log('-- ApiService, error:', error);
