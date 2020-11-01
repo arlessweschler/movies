@@ -8,6 +8,8 @@ import qs from 'query-string';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { redirect } from 'app_history';
 import { resetMovies } from 'redux_actions';
@@ -59,8 +61,14 @@ const SearchForm = ({ t, history }) => {
 
   return (
     <form className="search-form">
+      <FontAwesomeIcon
+        className="search-icon"
+        icon={faSearch}
+      />
       <DebounceInput
         debounceTimeout={300}
+        autocomplete="off"
+        spellcheck={false}
         className={cn('form-control', { "active": searchText })}
         type="text"
         name="search"

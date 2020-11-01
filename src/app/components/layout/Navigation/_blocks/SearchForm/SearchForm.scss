@@ -1,6 +1,7 @@
 @import "app_assets/css/variables/colors";
 
 .search-form {
+  position: relative;
   width: calc(100% - 60px);
   padding: 0px 10px;
 
@@ -9,7 +10,20 @@
     width: calc(100% - 55px);
   }
 
+  .search-icon {
+    position: absolute;
+    color: $gray;
+    top: 11px;
+    left: 18px;
+
+    @media (max-width: 576px) {
+      top: 10px;
+      left: 8px;
+    }
+  }
+
   .form-control {
+    padding-left: 32px;
     background-color: rgba(0, 0, 0, 0.5);
     border-color: $black-btn-border;
 
