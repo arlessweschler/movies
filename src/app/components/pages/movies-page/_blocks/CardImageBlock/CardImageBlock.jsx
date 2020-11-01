@@ -5,7 +5,6 @@ import PT from 'prop-types';
 import b_ from 'b_';
 
 import { withTranslation } from 'react-i18next';
-import { withMListContext } from 'app_contexts';
 import { TMDB_IMAGE_URL } from 'app_config';
 import { CardRatingBlock } from
   'app_components/pages/movies-page/_blocks';
@@ -50,6 +49,4 @@ CardImageBlock.propTypes = {
   }).isRequired
 };
 
-export default
-  withTranslation()
-    (withMListContext(CardImageBlock));
+export default withTranslation()(CardImageBlock);

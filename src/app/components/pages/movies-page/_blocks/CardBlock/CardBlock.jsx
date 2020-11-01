@@ -5,7 +5,6 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withTranslation } from 'react-i18next';
 import { withMListContext } from 'app_contexts';
 import { CardImageBlock } from
   'app_components/pages/movies-page/_blocks';
