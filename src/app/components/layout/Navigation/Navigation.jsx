@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import history, { redirect } from 'app_history';
-import { resetMovies } from 'redux_actions';
+import { resetMovies, getMovies } from 'redux_actions';
 import {
   NavToggle,
   LocaleDropdown,
@@ -24,6 +24,7 @@ const Navigation = () => {
     const { lng } = qs.parse(history.location.search);
 
     dispatch(resetMovies());
+    dispatch(getMovies());
     redirect(`/?${qs.stringify({ lng })}`);
   }
 

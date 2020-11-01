@@ -53,7 +53,7 @@ const Utils = {
     }
 
     return function (key, options = {}) {
-      // console.log('key:', key);
+      // console.log('\nkey:', key);
 
       const {
         withDefault = false,
@@ -70,6 +70,7 @@ const Utils = {
       const rValue = request[key];
 
       const searchQueryDiff = Boolean(sValue && sValue != rValue);
+      // const searchQueryDiff = Boolean(sValue != rValue);
 
       const defaultDiff = withDefault
         ? Boolean(typeof sValue == 'undefined' && rValue != defaultValue)

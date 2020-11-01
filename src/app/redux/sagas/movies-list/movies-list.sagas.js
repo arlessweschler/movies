@@ -22,14 +22,19 @@ function* getMoviesSaga({ type, payload }) {
   const {
     moviesType = DEFAULT_MOVIES_TYPE,
     page = 1,
-    lng = DEFAULT_LANGUAGE.value
+    lng = DEFAULT_LANGUAGE.value,
+    search = ''
   } = payload;
 
-  yield put(actions.start({ moviesType, page, lng }));
+  yield put(actions.start({ moviesType, page, lng, search }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${moviesType}`,
-      urlParams: `&page=${page}&language=${lngUrlValue(lng)}`
+      url: search
+        ? '/search/movie'
+        : `/movie/${moviesType}`,
+      urlParams: search
+        ? `&page=${page}&query=${search}`
+        : `&page=${page}&language=${lngUrlValue(lng)}`
     });
     yield put(actions.success(data));
   } catch (error) {

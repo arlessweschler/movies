@@ -16,10 +16,10 @@ export const asyncActionMaps = {
 
 const actions = {
   getMovies: (params = {}) => {
-    const { page, moviesType, lng } = params;
+    const { page, moviesType, lng, search } = params;
     return createActionCreator(
       actionKeys.GET_MOVIES,
-      { page, moviesType, lng }
+      { page, moviesType, lng, search }
     );
   },
   getGenres: (params = {}) => {

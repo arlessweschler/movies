@@ -84,6 +84,7 @@ class MDetailsContainer extends Component {
         if (
           (movie_id != segment.request.movieId)
           || getDiffMethod(segment.request, `MDetailsContainer, ${methodName} check`)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
+          || getDiffMethod(segment.request, `MDetailsContainer, ${methodName} check`)('search', { withDefault: true, defaultValue: '' })
         ) {
           actions[methodName]({ movieId: movie_id, lng });
         }

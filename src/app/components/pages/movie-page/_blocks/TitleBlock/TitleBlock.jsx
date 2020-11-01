@@ -15,12 +15,17 @@ function TitleBlock({ t, cls, data }) {
   return (
     <Fragment>
       <h1>
-        <span className={b('title')}>
-          {title}
+        {title &&
+          <span className={b('title')}>
+            {title}
+          </span>
+        }
+
+        {release_date &&
+          <span className={b('year')}>
+            ({moment(release_date).format('YYYY')})
         </span>
-        <span className={b('year')}>
-          ({moment(release_date).format('YYYY')})
-        </span>
+        }
       </h1>
 
       {original_title

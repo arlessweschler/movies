@@ -1,5 +1,18 @@
 {
-  "search_placeholder": "Поиск по названию фильма",
+  "movie_search": {
+    "input_placeholder": "Поиск по названию фильма",
+    "found": {
+      "count_0": "Найден",
+      "count_1": "Найдено",
+      "count_2": "Найдено"
+    },
+    "movie": {
+      "count_0": "фильм",
+      "count_1": "фильма",
+      "count_2": "фильмов"
+    },
+    "by_title": "по поисковому запросу"
+  },
   "page_404": "404 - Извините. У нас нет подходящей страницы для этого маршрута",
   "movie_types": {
     "now_playing": "В кинотеатрах",
@@ -12,10 +25,10 @@
   },
   "movie_details": {
     "original_title": "Оригинальное название",
-    "rating": {
-      "votes_0": "голос",
-      "votes_1": "голосa",
-      "votes_2": "голосов"
+    "rating_votes": {
+      "count_0": "голос",
+      "count_1": "голосa",
+      "count_2": "голосов"
     },
     "duration": {
       "hours": "ч",

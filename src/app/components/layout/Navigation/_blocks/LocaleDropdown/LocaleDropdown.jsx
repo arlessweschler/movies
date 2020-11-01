@@ -3,36 +3,42 @@ import './LocaleDropdown.scss';
 import React, { useState, useEffect } from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
+import { withRouter } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
-import history, { redirect } from 'app_history';
+import { redirect } from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
 
 const LocaleDropdown = (props) => {
-  // console.warn('-- LocaleDropdown.render()');
-
-  const { i18n } = props;
+  const { i18n, history } = props;
   const location = history.location;
   const { lng: langQuery } = qs.parse(location.search);
 
   const defaultLang = findLang(langQuery);
   const [lang, setLang] = useState(defaultLang);
 
+  // console.warn('-- LocaleDropdown.render()');
+  // console.log('lang:', lang);
+
   useEffect(() => {
     // console.warn('-- LocaleDropdown.useEffect()');
 
     const unlisten = history.listen((location, action) => {
-      // console.warn('\n LocaleDropdown.listen()');
-
+      // console.warn('\n LocaleDropdown.listen(), action:', action);
       if (action == 'POP') {
         const { lng } = qs.parse(location.search);
 
-        if (
-          Boolean(lng && lng !== lang.value) ||
-          Boolean(typeof lng == 'undefined' && lang.value !== DEFAULT_LANGUAGE.value)
-        ) {
+        const searchQueryDiff = Boolean(lng && lng !== lang.value);
+        const defaultDiff = Boolean(typeof lng == 'undefined' && lang.value !== DEFAULT_LANGUAGE.value);
+
+        // console.log('lng:', lng);
+        // console.log('lang:', lang);
+        // console.log('searchQueryDiff:', searchQueryDiff);
+        // console.log('defaultDiff:', defaultDiff);
+
+        if (searchQueryDiff || defaultDiff) {
           setLang(findLang(lng));
         }
       }
@@ -42,7 +48,7 @@ const LocaleDropdown = (props) => {
       // console.warn('-- LocaleDropdown.unmount()');
       unlisten();
     };
-  });
+  }, [lang]);
 
   function findLang(queryValue) {
     if (!queryValue) return DEFAULT_LANGUAGE;
@@ -99,7 +105,13 @@ const LocaleDropdown = (props) => {
 
 LocaleDropdown.propTypes = {
   i18n: PT.object.isRequired,
-  t: PT.func.isRequired
+  t: PT.func.isRequired,
+
+  history: PT.shape({
+    location: PT.shape({
+      search: PT.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
-export default withTranslation()(LocaleDropdown);
+export default withTranslation()(withRouter(LocaleDropdown));

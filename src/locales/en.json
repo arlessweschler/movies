@@ -1,5 +1,16 @@
 {
-  "search_placeholder": "Search by movie title",
+  "movie_search": {
+    "input_placeholder": "Search by movie title",
+    "found": {
+      "count": "Found",
+      "count_plural": "Found"
+    },
+    "movie": {
+      "count": "movie",
+      "count_plural": "movies"
+    },
+    "by_title": "by search query"
+  },
   "page_404": "404 - Sorry. We don't have relative page for this route",
   "movie_types": {
     "now_playing": "Now playing",
@@ -12,9 +23,9 @@
   },
   "movie_details": {
     "original_title": "Original title",
-    "rating": {
-      "votes": "vote",
-      "votes_plural": "votes"
+    "rating_votes": {
+      "count": "vote",
+      "count_plural": "votes"
     },
     "duration": {
       "hours": "h",

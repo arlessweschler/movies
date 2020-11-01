@@ -17,6 +17,7 @@
       font-size: 14px;
     }
 
+    &.active,
     &:focus {
       box-shadow: none !important;
       border-color: $black-btn-border;

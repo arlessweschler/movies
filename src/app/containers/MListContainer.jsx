@@ -8,7 +8,7 @@ import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
 import { redirect } from 'app_history';
-import { isEmpty, isNotEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
+import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
 import { ProgressBar } from 'app_components/layout';
 
@@ -60,25 +60,21 @@ class MListContainer extends Component {
     } */
 
   /*   shouldComponentUpdate(nextProps, nextState) {
-  console.warn('\n --MListContainer.shouldComponentUpdate()');
-
-  return true;
-} */
+      console.warn('\n --MListContainer.shouldComponentUpdate()');
+      return true;
+    } */
 
   componentDidUpdate(prevProps) {
-    console.warn('\n--MListContainer.componentDidUpdate()');
+    // console.warn('\n--MListContainer.componentDidUpdate()');
 
-    const diffs = difference(this.props, prevProps);
-    console.warn('difference:', diffs);
+    // const diffs = difference(this.props, prevProps);
+    // console.log('difference:', diffs);
 
-    const { moviesList, actions, history } = this.props;
+    const { moviesList, actions, location } = this.props;
     const { movies, genres } = moviesList;
-    const searchObject = qs.parse(history.location.search);
+    const searchObject = qs.parse(location.search);
 
-    if (isEmpty(movies.data.results) && !movies.isLoading) {
-      actions.getMovies(searchObject);
-
-    } else if ((prevProps.location.search !== this.props.location.search)) {
+    if ((prevProps.location.search !== this.props.location.search)) {
       if (this.hasUrlQueryDiffs(genres.request, 'getGenres check', ['lng'])) {
         actions.getGenres(searchObject);
       };
@@ -90,7 +86,7 @@ class MListContainer extends Component {
   }
 
   componentDidMount() {
-    console.warn('\n--MListContainer.componentDidMount()');
+    // console.warn('\n--MListContainer.componentDidMount()');
 
     const { moviesList, history, actions } = this.props;
     const { movies, genres } = moviesList;
@@ -123,7 +119,8 @@ class MListContainer extends Component {
     let params = [
       { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
       { key: 'page', defaultValue: 1 },
-      { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE }
+      { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE },
+      { key: 'search', defaultValue: '' }
     ];
 
     if (list) {
@@ -169,7 +166,7 @@ class MListContainer extends Component {
     const { movies, genres } = moviesList;
     const { data, error } = movies;
 
-    const { moviesType } = qs.parse(history.location.search);
+    const { moviesType, search } = qs.parse(history.location.search);
 
     return (
       <Fragment>
@@ -180,7 +177,8 @@ class MListContainer extends Component {
         <MoviesPage
           data_toolbar={{
             activeFilter: moviesType,
-            handleFilter: this.handleFilter
+            handleFilter: this.handleFilter,
+            showToolbar: !search
           }}
 
           data_paging={{
@@ -196,7 +194,10 @@ class MListContainer extends Component {
 
           data_moviesList={{
             movies: data.results,
-            error: error
+            error: error,
+            search: search,
+            total_results: data.total_results,
+            isLoading: data.isLoading
           }}
         />
       </Fragment>
