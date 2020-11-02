@@ -7,13 +7,13 @@ import { Button, ButtonGroup } from "reactstrap";
 import { withTranslation } from 'react-i18next';
 
 import { TMDB_MOVIES_TYPES } from 'app_config';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
+import withMoviesNav from 'app_hocs/withMoviesNav';
 
 function ToolbarBlock(props) {
   const {
-    handleFilter,
-    activeFilter = DEFAULT_MOVIES_TYPE,
-    t
+    t,
+    activeMoviesType,
+    changeMoviesType
   } = props;
 
   return (
@@ -21,10 +21,10 @@ function ToolbarBlock(props) {
       {TMDB_MOVIES_TYPES.map(filter => (
         <Button
           key={uuidv4()}
-          color={(activeFilter == filter.key)
+          color={(activeMoviesType == filter.key)
             ? 'dark'
             : 'light'}
-          onClick={() => handleFilter(filter.key)}
+          onClick={() => changeMoviesType(filter.key)}
         >
           {t(`movie_types.${filter.key}`)}
         </Button>
@@ -34,10 +34,9 @@ function ToolbarBlock(props) {
 }
 
 ToolbarBlock.propTypes = {
-  handleFilter: PT.func.isRequired,
-  activeFilter: PT.string,
-
-  t: PT.func.isRequired
+  t: PT.func.isRequired,
+  changeMoviesType: PT.func.isRequired,
+  activeMoviesType: PT.string.isRequired
 };
 
-export default withTranslation()(ToolbarBlock);
+export default withTranslation()(withMoviesNav(ToolbarBlock));

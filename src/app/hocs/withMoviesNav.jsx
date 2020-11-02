@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { redirect } from 'app_history';
 import { resetMovieDetails } from 'redux_actions';
 
@@ -21,9 +22,14 @@ function withMoviesNav(WrappedComponent) {
       redirect(`/?${qs.stringify(nextUrlParams)}`);
     }
 
-    // обработчик пагинации (из списка фильмов или результатов поиска)
+    // обработчик переключения типа фильмов (из списка фильмов)
+    function changeMoviesType(moviesType) {
+      update({ moviesType, page: 1 });
+    }
+
+    // обработчик переключения страниц (из списка фильмов или результатов поиска)
     function linkPage({ selected }) {
-      update({ page: selected + 1 })
+      update({ page: selected + 1 });
     }
 
     // обработчик для перехода на маршрут деталей фильма (из списка фильмов, результатов поиска или рекоммендаций)
@@ -35,10 +41,16 @@ function withMoviesNav(WrappedComponent) {
       redirect(`/movies/${id}?${qs.stringify({ lng })}`);
     };
 
+    const {
+      moviesType = DEFAULT_MOVIES_TYPE
+    } = qs.parse(props.location.search);
+
     return (
       <WrappedComponent
-        linkMovie={linkMovie}
+        activeMoviesType={moviesType}
+        changeMoviesType={changeMoviesType}
         linkPage={linkPage}
+        linkMovie={linkMovie}
         {...props}
       />
     );

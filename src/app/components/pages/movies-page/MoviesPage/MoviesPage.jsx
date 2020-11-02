@@ -12,13 +12,13 @@ import { Row } from 'app_components/layout';
 import { ToolbarBlock, PagingBlock, ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
-function MoviesPage({ t, data_toolbar, data_paging, data_moviesList }) {
+function MoviesPage({ t, data_paging, data_moviesList }) {
 
   // base component class
   const cls_base = 'movies-list';
   const b = b_.with(cls_base);
 
-  const { error, movies, search, total_results, isLoading } = data_moviesList;
+  const { error, movies, search, total_results } = data_moviesList;
   const hasMovies = isNotEmpty(movies);
 
   return (
@@ -34,7 +34,7 @@ function MoviesPage({ t, data_toolbar, data_paging, data_moviesList }) {
       <Row>
         {!search && (
           <div className="col-12 col-lg-auto p-0 pr-lg-2 toolbar-wrapper">
-            <ToolbarBlock {...data_toolbar} />
+            <ToolbarBlock />
           </div>
         )}
 
@@ -72,11 +72,6 @@ function MoviesPage({ t, data_toolbar, data_paging, data_moviesList }) {
 
 MoviesPage.propTypes = {
   t: PT.func.isRequired,
-
-  data_toolbar: PT.shape({
-    handleFilter: PT.func.isRequired,
-    activeFilter: PT.string
-  }).isRequired,
 
   data_paging: PT.shape({
     initialPage: PT.number.isRequired,

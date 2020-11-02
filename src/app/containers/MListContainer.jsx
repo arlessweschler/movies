@@ -8,7 +8,6 @@ import qs from 'query-string';
 import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { redirect } from 'app_history';
 import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
 import { ProgressBar } from 'app_components/layout';
@@ -38,9 +37,7 @@ const mapDispatchToProps = (dispatch) => {
 class MListContainer extends Component {
   constructor() {
     super();
-    this.handleFilter = this.handleFilter.bind(this);
     this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
-    this.update = this.update.bind(this);
   }
 
   /*   componentWillUnmount() {
@@ -71,8 +68,8 @@ class MListContainer extends Component {
   componentDidMount() {
     // console.warn('\n--MListContainer.componentDidMount()');
 
-    const { moviesList, history, actions } = this.props;
-    const searchObject = qs.parse(history.location.search);
+    const { moviesList, location, actions } = this.props;
+    const searchObject = qs.parse(location.search);
 
     if (
       isEmpty(moviesList.data.results)
@@ -110,36 +107,17 @@ class MListContainer extends Component {
     );
   }
 
-  update(nextValues) {
-    const { history, actions } = this.props;
-    const values = qs.parse(history.location.search);
-    const nextParams = { ...values, ...nextValues };
-
-    redirect(`/?${qs.stringify(nextParams)}`);
-    // actions.getMovies(nextParams);
-  }
-
-  handleFilter(moviesType) {
-    this.update({ moviesType, page: 1 })
-  }
-
   render() {
-    const { moviesList, history } = this.props;
+    const { moviesList, location } = this.props;
     const { data, error } = moviesList;
 
-    const { moviesType, search } = qs.parse(history.location.search);
+    const { search } = qs.parse(location.search);
 
     return (
       <Fragment>
         {moviesList.isLoading && <ProgressBar />}
 
         <MoviesPage
-          data_toolbar={{
-            activeFilter: moviesType,
-            handleFilter: this.handleFilter,
-            showToolbar: !search
-          }}
-
           data_paging={{
             initialPage: (data.page - 1),
             pageCount: data.total_pages
@@ -149,8 +127,7 @@ class MListContainer extends Component {
             movies: data.results,
             error: error,
             search: search,
-            total_results: data.total_results,
-            isLoading: data.isLoading
+            total_results: data.total_results
           }}
         />
       </Fragment>
@@ -159,10 +136,8 @@ class MListContainer extends Component {
 };
 
 MListContainer.propTypes = {
-  history: PT.shape({
-    location: PT.shape({
-      search: PT.string.isRequired
-    }).isRequired
+  location: PT.shape({
+    search: PT.string.isRequired
   }).isRequired,
 
   actions: PT.shape({
