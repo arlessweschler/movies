@@ -4,6 +4,7 @@ import CardBlock from 'app_components/pages/movies-page/_blocks/CardBlock/CardBl
 import PagingBlock from 'app_components/pages/movies-page/_blocks/PagingBlock/PagingBlock';
 import CardImageBlock from 'app_components/pages/movies-page/_blocks/CardImageBlock/CardImageBlock';
 import CardRatingBlock from 'app_components/pages/movies-page/_blocks/CardRatingBlock/CardRatingBlock';
+import SearchResultsBlock from 'app_components/pages/movies-page/_blocks/SearchResultsBlock/SearchResultsBlock';
 
 export {
   ToolbarBlock,
@@ -11,5 +12,6 @@ export {
   CardBlock,
   PagingBlock,
   CardImageBlock,
-  CardRatingBlock
+  CardRatingBlock,
+  SearchResultsBlock
 };

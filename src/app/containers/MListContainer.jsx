@@ -8,7 +8,7 @@ import qs from 'query-string';
 import PTS from 'app_services/PropTypesService';
 import { isEmpty, hasRequestDiffs } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
-import { ProgressBar } from 'app_components/layout';
+import { Message, ProgressBar } from 'app_components/layout';
 
 import {
   getMovies
@@ -71,6 +71,7 @@ class MListContainer extends Component {
 
     return (
       <Fragment>
+        {error && <Message cls="mb-3" text={error}/>}
         {isLoading && <ProgressBar />}
 
         <MoviesPage

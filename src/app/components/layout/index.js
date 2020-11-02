@@ -6,6 +6,7 @@ import ProgressBar from 'app_components/layout/ProgressBar/ProgressBar';
 import Row from 'app_components/layout/Row/Row';
 import Column from 'app_components/layout/Column/Column';
 import Backdrop from 'app_components/layout/Backdrop/Backdrop';
+import Message from 'app_components/layout/Message/Message';
 
 export {
   Layout,
@@ -15,5 +16,6 @@ export {
   ProgressBar,
   Row,
   Column,
-  Backdrop
+  Backdrop,
+  Message
 };

@@ -1,0 +1,28 @@
+@import "app_assets/css/variables/base_classes";
+@import "app_assets/css/variables/colors";
+
+$b: $movies-list-base-cls;
+$b_search-results: #{$b}-search-results;
+
+.#{$b} {
+  .#{$b_search-results} {
+    display: block;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    font-size: calc(1rem + 0.5vw);
+
+    span {
+      margin-right: 7px;
+    }
+
+    &__quotes {
+      margin-right: 0px;
+      color: $white_mod;
+    }
+
+    &__highlight {
+      color: $yellow;
+    }
+  }
+}

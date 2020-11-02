@@ -1,0 +1,9 @@
+@import "app_assets/css/variables/colors";
+
+.message {
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  font-size: calc(1rem + 0.5vw);
+  color: $white_mod;
+}
