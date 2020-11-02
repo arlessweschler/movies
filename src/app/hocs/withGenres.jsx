@@ -5,8 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { isEmpty, capitalize } from 'app_services/UtilsService';
+import { isEmpty, capitalize, hasRequestDiffs } from 'app_services/UtilsService';
 import { ProgressBar } from 'app_components/layout';
 import { getGenres } from 'redux_actions';
 
@@ -31,11 +30,11 @@ function withGenres(WrappedComponent) {
 
     componentDidUpdate() {
       const { genresList, location, actions } = this.props;
-      const {
-        lng = DEFAULT_LANGUAGE.value
-      } = qs.parse(location.search);
+      const { request } = genresList;
+      const checklist = ['lng'];
 
-      if (lng !== genresList.request.lng) {
+      if (hasRequestDiffs({ request, checklist })) {
+        const { lng } = qs.parse(location.search);
         actions.getGenres({ lng });
       };
     }

@@ -6,9 +6,7 @@ import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
+import { isEmpty, hasRequestDiffs } from 'app_services/UtilsService';
 import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
@@ -33,31 +31,24 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class MRecommendationsContainer extends Component {
-  constructor() {
-    super();
-    this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
-  }
 
   componentDidUpdate(prevProps) {
-    // console.warn('\n-- MRecommendationsContainer.componentDidUpdate()');
+    // console.warn('\n--MRecommendationsContainer.componentDidUpdate()');
 
-    // const diffs = difference(this.props, prevProps);
-    // console.warn('difference:', diffs);
-
-    const { recommendations, actions, history, match } = this.props;
-    const { lng } = qs.parse(history.location.search);
+    const { recommendations, actions, location, match } = this.props;
+    const { request } = recommendations;
     const { movie_id } = match.params;
 
     if (
-      (prevProps.match.params !== this.props.match.params)
-      || (prevProps.location.search !== this.props.location.search)
+      match.params !== prevProps.match.params
+      || location.search !== prevProps.location.search
     ) {
 
       if (
-        (movie_id != recommendations.request.movieId)
-        || this.hasUrlQueryDiffs(recommendations.request, 'getRecommendations check', ['lng'])
+        (movie_id != request.movieId)
+        || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
-
+        const { lng } = qs.parse(location.search);
         actions.getRecommendations({ movieId: movie_id, lng });
       }
     };
@@ -66,45 +57,17 @@ class MRecommendationsContainer extends Component {
   componentDidMount() {
     // console.warn('\n-- MRecommendationsContainer.componentDidMount()');
 
-    const { recommendations, match, history, actions } = this.props;
-
-    const { lng } = qs.parse(history.location.search);
+    const { recommendations, match, location, actions } = this.props;
+    const { data, request } = recommendations;
     const { movie_id } = match.params;
 
     if (
-      // isEmpty(recommendations.data.results) ||
-      (movie_id != recommendations.request.movieId)
-      // || (typeof lng !== 'undefined' && lng != recommendations.request.lng)
+      // isEmpty(data.results) ||
+      (movie_id != request.movieId)
     ) {
+      const { lng } = qs.parse(location.search);
       actions.getRecommendations({ movieId: movie_id, lng });
     }
-  }
-
-  // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
-  // 1. значениями этих параметров из url search query или 
-  // (опционально) 2. дефолтными значениями этих из редюсера
-  hasUrlQueryDiffs(request, message, list) {
-    if (message) {
-      message = `MRecommendationsContainer, ${message}`
-    }
-    const checkDiffs = getDiffMethod(request, message);
-
-    let params = [
-      { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
-      { key: 'page', defaultValue: 1 },
-      { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE }
-    ];
-
-    if (list) {
-      params = params.filter(i => list.includes(i.key));
-    }
-
-    return params.some(
-      (item) => checkDiffs(item.key, {
-        withDefault: true,
-        defaultValue: item.defaultValue
-      })
-    );
   }
 
   render() {
@@ -133,10 +96,8 @@ MRecommendationsContainer.propTypes = {
     })
   }),
 
-  history: PT.shape({
-    location: PT.shape({
-      search: PT.string.isRequired
-    }).isRequired
+  location: PT.shape({
+    search: PT.string.isRequired
   }).isRequired,
 
   actions: PT.shape({
@@ -155,4 +116,4 @@ MRecommendationsContainer.propTypes = {
   }).isRequired
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MRecommendationsContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MRecommendationsContainer));

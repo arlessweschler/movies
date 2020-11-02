@@ -4,6 +4,9 @@ const _ = require('lodash');
 import history from 'app_history';
 import imageNotAvailable from 'app_assets/img/image_not_available.png';
 
+import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
+import { DEFAULT_LANGUAGE } from 'app_i18n';
+
 const Utils = {
   /**
    * Deep diff between two object, using lodash
@@ -47,62 +50,58 @@ const Utils = {
     return true;
   },
 
-  getDiffMethod(request, message) {
-    if (message) {
-      // console.log(`\nUtils.hasDiffs(), ${message}`);
+  // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
+  // 1. значениями этих параметров из url search query или 
+  // (опционально) 2. дефолтными значениями этих параметров из редюсера
+  hasRequestDiffs({ request, checklist }) {
+    // console.warn(`\nUtils.hasRequestDiffs()`);
+    const location = history.location;
+
+    const {
+      lng = DEFAULT_LANGUAGE.value,
+      moviesType = DEFAULT_MOVIES_TYPE,
+      page = 1,
+      search = ''
+    } = qs.parse(location.search);
+
+    const searchParams = { lng, moviesType, page, search };
+
+    let checks = [];
+    for (let key in searchParams) {
+      checks.push({
+        key,
+        hasDiffs: searchParams[key] != request[key]
+      });
     }
 
-    return function (key, options = {}) {
-      // console.log('\nkey:', key);
-
-      const {
-        withDefault = false,
-        defaultValue = null
-      } = options;
-
-      const location = history.location;
-      const searchObject = qs.parse(location.search);
-
-      // console.log('searchObject:', searchObject);
-      // console.log('request:', request);
-
-      const sValue = searchObject[key];
-      const rValue = request[key];
-
-      const searchQueryDiff = Boolean(sValue && sValue != rValue);
-      // const searchQueryDiff = Boolean(sValue != rValue);
-
-      const defaultDiff = withDefault
-        ? Boolean(typeof sValue == 'undefined' && rValue != defaultValue)
-        : false;
-
-      // console.log('sValue:', sValue);
-      // console.log('rValue:', rValue);
-      // console.log('searchQueryDiff:', searchQueryDiff);
-      // console.log('defaultDiff:', defaultDiff);
-
-      const hasDiffs = searchQueryDiff || defaultDiff;
-
-      // console.log('hasDiffs:', hasDiffs);
-
-      return hasDiffs;
+    if (checklist) {
+      checks = checks.filter(i => checklist.includes(i.key));
     }
+
+    const hasUrlDiffs = checks.some(i => i.hasDiffs);
+
+    // console.log('searchParams:', searchParams);
+    // console.log('request:', request);
+    // console.log('checks:', checks);
+    // console.log('hasUrlDiffs:', hasUrlDiffs);
+
+    return hasUrlDiffs;
   }
 }
 
+const hasRequestDiffs = Utils.hasRequestDiffs;
 const difference = Utils.difference;
 const capitalize = Utils.capitalize;
 const isEmpty = Utils.isEmpty;
-const getDiffMethod = Utils.getDiffMethod;
 const isNotEmpty = (value) => !Utils.isEmpty(value);
 
 export default Utils;
 
 export {
   imageNotAvailable,
+  hasRequestDiffs,
   difference,
   capitalize,
-  getDiffMethod,
   isEmpty,
   isNotEmpty
 }

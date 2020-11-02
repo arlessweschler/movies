@@ -6,15 +6,12 @@ import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
+import { isEmpty, hasRequestDiffs } from 'app_services/UtilsService';
 import { MoviesPage } from 'app_components/pages';
 import { ProgressBar } from 'app_components/layout';
 
 import {
-  getMovies,
-  resetMovies
+  getMovies
 } from 'redux_actions';
 
 // маппинг редюсеров
@@ -28,39 +25,24 @@ const mapStateToProps = ({ moviesList }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      getMovies,
-      resetMovies
+      getMovies
     }, dispatch)
   };
 };
 
 class MListContainer extends Component {
-  constructor() {
-    super();
-    this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
-  }
-
-  /*   componentWillUnmount() {
-      console.warn('\n --MListContainer.componentWillUnmount');
-    } */
-
-  /*   shouldComponentUpdate(nextProps, nextState) {
-      console.warn('\n --MListContainer.shouldComponentUpdate()');
-      return true;
-    } */
 
   componentDidUpdate(prevProps) {
     // console.warn('\n--MListContainer.componentDidUpdate()');
 
-    // const diffs = difference(this.props, prevProps);
-    // console.log('difference:', diffs);
-
     const { moviesList, actions, location } = this.props;
-    const searchObject = qs.parse(location.search);
+    const { request } = moviesList;
+    const checklist = ['lng', 'moviesType', 'page', 'search'];
 
-    if ((prevProps.location.search !== this.props.location.search)) {
-      if (this.hasUrlQueryDiffs(moviesList.request, 'getMovies check')) {
-        actions.getMovies(searchObject);
+    if ((location.search !== prevProps.location.search)) {
+      if (hasRequestDiffs({ request, checklist })) {
+        const params = qs.parse(location.search);
+        actions.getMovies(params);
       };
     }
   }
@@ -69,53 +51,27 @@ class MListContainer extends Component {
     // console.warn('\n--MListContainer.componentDidMount()');
 
     const { moviesList, location, actions } = this.props;
-    const searchObject = qs.parse(location.search);
+    const { data, isLoading, request } = moviesList;
+    const checklist = ['lng', 'moviesType', 'page', 'search'];
 
     if (
-      isEmpty(moviesList.data.results)
-      || this.hasUrlQueryDiffs(moviesList.request, 'getMovies check')
+      (isEmpty(data.results) && !isLoading)
+      || hasRequestDiffs({ request, checklist })
     ) {
-      actions.getMovies(searchObject);
+      const params = qs.parse(location.search);
+      actions.getMovies(params);
     };
-  }
-
-  // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
-  // 1. значениями этих параметров из url search query или 
-  // (опционально) 2. дефолтными значениями этих из редюсера
-  hasUrlQueryDiffs(request, message, list) {
-    if (message) {
-      message = `MListContainer, ${message}`
-    }
-    const checkDiffs = getDiffMethod(request, message);
-
-    let params = [
-      { key: 'lng', defaultValue: DEFAULT_LANGUAGE.value },
-      { key: 'page', defaultValue: 1 },
-      { key: 'moviesType', defaultValue: DEFAULT_MOVIES_TYPE },
-      { key: 'search', defaultValue: '' }
-    ];
-
-    if (list) {
-      params = params.filter(i => list.includes(i.key));
-    }
-
-    return params.some(
-      (item) => checkDiffs(item.key, {
-        withDefault: true,
-        defaultValue: item.defaultValue
-      })
-    );
   }
 
   render() {
     const { moviesList, location } = this.props;
-    const { data, error } = moviesList;
+    const { data, error, isLoading } = moviesList;
 
     const { search } = qs.parse(location.search);
 
     return (
       <Fragment>
-        {moviesList.isLoading && <ProgressBar />}
+        {isLoading && <ProgressBar />}
 
         <MoviesPage
           data_paging={{

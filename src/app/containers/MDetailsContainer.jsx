@@ -6,8 +6,7 @@ import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
+import { hasRequestDiffs } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
 import {
@@ -41,18 +40,11 @@ const mapDispatchToProps = (dispatch) => {
 
 class MDetailsContainer extends Component {
 
-  componentWillUnmount() {
-    // console.log('\n -- MDetailsContainer.componentWillUnmount()');
-  }
-
   componentDidUpdate(prevProps) {
-    // console.warn('\n-- MDetailsContainer.componentDidUpdate()');
+    // console.warn('\n--MDetailsContainer.componentDidUpdate()');
 
-    const diffs = difference(this.props, prevProps);
-    // console.warn('difference:', diffs);
-
-    const { history, movieDetails, match, actions } = this.props;
-    const { lng } = qs.parse(history.location.search);
+    const { movieDetails, location, match, actions } = this.props;
+    const { lng } = qs.parse(location.search);
     const { movie_id } = match.params;
 
     const list = [
@@ -62,18 +54,19 @@ class MDetailsContainer extends Component {
       { name: 'images', methodName: 'getImages' }
     ];
 
-    let segment;
-
+    let segment, request;
+    
     if (
-      (prevProps.match.params !== this.props.match.params)
-      || (prevProps.location.search !== this.props.location.search)
+      (match.params !== prevProps.match.params)
+      || (location.search !== prevProps.location.search)
     ) {
       list.forEach(({ name, methodName }) => {
         segment = movieDetails[name];
+        request = segment.request;
+
         if (
-          (movie_id != segment.request.movieId)
-          || getDiffMethod(segment.request, `MDetailsContainer, ${methodName} check`)('lng', { withDefault: true, defaultValue: DEFAULT_LANGUAGE.value })
-          || getDiffMethod(segment.request, `MDetailsContainer, ${methodName} check`)('search', { withDefault: true, defaultValue: '' })
+          (movie_id != request.movieId)
+          || hasRequestDiffs({ request, checklist: ['lng', 'search'] })
         ) {
           actions[methodName]({ movieId: movie_id, lng });
         }
@@ -84,9 +77,9 @@ class MDetailsContainer extends Component {
   componentDidMount() {
     // console.warn('\n-- MDetailsContainer.componentDidMount()');
 
-    const { actions, match, movieDetails, history } = this.props;
+    const { actions, location, match, movieDetails } = this.props;
     const { movie_id } = match.params;
-    const { lng } = qs.parse(history.location.search);
+    const { lng } = qs.parse(location.search);
 
     const list = [
       { name: 'movie', methodName: 'getMovieDetails' },
@@ -95,14 +88,15 @@ class MDetailsContainer extends Component {
       { name: 'images', methodName: 'getImages' }
     ];
 
-    let segment;
+    let segment, request;
     list.forEach(({ name, methodName }) => {
       segment = movieDetails[name];
+      request = segment.request;
 
       if (
         // isEmpty(segment.data) ||
-        (movie_id != segment.request.movieId)
-        || (typeof lng !== 'undefined' && lng != segment.request.lng)
+        (movie_id != request.movieId)
+        || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
         actions[methodName]({ movieId: movie_id, lng });
       }
@@ -139,10 +133,8 @@ MDetailsContainer.propTypes = {
     })
   }),
 
-  history: PT.shape({
-    location: PT.shape({
-      search: PT.string.isRequired
-    }).isRequired
+  location: PT.shape({
+    search: PT.string.isRequired
   }).isRequired,
 
   actions: PT.shape({

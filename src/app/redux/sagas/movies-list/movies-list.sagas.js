@@ -26,7 +26,7 @@ function* getMoviesSaga({ type, payload }) {
     search = ''
   } = payload;
 
-  yield put(actions.start({ moviesType, page, lng, search }));
+  yield put(actions.start({ lng, moviesType, page, search }));
   try {
     const data = yield ApiService.fetch({
       url: search
