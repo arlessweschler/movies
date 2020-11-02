@@ -9,8 +9,8 @@ import PTS from 'app_services/PropTypesService';
 import { withTranslation } from 'react-i18next';
 import { Row } from 'app_components/layout';
 
-function SearchResultsBlock({ t, cls, search, total }) {
-  const b = b_.with(cls);
+function SearchResultsBlock({ t, cls_base, search, total }) {
+  const b = b_.with(cls_base);
   const quotes = (<span className={b('quotes')}>"</span>);
 
 
@@ -43,7 +43,7 @@ function SearchResultsBlock({ t, cls, search, total }) {
 
 SearchResultsBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string,
+  cls_base: PT.string,
   search: PT.string,
   total: PTS.nullOrNumber
 };
