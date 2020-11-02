@@ -5,14 +5,13 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withMListContext } from 'app_contexts';
+import withMoviesNav from 'app_hocs/withMoviesNav';
 import { CardImageBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
-  const { cls, movie, printGenres, context } = props;
+  const { cls, movie, printGenres, linkMovie } = props;
   const { id, title, genre_ids } = movie;
-  const { linkMovie } = context;
 
   const b = b_.with(cls);
 
@@ -41,6 +40,8 @@ function CardBlock(props) {
 };
 
 CardBlock.propTypes = {
+  linkMovie: PT.func.isRequired,
+
   printGenres: PT.func.isRequired,
   movie: PT.shape({
     poster_path: PT.string,
@@ -48,10 +49,6 @@ CardBlock.propTypes = {
     genre_ids: PT.array,
     vote_average: PT.number,
   }).isRequired,
-
-  context: PT.shape({
-    linkMovie: PT.func.isRequired
-  }).isRequired
 };
 
-export default withMListContext(CardBlock);
+export default withMoviesNav(CardBlock);

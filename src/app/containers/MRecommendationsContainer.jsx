@@ -8,14 +8,12 @@ import qs from 'query-string';
 import PTS from 'app_services/PropTypesService';
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { redirect } from 'app_history';
 import { isEmpty, getDiffMethod, difference } from 'app_services/UtilsService';
 import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
 import {
-  getRecommendations,
-  resetMovieDetails
+  getRecommendations
 } from 'redux_actions';
 
 // маппинг редюсеров
@@ -29,8 +27,7 @@ const mapStateToProps = ({ movieDetails }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      getRecommendations,
-      resetMovieDetails
+      getRecommendations
     }, dispatch)
   };
 };
@@ -39,7 +36,6 @@ class MRecommendationsContainer extends Component {
   constructor() {
     super();
     this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
-    this.linkMovie = this.linkMovie.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -111,15 +107,6 @@ class MRecommendationsContainer extends Component {
     );
   }
 
-  linkMovie(id) {
-    const { history, actions } = this.props;
-    const { lng } = qs.parse(history.location.search);
-    const nextParams = { lng };
-
-    actions.resetMovieDetails();
-    redirect(`/movies/${id}?${qs.stringify(nextParams)}`);
-  }
-
   render() {
     const { recommendations } = this.props;
     const { data, error } = recommendations;
@@ -129,10 +116,6 @@ class MRecommendationsContainer extends Component {
         {recommendations.isLoading && <ProgressBar />}
 
         <RecommendationsSection
-          data_genresContext={{
-            linkMovie: this.linkMovie
-          }}
-
           data_moviesList={{
             movies: data.results,
             error: error
@@ -157,8 +140,7 @@ MRecommendationsContainer.propTypes = {
   }).isRequired,
 
   actions: PT.shape({
-    getRecommendations: PT.func.isRequired,
-    resetMovieDetails: PT.func.isRequired,
+    getRecommendations: PT.func.isRequired
   }).isRequired,
 
   recommendations: PT.shape({

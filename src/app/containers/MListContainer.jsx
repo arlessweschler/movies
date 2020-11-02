@@ -15,8 +15,7 @@ import { ProgressBar } from 'app_components/layout';
 
 import {
   getMovies,
-  resetMovies,
-  resetMovieDetails
+  resetMovies
 } from 'redux_actions';
 
 // маппинг редюсеров
@@ -31,8 +30,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
       getMovies,
-      resetMovies,
-      resetMovieDetails
+      resetMovies
     }, dispatch)
   };
 };
@@ -41,8 +39,6 @@ class MListContainer extends Component {
   constructor() {
     super();
     this.handleFilter = this.handleFilter.bind(this);
-    this.onPageChange = this.onPageChange.bind(this);
-    this.linkMovie = this.linkMovie.bind(this);
     this.hasUrlQueryDiffs = this.hasUrlQueryDiffs.bind(this);
     this.update = this.update.bind(this);
   }
@@ -114,15 +110,6 @@ class MListContainer extends Component {
     );
   }
 
-  linkMovie(id) {
-    const { history, actions } = this.props;
-    const { lng } = qs.parse(history.location.search);
-    const nextParams = { lng };
-
-    actions.resetMovieDetails();
-    redirect(`/movies/${id}?${qs.stringify(nextParams)}`);
-  }
-
   update(nextValues) {
     const { history, actions } = this.props;
     const values = qs.parse(history.location.search);
@@ -134,10 +121,6 @@ class MListContainer extends Component {
 
   handleFilter(moviesType) {
     this.update({ moviesType, page: 1 })
-  }
-
-  onPageChange({ selected }) {
-    this.update({ page: selected + 1 })
   }
 
   render() {
@@ -159,12 +142,7 @@ class MListContainer extends Component {
 
           data_paging={{
             initialPage: (data.page - 1),
-            pageCount: data.total_pages,
-            onPageChange: this.onPageChange
-          }}
-
-          data_genresContext={{
-            linkMovie: this.linkMovie
+            pageCount: data.total_pages
           }}
 
           data_moviesList={{
@@ -188,8 +166,7 @@ MListContainer.propTypes = {
   }).isRequired,
 
   actions: PT.shape({
-    getMovies: PT.func.isRequired,
-    resetMovieDetails: PT.func.isRequired,
+    getMovies: PT.func.isRequired
   }).isRequired,
 
   moviesList: PT.shape({

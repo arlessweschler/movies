@@ -9,11 +9,10 @@ import { withTranslation } from 'react-i18next';
 import PTS from 'app_services/PropTypesService';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Row } from 'app_components/layout';
-import { MListContextProvider } from 'app_contexts';
 import { ToolbarBlock, PagingBlock, ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
-function MoviesPage({ t, data_toolbar, data_paging, data_genresContext, data_moviesList }) {
+function MoviesPage({ t, data_toolbar, data_paging, data_moviesList }) {
 
   // base component class
   const cls_base = 'movies-list';
@@ -52,15 +51,13 @@ function MoviesPage({ t, data_toolbar, data_paging, data_genresContext, data_mov
           : ''}
       </Row>
 
-      <MListContextProvider {...data_genresContext}>
-        {error && <p>{error}</p>}
-        {hasMovies
-          ? <ListBlock
-            cls_base={cls_base}
-            movies={movies}
-          />
-          : ''}
-      </MListContextProvider>
+      {error && <p>{error}</p>}
+      {hasMovies && (
+        <ListBlock
+          cls_base={cls_base}
+          movies={movies}
+        />
+      )}
 
       {(hasMovies && total_results > 20)
         ? (
@@ -83,12 +80,7 @@ MoviesPage.propTypes = {
 
   data_paging: PT.shape({
     initialPage: PT.number.isRequired,
-    pageCount: PTS.nullOrNumber,
-    onPageChange: PT.func.isRequired
-  }).isRequired,
-
-  data_genresContext: PT.shape({
-    linkMovie: PT.func.isRequired
+    pageCount: PTS.nullOrNumber
   }).isRequired,
 
   data_moviesList: PT.shape({

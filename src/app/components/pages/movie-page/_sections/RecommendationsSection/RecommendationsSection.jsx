@@ -8,11 +8,10 @@ import cn from 'classnames';
 import PTS from 'app_services/PropTypesService';
 import { withTranslation } from 'react-i18next';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { MListContextProvider } from 'app_contexts';
 import { ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
-function RecommendationsSection({ t, data_genresContext, data_moviesList }) {
+function RecommendationsSection({ t, data_moviesList }) {
 
   // base component class
   const cls_base = 'movies-list';
@@ -22,7 +21,7 @@ function RecommendationsSection({ t, data_genresContext, data_moviesList }) {
   const hasMovies = isNotEmpty(movies);
 
   return (
-    <MListContextProvider {...data_genresContext}>
+    <Fragment>
       {error && <p>{error}</p>}
       {hasMovies
         ? (
@@ -36,16 +35,12 @@ function RecommendationsSection({ t, data_genresContext, data_moviesList }) {
           </div >
         )
         : ''}
-    </MListContextProvider>
+    </Fragment>
   );
 };
 
 RecommendationsSection.propTypes = {
   t: PT.func.isRequired,
-
-  data_genresContext: PT.shape({
-    linkMovie: PT.func.isRequired
-  }).isRequired,
 
   data_moviesList: PT.shape({
     error: PTS.nullOrString,

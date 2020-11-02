@@ -24,7 +24,7 @@ const Navigation = () => {
     const { lng } = qs.parse(history.location.search);
 
     dispatch(resetMovies());
-    dispatch(getMovies());
+    dispatch(getMovies({ lng }));
     redirect(`/?${qs.stringify({ lng })}`);
   }
 
