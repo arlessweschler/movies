@@ -4,34 +4,24 @@ import {
 } from 'app_redux/helpers/actions.helper';
 
 export const actionKeys = {
-  GET_MOVIES: 'GET_MOVIES',
-  GET_GENRES: 'GET_GENRES',
-  RESET_MOVIES: 'RESET_MOVIES'
+  MOVIES_LIST: 'MOVIES_LIST',
+  GENRES_LIST: 'GENRES_LIST'
 };
 
 export const asyncActionMaps = {
-  [actionKeys.GET_MOVIES]: createActionsForAsyncAction(actionKeys.GET_MOVIES),
-  [actionKeys.GET_GENRES]: createActionsForAsyncAction(actionKeys.GET_GENRES)
+  [actionKeys.MOVIES_LIST]: createActionsForAsyncAction(actionKeys.MOVIES_LIST),
+  [actionKeys.GENRES_LIST]: createActionsForAsyncAction(actionKeys.GENRES_LIST)
 };
 
 const actions = {
   getMovies: function (request) {
-    const actions = asyncActionMaps[actionKeys.GET_MOVIES];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIES_LIST, { request });
   },
   getGenres: function (request) {
-    const actions = asyncActionMaps[actionKeys.GET_GENRES];
-    return actions.start(request);
+    return createActionCreator(actionKeys.GENRES_LIST, { request });
   },
   resetMovies: () => {
-    return createActionCreator(
-      actionKeys.RESET_MOVIES,
-      {
-        resetList: [
-          actionKeys.GET_MOVIES
-        ]
-      }
-    )
+    return asyncActionMaps[actionKeys.MOVIES_LIST].reset();
   }
 };
 

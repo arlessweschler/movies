@@ -24,11 +24,11 @@ const DEFAULT_GENRES_STATE = {
 
 const moviesReducer = {
   movies: createAsyncReducer(
-    actionKeys.GET_MOVIES,
+    actionKeys.MOVIES_LIST,
     { initialState: DEFAULT_MOVIES_STATE }
   ),
   genres: createAsyncReducer(
-    actionKeys.GET_GENRES,
+    actionKeys.GENRES_LIST,
     { initialState: DEFAULT_GENRES_STATE }
   )
 };

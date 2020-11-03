@@ -22,24 +22,19 @@ export const asyncActionMaps = {
 
 const actions = {
   getMovieDetails: (request) => {
-    const actions = asyncActionMaps[actionKeys.MOVIE_DETAILS];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIE_DETAILS, { request });
   },
   getCredits: (request) => {
-    const actions = asyncActionMaps[actionKeys.MOVIE_CREDITS];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIE_CREDITS, { request });
   },
   getVideos: (request) => {
-    const actions = asyncActionMaps[actionKeys.MOVIE_VIDEOS];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIE_VIDEOS, { request });
   },
   getImages: (request) => {
-    const actions = asyncActionMaps[actionKeys.MOVIE_IMAGES];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIE_IMAGES, { request });
   },
   getRecommendations: (request) => {
-    const actions = asyncActionMaps[actionKeys.MOVIE_RECOMMENDATIONS];
-    return actions.start(request);
+    return createActionCreator(actionKeys.MOVIE_RECOMMENDATIONS, { request });
   },
   resetMovieDetails: () => {
     return createActionCreator(

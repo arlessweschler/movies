@@ -6,7 +6,7 @@ import PT from 'prop-types';
 import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, getQueryParams, hasRequestDiffs } from 'app_services/UtilsService';
+import { isEmpty, getQueryParams, hasRequestDiffs, difference } from 'app_services/UtilsService';
 import { Message, ProgressBar, Row } from 'app_components/layout';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from 'app_components/pages/movies-page/_blocks';
 import { getMovies } from 'redux_actions';
@@ -27,6 +27,9 @@ class MListContainer extends Component {
 
   componentDidUpdate(prevProps) {
     // console.warn('\n--MListContainer.componentDidUpdate()');
+
+    // const diffs = difference(this.props, prevProps);
+    // console.log('diffs:', diffs);
 
     const { moviesList, actions, location } = this.props;
     const { request } = moviesList;

@@ -40,7 +40,7 @@ export const createAsyncReducerMap = (
   };
 
   return {
-    [actionKey]: startReducerFn,
+    [`${actionKey}_START`]: startReducerFn,
     [`${actionKey}_SUCCESS`]: successReducerFn,
     [`${actionKey}_FAIL`]: failReducerFn,
     [`${actionKey}_RESET`]: resetReducerFn

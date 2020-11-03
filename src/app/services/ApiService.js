@@ -2,6 +2,7 @@ require('isomorphic-fetch');
 import qs from 'query-string';
 
 import { TMDB_API_HOST, TMDB_API_KEY, } from 'app_config';
+import { formatLng } from 'app_services/UtilsService';
 
 function* fetchJson(url, { method }) {
   const response = yield fetch(url, { method });
@@ -21,6 +22,14 @@ export default {
     params = {}
   }) {
     try {
+
+      if (typeof params.lng !== 'undefined') {
+        params.language = params.lng
+          ? formatLng(params.lng)
+          : null;
+        delete params.lng;
+      }
+
       const queryParams = qs.stringify({
         ...params,
         api_key: TMDB_API_KEY

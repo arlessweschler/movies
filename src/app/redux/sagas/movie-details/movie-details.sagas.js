@@ -2,7 +2,6 @@ import { put, takeEvery, all } from "redux-saga/effects";
 
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie-details.actions';
-import { lngUrlValue } from 'app_redux/helpers/sagas.helper';
 
 // watchers
 export function* watchMovieDetails() {
@@ -22,10 +21,11 @@ function* getMovieDetailsSaga({ type, payload }) {
   const { request } = payload;
   const { movie_id, lng } = request;
 
+  yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movie_id}`,
-      params: { language: lngUrlValue(lng) }
+      params: { lng }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -38,10 +38,11 @@ function* getCreditsSaga({ type, payload }) {
   const { request } = payload;
   const { movie_id, lng } = request;
 
+  yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movie_id}/credits`,
-      params: { language: lngUrlValue(lng) }
+      params: { lng }
     });
     yield put(actions.success(data));
   } catch (error) {
@@ -54,10 +55,11 @@ function* getVideosSaga({ type, payload }) {
   const { request } = payload;
   const { movie_id, lng } = request;
 
+  yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movie_id}/videos`,
-      params: { language: lngUrlValue(lng) }
+      params: { lng }
     });
     yield put(actions.success(data.results));
   } catch (error) {
@@ -70,10 +72,11 @@ function* getImagesSaga({ type, payload }) {
   const { request } = payload;
   const { movie_id } = request;
 
+  yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movie_id}/images`,
-      params: { language: null }
+      params: { lng: null }
     });
     yield put(actions.success(data.backdrops));
   } catch (error) {
@@ -86,10 +89,11 @@ function* getRecommendationsSaga({ type, payload }) {
   const { request } = payload;
   const { movie_id, lng } = request;
 
+  yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
       url: `/movie/${movie_id}/recommendations`,
-      params: { page: 1, language: lngUrlValue(lng) }
+      params: { page: 1, lng }
     });
     yield put(actions.success(data));
   } catch (error) {

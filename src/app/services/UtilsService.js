@@ -5,7 +5,7 @@ import history from 'app_history';
 import imageNotAvailable from 'app_assets/img/image_not_available.png';
 
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-import { DEFAULT_LANGUAGE } from 'app_i18n';
+import { DEFAULT_LANGUAGE, LANGUAGES } from 'app_i18n';
 
 const Utils = {
   /**
@@ -48,6 +48,12 @@ const Utils = {
     }
 
     return true;
+  },
+
+  formatLng(lng) {
+    const language = LANGUAGES.find(i => i.value == lng);
+  
+    return `${language.value}-${language.region}`;
   },
 
   getDefaulQueryParams() {
@@ -104,6 +110,7 @@ const Utils = {
   }
 }
 
+const formatLng = Utils.formatLng;
 const getDefaulQueryParams = Utils.getDefaulQueryParams;
 const getQueryParams = Utils.getQueryParams;
 const hasRequestDiffs = Utils.hasRequestDiffs;
@@ -116,6 +123,7 @@ export default Utils;
 
 export {
   imageNotAvailable,
+  formatLng,
   getDefaulQueryParams,
   getQueryParams,
   hasRequestDiffs,
