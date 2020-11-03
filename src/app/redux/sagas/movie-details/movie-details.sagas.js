@@ -11,7 +11,7 @@ export function* watchMovieDetails() {
     takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
     takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
     takeEvery(actionKeys.MOVIE_RECOMMENDATIONS, getRecommendationsSaga),
-    takeEvery(actionKeys.RESET_MOVIE_CARD, resetMovieDetailsSaga)
+    takeEvery(actionKeys.MOVIE_RESET_ALL, resetMovieDetailsSaga)
   ]);
 }
 

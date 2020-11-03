@@ -9,7 +9,7 @@ export const actionKeys = {
   MOVIE_VIDEOS: 'MOVIE_VIDEOS',
   MOVIE_IMAGES: 'MOVIE_IMAGES',
   MOVIE_RECOMMENDATIONS: 'MOVIE_RECOMMENDATIONS',
-  RESET_MOVIE_CARD: 'RESET_MOVIE_CARD',
+  MOVIE_RESET_ALL: 'MOVIE_RESET_ALL',
 };
 
 export const asyncActionMaps = {
@@ -38,7 +38,7 @@ const actions = {
   },
   resetMovieDetails: () => {
     return createActionCreator(
-      actionKeys.RESET_MOVIE_CARD,
+      actionKeys.MOVIE_RESET_ALL,
       {
         resetList: [
           actionKeys.MOVIE_DETAILS,
