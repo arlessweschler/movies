@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { getQueryParams } from 'app_services/UtilsService';
 import { MDetailsContainer } from 'app_containers';
 import {
   getMovieDetails,
@@ -29,14 +30,19 @@ const mapDispatchToProps = (dispatch) => {
 class MDetailsRouteContainer extends Component {
 
   // получение данных для отправки разметки с данными при серверном рендеринге
-  static fetchData(store, urlParams, urlQuery) {
-    console.log('\n--MDetailsRouteContainer.fetchData(), urlQuery:', urlQuery);
+  static fetchData(store, url, urlParams) {
+    console.log('\n--MDetailsRouteContainer.fetchData(), url:', url);
 
-    const movieId = urlParams[0].split('/').pop();
+    const movie_id = urlParams[0].split('/').pop();
+    const { lng } = getQueryParams(url.split('?').pop());
+
+    console.log('movie_id:', movie_id);
+    console.log('lng:', lng);
+
     const methods = [getMovieDetails, getCredits, getVideos, getImages, getGenres, getRecommendations];
 
     methods.forEach((method) => {
-      store.dispatch(method({ movieId, ...urlQuery }));
+      store.dispatch(method({ movie_id, lng }));
     });
   }
 

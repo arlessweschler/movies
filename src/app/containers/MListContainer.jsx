@@ -4,10 +4,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 import cn from 'classnames';
-import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, hasRequestDiffs } from 'app_services/UtilsService';
+import { isEmpty, getQueryParams, hasRequestDiffs } from 'app_services/UtilsService';
 import { Message, ProgressBar, Row } from 'app_components/layout';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from 'app_components/pages/movies-page/_blocks';
 import { getMovies } from 'redux_actions';
@@ -35,8 +34,7 @@ class MListContainer extends Component {
 
     if ((location.search !== prevProps.location.search)) {
       if (hasRequestDiffs({ request, checklist })) {
-        const params = qs.parse(location.search);
-        actions.getMovies(params);
+        actions.getMovies(getQueryParams());
       };
     }
   }
@@ -44,7 +42,7 @@ class MListContainer extends Component {
   componentDidMount() {
     // console.warn('\n--MListContainer.componentDidMount()');
 
-    const { moviesList, location, actions } = this.props;
+    const { moviesList, actions } = this.props;
     const { data, isLoading, request } = moviesList;
     const checklist = ['lng', 'moviesType', 'page', 'search'];
 
@@ -52,16 +50,15 @@ class MListContainer extends Component {
       (isEmpty(data.results) && !isLoading)
       || hasRequestDiffs({ request, checklist })
     ) {
-      const params = qs.parse(location.search);
-      actions.getMovies(params);
+      actions.getMovies(getQueryParams());
     };
   }
 
   render() {
-    const { moviesList, location } = this.props;
+    const { moviesList } = this.props;
     const { data, error, isLoading } = moviesList;
     const { results, total_results, total_pages, page } = data;
-    const { search } = qs.parse(location.search);
+    const { search } = getQueryParams();
 
     const cls_base = 'movies-list';
     const hasMovies = !isEmpty(results);

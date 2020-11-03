@@ -49,7 +49,7 @@ export default function (ROUTES) {
     branch.forEach(({ route }) => {
       const fetchData = route.component.fetchData;
       if (fetchData instanceof Function) {
-        fetchData(store, req.params, req.query)
+        fetchData(store, req.url, req.params)
       }
     });
 

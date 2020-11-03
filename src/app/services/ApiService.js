@@ -21,12 +21,12 @@ export default {
     params = {}
   }) {
     try {
-      const urlParams = qs.stringify({
+      const queryParams = qs.stringify({
         ...params,
         api_key: TMDB_API_KEY
       });
 
-      const fetchUrl = `${TMDB_API_HOST}${url}?${urlParams}`;
+      const fetchUrl = `${TMDB_API_HOST}${url}?${queryParams}`;
 
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 

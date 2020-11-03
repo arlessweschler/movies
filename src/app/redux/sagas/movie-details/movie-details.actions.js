@@ -21,25 +21,25 @@ export const asyncActionMaps = {
 };
 
 const actions = {
-  getMovieDetails: (params = {}) => {
-    const { movieId, lng } = params;
-    return createActionCreator(actionKeys.MOVIE_DETAILS, { movieId, lng });
+  getMovieDetails: (request) => {
+    const actions = asyncActionMaps[actionKeys.MOVIE_DETAILS];
+    return actions.start(request);
   },
-  getCredits: (params = {}) => {
-    const { movieId, lng } = params;
-    return createActionCreator(actionKeys.MOVIE_CREDITS, { movieId, lng })
+  getCredits: (request) => {
+    const actions = asyncActionMaps[actionKeys.MOVIE_CREDITS];
+    return actions.start(request);
   },
-  getVideos: (params = {}) => {
-    const { movieId, lng } = params;
-    return createActionCreator(actionKeys.MOVIE_VIDEOS, { movieId, lng })
+  getVideos: (request) => {
+    const actions = asyncActionMaps[actionKeys.MOVIE_VIDEOS];
+    return actions.start(request);
   },
-  getImages: (params = {}) => {
-    const { movieId, lng } = params;
-    return createActionCreator(actionKeys.MOVIE_IMAGES, { movieId, lng })
+  getImages: (request) => {
+    const actions = asyncActionMaps[actionKeys.MOVIE_IMAGES];
+    return actions.start(request);
   },
-  getRecommendations: (params = {}) => {
-    const { movieId, lng } = params;
-    return createActionCreator(actionKeys.MOVIE_RECOMMENDATIONS, { movieId, lng })
+  getRecommendations: (request) => {
+    const actions = asyncActionMaps[actionKeys.MOVIE_RECOMMENDATIONS];
+    return actions.start(request);
   },
   resetMovieDetails: () => {
     return createActionCreator(

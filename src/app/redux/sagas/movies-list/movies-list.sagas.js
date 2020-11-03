@@ -1,8 +1,5 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
 import { lngUrlValue } from 'app_redux/helpers/sagas.helper';
@@ -19,14 +16,9 @@ export function* watchMovieBrowser() {
 // workers
 function* getMoviesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    moviesType = DEFAULT_MOVIES_TYPE,
-    page = 1,
-    lng = DEFAULT_LANGUAGE.value,
-    search = ''
-  } = payload;
+  const { request } = payload
+  const { moviesType, page, lng, search } = request;
 
-  yield put(actions.start({ lng, moviesType, page, search }));
   try {
     const data = yield ApiService.fetch({
       url: search
@@ -44,11 +36,9 @@ function* getMoviesSaga({ type, payload }) {
 
 function* getGenresSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload
+  const { lng } = request;
 
-  yield put(actions.start({ lng }));
   try {
     const data = yield ApiService.fetch({
       url: '/genre/movie/list',

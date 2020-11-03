@@ -15,16 +15,13 @@ export const asyncActionMaps = {
 };
 
 const actions = {
-  getMovies: (params = {}) => {
-    const { page, moviesType, lng, search } = params;
-    return createActionCreator(
-      actionKeys.GET_MOVIES,
-      { page, moviesType, lng, search }
-    );
+  getMovies: function (request) {
+    const actions = asyncActionMaps[actionKeys.GET_MOVIES];
+    return actions.start(request);
   },
-  getGenres: (params = {}) => {
-    const { page, moviesType, lng } = params;
-    return createActionCreator(actionKeys.GET_GENRES, { page, moviesType, lng })
+  getGenres: function (request) {
+    const actions = asyncActionMaps[actionKeys.GET_GENRES];
+    return actions.start(request);
   },
   resetMovies: () => {
     return createActionCreator(

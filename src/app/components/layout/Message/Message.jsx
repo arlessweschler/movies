@@ -19,7 +19,7 @@ function Message({ cls = '', text, children=null }) {
 Message.propTypes = {
   cls: PT.string,
   children: PT.element,
-  text: PT.string.isRequired
+  text: PT.string
 };
 
 export default Message;

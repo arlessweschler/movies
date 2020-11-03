@@ -3,10 +3,9 @@ import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { hasRequestDiffs } from 'app_services/UtilsService';
+import { hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
 import {
@@ -44,7 +43,7 @@ class MDetailsContainer extends Component {
     // console.warn('\n--MDetailsContainer.componentDidUpdate()');
 
     const { movieDetails, location, match, actions } = this.props;
-    const { lng } = qs.parse(location.search);
+    const { lng } = getQueryParams();
     const { movie_id } = match.params;
 
     const list = [
@@ -65,10 +64,10 @@ class MDetailsContainer extends Component {
         request = segment.request;
 
         if (
-          (movie_id != request.movieId)
+          (movie_id != request.movie_id)
           || hasRequestDiffs({ request, checklist: ['lng', 'search'] })
         ) {
-          actions[methodName]({ movieId: movie_id, lng });
+          actions[methodName]({ movie_id, lng });
         }
       });
     }
@@ -77,9 +76,9 @@ class MDetailsContainer extends Component {
   componentDidMount() {
     // console.warn('\n-- MDetailsContainer.componentDidMount()');
 
-    const { actions, location, match, movieDetails } = this.props;
+    const { actions, match, movieDetails } = this.props;
     const { movie_id } = match.params;
-    const { lng } = qs.parse(location.search);
+    const { lng } = getQueryParams();
 
     const list = [
       { name: 'movie', methodName: 'getMovieDetails' },
@@ -95,10 +94,10 @@ class MDetailsContainer extends Component {
 
       if (
         // isEmpty(segment.data) ||
-        (movie_id != request.movieId)
+        (movie_id != request.movie_id)
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
-        actions[methodName]({ movieId: movie_id, lng });
+        actions[methodName]({ movie_id, lng });
       }
     });
   }

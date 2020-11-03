@@ -1,7 +1,5 @@
 import { put, takeEvery, all } from "redux-saga/effects";
 
-import { DEFAULT_LANGUAGE } from 'app_i18n';
-
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie-details.actions';
 import { lngUrlValue } from 'app_redux/helpers/sagas.helper';
@@ -21,15 +19,12 @@ export function* watchMovieDetails() {
 // workers
 function* getMovieDetailsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    movieId,
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload;
+  const { movie_id, lng } = request;
 
-  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movieId}`,
+      url: `/movie/${movie_id}`,
       params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
@@ -40,15 +35,12 @@ function* getMovieDetailsSaga({ type, payload }) {
 
 function* getCreditsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    movieId,
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload;
+  const { movie_id, lng } = request;
 
-  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movieId}/credits`,
+      url: `/movie/${movie_id}/credits`,
       params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));
@@ -59,15 +51,12 @@ function* getCreditsSaga({ type, payload }) {
 
 function* getVideosSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    movieId,
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload;
+  const { movie_id, lng } = request;
 
-  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movieId}/videos`,
+      url: `/movie/${movie_id}/videos`,
       params: { language: lngUrlValue(lng) }
     });
     yield put(actions.success(data.results));
@@ -78,15 +67,12 @@ function* getVideosSaga({ type, payload }) {
 
 function* getImagesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    movieId,
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload;
+  const { movie_id } = request;
 
-  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movieId}/images`,
+      url: `/movie/${movie_id}/images`,
       params: { language: null }
     });
     yield put(actions.success(data.backdrops));
@@ -97,15 +83,12 @@ function* getImagesSaga({ type, payload }) {
 
 function* getRecommendationsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
-  const {
-    movieId,
-    lng = DEFAULT_LANGUAGE.value
-  } = payload;
+  const { request } = payload;
+  const { movie_id, lng } = request;
 
-  yield put(actions.start({ movieId, lng }));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movieId}/recommendations`,
+      url: `/movie/${movie_id}/recommendations`,
       params: { page: 1, language: lngUrlValue(lng) }
     });
     yield put(actions.success(data));

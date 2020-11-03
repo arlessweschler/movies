@@ -50,21 +50,36 @@ const Utils = {
     return true;
   },
 
+  getDefaulQueryParams() {
+    return {
+      lng: DEFAULT_LANGUAGE.value,
+      moviesType: DEFAULT_MOVIES_TYPE,
+      page: 1,
+      search: ''
+    };
+  },
+
+  getQueryParams(query = history.location.search) {
+    const defaults = Utils.getDefaulQueryParams();
+    // console.log('Utils.getQueryParams(), query:', query);
+
+    const {
+      lng = defaults.lng,
+      moviesType = defaults.moviesType,
+      page = defaults.page,
+      search = defaults.search
+    } = qs.parse(query);
+
+    return { lng, moviesType, page, search };
+  },
+
   // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
   // 1. значениями этих параметров из url search query или 
   // (опционально) 2. дефолтными значениями этих параметров из редюсера
   hasRequestDiffs({ request, checklist }) {
     // console.warn(`\nUtils.hasRequestDiffs()`);
-    const location = history.location;
 
-    const {
-      lng = DEFAULT_LANGUAGE.value,
-      moviesType = DEFAULT_MOVIES_TYPE,
-      page = 1,
-      search = ''
-    } = qs.parse(location.search);
-
-    const searchParams = { lng, moviesType, page, search };
+    const searchParams = Utils.getQueryParams();
 
     let checks = [];
     for (let key in searchParams) {
@@ -89,6 +104,8 @@ const Utils = {
   }
 }
 
+const getDefaulQueryParams = Utils.getDefaulQueryParams;
+const getQueryParams = Utils.getQueryParams;
 const hasRequestDiffs = Utils.hasRequestDiffs;
 const difference = Utils.difference;
 const capitalize = Utils.capitalize;
@@ -99,6 +116,8 @@ export default Utils;
 
 export {
   imageNotAvailable,
+  getDefaulQueryParams,
+  getQueryParams,
   hasRequestDiffs,
   difference,
   capitalize,

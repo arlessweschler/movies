@@ -7,7 +7,9 @@ import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
-import history, { redirect } from 'app_history';
+import { redirect } from 'app_history';
+
+import { getDefaulQueryParams, getQueryParams } from 'app_services/UtilsService';
 import { resetMovies, getMovies } from 'redux_actions';
 import {
   NavToggle,
@@ -21,10 +23,15 @@ const Navigation = () => {
 
   const goHome = (e) => {
     e.preventDefault();
-    const { lng } = qs.parse(history.location.search);
+    const { lng } = getQueryParams();
 
+    let requestParams = {
+      ...getDefaulQueryParams(),
+      lng
+    };
+  
     dispatch(resetMovies());
-    dispatch(getMovies({ lng }));
+    dispatch(getMovies(requestParams));
     redirect(`/?${qs.stringify({ lng })}`);
   }
 

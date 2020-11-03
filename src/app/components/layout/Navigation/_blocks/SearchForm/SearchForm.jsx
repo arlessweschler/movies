@@ -45,18 +45,18 @@ const SearchForm = ({ t, history }) => {
   const onInputChange = (e) => {
     const value = e.target.value;
     const { search } = location;
-    const searchObject = qs.parse(search);
+    const queryParams = qs.parse(search);
 
     if (value.length >= 2) {
-      searchObject.search = value;
-      searchObject.page = 1;
+      queryParams.search = value;
+      queryParams.page = 1;
     } else {
-      delete searchObject.search;
+      delete queryParams.search;
     }
 
     setSearchText(value);
     dispatch(resetMovies());
-    redirect(`/?${qs.stringify(searchObject)}`);
+    redirect(`/?${qs.stringify(queryParams)}`);
   };
 
   return (

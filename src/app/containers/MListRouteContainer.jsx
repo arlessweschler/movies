@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { getQueryParams } from 'app_services/UtilsService';
 import { MListContainer } from 'app_containers';
 import {
   getMovies,
@@ -21,11 +22,14 @@ const mapDispatchToProps = (dispatch) => {
 class MListRouteContainer extends Component {
 
   // получение данных для отправки разметки с данными при серверном рендеринге
-  static fetchData(store, urlParams, urlQuery) {
-    console.log('\n--MListRouteContainer.fetchData(), urlQuery:', urlQuery);
+  static fetchData(store, url) {
+    console.log('\n--MListRouteContainer.fetchData(), url:', url);
 
-    store.dispatch(getGenres(urlQuery));
-    store.dispatch(getMovies(urlQuery));
+    const queryParams = getQueryParams(url.split('?').pop());
+    console.log('queryParams:', queryParams);
+
+    store.dispatch(getGenres(queryParams));
+    store.dispatch(getMovies(queryParams));
   }
 
   render() {

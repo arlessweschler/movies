@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 
-import { isEmpty, capitalize, hasRequestDiffs } from 'app_services/UtilsService';
+import { isEmpty, getQueryParams, capitalize, hasRequestDiffs } from 'app_services/UtilsService';
 import { ProgressBar } from 'app_components/layout';
 import { getGenres } from 'redux_actions';
 
@@ -29,19 +29,23 @@ function withGenres(WrappedComponent) {
   class GenresContainer extends Component {
 
     componentDidUpdate() {
+      // console.warn('\n--GenresContainer.componentDidUpdate()');
+
       const { genresList, location, actions } = this.props;
       const { request } = genresList;
       const checklist = ['lng'];
 
       if (hasRequestDiffs({ request, checklist })) {
-        const { lng } = qs.parse(location.search);
+        const { lng } = getQueryParams();
         actions.getGenres({ lng });
       };
     }
 
     componentDidMount() {
+      // console.warn('\n--GenresContainer.componentDidMount()');
+
       const { genresList, location, actions } = this.props;
-      const { lng } = qs.parse(location.search);
+      const { lng } = getQueryParams();
 
       if (isEmpty(genresList.data)) {
         actions.getGenres({ lng });

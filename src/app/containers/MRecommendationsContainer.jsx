@@ -3,10 +3,9 @@ import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import qs from 'query-string';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, hasRequestDiffs } from 'app_services/UtilsService';
+import { isEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
 import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
@@ -45,11 +44,11 @@ class MRecommendationsContainer extends Component {
     ) {
 
       if (
-        (movie_id != request.movieId)
+        (movie_id != request.movie_id)
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
-        const { lng } = qs.parse(location.search);
-        actions.getRecommendations({ movieId: movie_id, lng });
+        const { lng } = getQueryParams();
+        actions.getRecommendations({ movie_id, lng });
       }
     };
   }
@@ -57,16 +56,16 @@ class MRecommendationsContainer extends Component {
   componentDidMount() {
     // console.warn('\n-- MRecommendationsContainer.componentDidMount()');
 
-    const { recommendations, match, location, actions } = this.props;
+    const { recommendations, match, actions } = this.props;
     const { data, request } = recommendations;
     const { movie_id } = match.params;
 
     if (
       // isEmpty(data.results) ||
-      (movie_id != request.movieId)
+      (movie_id != request.movie_id)
     ) {
-      const { lng } = qs.parse(location.search);
-      actions.getRecommendations({ movieId: movie_id, lng });
+      const { lng } = getQueryParams();
+      actions.getRecommendations({ movie_id, lng });
     }
   }
 
