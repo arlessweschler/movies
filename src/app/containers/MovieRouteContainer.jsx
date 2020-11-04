@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getQueryParams } from 'app_services/UtilsService';
 import { MovieDetailsContainer } from 'app_containers';
 import {
-  getMovieDetails,
+  getDetails,
   getCredits,
   getVideos,
   getImages,
@@ -16,7 +16,7 @@ import {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      getMovieDetails,
+      getDetails,
       getCredits,
       getVideos,
       getImages,
@@ -39,7 +39,7 @@ class MovieRouteContainer extends Component {
     console.log('movie_id:', movie_id);
     console.log('lng:', lng);
 
-    const methods = [getMovieDetails, getCredits, getVideos, getImages, getGenres, getRecommendations];
+    const methods = [getDetails, getCredits, getVideos, getImages, getGenres, getRecommendations];
 
     methods.forEach((method) => {
       store.dispatch(method({ movie_id, lng }));

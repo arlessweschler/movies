@@ -5,22 +5,21 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PTS from 'app_services/PropTypesService';
-import { hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
+import { isEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
 import { MoviePage } from 'app_components/pages';
 import { MDetailsContextProvider } from 'app_contexts';
+import { ProgressBar } from 'app_components/layout';
 import {
-  getMovieDetails,
+  getDetails,
   getCredits,
   getVideos,
-  getImages,
-  getRecommendations
+  getImages
 } from 'redux_actions';
-import { ProgressBar } from 'app_components/layout';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
   return {
-    movieDetails
+    details: movieDetails
   };
 };
 
@@ -28,90 +27,65 @@ const mapStateToProps = ({ movieDetails }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators({
-      getMovieDetails,
+      getDetails,
       getCredits,
       getVideos,
-      getImages,
-      getRecommendations
+      getImages
     }, dispatch)
   };
 };
 
 class MovieDetailsContainer extends Component {
 
-  componentDidUpdate(prevProps) {
-    // console.warn('\n--MovieDetailsContainer.componentDidUpdate()');
+  componentDidMount() {
+    this.getDataIf(({ data }) => isEmpty(data));
+  }
 
-    const { movieDetails, location, match, actions } = this.props;
-    const { lng } = getQueryParams();
+  componentDidUpdate(prevProps) {
+    const { match, location } = this.props;
     const { movie_id } = match.params;
 
-    const list = [
-      { name: 'movie', methodName: 'getMovieDetails' },
-      { name: 'credits', methodName: 'getCredits' },
-      { name: 'videos', methodName: 'getVideos' },
-      { name: 'images', methodName: 'getImages' }
-    ];
-
-    let segment, request;
-    
     if (
-      (match.params !== prevProps.match.params)
-      || (location.search !== prevProps.location.search)
+      (match.params !== prevProps.match.params) ||
+      (location.search !== prevProps.location.search)
     ) {
-      list.forEach(({ name, methodName }) => {
-        segment = movieDetails[name];
-        request = segment.request;
-
-        if (
-          (movie_id != request.movie_id)
-          || hasRequestDiffs({ request, checklist: ['lng', 'search'] })
-        ) {
-          actions[methodName]({ movie_id, lng });
-        }
-      });
+      this.getDataIf(({ request }) => (
+        (movie_id !== request.movie_id) ||
+        hasRequestDiffs({ request, checklist: ['lng'] })
+      ));
     }
   }
 
-  componentDidMount() {
-    // console.warn('\n-- MovieDetailsContainer.componentDidMount()');
-
-    const { actions, match, movieDetails } = this.props;
+  getDataIf = (condition) => {
+    const { details, match, actions } = this.props;
     const { movie_id } = match.params;
     const { lng } = getQueryParams();
 
-    const list = [
-      { name: 'movie', methodName: 'getMovieDetails' },
-      { name: 'credits', methodName: 'getCredits' },
-      { name: 'videos', methodName: 'getVideos' },
-      { name: 'images', methodName: 'getImages' }
+    const sections = [
+      { sectionName: 'movie', methodName: 'getDetails' },
+      { sectionName: 'credits', methodName: 'getCredits' },
+      { sectionName: 'videos', methodName: 'getVideos' },
+      { sectionName: 'images', methodName: 'getImages' }
     ];
 
-    let segment, request;
-    list.forEach(({ name, methodName }) => {
-      segment = movieDetails[name];
-      request = segment.request;
-
-      if (
-        // isEmpty(segment.data) ||
-        (movie_id != request.movie_id)
-        || hasRequestDiffs({ request, checklist: ['lng'] })
-      ) {
+    sections.forEach(({ sectionName, methodName }) => {
+      if (condition(details[sectionName])) {
         actions[methodName]({ movie_id, lng });
       }
     });
   }
 
   render() {
-    const { movieDetails } = this.props;
-    const { movie, credits, videos, images } = movieDetails;
+    const { details } = this.props;
+    const { movie, credits, videos, images } = details;
 
     return (
       <Fragment>
         {
-          (movie.isLoading || credits.isLoading || videos.isLoading)
+          Object.keys(details).some(key => details[key].isLoading)
           && <ProgressBar />
         }
+
         <MDetailsContextProvider
           credits={credits.data}
           videos={videos.data}
@@ -137,14 +111,13 @@ MovieDetailsContainer.propTypes = {
   }).isRequired,
 
   actions: PT.shape({
-    getMovieDetails: PT.func.isRequired,
+    getDetails: PT.func.isRequired,
     getCredits: PT.func.isRequired,
     getVideos: PT.func.isRequired,
-    getImages: PT.func.isRequired,
-    getRecommendations: PT.func.isRequired,
+    getImages: PT.func.isRequired
   }).isRequired,
 
-  movieDetails: PT.shape({
+  details: PT.shape({
     movie: PT.shape({
       isLoading: PT.bool.isRequired,
       error: PTS.nullOrString,

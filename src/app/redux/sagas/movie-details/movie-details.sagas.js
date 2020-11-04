@@ -6,7 +6,7 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie
 // watchers
 export function* watchMovieDetails() {
   yield all([
-    takeEvery(actionKeys.MOVIE_DETAILS, getMovieDetailsSaga),
+    takeEvery(actionKeys.MOVIE_DETAILS, getDetailsSaga),
     takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
     takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
     takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
@@ -16,7 +16,7 @@ export function* watchMovieDetails() {
 }
 
 // workers
-function* getMovieDetailsSaga({ type, payload }) {
+function* getDetailsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
   const { movie_id, lng } = request;

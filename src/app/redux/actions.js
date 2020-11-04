@@ -5,7 +5,7 @@ import {
 } from 'app_redux/sagas/movies-list/movies-list.actions';
 
 import { 
-  getMovieDetails,
+  getDetails,
   getCredits,
   getVideos,
   getImages,
@@ -18,7 +18,7 @@ export {
   getGenres,
   resetMovies,
 
-  getMovieDetails,
+  getDetails,
   getCredits,
   getVideos,
   getImages,

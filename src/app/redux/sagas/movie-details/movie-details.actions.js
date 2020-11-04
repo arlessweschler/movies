@@ -21,7 +21,7 @@ export const asyncActionMaps = {
 };
 
 const actions = {
-  getMovieDetails: (request) => {
+  getDetails: (request) => {
     return createActionCreator(actionKeys.MOVIE_DETAILS, { request });
   },
   getCredits: (request) => {
@@ -53,7 +53,7 @@ const actions = {
 };
 
 export const {
-  getMovieDetails,
+  getDetails,
   getCredits,
   getVideos,
   getImages,
