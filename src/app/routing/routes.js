@@ -1,12 +1,12 @@
-import RootRoute from 'app_root/routing/RootRoute';
+import RootRoute from 'app_routing/RootRoute';
 
 import {
   NotFoundPage
 } from 'app_components/pages';
 
 import {
-  MListRouteContainer,
-  MDetailsRouteContainer
+  MoviesRouteContainer,
+  MovieRouteContainer
 } from 'app_containers';
 
 const routes = [
@@ -17,19 +17,13 @@ const routes = [
       {
         path: '/',
         exact: true,
-        component: MListRouteContainer
-      },
-
-      {
-        path: '/movies',
-        exact: true,
-        component: MListRouteContainer
+        component: MoviesRouteContainer
       },
 
       {
         path: '/movies/:movie_id',
         exact: true,
-        component: MDetailsRouteContainer
+        component: MovieRouteContainer
       },
 
       {

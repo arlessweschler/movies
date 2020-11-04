@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getQueryParams } from 'app_services/UtilsService';
-import { MListContainer } from 'app_containers';
+import { MoviesListContainer } from 'app_containers';
 import {
   getMovies,
   getGenres
@@ -19,11 +19,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // контейнер маршрута
-class MListRouteContainer extends Component {
+class MoviesRouteContainer extends Component {
 
   // получение данных для отправки разметки с данными при серверном рендеринге
   static fetchData(store, url) {
-    console.log('\n--MListRouteContainer.fetchData(), url:', url);
+    console.log('\n--MoviesRouteContainer.fetchData(), url:', url);
 
     const queryParams = getQueryParams(url.split('?').pop());
     console.log('queryParams:', queryParams);
@@ -33,8 +33,8 @@ class MListRouteContainer extends Component {
   }
 
   render() {
-    return <MListContainer />;
+    return <MoviesListContainer />;
   }
 };
 
-export default connect(() => ({}), mapDispatchToProps)(MListRouteContainer);
+export default connect(() => ({}), mapDispatchToProps)(MoviesRouteContainer);

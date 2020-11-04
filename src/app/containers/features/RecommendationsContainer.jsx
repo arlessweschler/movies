@@ -29,10 +29,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class MRecommendationsContainer extends Component {
+class RecommendationsContainer extends Component {
 
   componentDidUpdate(prevProps) {
-    // console.warn('\n--MRecommendationsContainer.componentDidUpdate()');
+    // console.warn('\n--RecommendationsContainer.componentDidUpdate()');
 
     const { recommendations, actions, location, match } = this.props;
     const { request } = recommendations;
@@ -54,7 +54,7 @@ class MRecommendationsContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n-- MRecommendationsContainer.componentDidMount()');
+    // console.warn('\n-- RecommendationsContainer.componentDidMount()');
 
     const { recommendations, match, actions } = this.props;
     const { data, request } = recommendations;
@@ -88,7 +88,7 @@ class MRecommendationsContainer extends Component {
   }
 };
 
-MRecommendationsContainer.propTypes = {
+RecommendationsContainer.propTypes = {
   match: PT.shape({
     params: PT.shape({
       movie_id: PT.string.isRequired
@@ -115,4 +115,4 @@ MRecommendationsContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MRecommendationsContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RecommendationsContainer));

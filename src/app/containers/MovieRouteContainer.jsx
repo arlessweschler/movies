@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getQueryParams } from 'app_services/UtilsService';
-import { MDetailsContainer } from 'app_containers';
+import { MovieDetailsContainer } from 'app_containers';
 import {
   getMovieDetails,
   getCredits,
@@ -27,11 +27,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // контейнер маршрута
-class MDetailsRouteContainer extends Component {
+class MovieRouteContainer extends Component {
 
   // получение данных для отправки разметки с данными при серверном рендеринге
   static fetchData(store, url, urlParams) {
-    console.log('\n--MDetailsRouteContainer.fetchData(), url:', url);
+    console.log('\n--MovieRouteContainer.fetchData(), url:', url);
 
     const movie_id = urlParams[0].split('/').pop();
     const { lng } = getQueryParams(url.split('?').pop());
@@ -47,8 +47,8 @@ class MDetailsRouteContainer extends Component {
   }
 
   render() {
-    return <MDetailsContainer />;
+    return <MovieDetailsContainer />;
   }
 };
 
-export default connect(() => ({}), mapDispatchToProps)(MDetailsRouteContainer);
+export default connect(() => ({}), mapDispatchToProps)(MovieRouteContainer);

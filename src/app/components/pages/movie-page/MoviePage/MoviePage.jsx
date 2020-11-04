@@ -8,7 +8,7 @@ import history from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Backdrop } from 'app_components/layout';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from 'app_components/pages/movie-page/_sections';
-import { MRecommendationsContainer } from 'app_containers';
+import { RecommendationsContainer } from 'app_containers';
 
 function MoviePage({ movie }) {
   const { backdrop_path } = movie;
@@ -46,7 +46,7 @@ function MoviePage({ movie }) {
               transparent={false}
             />
 
-            <MRecommendationsContainer
+            <RecommendationsContainer
               // history={history}
             />
           </div>

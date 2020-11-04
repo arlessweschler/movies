@@ -37,10 +37,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class MDetailsContainer extends Component {
+class MovieDetailsContainer extends Component {
 
   componentDidUpdate(prevProps) {
-    // console.warn('\n--MDetailsContainer.componentDidUpdate()');
+    // console.warn('\n--MovieDetailsContainer.componentDidUpdate()');
 
     const { movieDetails, location, match, actions } = this.props;
     const { lng } = getQueryParams();
@@ -74,7 +74,7 @@ class MDetailsContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n-- MDetailsContainer.componentDidMount()');
+    // console.warn('\n-- MovieDetailsContainer.componentDidMount()');
 
     const { actions, match, movieDetails } = this.props;
     const { movie_id } = match.params;
@@ -125,7 +125,7 @@ class MDetailsContainer extends Component {
   }
 };
 
-MDetailsContainer.propTypes = {
+MovieDetailsContainer.propTypes = {
   match: PT.shape({
     params: PT.shape({
       movie_id: PT.string.isRequired
@@ -173,4 +173,4 @@ MDetailsContainer.propTypes = {
 
 export default
   connect(mapStateToProps, mapDispatchToProps)
-    (withRouter(MDetailsContainer));
+    (withRouter(MovieDetailsContainer));

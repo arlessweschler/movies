@@ -1,17 +1,17 @@
 // контейнеры маршрутов
-import MListRouteContainer from 'app_containers/MListRouteContainer';
-import MDetailsRouteContainer from 'app_containers/MDetailsRouteContainer';
+import MoviesRouteContainer from 'app_containers/MoviesRouteContainer';
+import MovieRouteContainer from 'app_containers/MovieRouteContainer';
 
 // прикладные контейнеры
-import MListContainer from 'app_containers/MListContainer';
-import MDetailsContainer from 'app_containers/MDetailsContainer';
-import MRecommendationsContainer from 'app_containers/MRecommendationsContainer';
+import MoviesListContainer from 'app_containers/features/MoviesListContainer';
+import MovieDetailsContainer from 'app_containers/features/MovieDetailsContainer';
+import RecommendationsContainer from 'app_containers/features/RecommendationsContainer';
 
 export {
-  MListRouteContainer,
-  MDetailsRouteContainer,
+  MoviesRouteContainer,
+  MovieRouteContainer,
 
-  MListContainer,
-  MDetailsContainer,
-  MRecommendationsContainer
+  MoviesListContainer,
+  MovieDetailsContainer,
+  RecommendationsContainer
 };

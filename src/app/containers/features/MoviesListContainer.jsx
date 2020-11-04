@@ -23,10 +23,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class MListContainer extends Component {
+class MoviesListContainer extends Component {
 
   componentDidUpdate(prevProps) {
-    // console.warn('\n--MListContainer.componentDidUpdate()');
+    // console.warn('\n--MoviesListContainer.componentDidUpdate()');
 
     // const diffs = difference(this.props, prevProps);
     // console.log('diffs:', diffs);
@@ -43,7 +43,7 @@ class MListContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n--MListContainer.componentDidMount()');
+    // console.warn('\n--MoviesListContainer.componentDidMount()');
 
     const { moviesList, actions } = this.props;
     const { data, isLoading, request } = moviesList;
@@ -110,7 +110,7 @@ class MListContainer extends Component {
   }
 };
 
-MListContainer.propTypes = {
+MoviesListContainer.propTypes = {
   location: PT.shape({
     search: PT.string.isRequired
   }).isRequired,
@@ -133,4 +133,4 @@ MListContainer.propTypes = {
 
 export default
   connect(mapStateToProps, mapDispatchToProps)
-    (withRouter(MListContainer));
+    (withRouter(MoviesListContainer));

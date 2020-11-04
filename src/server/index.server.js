@@ -6,7 +6,7 @@ const path = require('path');
 import appResponseHeaders from 'server_config/app-response-headers';
 import extractRoutes from 'server_config/routes-extractor';
 import getSsrRequestHandler from 'server_config/ssr-request-handler';
-import REACT_ROUTES from 'app_root/routing/routes';
+import REACT_ROUTES from 'app_routing/routes';
 const { PORT_SERVER, IS_SSR } = process.env;
 const CLIENT_FOLDER = 'dist/client';
 

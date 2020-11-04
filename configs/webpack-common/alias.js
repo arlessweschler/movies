@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = function ({ srcPath }) {
   let list = {
-    app_root: 'app/root',
+    app_routing: 'app/routing',
     app_config: 'app/config',
     app_i18n: 'app/i18n',
     app_locales: 'locales',
