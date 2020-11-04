@@ -10,10 +10,11 @@ import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
 import { TMDB_IMAGE_URL } from 'app_config';
 import { isNotEmpty } from 'app_services/UtilsService';
+import { Section } from 'app_components/pages/movie-page/_sections';
 import { ToggleBlock } from 'app_components/pages/movie-page/_blocks';
 
-function ActorsSection({ t, cls_base, transparent, context }) {
-  const { credits } = context;
+function ActorsSection({ t, transparent = false, context }) {
+  const { credits, cls_base } = context;
   const { cast } = credits;
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
@@ -30,7 +31,10 @@ function ActorsSection({ t, cls_base, transparent, context }) {
       {
         isNotEmpty(cast)
           ?
-          <section className={cn(b('section', { "is-transparent": transparent }), 'pt-3')}>
+          <Section
+            cls="pt-3"
+            {...{ transparent }}
+          >
             <div className="row d-flex justify-content-between">
               <h2>
                 {t('movie_details.actors.section_label')}:
@@ -70,7 +74,7 @@ function ActorsSection({ t, cls_base, transparent, context }) {
               )}
 
             </div>
-          </section>
+          </Section>
           : ''
       }
 
@@ -80,10 +84,10 @@ function ActorsSection({ t, cls_base, transparent, context }) {
 
 ActorsSection.propTypes = {
   t: PT.func.isRequired,
-  cls_base: PT.string.isRequired,
-  transparent: PT.bool.isRequired,
+  transparent: PT.bool,
 
   context: PT.shape({
+    cls_base: PT.string.isRequired,
     credits: PT.shape({
       cast: PT.array
     }).isRequired

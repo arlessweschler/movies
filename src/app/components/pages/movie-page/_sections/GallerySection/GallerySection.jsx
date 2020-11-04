@@ -10,9 +10,10 @@ import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
 import { TMDB_IMAGE_URL } from 'app_config';
 import { isNotEmpty } from 'app_services/UtilsService';
+import { Section } from 'app_components/pages/movie-page/_sections';
 
-function GallerySection({ t, cls_base, transparent, context }) {
-  const { images } = context;
+function GallerySection({ t, transparent = false, context }) {
+  const { images, cls_base } = context;
   // console.warn('-- GallerySection, images:', images);
 
   if (!images || images.length < 1) return null;
@@ -29,7 +30,10 @@ function GallerySection({ t, cls_base, transparent, context }) {
       {
         isNotEmpty(images)
           ?
-          <section className={cn(b('section', { "is-transparent": transparent }), 'border-top pt-3')}>
+          <Section
+            cls="border-top pt-3"
+            {...{ transparent }}
+          >
             <div className="row">
               <h2>
                 {t('movie_details.images.section_label')}:
@@ -37,7 +41,7 @@ function GallerySection({ t, cls_base, transparent, context }) {
             </div>
 
             <div className={cn(b('gallery'), 'row')}>
-{/*               {images.map((image, index) => (
+              {/*               {images.map((image, index) => (
                 <img
                   key={index}
                   className="gallery-image"
@@ -46,7 +50,7 @@ function GallerySection({ t, cls_base, transparent, context }) {
               ))} */}
               <ImageGallery items={imagesForGallery} />
             </div>
-          </section>
+          </Section>
           : ''
       }
 
@@ -56,10 +60,10 @@ function GallerySection({ t, cls_base, transparent, context }) {
 
 GallerySection.propTypes = {
   t: PT.func.isRequired,
-  cls_base: PT.string.isRequired,
-  transparent: PT.bool.isRequired,
+  transparent: PT.bool,
 
   context: PT.shape({
+    cls_base: PT.string.isRequired,
     images: PT.array.isRequired
   }).isRequired
 };

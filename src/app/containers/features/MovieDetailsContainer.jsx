@@ -1,20 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import b_ from 'b_';
+import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
-import { MoviePage } from 'app_components/pages';
+import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
 import { MDetailsContextProvider } from 'app_contexts';
-import { ProgressBar } from 'app_components/layout';
-import {
-  getDetails,
-  getCredits,
-  getVideos,
-  getImages
-} from 'redux_actions';
+import { Backdrop, ProgressBar } from 'app_components/layout';
+import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from 'app_components/pages/movie-page/_sections';
+import { RecommendationsContainer } from 'app_containers';
+import { getDetails, getCredits, getVideos, getImages } from 'redux_actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => {
@@ -79,22 +77,33 @@ class MovieDetailsContainer extends Component {
     const { details } = this.props;
     const { movie, credits, videos, images } = details;
 
-    return (
-      <Fragment>
-        {
-          Object.keys(details).some(key => details[key].isLoading)
-          && <ProgressBar />
-        }
+    const cls_base = 'movie-details';
+    const b = b_.with(cls_base);
 
-        <MDetailsContextProvider
-          credits={credits.data}
-          videos={videos.data}
-          movie={movie.data}
-          images={images.data}
-        >
-          <MoviePage movie={movie.data} />
-        </MDetailsContextProvider>
-      </Fragment>
+    return (
+      <>
+        { Object.keys(details).some(key => details[key].isLoading) &&
+          <ProgressBar />}
+
+        {isNotEmpty(movie.data) &&
+          <MDetailsContextProvider
+            cls_base={cls_base}
+            credits={credits.data}
+            videos={videos.data}
+            movie={movie.data}
+            images={images.data}
+          >
+            <Backdrop backdrop_path={movie.data.backdrop_path} />
+
+            <div className={cn(b())}>
+              <DescriptionSection />
+              <MediaSection />
+              <ActorsSection />
+              <GallerySection />
+              <RecommendationsContainer />
+            </div>
+          </MDetailsContextProvider>}
+      </>
     );
   }
 };
@@ -118,29 +127,10 @@ MovieDetailsContainer.propTypes = {
   }).isRequired,
 
   details: PT.shape({
-    movie: PT.shape({
-      isLoading: PT.bool.isRequired,
-      error: PTS.nullOrString,
-      data: PT.object.isRequired
-    }).isRequired,
-
-    credits: PT.shape({
-      isLoading: PT.bool.isRequired,
-      error: PTS.nullOrString,
-      data: PT.object.isRequired
-    }).isRequired,
-
-    videos: PT.shape({
-      isLoading: PT.bool.isRequired,
-      error: PTS.nullOrString,
-      data: PT.array.isRequired
-    }).isRequired,
-
-    images: PT.shape({
-      isLoading: PT.bool.isRequired,
-      error: PTS.nullOrString,
-      data: PT.array.isRequired
-    }).isRequired
+    movie: PTS.asyncShape('object'),
+    credits: PTS.asyncShape('object'),
+    videos: PTS.asyncShape('array'),
+    images: PTS.asyncShape('array')
   }).isRequired
 };
 

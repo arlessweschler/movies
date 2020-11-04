@@ -1,3 +1,4 @@
+import Section from 'app_components/pages/movie-page/_sections/Section/Section';
 import DescriptionSection from 'app_components/pages/movie-page/_sections/DescriptionSection/DescriptionSection';
 import MediaSection from 'app_components/pages/movie-page/_sections/MediaSection/MediaSection';
 import ActorsSection from 'app_components/pages/movie-page/_sections/ActorsSection/ActorsSection';
@@ -5,6 +6,7 @@ import GallerySection from 'app_components/pages/movie-page/_sections/GallerySec
 import RecommendationsSection from 'app_components/pages/movie-page/_sections/RecommendationsSection/RecommendationsSection';
 
 export {
+  Section,
   DescriptionSection,
   MediaSection,
   ActorsSection,

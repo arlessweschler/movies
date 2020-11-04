@@ -1,3 +1,5 @@
+import PT from 'prop-types';
+
 function createNullOrCheck(additionalType) {
   return function (props, key) {
     let value = props[key];
@@ -10,7 +12,17 @@ function createNullOrCheck(additionalType) {
   }
 }
 
+function asyncShape(dataType) {
+  return PT.shape({
+    isLoading: PT.bool.isRequired,
+    error: createNullOrCheck('string'),
+    data: PT[dataType].isRequired
+  }).isRequired;
+}
+
+
 export default {
+  asyncShape,
   nullOrString: createNullOrCheck('string'),
   nullOrNumber: createNullOrCheck('number')
 };

@@ -55,10 +55,11 @@ class MDetailsContextProvider extends Component {
   };
 
   render() {
-    const { movie, videos, credits, images, children } = this.props;
+    const { cls_base, movie, videos, credits, images, children } = this.props;
 
     return (
       <MDetailsContext.Provider value={{
+        cls_base,
         movie,
         videos,
         credits,
@@ -73,6 +74,8 @@ class MDetailsContextProvider extends Component {
 }
 
 MDetailsContextProvider.propTypes = {
+  cls_base: PT.string.isRequired,
+
   movie: PT.shape({
     title: PT.string,
     production_countries: PT.array,

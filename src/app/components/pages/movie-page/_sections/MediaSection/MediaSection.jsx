@@ -4,11 +4,12 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import { withMDetailsContext } from 'app_contexts';
+import { Section } from 'app_components/pages/movie-page/_sections';
 import { PlayerBlock, PosterBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function MediaSection({ cls_base, transparent, context }) {
-  const { movie } = context;
+function MediaSection({ transparent = true, context }) {
+  const { movie, cls_base } = context;
   const { poster_path } = movie;
 
   // console.log('-- MediaSection.render(), context:', context);
@@ -32,9 +33,11 @@ function MediaSection({ cls_base, transparent, context }) {
     })
   };
 
-
   return (
-    <section className={cn(b('section', { "is-transparent": transparent }), 'px-0 pt-1 pb-4')}>
+    <Section
+      cls="px-0 pt-1 pb-4"
+      {...{ transparent }}
+    >
       <Row cls="px-3">
         <Column
           cls={cls.poster_col}
@@ -55,15 +58,15 @@ function MediaSection({ cls_base, transparent, context }) {
           />
         </Column>
       </Row>
-    </section>
+    </Section>
   );
 };
 
 MediaSection.propTypes = {
-  cls_base: PT.string.isRequired,
-  transparent: PT.bool.isRequired,
+  transparent: PT.bool,
 
   context: PT.shape({
+    cls_base: PT.string.isRequired,
     movie: PT.shape({
       poster_path: PT.string
     }).isRequired

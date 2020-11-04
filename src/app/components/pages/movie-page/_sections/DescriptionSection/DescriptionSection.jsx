@@ -1,20 +1,17 @@
 import React from 'react';
 import PT from 'prop-types';
-import b_ from 'b_';
-import cn from 'classnames';
 
 import { withMDetailsContext } from 'app_contexts';
+import { Section } from 'app_components/pages/movie-page/_sections';
 import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
-function DescriptionSection({ cls_base, transparent, context }) {
-  const { movie } = context;
+function DescriptionSection({ transparent = true, context }) {
+  const { movie, cls_base } = context;
   const { title, original_title, production_countries, genres, release_date, runtime, vote_average, vote_count, tagline, overview } = movie;
 
-  const b = b_.B({ modSeparator: '--' }).with(cls_base);
-
   return (
-    <section className={cn(b('section', { "is-transparent": transparent }))}>
+    <Section {...{ transparent }}>
       <Row>
         <Column size={9} cls="p-0">
           <TitleBlock
@@ -49,15 +46,15 @@ function DescriptionSection({ cls_base, transparent, context }) {
       <Row>
         {overview}
       </Row>
-    </section>
+    </Section>
   );
 };
 
 DescriptionSection.propTypes = {
-  cls_base: PT.string.isRequired,
-  transparent: PT.bool.isRequired,
+  transparent: PT.bool,
 
   context: PT.shape({
+    cls_base: PT.string.isRequired,
     movie: PT.shape({
       title: PT.string,
       production_countries: PT.array,
