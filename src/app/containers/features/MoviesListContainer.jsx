@@ -10,7 +10,7 @@ import { isEmpty, getQueryParams, hasRequestDiffs, difference } from 'app_servic
 import { Message, ProgressBar, Row } from 'app_components/layout';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from 'app_components/pages/movies-page/_blocks';
 import { getMovies } from 'redux_actions';
-
+import { GenresContainer } from 'app_containers';
 // маппинг редюсеров
 const mapStateToProps = ({ moviesList }) => {
   return { moviesList };
@@ -98,7 +98,9 @@ class MoviesListContainer extends Component {
           )}
         </Row>
 
-        <ListBlock cls_base={cls_base} movies={results} />
+        <GenresContainer>
+          <ListBlock cls_base={cls_base} movies={results} />
+        </GenresContainer>
 
         {(hasMovies && total_results > 20) && (
           <Row cls="pagination-wrapper mt-3">

@@ -4,10 +4,12 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import withGenres from 'app_hocs/withGenres';
 import { CardBlock } from 'app_components/pages/movies-page/_blocks';
 
-function ListBlock({ cls_base, movies, printGenres }) {
+function ListBlock(props) {
+  // console.warn('--ListBlock, props:', props);
+
+  const { cls_base, movies, printGenres } = props;
   if (!movies || movies.length < 1) return null;
 
   return (
@@ -24,8 +26,12 @@ function ListBlock({ cls_base, movies, printGenres }) {
 };
 
 ListBlock.propTypes = {
-  printGenres: PT.func.isRequired,
-  movies: PT.array
+  movies: PT.array,
+  printGenres: PT.func
 };
 
-export default withGenres(ListBlock);
+ListBlock.defaultProps = {
+  printGenres: () => { }
+}
+
+export default ListBlock;
