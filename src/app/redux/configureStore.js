@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from 'redux_reducers';
@@ -12,11 +11,6 @@ const IS_CLIENT = (typeof window !== 'undefined');
 export function configureStore(initialState = {}, startSagas = false) {
   const sagaMiddleware = createSagaMiddleware();
 
-  let middlewares = [
-    sagaMiddleware,
-    thunk
-  ];
-
   const logger = createLogger({
     level: {
       prevState: IS_CLIENT ? 'log' : false,
@@ -26,8 +20,7 @@ export function configureStore(initialState = {}, startSagas = false) {
     collapsed: (getState, action, logEntry) => !logEntry.error
   });
 
-  // logger must be last
-  middlewares.push(logger);
+  const middlewares = [sagaMiddleware, logger];
 
   const store = createStore(
     rootReducer,
@@ -46,18 +39,16 @@ export function configureStore(initialState = {}, startSagas = false) {
   }
 
   // HMR for reducers and sagas
-  if (process.env.NODE_ENV === 'development') {
-    if (module.hot) {
-      module.hot.accept('./rootReducer', () => {
-        const nextRootReducer = require('./rootReducer').default
-        store.replaceReducer(nextRootReducer)
-      })
+  if (process.env.IS_DEV && module.hot) {
+    module.hot.accept('./rootReducer', () => {
+      const nextRootReducer = require('./rootReducer').default
+      store.replaceReducer(nextRootReducer)
+    })
 
-      module.hot.accept('./sagas/SagaManager', () => {
-        SagaManager.cancelSagas(store);
-        require('./sagas/SagaManager').default.startSagas(sagaMiddleware);
-      });
-    }
+    module.hot.accept('./sagas/SagaManager', () => {
+      SagaManager.cancelSagas(store);
+      require('./sagas/SagaManager').default.startSagas(sagaMiddleware);
+    });
   }
 
   return store;

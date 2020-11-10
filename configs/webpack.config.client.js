@@ -1,9 +1,10 @@
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const dotenv = require('dotenv');
 
 const commonConfig = require('./webpack.config.common');
 const rules = require('./webpack-common/rules');
+const env = dotenv.config().parsed;
 
 const devConfig = {
   mode: 'development',
@@ -14,7 +15,7 @@ const devConfig = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    port: process.env.npm_package_config_PORT_CLIENT_DEV,
+    port: env.PORT_CLIENT,
     historyApiFallback: true,
     writeToDisk: true,
     stats: 'minimal'
