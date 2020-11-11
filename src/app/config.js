@@ -1,5 +1,4 @@
 export const TMDB_API_HOST = 'https://api.themoviedb.org/3';
-export const TMDB_API_KEY = '22daca9c2a01a7ed9ccd7e750061dddb';
 const TMDB_IMAGE_HOST = 'https://image.tmdb.org/t/p';
 
 export const TMDB_IMAGE_URL = {

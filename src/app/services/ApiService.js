@@ -32,7 +32,7 @@ export default {
 
       const queryParams = qs.stringify({
         ...params,
-        api_key: TMDB_API_KEY
+        api_key: process.env.TMDB_API_KEY
       });
 
       const fetchUrl = `${TMDB_API_HOST}${url}?${queryParams}`;
