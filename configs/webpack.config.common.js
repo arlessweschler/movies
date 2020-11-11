@@ -48,7 +48,7 @@ let commonConfig = {
     new webpack.NamedChunksPlugin(namedChunksPluginConfig),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify({
-        TMDB_API_KEY: env.TMDB_API_KEY,
+        TMDB_API_KEY: (process.env.TMDB_API_KEY || env.TMDB_API_KEY),
         IS_SSR,
         IS_DEV: (process.env.NODE_ENV === 'development')
       })
