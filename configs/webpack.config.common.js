@@ -4,7 +4,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pug = require('pug');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const dotenv = require('dotenv');
+const dotenv = require('dotenv-defaults');
 
 const getAlias = require('./webpack-common/alias');
 const getOptimization = require('./webpack-common/optimization');
@@ -14,7 +14,7 @@ const indexTemplate = require('./templates/index.tpl');
 const GenerateAssetWebpackPlugin = require('./webpack-plugins/generate-asset-webpack-plugin');
 const SRC_PATH = path.resolve(__dirname, '../src');
 
-const env = dotenv.config().parsed;
+const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
 const IS_SSR = (env.RENDERING === 'server');
 
 let commonConfig = {

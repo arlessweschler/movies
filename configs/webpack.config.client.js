@@ -1,10 +1,11 @@
+const path = require('path');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv-defaults');
 
 const commonConfig = require('./webpack.config.common');
 const rules = require('./webpack-common/rules');
-const env = dotenv.config().parsed;
+const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
 
 const devConfig = {
   mode: 'development',
