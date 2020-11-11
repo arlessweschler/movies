@@ -15,8 +15,6 @@ renderMethod(
   document.getElementById('root')
 );
 
-if (process.env.NODE_ENV === 'development') {
-  if (module.hot) {
-    module.hot.accept();
-  }
+if (process.env.IS_DEV && module.hot) {
+  module.hot.accept();
 }

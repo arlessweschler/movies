@@ -12,7 +12,7 @@ const sagas = [rootSaga];
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR';
 
 function createAbortableSaga(saga) {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.IS_DEV) {
     return function* main() {
       const sagaTask = yield fork(saga);
 

@@ -2,16 +2,17 @@ const express = require('express');
 import logger from 'morgan';
 const favicon = require('serve-favicon')
 const path = require('path');
+const dotenv = require('dotenv');
 
 import appResponseHeaders from 'server_config/app-response-headers';
 import extractRoutes from 'server_config/routes-extractor';
 import getSsrRequestHandler from 'server_config/ssr-request-handler';
 import REACT_ROUTES from 'app_routing/routes';
-const { PORT_SERVER, IS_SSR } = process.env;
 const CLIENT_FOLDER = 'dist/client';
+const env = dotenv.config().parsed;
 
-
-console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
+console.log(`index.server.js, env: ${JSON.stringify(env, null, 4)}`);
+console.log('index.server.js, process.env.PORT:', process.env.PORT);
 
 const app = express();
 app.use(favicon(path.join(__dirname + '/client/favicon.ico')));
@@ -22,7 +23,7 @@ const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 console.log('EXPRESS_ROUTES:', EXPRESS_ROUTES);
 
 // серверный рендеринг
-if (IS_SSR) {
+if (env.RENDERING === 'server') {
   const RESOURCES = ['js', 'css', 'assets'];
 
   RESOURCES.forEach(function (item) {
@@ -51,8 +52,8 @@ if (IS_SSR) {
   });
 }
 
-
-
-app.listen(PORT_SERVER, () => {
-  console.log(`\n-- listening on port: ${PORT_SERVER} --`);
+const PORT = process.env.PORT || env.PORT_SERVER;
+const listener = app.listen(PORT, err => {
+  if (err) throw new Error('Express app port listening error:', err);
+  console.log('\n--Express app listening on:', listener.address());
 });

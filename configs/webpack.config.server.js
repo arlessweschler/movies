@@ -1,10 +1,8 @@
-const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
-const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const rules = require('./webpack-common/rules');
@@ -57,7 +55,6 @@ const commonConfig = {
         cleanAfterEveryBuildPatterns: ['*server.js']
       }
     ),
-    new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash].css'
     }),

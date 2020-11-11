@@ -25,7 +25,7 @@ i18n
       ru: { translation: ru }
     },
     fallbackLng: default_language,
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false
     },

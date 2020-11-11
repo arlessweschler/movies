@@ -4,16 +4,18 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pug = require('pug');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const dotenv = require('dotenv');
 
 const getAlias = require('./webpack-common/alias');
 const getOptimization = require('./webpack-common/optimization');
 const namedChunksPluginConfig = require('./webpack-common/named-chunks-plugin-config');
-const getDefinePluginConfig = require('./webpack-common/define-plugin-config');
 const rules = require('./webpack-common/rules');
 const indexTemplate = require('./templates/index.tpl');
 const GenerateAssetWebpackPlugin = require('./webpack-plugins/generate-asset-webpack-plugin');
 const SRC_PATH = path.resolve(__dirname, '../src');
+
+const env = dotenv.config().parsed;
+const IS_SSR = (env.RENDERING === 'server');
 
 let commonConfig = {
   context: path.resolve(__dirname),
@@ -36,7 +38,7 @@ let commonConfig = {
   optimization: getOptimization({ splitBy: 'vendor' }),
   module: {
     rules: [
-      rules.jsx, 
+      rules.jsx,
       rules.images
     ]
   },
@@ -44,7 +46,12 @@ let commonConfig = {
     new CleanWebpackPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.NamedChunksPlugin(namedChunksPluginConfig),
-    new webpack.DefinePlugin(getDefinePluginConfig(process.env)),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify({
+        IS_SSR,
+        IS_DEV: (process.env.NODE_ENV === 'development')
+      })
+    }),
     new HtmlWebpackPlugin({
       favicon: `${SRC_PATH}/assets/img/favicon.ico`,
       minify: false,
@@ -74,7 +81,7 @@ const ssrConfig = {
   ]
 };
 
-if (process.env.npm_package_config_RENDERING == 'server') {
+if (IS_SSR) {
   commonConfig = merge(commonConfig, ssrConfig);
 }
 

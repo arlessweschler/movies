@@ -40,7 +40,7 @@ html(lang="en")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1")
-    title Webpack4__boilerplate__nk11dev
+    title Movies
     ${getStyle(hash, 'vendor')}
     ${getStyle(hash, 'main')}
 
