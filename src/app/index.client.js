@@ -4,8 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 
 import ClientRouter from 'app_routing/ClientRouter';
 
-console.log(`process.env: ${JSON.stringify(process.env, null, 4)}`);
-
 const renderMethod = process.env.IS_SSR
   ? hydrate
   : render;
