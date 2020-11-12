@@ -1,4 +1,5 @@
-# Movies 
+# Movies
+<img src="src/assets/img/movies_readme_header.png"> 
 ## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
 <img src="src/assets/img/build-stack.gif">
 
