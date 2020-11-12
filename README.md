@@ -40,6 +40,8 @@ Application features:
 <img src="src/assets/img/screens/screen_5.png">
     
 - 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+<img src="src/assets/img/screens/screen_6.png">
+<img src="src/assets/img/screens/screen_7.png">
 
 ## Technology stack
 
