@@ -20,8 +20,10 @@ Application based on custom webpack boilerplate with latest dependency versions.
 Application features: 
 - 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 <img src="src/assets/img/screens/screen_1.png">
+
 - 🎥 search movies by title
 <img src="src/assets/img/screens/screen_2.png">
+
 - 🎥 watch movie details:
     - original title, genres, production countries, duration
     - creators: director, wriring, director of photography, original music composer, actors
@@ -31,10 +33,10 @@ Application features:
     - youtube trailer 
 <img src="src/assets/img/screens/screen_3.png">
 
-    - image gallery
+- 🎥 watch image gallery:
 <img src="src/assets/img/screens/screen_4.png">
 
-    - recommendations - list of similar movies
+- 🎥 watch recommendations - list of similar movies
 <img src="src/assets/img/screens/screen_5.png">
     
 - 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
