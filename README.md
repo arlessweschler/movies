@@ -49,7 +49,7 @@ Application features:
 
 ## NPM scripts
 ##### Installation
-`npm install`
+- `npm install`
 
 Notation: for getting API to work you should create `.env` file with ".yml" extension at the root folder and put there `TMDB_API_KEY` variable with your TMDb API key as value.
 Example of `.env` file you could find in `/configs/defaults/.env.defaults` file.
@@ -62,12 +62,12 @@ RENDERING=client
 
 
 ##### Development mode
-`npm run dev-client` - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
-`npm run dev-server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
+- `npm run dev-client` - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
+- `npm run dev-server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
 
 ##### Production mode
-`npm run build` - build client and server for production
-`npm start` - launch builded express server for hosting `/dist/client/` folder 
+- `npm run build` - build client and server for production
+- `npm start` - launch builded express server for hosting `/dist/client/` folder 
 
 ## Environment variables
 
