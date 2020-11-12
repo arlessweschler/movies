@@ -1,70 +1,95 @@
 # Movies 
-## Приложение для поиска фильмов на основе Webpack 4/ Express/ React + Redux-Saga/ SSR
+## Application for movies search, based Webpack 4/ Express/ React + Redux-Saga/ SSR
 <img src="src/assets/img/build-stack.gif">
 
-## Содержание
+Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
-- [Описание приложения](#Описание-приложения)
-- [Стек](#стек)
-- [Скрипты](#Скрипты)
-- [Переменные окружения](#Переменные-окружения)
+## List of contents
 
-## Описание приложения
-Приоложение написано с нуля на основе собственной сборки и самых актуальных версий всех зависимостей. Используется реальное API с данными, получаемыми из The Movie Database (TMDb). 
+- [Description](#Description)
+- [Technology stack](#Technology-stack)
+- [NPM scripts](#NPM-scripts)
+- [Environment variables](#Environment-variables)
+- [Roadmap](#Roadmap)
 
-*Примечание: если вы хотите склонировать приложение и использовать самостоятельно, вам необходимо зарегистрировать свой аккаунт на TMDb и создать свой API ключ.* 
+## Description
+Application based on custom webpack boilerplate with latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
 
-Перечень функций приложения: 
-- просмотр списка фильмов по категориям "В кинотеатрах", "Популярные", "Лучшие" и "Скоро выходят". Поддерживается переключение страниц при просмотре списков.
-- поиск фильмов по названию
-- просмотр детальной информации о фильме:
-    - оригинальное название, жанр, страны производства, длительность
-    - создатели: режиссер, сценарий, оператор, композитор, актеры
-    - рейтинг фильма н основе оценок пользователей TMDb
-    - постер
-    - youtube трейлер 
-    - галерея изображений
-    - список рекоммендаций - похожих фильмов
+*Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
+
+Application features: 
+- watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+- search movies by title
+- watch movie details:
+    - original title, genres, production countries, duration
+    - creators: director, wriring, director of photography, original music composer, actors
+    - movie rating based on TMDb users votes
+    - tagline and overview
+    - poster
+    - youtube trailer 
+    - image gallery
+    - recommendations - list of similar movies
     
-- переключение локализации: RU, EN (при смене языка локализуется вся информация о фильме - название, детальная информация, жанры, постер, youtube трейлер).
+- localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 
-## Стек
-Перечень основных технологий:
+## Technology stack
 
-- Сборка
+- Build
     - 🏄 Babel 7
     - 🎁 Webpack 4
     - 🚀 Server Side Rendering / Client Side Rendering с Express
-    - ⚡ Hot Module Replacement
+    - ⚡ Hot Module Replacement  (supports server-side and sagas)
 
-- Библиотеки и зависимости
-  - ⭐ React 16.x (latest)
-  - ⭐ Redux + Sagas
-  - ⭐ React Router 4
-  - ⭐ React i18next
+- Main libraries and dependencies
+  - ✔️ React 16.x (latest)
+  - ✔️ Redux + Sagas
+  - ✔️ React Router 4
+  - ✔️ React i18next
   - 🍦️ Bootstrap 4 + Fontawesome 5
 
-## Скрипты
-##### Установка
+## NPM scripts
+##### Installation
 `npm install`
-##### Режим разработки 
-`npm run dev-client` (или `npm start`) - запускает клиентский webpack-dev-server с HMR *(по умолчанию доступен на [localhost:8080](http://localhost:8080))*
-`npm run dev-server` - запускает серверный nodemon с API для отдачи данных на клиент *(по умолчанию доступен на [localhost:8081](http://localhost:8081))*
 
-##### Режим продакшена 
-`npm run build-client` - собирает клиент в продакшен
-`npm run build-server` - собирает сервер в продакшен
-`npm run start-server` -  запускает собранный сервер и хостит собранный клиент
+Notation: for getting API to work you should create `.env` file with ".yml" extension at the root folder and put there `TMDB_API_KEY` variable with your TMDb API key as value.
+Example of `.env` file you could find in `/configs/defaults/.env.defaults` file.
+```yaml
+TMDB_API_KEY=put_your_api_key_here
+PORT_CLIENT=8080
+PORT_SERVER=8081
+RENDERING=client
+```
 
-Также можно проверять продакшен сборку клиента в режиме nodemon сервера цепочкой команд `npm run build-client`, `npm run dev-server`
 
-## Переменные окружения
+##### Development mode
+`npm run dev-client` - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
+`npm run dev-server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
 
-В package.json указаны некоторые переменные окружения
+##### Production mode
+`npm run build` - build client and server for production
+`npm start` - launch builded express server for hosting `/dist/client/` folder 
+
+## Environment variables
+
+There is some environment variables with default values stored in `/configs/defaults/.env.defaults`
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |
-| `API_PATH` | `http://127.0.0.1:8081/api` | Путь до API на севере. *(Используется в клиентской части приложения)* |
-| `PORT_SERVER` | `8081` | Порт, на котором запускается сервер в nodemon/production режимах. *(Используется в конфигурации сервера express )* |
-| `PORT_CLIENT_DEV` | `8080` | Порт, на котором запускается webpack-dev-server с клиентской сборкой. (*Используется в клиентской конфигурации webpack*) |
-| `RENDERING` | `client` | Тип рендеринга приложения. Доступные значения: `client`/`server`. При установке значения `server` в клиентские и серверный скрипты пробрасывается переменная окружения `IS_SSR`, которая является признаком включенного серверного рендеринга. *(Используется в клиентских и серверных скриптах)* |
+| `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `ApiService.js` for fetching movies data |
+| `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
+| `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
+| `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
+
+## Roadmap
+✅ live  demo on Heroku
+🔲 qa: tests
+🔲 ci-cd: github actions C/CD for Heroku
+🔲 ci-cd: build flags for github repo
+🔲 ci-cd: keep-alive cron for Heroku
+🔲 qa: linting
+🔲 refactoring: move layout from router
+🔲 refactoring: more readable internal aliases with "@" symbol naming
+🔲 refactoring: scss variables auto import
+🔲 tech: flow static type checking
+🔲 tech: firebase authorization
+💥 and most important thing: series of articles with how to code this application tutorial and how it works in details
