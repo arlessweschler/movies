@@ -51,7 +51,7 @@ Application features:
 ##### Installation
 - `npm install`
 
-Notation: for getting API to work you should create `.env` file with ".yml" extension at the root folder and put there `TMDB_API_KEY` variable with your TMDb API key as value.
+Notation: for getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
 Example of `.env` file you could find in `/configs/defaults/.env.defaults` file.
 ```yaml
 TMDB_API_KEY=put_your_api_key_here
@@ -87,7 +87,7 @@ There is some environment variables with default values stored in `/configs/defa
 - 🔲 ci-cd: build flags for github repo
 - 🔲 ci-cd: keep-alive cron for Heroku
 - 🔲 qa: linting
-- 🔲 refactoring: move layout from router
+- 🔲 refactoring: move layout component outside of application routing (to prevent rudundant rerenders)
 - 🔲 refactoring: more readable internal aliases with "@" symbol naming
 - 🔲 refactoring: scss variables auto import
 - 🔲 refactoring: styles isolation
