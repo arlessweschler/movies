@@ -82,6 +82,7 @@ There is some environment variables with default values stored in `/configs/defa
 
 ## Roadmap
 - ✅ live  demo on Heroku
+- 🐾 bugfixes
 - 🔲 qa: tests
 - 🔲 ci-cd: github actions for CI/CD with Heroku
 - 🔲 ci-cd: build flags for github repo
