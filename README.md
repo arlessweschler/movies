@@ -1,5 +1,4 @@
 # Movies
-<img src="src/assets/img/movies_readme_header.png"> 
 ## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
 <img src="src/assets/img/build-stack.gif">
 
@@ -20,7 +19,9 @@ Application based on custom webpack boilerplate with latest dependency versions.
 
 Application features: 
 - 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+<img src="src/assets/img/screens/screen_1.png">
 - 🎥 search movies by title
+<img src="src/assets/img/screens/screen_2.png">
 - 🎥 watch movie details:
     - original title, genres, production countries, duration
     - creators: director, wriring, director of photography, original music composer, actors
@@ -28,8 +29,13 @@ Application features:
     - tagline and overview
     - poster
     - youtube trailer 
+<img src="src/assets/img/screens/screen_3.png">
+
     - image gallery
+<img src="src/assets/img/screens/screen_4.png">
+
     - recommendations - list of similar movies
+<img src="src/assets/img/screens/screen_5.png">
     
 - 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 
