@@ -1,5 +1,5 @@
 # Movies 
-## Application for movies search, based Webpack 4/ Express/ React + Redux-Saga/ SSR
+## Application for movies search, based on Webpack 4/ Express/ React + Redux-Saga/ SSR
 <img src="src/assets/img/build-stack.gif">
 
 Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
@@ -18,9 +18,9 @@ Application based on custom webpack boilerplate with latest dependency versions.
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
 
 Application features: 
-- watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
-- search movies by title
-- watch movie details:
+- 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+- 🎥 search movies by title
+- 🎥 watch movie details:
     - original title, genres, production countries, duration
     - creators: director, wriring, director of photography, original music composer, actors
     - movie rating based on TMDb users votes
@@ -30,7 +30,7 @@ Application features:
     - image gallery
     - recommendations - list of similar movies
     
-- localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+- 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 
 ## Technology stack
 
@@ -81,15 +81,15 @@ There is some environment variables with default values stored in `/configs/defa
 | `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
 
 ## Roadmap
-✅ live  demo on Heroku
-🔲 qa: tests
-🔲 ci-cd: github actions C/CD for Heroku
-🔲 ci-cd: build flags for github repo
-🔲 ci-cd: keep-alive cron for Heroku
-🔲 qa: linting
-🔲 refactoring: move layout from router
-🔲 refactoring: more readable internal aliases with "@" symbol naming
-🔲 refactoring: scss variables auto import
-🔲 tech: flow static type checking
-🔲 tech: firebase authorization
-💥 and most important thing: series of articles with how to code this application tutorial and how it works in details
+- ✅ live  demo on Heroku
+- 🔲 qa: tests
+- 🔲 ci-cd: github actions C/CD for Heroku
+- 🔲 ci-cd: build flags for github repo
+- 🔲 ci-cd: keep-alive cron for Heroku
+- 🔲 qa: linting
+- 🔲 refactoring: move layout from router
+- 🔲 refactoring: more readable internal aliases with "@" symbol naming
+- 🔲 refactoring: scss variables auto import
+- 🔲 tech: flow static type checking
+- 🔲 tech: firebase authorization
+- 💥 and most important thing: series of articles with how to code this application tutorial and how it works in details
