@@ -1,5 +1,5 @@
 # Movies 
-## Application for movies search, based on Webpack 4/ Express/ React + Redux-Saga/ SSR
+## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
 <img src="src/assets/img/build-stack.gif">
 
 Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
@@ -83,13 +83,14 @@ There is some environment variables with default values stored in `/configs/defa
 ## Roadmap
 - ✅ live  demo on Heroku
 - 🔲 qa: tests
-- 🔲 ci-cd: github actions C/CD for Heroku
+- 🔲 ci-cd: github actions for CI/CD with Heroku
 - 🔲 ci-cd: build flags for github repo
 - 🔲 ci-cd: keep-alive cron for Heroku
 - 🔲 qa: linting
 - 🔲 refactoring: move layout from router
 - 🔲 refactoring: more readable internal aliases with "@" symbol naming
 - 🔲 refactoring: scss variables auto import
+- 🔲 refactoring: styles isolation
 - 🔲 tech: flow static type checking
 - 🔲 tech: firebase authorization
 - 💥 and most important thing: series of articles with how to code this application tutorial and how it works in details

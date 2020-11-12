@@ -1,7 +1,7 @@
 {
   "name": "movies",
   "version": "1.0.0",
-  "description": "Application for movies search, based Webpack 4/ Express/ React + Redux-Saga/ SSR",
+  "description": "Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR",
   "main": "index.client.js",
   "scripts": {
     "dev-client": "cross-env NODE_ENV=development npx webpack-dev-server --config=configs/webpack.config.client.js --hot",
@@ -15,6 +15,16 @@
     "type": "git",
     "url": "git+https://github.com/nk11dev/movies.git"
   },
+  "keywords": [
+    "example",
+    "webpack",
+    "react",
+    "redux-saga",
+    "express",
+    "SSR",
+    "server side rendering",
+    "movies"
+  ],
   "author": "nk11dev",
   "license": "MIT",
   "homepage": "https://github.com/nk11dev/movies#readme",
