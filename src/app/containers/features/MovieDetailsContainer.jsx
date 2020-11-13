@@ -15,7 +15,7 @@ import { Backdrop, ProgressBar } from 'app_components/layout';
 import {
   DescriptionSection, MediaSection, ActorsSection, GallerySection
 } from 'app_components/pages/movie-page/_sections';
-import { RecommendationsContainer } from 'app_containers';
+import { RecommsContainer } from 'app_containers';
 import {
   getDetails, getCredits, getVideos, getImages
 } from 'redux_actions';
@@ -102,7 +102,7 @@ class MovieDetailsContainer extends Component {
               <MediaSection />
               <ActorsSection />
               <GallerySection />
-              <RecommendationsContainer />
+              <RecommsContainer />
             </div>
           </MDetailsContextProvider>}
       </>

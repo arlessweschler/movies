@@ -17,7 +17,7 @@ const DEFAULT_IMAGES_STATE = {
   request: {}
 };
 
-const DEFAULT_RECOMMENDATIONS_STATE = {
+const DEFAULT_RECOMMS_STATE = {
   data: {
     page: 1,
     total_pages: null,
@@ -40,9 +40,9 @@ const movieDetailsReducer = combineReducers({
     actionKeys.MOVIE_IMAGES,
     { initialState: DEFAULT_IMAGES_STATE }
   ),
-  recommendations: createAsyncReducer(
-    actionKeys.MOVIE_RECOMMENDATIONS,
-    { initialState: DEFAULT_RECOMMENDATIONS_STATE }
+  recommsList: createAsyncReducer(
+    actionKeys.MOVIE_RECOMMS,
+    { initialState: DEFAULT_RECOMMS_STATE }
   )
 });
 

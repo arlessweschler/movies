@@ -6,33 +6,33 @@ import { withRouter } from 'react-router-dom';
 
 import PTS from 'app_services/PropTypesService';
 import { hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
-import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
+import { RecommsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
 import {
-  getRecommendations
+  getRecomms
 } from 'redux_actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => ({
-  recommendations: movieDetails.recommendations
+  recommsList: movieDetails.recommsList
 });
 
 // маппинг экшен креэйторов
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
-    getRecommendations
+    getRecomms
   }, dispatch)
 });
 
-class RecommendationsContainer extends Component {
+class RecommsContainer extends Component {
   componentDidUpdate(prevProps) {
-    // console.warn('\n--RecommendationsContainer.componentDidUpdate()');
+    // console.warn('\n--RecommsContainer.componentDidUpdate()');
 
     const {
-      recommendations, actions, location, match
+      recommsList, actions, location, match
     } = this.props;
-    const { request } = recommendations;
+    const { request } = recommsList;
     const { movie_id } = match.params;
 
     if (
@@ -44,33 +44,33 @@ class RecommendationsContainer extends Component {
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
         const { lng } = getQueryParams();
-        actions.getRecommendations({ movie_id, lng });
+        actions.getRecomms({ movie_id, lng });
       }
     }
   }
 
   componentDidMount() {
-    // console.warn('\n-- RecommendationsContainer.componentDidMount()');
+    // console.warn('\n-- RecommsContainer.componentDidMount()');
 
-    const { recommendations, match, actions } = this.props;
-    const { request } = recommendations;
+    const { recommsList, match, actions } = this.props;
+    const { request } = recommsList;
     const { movie_id } = match.params;
 
     if (movie_id !== request.movie_id) {
       const { lng } = getQueryParams();
-      actions.getRecommendations({ movie_id, lng });
+      actions.getRecomms({ movie_id, lng });
     }
   }
 
   render() {
-    const { recommendations } = this.props;
-    const { data, error } = recommendations;
+    const { recommsList } = this.props;
+    const { data, error } = recommsList;
 
     return (
       <>
-        {recommendations.isLoading && <ProgressBar />}
+        {recommsList.isLoading && <ProgressBar />}
 
-        <RecommendationsSection
+        <RecommsSection
           data_moviesList={{
             movies: data.results,
             error
@@ -81,7 +81,7 @@ class RecommendationsContainer extends Component {
   }
 }
 
-RecommendationsContainer.propTypes = {
+RecommsContainer.propTypes = {
   match: PT.shape({
     params: PT.shape({
       movie_id: PT.string.isRequired
@@ -93,10 +93,10 @@ RecommendationsContainer.propTypes = {
   }).isRequired,
 
   actions: PT.shape({
-    getRecommendations: PT.func.isRequired
+    getRecomms: PT.func.isRequired
   }).isRequired,
 
-  recommendations: PT.shape({
+  recommsList: PT.shape({
     isLoading: PT.bool.isRequired,
     error: PTS.nullOrString,
     request: PT.shape({
@@ -112,4 +112,4 @@ RecommendationsContainer.propTypes = {
   }).isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RecommendationsContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RecommsContainer));

@@ -10,7 +10,7 @@ import {
   getVideos,
   getImages,
   getGenres,
-  getRecommendations,
+  getRecomms,
 } from 'redux_actions';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
     getVideos,
     getImages,
     getGenres,
-    getRecommendations,
+    getRecomms,
   }, dispatch)
 });
 
@@ -35,7 +35,7 @@ class MovieRouteContainer extends Component {
     console.log('movie_id:', movie_id);
     console.log('lng:', lng);
 
-    const methods = [getDetails, getCredits, getVideos, getImages, getGenres, getRecommendations];
+    const methods = [getDetails, getCredits, getVideos, getImages, getGenres, getRecomms];
 
     methods.forEach((method) => {
       store.dispatch(method({ movie_id, lng }));

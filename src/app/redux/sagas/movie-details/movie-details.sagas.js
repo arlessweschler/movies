@@ -72,7 +72,7 @@ function* getImagesSaga({ type, payload }) {
   }
 }
 
-function* getRecommendationsSaga({ type, payload }) {
+function* getRecommsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
   const { movie_id, lng } = request;
@@ -110,7 +110,7 @@ export default function* watchMovieDetails() {
     takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
     takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
     takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
-    takeEvery(actionKeys.MOVIE_RECOMMENDATIONS, getRecommendationsSaga),
+    takeEvery(actionKeys.MOVIE_RECOMMS, getRecommsSaga),
     takeEvery(actionKeys.MOVIE_RESET_ALL, resetMovieDetailsSaga)
   ]);
 }

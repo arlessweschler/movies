@@ -6,7 +6,7 @@ import MovieRouteContainer from 'app_containers/MovieRouteContainer';
 import GenresContainer from 'app_containers/features/GenresContainer';
 import MoviesListContainer from 'app_containers/features/MoviesListContainer';
 import MovieDetailsContainer from 'app_containers/features/MovieDetailsContainer';
-import RecommendationsContainer from 'app_containers/features/RecommendationsContainer';
+import RecommsContainer from 'app_containers/features/RecommsContainer';
 
 export {
   MoviesRouteContainer,
@@ -15,5 +15,5 @@ export {
   GenresContainer,
   MoviesListContainer,
   MovieDetailsContainer,
-  RecommendationsContainer
+  RecommsContainer
 };

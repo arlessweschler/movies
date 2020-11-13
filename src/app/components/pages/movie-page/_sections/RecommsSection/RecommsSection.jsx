@@ -1,4 +1,4 @@
-import './RecommendationsSection.scss';
+import './RecommsSection.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -12,7 +12,7 @@ import { Message } from 'app_components/layout';
 import { ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
-function RecommendationsSection({ t, data_moviesList }) {
+function RecommsSection({ t, data_moviesList }) {
   const cls_base = 'movies-list';
   const b = b_.with(cls_base);
 
@@ -42,7 +42,7 @@ function RecommendationsSection({ t, data_moviesList }) {
   );
 }
 
-RecommendationsSection.propTypes = {
+RecommsSection.propTypes = {
   t: PT.func.isRequired,
 
   data_moviesList: PT.shape({
@@ -51,4 +51,4 @@ RecommendationsSection.propTypes = {
   }).isRequired,
 };
 
-export default withTranslation()(RecommendationsSection);
+export default withTranslation()(RecommsSection);

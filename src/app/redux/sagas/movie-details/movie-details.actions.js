@@ -8,7 +8,7 @@ const actionKeys = {
   MOVIE_CREDITS: 'MOVIE_CREDITS',
   MOVIE_VIDEOS: 'MOVIE_VIDEOS',
   MOVIE_IMAGES: 'MOVIE_IMAGES',
-  MOVIE_RECOMMENDATIONS: 'MOVIE_RECOMMENDATIONS',
+  MOVIE_RECOMMS: 'MOVIE_RECOMMS',
   MOVIE_RESET_ALL: 'MOVIE_RESET_ALL',
 };
 
@@ -17,7 +17,7 @@ const asyncActionMaps = {
   [actionKeys.MOVIE_CREDITS]: createActionsForAsyncAction(actionKeys.MOVIE_CREDITS),
   [actionKeys.MOVIE_VIDEOS]: createActionsForAsyncAction(actionKeys.MOVIE_VIDEOS),
   [actionKeys.MOVIE_IMAGES]: createActionsForAsyncAction(actionKeys.MOVIE_IMAGES),
-  [actionKeys.MOVIE_RECOMMENDATIONS]: createActionsForAsyncAction(actionKeys.MOVIE_RECOMMENDATIONS)
+  [actionKeys.MOVIE_RECOMMS]: createActionsForAsyncAction(actionKeys.MOVIE_RECOMMS)
 };
 
 const actions = {
@@ -25,7 +25,7 @@ const actions = {
   getCredits: (request) => createActionCreator(actionKeys.MOVIE_CREDITS, { request }),
   getVideos: (request) => createActionCreator(actionKeys.MOVIE_VIDEOS, { request }),
   getImages: (request) => createActionCreator(actionKeys.MOVIE_IMAGES, { request }),
-  getRecommendations: (request) => createActionCreator(actionKeys.MOVIE_RECOMMENDATIONS, { request }),
+  getRecomms: (request) => createActionCreator(actionKeys.MOVIE_RECOMMS, { request }),
   resetMovieDetails: () => createActionCreator(
     actionKeys.MOVIE_RESET_ALL,
     {
@@ -34,7 +34,7 @@ const actions = {
         actionKeys.MOVIE_CREDITS,
         actionKeys.MOVIE_VIDEOS,
         actionKeys.MOVIE_IMAGES,
-        actionKeys.MOVIE_RECOMMENDATIONS
+        actionKeys.MOVIE_RECOMMS
       ]
     }
   )
@@ -50,6 +50,6 @@ export const {
   getCredits,
   getVideos,
   getImages,
-  getRecommendations,
+  getRecomms,
   resetMovieDetails
 } = actions;

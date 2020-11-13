@@ -12,7 +12,7 @@ function* fetchJson(url, { method }) {
     return yield response.json();
   }
 
-  yield response
+  return yield response
     .text()
     .then((text) => { throw new Error(text); });
 }
