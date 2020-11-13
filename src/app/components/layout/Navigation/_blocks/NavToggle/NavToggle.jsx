@@ -1,10 +1,11 @@
 import './NavToggle.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
+import PT from 'prop-types';
 
 const NavToggle = (props) => {
   return (
-    <Fragment>
+    <>
       <button
         className="navbar-toggler"
         type="button"
@@ -24,8 +25,15 @@ const NavToggle = (props) => {
           {props.children}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
+
+NavToggle.propTypes = {
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired
+};
 
 export default NavToggle;

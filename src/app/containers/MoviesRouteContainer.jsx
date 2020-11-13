@@ -35,6 +35,6 @@ class MoviesRouteContainer extends Component {
   render() {
     return <MoviesListContainer />;
   }
-};
+}
 
 export default connect(() => ({}), mapDispatchToProps)(MoviesRouteContainer);

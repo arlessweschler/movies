@@ -41,7 +41,8 @@ function MediaSection({ transparent = true, context }) {
       <Row cls="px-3">
         <Column
           cls={cls.poster_col}
-          size={4} smallFullWidth
+          size={4}
+          smallFullWidth={true}
         >
           <PosterBlock
             cls={cn(b('poster'), cls.poster)}
@@ -51,7 +52,8 @@ function MediaSection({ transparent = true, context }) {
 
         <Column
           cls={cls.player_col}
-          size={8} smallFullWidth
+          size={8}
+          smallFullWidth={true}
         >
           <PlayerBlock
             searchParams={{ site: 'YouTube', type: 'Trailer' }}
@@ -60,7 +62,7 @@ function MediaSection({ transparent = true, context }) {
       </Row>
     </Section>
   );
-};
+}
 
 MediaSection.propTypes = {
   transparent: PT.bool,

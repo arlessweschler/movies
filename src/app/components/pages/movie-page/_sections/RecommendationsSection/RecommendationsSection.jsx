@@ -1,6 +1,6 @@
 import './RecommendationsSection.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
@@ -22,26 +22,27 @@ function RecommendationsSection({ t, data_moviesList }) {
   const hasMovies = isNotEmpty(movies);
 
   return (
-    <Fragment>
+    <>
       {error && <p>{error}</p>}
-      
+
       {hasMovies && (
         <div className={cn(b(), 'mt-3')}>
           <Message>
             <h2 className="mb-0">
-              {t('movie_details.recommendations.section_label')}:
-              </h2>
+              {t('movie_details.recommendations.section_label')}
+              {':'}
+            </h2>
           </Message>
 
           <ListBlock
             cls_base={cls_base}
             movies={movies}
           />
-        </div >
+        </div>
       )}
-    </Fragment>
+    </>
   );
-};
+}
 
 RecommendationsSection.propTypes = {
   t: PT.func.isRequired,

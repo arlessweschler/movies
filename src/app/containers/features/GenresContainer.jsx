@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PT from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -36,7 +36,7 @@ class GenresContainer extends Component {
     if (hasRequestDiffs({ request, checklist })) {
       const { lng } = getQueryParams();
       actions.getGenres({ lng });
-    };
+    }
   }
 
   componentDidMount() {
@@ -47,7 +47,7 @@ class GenresContainer extends Component {
 
     if (isEmpty(genresList.data)) {
       actions.getGenres({ lng });
-    };
+    }
   }
 
   printGenres = ({ ids, cls }) => {
@@ -75,7 +75,7 @@ class GenresContainer extends Component {
     const { genresList } = this.props;
 
     return (
-      <Fragment>
+      <>
         {genresList.isLoading && <ProgressBar />}
 
         {
@@ -84,12 +84,17 @@ class GenresContainer extends Component {
             printGenres: this.printGenres
           })
         }
-      </Fragment>
+      </>
     );
   }
-};
+}
 
 GenresContainer.propTypes = {
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired,
+
   location: PT.shape({
     search: PT.string.isRequired
   }).isRequired,
@@ -100,6 +105,9 @@ GenresContainer.propTypes = {
 
   genresList: PT.shape({
     isLoading: PT.bool.isRequired,
+    request: PT.shape({
+      lng: PT.string
+    }).isRequired,
     data: PT.array.isRequired
   }).isRequired
 };

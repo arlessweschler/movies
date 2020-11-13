@@ -106,7 +106,7 @@ class MovieDetailsContainer extends Component {
       </>
     );
   }
-};
+}
 
 MovieDetailsContainer.propTypes = {
   match: PT.shape({
@@ -134,6 +134,4 @@ MovieDetailsContainer.propTypes = {
   }).isRequired
 };
 
-export default
-  connect(mapStateToProps, mapDispatchToProps)
-    (withRouter(MovieDetailsContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MovieDetailsContainer));

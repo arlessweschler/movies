@@ -12,7 +12,7 @@ $b_search-results: #{$b}-search-results;
     border-radius: 8px;
     font-size: calc(1rem + 0.5vw);
 
-    span {
+    span:not(&__quotes) {
       margin-right: 7px;
     }
 

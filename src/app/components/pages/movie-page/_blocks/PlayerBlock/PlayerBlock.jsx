@@ -1,6 +1,6 @@
 import './PlayerBlock.scss';
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PT from 'prop-types';
 import ReactPlayer from 'react-player/youtube'
 
@@ -20,8 +20,9 @@ function PlayerBlock(props) {
   const host = 'https://www.youtube.com';
 
   return (
-    <Fragment>
+    <>
       {!isLight && isLoading && <ProgressBar />}
+      
       <ReactPlayer
         width="100%"
         height="100%"
@@ -33,9 +34,9 @@ function PlayerBlock(props) {
         // устанавливает превью изображение, при клике на которое загружается плеер
         light={isLight}
       />
-    </Fragment>
+    </>
   );
-};
+}
 
 PlayerBlock.propTypes = {
   searchParams: PT.shape({

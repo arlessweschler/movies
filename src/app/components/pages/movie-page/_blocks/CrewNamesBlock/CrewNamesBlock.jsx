@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 
 import { withMDetailsContext } from 'app_contexts';
@@ -11,17 +11,18 @@ function CrewNamesBlock(props) {
   if (!names) return null;
 
   return (
-    <Fragment>
+    <>
       <div className={cls_label}>
-        {label}:
+        {label}
+        {':'}
       </div>
 
       <div className={cls_value}>
         {names}
       </div>
-    </Fragment>
+    </>
   );
-};
+}
 
 CrewNamesBlock.propTypes = {
   cls_label: PT.string,

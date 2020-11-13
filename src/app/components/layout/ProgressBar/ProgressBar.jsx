@@ -8,4 +8,4 @@ export default function ProgressBar() {
       <div className="progress-bar progress-bar-striped " />
     </div>
   );
-};
+}

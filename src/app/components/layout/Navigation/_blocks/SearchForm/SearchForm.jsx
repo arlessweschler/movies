@@ -27,7 +27,7 @@ const SearchForm = ({ t, history }) => {
   useEffect(() => {
     // console.warn('-- SearchForm.useEffect()');
 
-    const unlisten = history.listen((location, action) => {
+    const unlisten = history.listen(() => {
       const { search = '' } = qs.parse(history.location.search);
 
       // console.warn('\n SearchForm.listen(), action:', action);
@@ -85,6 +85,7 @@ SearchForm.propTypes = {
   t: PT.func.isRequired,
 
   history: PT.shape({
+    listen: PT.func.isRequired,
     location: PT.shape({
       search: PT.string.isRequired
     }).isRequired

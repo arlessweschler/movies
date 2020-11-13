@@ -18,18 +18,19 @@ function CardImageBlock(props) {
   return (
     <div className={b('image-wrapper')}>
 
-      {poster_path
-        ? (
-          <img
-            className={b('image')}
-            src={`${TMDB_IMAGE_URL.medium}/${poster_path}`}
-          />
-        )
-        : (
-          <div className="no-image-text">
-            {t('movie_list.empty_poster')}
-          </div>
-        )
+      {
+        poster_path
+          ? (
+            <img
+              className={b('image')}
+              src={`${TMDB_IMAGE_URL.medium}/${poster_path}`}
+            />
+          )
+          : (
+            <div className="no-image-text">
+              {t('movie_list.empty_poster')}
+            </div>
+          )
       }
 
       <CardRatingBlock
@@ -38,10 +39,11 @@ function CardImageBlock(props) {
       />
     </div>
   );
-};
+}
 
 CardImageBlock.propTypes = {
   t: PT.func.isRequired,
+  cls: PT.string,
 
   movie: PT.shape({
     poster_path: PT.string,

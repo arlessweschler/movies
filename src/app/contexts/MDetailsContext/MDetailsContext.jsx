@@ -58,23 +58,30 @@ class MDetailsContextProvider extends Component {
     const { cls_base, movie, videos, credits, images, children } = this.props;
 
     return (
-      <MDetailsContext.Provider value={{
-        cls_base,
-        movie,
-        videos,
-        credits,
-        images,
-        getCrewNames: this.getCrewNames,
-        getTrailer: this.getTrailer
-      }} >
+      <MDetailsContext.Provider
+        value={{
+          cls_base,
+          movie,
+          videos,
+          credits,
+          images,
+          getCrewNames: this.getCrewNames,
+          getTrailer: this.getTrailer
+        }}
+      >
         {children}
       </MDetailsContext.Provider>
     );
   }
 }
 
-MDetailsContextProvider.propTypes = {
+MDetailsContextProvider.propTypes
+  = {
   cls_base: PT.string.isRequired,
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired,
 
   movie: PT.shape({
     title: PT.string,

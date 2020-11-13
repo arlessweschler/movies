@@ -48,7 +48,7 @@ function DescriptionSection({ transparent = true, context }) {
       </Row>
     </Section>
   );
-};
+}
 
 DescriptionSection.propTypes = {
   transparent: PT.bool,
@@ -57,12 +57,15 @@ DescriptionSection.propTypes = {
     cls_base: PT.string.isRequired,
     movie: PT.shape({
       title: PT.string,
+      original_title: PT.string,
       production_countries: PT.array,
       genres: PT.array,
       release_date: PT.string,
       runtime: PT.number,
       vote_average: PT.number,
-      overview: PT.string
+      vote_count: PT.number,
+      overview: PT.string,
+      tagline: PT.string
     }).isRequired
   }).isRequired
 };

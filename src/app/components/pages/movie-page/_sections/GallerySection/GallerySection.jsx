@@ -1,6 +1,6 @@
 import './GallerySection.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
@@ -25,38 +25,30 @@ function GallerySection({ t, transparent = false, context }) {
     thumbnail: TMDB_IMAGE_URL.small + img.file_path
   }));
 
-  return (
-    <Fragment>
-      {
-        isNotEmpty(images)
-          ?
-          <Section
-            cls="border-top pt-3"
-            {...{ transparent }}
-          >
-            <div className="row">
-              <h2>
-                {t('movie_details.images.section_label')}:
-              </h2>
-            </div>
+  return (isNotEmpty(images) &&
+    <Section
+      cls="border-top pt-3"
+      {...{ transparent }}
+    >
+      <div className="row">
+        <h2>
+          {t('movie_details.images.section_label')}
+          {':'}
+        </h2>
+      </div>
 
-            <div className={cn(b('gallery'), 'row')}>
-              {/*               {images.map((image, index) => (
-                <img
-                  key={index}
-                  className="gallery-image"
-                  src={`${TMDB_IMAGE_URL.small + image.file_path}`}
-                />
-              ))} */}
-              <ImageGallery items={imagesForGallery} />
-            </div>
-          </Section>
-          : ''
-      }
-
-    </Fragment>
-  );
-};
+      <div className={cn(b('gallery'), 'row')}>
+        {/*               {images.map((image, index) => (
+        <img
+          key={index}
+          className="gallery-image"
+          src={`${TMDB_IMAGE_URL.small + image.file_path}`}
+        />
+      ))} */}
+        <ImageGallery items={imagesForGallery} />
+      </div>
+    </Section>);
+}
 
 GallerySection.propTypes = {
   t: PT.func.isRequired,
@@ -68,6 +60,4 @@ GallerySection.propTypes = {
   }).isRequired
 };
 
-export default
-  withTranslation()
-    (withMDetailsContext(GallerySection));
+export default withTranslation()(withMDetailsContext(GallerySection));

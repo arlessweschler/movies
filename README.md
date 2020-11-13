@@ -13,7 +13,7 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - [Roadmap](#Roadmap)
 
 ## Description
-Application based on custom webpack boilerplate with latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
+Application based on custom webpack boilerplate with the latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
 
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
 
@@ -22,22 +22,22 @@ Application features:
 - 🎥 search movies by title
 - 🎥 watch movie details:
     - original title, genres, production countries, duration
-    - creators: director, wriring, director of photography, original music composer, actors
+    - creators: director, writing, director of photography, original music composer, actors
     - movie rating based on TMDb users votes
     - tagline and overview
     - poster
-    - youtube trailer 
+    - YouTube trailer 
     - image gallery
     - recommendations - list of similar movies
     
-- 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+- 🎥 localization is supported: EN (English) and RU (Russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 
 ## Technology stack
 
 - Build
     - 🏄 Babel 7
     - 🎁 Webpack 4
-    - 🚀 Server Side Rendering / Client Side Rendering с Express
+    - 🚀 Server Side Rendering / Client Side Rendering with Express
     - ⚡ Hot Module Replacement  (supports server-side and sagas)
 
 - Main libraries and dependencies

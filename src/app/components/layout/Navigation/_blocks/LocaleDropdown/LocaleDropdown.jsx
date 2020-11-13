@@ -72,7 +72,7 @@ const LocaleDropdown = (props) => {
     setLang(nextLang);
     i18n.changeLanguage(nextLang.value);
     redirect(`${pathname}?${nextSearchQuery}`);
-  };
+  }
 
   return (
     <div className="locale-dropdown__wrapper">
@@ -87,7 +87,7 @@ const LocaleDropdown = (props) => {
         </button>
 
         <div className="dropdown-menu">
-          {LANGUAGES.map((item) =>
+          {LANGUAGES.map((item) => (
             <a
               key={uuidv4()}
               className="dropdown-item"
@@ -96,7 +96,7 @@ const LocaleDropdown = (props) => {
             >
               {item.label}
             </a>
-          )}
+          ))}
         </div>
       </div>
     </div>
@@ -105,11 +105,12 @@ const LocaleDropdown = (props) => {
 
 LocaleDropdown.propTypes = {
   i18n: PT.object.isRequired,
-  t: PT.func.isRequired,
 
   history: PT.shape({
+    listen: PT.func.isRequired,
     location: PT.shape({
-      search: PT.string.isRequired
+      pathname: PT.string.isRequired,
+      search: PT.string
     }).isRequired
   }).isRequired
 };

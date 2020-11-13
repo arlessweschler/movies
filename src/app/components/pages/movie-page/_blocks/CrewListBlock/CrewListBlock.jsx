@@ -1,6 +1,6 @@
 import './CrewListBlock.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import b_ from 'b_';
@@ -37,8 +37,8 @@ function CrewListBlock({ cls, t }) {
   ];
 
   return (
-    <Fragment>
-      {crewList.map((item) =>
+    <>
+      {crewList.map((item) => (
         <Row
           key={uuidv4()}
           cls={b()}
@@ -49,10 +49,10 @@ function CrewListBlock({ cls, t }) {
             searchParams={item.searchParams}
           />
         </Row>
-      )}
-    </Fragment>
+      ))}
+    </>
   );
-};
+}
 
 CrewListBlock.propTypes = {
   cls: PT.string.isRequired,

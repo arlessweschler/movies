@@ -49,6 +49,6 @@ class MovieRouteContainer extends Component {
   render() {
     return <MovieDetailsContainer />;
   }
-};
+}
 
 export default connect(() => ({}), mapDispatchToProps)(MovieRouteContainer);

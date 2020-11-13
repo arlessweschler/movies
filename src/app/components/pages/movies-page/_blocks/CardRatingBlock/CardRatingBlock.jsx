@@ -1,6 +1,6 @@
 import './CardRatingBlock.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
@@ -23,7 +23,7 @@ function CardRatingBlock(props) {
       {vote_average}
     </span>
   );
-};
+}
 
 CardRatingBlock.propTypes = {
   cls: PT.string,

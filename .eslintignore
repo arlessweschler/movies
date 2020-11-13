@@ -1,0 +1,8 @@
+node_modules
+dist
+src/locales
+src/assets
+**/*.scss
+**/*.json
+**/*.md
+LICENSE

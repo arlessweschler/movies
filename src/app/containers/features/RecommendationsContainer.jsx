@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
+import { hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
 import { RecommendationsSection } from 'app_components/pages/movie-page/_sections';
 import { ProgressBar } from 'app_components/layout';
 
@@ -50,20 +50,17 @@ class RecommendationsContainer extends Component {
         const { lng } = getQueryParams();
         actions.getRecommendations({ movie_id, lng });
       }
-    };
+    }
   }
 
   componentDidMount() {
     // console.warn('\n-- RecommendationsContainer.componentDidMount()');
 
     const { recommendations, match, actions } = this.props;
-    const { data, request } = recommendations;
+    const { request } = recommendations;
     const { movie_id } = match.params;
 
-    if (
-      // isEmpty(data.results) ||
-      (movie_id != request.movie_id)
-    ) {
+    if (movie_id != request.movie_id) {
       const { lng } = getQueryParams();
       actions.getRecommendations({ movie_id, lng });
     }
@@ -74,7 +71,7 @@ class RecommendationsContainer extends Component {
     const { data, error } = recommendations;
 
     return (
-      <Fragment>
+      <>
         {recommendations.isLoading && <ProgressBar />}
 
         <RecommendationsSection
@@ -83,10 +80,10 @@ class RecommendationsContainer extends Component {
             error: error
           }}
         />
-      </Fragment>
+      </>
     );
   }
-};
+}
 
 RecommendationsContainer.propTypes = {
   match: PT.shape({
@@ -106,6 +103,10 @@ RecommendationsContainer.propTypes = {
   recommendations: PT.shape({
     isLoading: PT.bool.isRequired,
     error: PTS.nullOrString,
+    request: PT.shape({
+      movie_id: PT.string,
+      lng: PT.string,
+    }).isRequired,
     data: PT.shape({
       page: PT.number.isRequired,
       total_pages: PTS.nullOrNumber,

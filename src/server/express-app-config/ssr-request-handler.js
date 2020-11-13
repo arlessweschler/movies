@@ -55,4 +55,4 @@ export default function (ROUTES) {
 
     store.close();
   }
-};
+}

@@ -20,11 +20,15 @@ function Section(props) {
       {children}
     </section>
   );
-};
+}
 
 Section.propTypes = {
   cls: PT.string,
   transparent: PT.bool.isRequired,
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired,
 
   context: PT.shape({
     cls_base: PT.string.isRequired

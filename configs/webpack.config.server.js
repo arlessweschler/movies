@@ -74,7 +74,7 @@ const prodConfig = {
   mode: 'production'
 };
 
-module.exports = env => {
+module.exports = () => {
   switch (process.env.NODE_ENV) {
     case 'development':
       return merge(commonConfig, devConfig);

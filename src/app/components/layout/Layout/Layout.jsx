@@ -1,13 +1,13 @@
 import './Layout.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 
 import { Header, Footer, Backdrop } from 'app_components/layout';
 
 const Layout = (props) => {
   return (
-    <Fragment>
+    <>
       <Header />
       <main className="layout">
         <div className="container position-relative p-0">
@@ -16,7 +16,7 @@ const Layout = (props) => {
         </div>
       </main>
       <Footer />
-    </Fragment>
+    </>
   );
 }
 
