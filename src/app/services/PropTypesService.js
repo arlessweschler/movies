@@ -2,10 +2,10 @@ import PT from 'prop-types';
 
 function createNullOrCheck(additionalType) {
   return function (props, key) {
-    let value = props[key];
+    const value = props[key];
     return (
-      (value === null) ||
-      (typeof value === additionalType)
+      (value === null)
+      || (typeof value === additionalType)
     )
       ? null
       : new Error(`Property "${key}" value type expected to be null or ${additionalType}, but got type "${typeof value}"`);

@@ -37,7 +37,7 @@ function RatingBlock({ t, cls, data }) {
               {t('movie_details.rating_votes.count', { count: vote_count })}
             </span>
           </div>
-          )
+        )
         : ''}
     </div>
   );

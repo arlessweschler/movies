@@ -5,7 +5,7 @@ import cn from 'classnames';
 function Column({ cls = '', size, smallFullWidth = false, children }) {
   if (!children) return null;
 
-  let classes = [
+  const classes = [
     'col',
     `col-md-${size}`,
     `col-lg-${size}`,

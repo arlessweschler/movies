@@ -25,7 +25,7 @@ const Navigation = () => {
     e.preventDefault();
     const { lng } = getQueryParams();
 
-    let requestParams = {
+    const requestParams = {
       ...getDefaulQueryParams(),
       lng
     };

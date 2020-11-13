@@ -1,8 +1,5 @@
 import RootRoute from 'app_routing/RootRoute';
-
-import {
-  NotFoundPage
-} from 'app_components/pages';
+import NotFoundPage from 'app_components/pages';
 
 import {
   MoviesRouteContainer,

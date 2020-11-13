@@ -40,12 +40,12 @@ class MovieDetailsContainer extends Component {
     const { movie_id } = match.params;
 
     if (
-      (match.params !== prevProps.match.params) ||
-      (location.search !== prevProps.location.search)
+      (match.params !== prevProps.match.params)
+      || (location.search !== prevProps.location.search)
     ) {
       this.getDataIf(({ request }) => (
-        (movie_id !== request.movie_id) ||
-        hasRequestDiffs({ request, checklist: ['lng'] })
+        (movie_id !== request.movie_id)
+        || hasRequestDiffs({ request, checklist: ['lng'] })
       ));
     }
   }
@@ -78,8 +78,7 @@ class MovieDetailsContainer extends Component {
 
     return (
       <>
-        { Object.keys(details).some(key => details[key].isLoading) &&
-          <ProgressBar />}
+        { Object.keys(details).some(key => details[key].isLoading) && <ProgressBar />}
 
         {isNotEmpty(movie.data) &&
           <MDetailsContextProvider

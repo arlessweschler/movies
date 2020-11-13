@@ -6,6 +6,7 @@ const rules = {
     exclude: /node_modules/,
     use: 'babel-loader'
   },
+
   images: {
     test: /\.(jpe?g|jpg|png|gif|svg)$/,
     loader: 'file-loader',
@@ -14,13 +15,13 @@ const rules = {
       outputPath: 'assets/img'
     },
   },
+
   cssLoaders(params) {
     const { extract = false, publicPath = '' } = params;
 
     return [
       extract
-        ?
-        {
+        ? {
           loader: MiniCssExtractPlugin.loader,
           options: { publicPath },
         }
@@ -38,14 +39,15 @@ const rules = {
       }
     ];
   },
-  css: function (params = {}) {
 
+  css(params = {}) {
     return {
       test: /\.css$/,
       use: [...rules.cssLoaders(params)]
     };
   },
-  scss: function (params = {}) {
+
+  scss(params = {}) {
     return {
       test: /\.scss$/,
       use: [

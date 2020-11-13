@@ -10,11 +10,11 @@ const _ = require('lodash');
 const Utils = {
   /**
    * Deep diff between two object, using lodash
-   * @param  {Object} object Object compared
-   * @param  {Object} base   Object to compare with
+   * @param  {Object} comparedObject Object compared
+   * @param  {Object} baseObject   Object to compare with
    * @return {Object}        Return a new object who represent the diff
    */
-  difference(object, base) {
+  difference(comparedObject, baseObject) {
     function changes(object, base) {
       return _.transform(object, function (result, value, key) {
         if (!_.isEqual(value, base[key])) {
@@ -24,7 +24,7 @@ const Utils = {
         }
       });
     }
-    return changes(object, base);
+    return changes(comparedObject, baseObject);
   },
 
   capitalize(string) {
@@ -34,13 +34,13 @@ const Utils = {
   isEmpty(value) {
     if (
       value && (
-        (typeof value === 'string') ||
-        (typeof value === 'number')
+        (typeof value === 'string')
+        || (typeof value === 'number')
       )
     ) {
       return false;
 
-    } else if (
+    } if (
       value &&
       (typeof value === 'object')
     ) {
@@ -90,11 +90,14 @@ const Utils = {
     const searchParams = Utils.getQueryParams();
 
     let checks = [];
-    for (let key in searchParams) {
-      checks.push({
-        key,
-        hasDiffs: searchParams[key] != request[key]
-      });
+    for (const key in searchParams) {
+      if ({}.hasOwnProperty.call(searchParams, key)) {
+        checks.push({
+          key,
+          hasDiffs: searchParams[key] != request[key]
+        });
+      }
+
     }
 
     if (checklist) {

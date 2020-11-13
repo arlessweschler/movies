@@ -34,7 +34,7 @@ function DescriptionSection({ transparent = true, context }) {
       </Row>
 
       <TagsBlock
-        cls={`${cls_base}-top`}
+        className={`${cls_base}-top`}
         data={{
           production_countries: movie.production_countries,
           genres: movie.genres,

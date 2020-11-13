@@ -73,7 +73,7 @@ class RecommendationsContainer extends Component {
         <RecommendationsSection
           data_moviesList={{
             movies: data.results,
-            error: error
+            error
           }}
         />
       </>

@@ -69,8 +69,7 @@ class MDetailsContextProvider extends Component {
   }
 }
 
-MDetailsContextProvider.propTypes
-  = {
+MDetailsContextProvider.propTypes = {
   cls_base: PT.string.isRequired,
   children: PT.oneOfType([
     PT.arrayOf(PT.node),

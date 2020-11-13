@@ -43,7 +43,7 @@ function* getGenresSaga({ type, payload }) {
 }
 
 // watchers
-export function* watchMovieBrowser() {
+export default function* watchMovieBrowser() {
   yield all([
     takeEvery(actionKeys.MOVIES_LIST, getMoviesSaga),
     takeEvery(actionKeys.GENRES_LIST, getGenresSaga)

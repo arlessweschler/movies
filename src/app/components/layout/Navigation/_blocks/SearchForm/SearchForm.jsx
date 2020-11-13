@@ -28,12 +28,9 @@ const SearchForm = ({ t, history }) => {
     // console.warn('-- SearchForm.useEffect()');
 
     const unlisten = history.listen(() => {
-      const { search = '' } = qs.parse(history.location.search);
+      const { search: newSearch = '' } = qs.parse(history.location.search);
 
-      // console.warn('\n SearchForm.listen(), action:', action);
-      // console.log('search:', search);
-
-      setSearchText(search);
+      setSearchText(newSearch);
     });
 
     return () => {

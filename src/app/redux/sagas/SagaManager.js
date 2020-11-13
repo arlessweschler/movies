@@ -18,9 +18,9 @@ function createAbortableSaga(saga) {
       yield take(CANCEL_SAGAS_HMR);
       yield cancel(sagaTask);
     };
-  } else {
-    return saga;
   }
+  return saga;
+
 }
 
 const SagaManager = {

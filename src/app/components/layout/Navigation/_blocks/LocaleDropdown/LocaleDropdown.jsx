@@ -35,10 +35,10 @@ const LocaleDropdown = (props) => {
   useEffect(() => {
     // console.warn('-- LocaleDropdown.useEffect()');
 
-    const unlisten = history.listen((location, action) => {
+    const unlisten = history.listen((loc, action) => {
       // console.warn('\n LocaleDropdown.listen(), action:', action);
       if (action == 'POP') {
-        const { lng } = qs.parse(location.search);
+        const { lng } = qs.parse(loc.search);
 
         const searchQueryDiff = Boolean(lng && lng !== lang.value);
         const defaultDiff = Boolean(typeof lng == 'undefined' && lang.value !== DEFAULT_LANGUAGE.value);
@@ -60,10 +60,10 @@ const LocaleDropdown = (props) => {
     };
   }, [lang]);
 
-  function onLangChange(e, location, nextLang) {
+  function onLangChange(e, loc, nextLang) {
     e.preventDefault();
 
-    const { pathname, search } = location;
+    const { pathname, search } = loc;
     const nextSearchQuery = qs.stringify({
       ...qs.parse(search),
       lng: nextLang.value

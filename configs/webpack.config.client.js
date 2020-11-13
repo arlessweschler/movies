@@ -5,6 +5,7 @@ const dotenv = require('dotenv-defaults');
 
 const commonConfig = require('./webpack.config.common');
 const rules = require('./webpack-common/rules');
+
 const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
 
 const devConfig = {

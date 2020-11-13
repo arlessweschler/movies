@@ -93,7 +93,7 @@ function* resetMovieDetailsSaga({ payload }) {
   const { resetList } = payload;
   let actions;
 
-  for (let item of resetList) {
+  for (const item of resetList) {
     actions = asyncActionMaps[item];
     try {
       yield put(actions.reset());
@@ -104,7 +104,7 @@ function* resetMovieDetailsSaga({ payload }) {
 }
 
 // watchers
-export function* watchMovieDetails() {
+export default function* watchMovieDetails() {
   yield all([
     takeEvery(actionKeys.MOVIE_DETAILS, getDetailsSaga),
     takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),

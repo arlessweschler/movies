@@ -23,10 +23,13 @@ export default function (ROUTES) {
       const preloadedState = store.getState();
       const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, '\\u003c');
 
-      let context = {};
+      const context = {};
 
       const rootContent = renderToString(
-        <StaticRouter location={req.url} context={context}>
+        <StaticRouter
+          location={req.url}
+          context={context}
+        >
           {renderRoutes(ROUTES, { store })}
         </StaticRouter>
       );

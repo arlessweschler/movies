@@ -39,6 +39,8 @@ function configureStore(initialState = {}, startSagas = false) {
   }
 
   // HMR for reducers and sagas
+
+  /* eslint-disable global-require */
   if (process.env.IS_DEV && module.hot) {
     module.hot.accept('./rootReducer', () => {
       const nextRootReducer = require('./rootReducer').default;
@@ -50,11 +52,12 @@ function configureStore(initialState = {}, startSagas = false) {
       require('./sagas/SagaManager').default.startSagas(sagaMiddleware);
     });
   }
+  /* eslint-enable global-require */
 
   return store;
 }
 
-let initialState = (IS_CLIENT && window.__PRELOADED_STATE__)
+const initialState = (IS_CLIENT && window.__PRELOADED_STATE__)
   ? window.__PRELOADED_STATE__
   : {};
 

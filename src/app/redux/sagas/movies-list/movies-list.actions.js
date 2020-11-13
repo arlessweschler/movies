@@ -14,10 +14,10 @@ const asyncActionMaps = {
 };
 
 const actions = {
-  getMovies: function (request) {
+  getMovies(request) {
     return createActionCreator(actionKeys.MOVIES_LIST, { request });
   },
-  getGenres: function (request) {
+  getGenres(request) {
     return createActionCreator(actionKeys.GENRES_LIST, { request });
   },
   resetMovies: () => asyncActionMaps[actionKeys.MOVIES_LIST].reset()

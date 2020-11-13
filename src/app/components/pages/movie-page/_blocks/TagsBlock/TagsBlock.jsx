@@ -10,20 +10,20 @@ import { faHistory, faVideo, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { withTranslation } from 'react-i18next';
 import { isNotEmpty, capitalize } from 'app_services/UtilsService';
 
-function TagsBlock({ t, cls, data }) {
+function TagsBlock({ t, className, data }) {
   const { production_countries, genres, runtime } = data;
 
   if (production_countries.length < 1 || genres.length < 1 || !runtime) return null;
 
   const getDuration = mins => {
-    let h = Math.floor(mins / 60);
+    const h = Math.floor(mins / 60);
     let m = mins % 60;
     m = m < 10 ? '0' + m : m;
     return `${h}${t('movie_details.duration.hours')} ${m}${t('movie_details.duration.minutes')}`;
   };
 
   const mapWithSemicolons = (list) => list.map((item, i) => {
-    let value = (<span className="tag-value">{capitalize(item.name)}</span>);
+    const value = (<span className="tag-value">{capitalize(item.name)}</span>);
     return (
       <Fragment key={uuidv4()}>
         {i != (list.length - 1)
@@ -38,7 +38,7 @@ function TagsBlock({ t, cls, data }) {
     );
   });
 
-  let tags = [];
+  const tags = [];
 
   const fields = [
     { value: genres, icon: faVideo, func: mapWithSemicolons, cls: 'genres' },
@@ -52,7 +52,7 @@ function TagsBlock({ t, cls, data }) {
     }
   });
 
-  const b = b_.B({ modSeparator: '--' }).with(cls);
+  const b = b_.B({ modSeparator: '--' }).with(className);
 
   return (
     <div className={b()}>
@@ -76,7 +76,7 @@ function TagsBlock({ t, cls, data }) {
 
 TagsBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string.isRequired,
+  className: PT.string.isRequired,
 
   data: PT.shape({
     production_countries: PT.array,

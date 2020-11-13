@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const rules = require('./webpack-common/rules');
 const getAlias = require('./webpack-common/alias');
+
 const FILENAME = 'server.js';
 const SRC_PATH = path.resolve(__dirname, '../src');
 

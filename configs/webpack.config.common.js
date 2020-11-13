@@ -12,6 +12,7 @@ const namedChunksPluginConfig = require('./webpack-common/named-chunks-plugin-co
 const rules = require('./webpack-common/rules');
 const indexTemplate = require('./templates/index.tpl');
 const GenerateAssetWebpackPlugin = require('./webpack-plugins/generate-asset-webpack-plugin');
+
 const SRC_PATH = path.resolve(__dirname, '../src');
 
 const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
@@ -56,17 +57,17 @@ let commonConfig = {
     new HtmlWebpackPlugin({
       favicon: `${SRC_PATH}/assets/img/favicon.ico`,
       minify: false,
-      templateContent: function () {
+      templateContent() {
         return pug.render(indexTemplate(), { pretty: true });
       },
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jquery: 'jquery',
-      jQuery: 'jquery',
+      '$': 'jquery',
+      'jquery': 'jquery',
+      'jQuery': 'jquery',
       'window.jquery': 'jquery',
       'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
+      'Popper': ['popper.js', 'default'],
     }),
   ]
 };

@@ -10,18 +10,15 @@ function* fetchJson(url, { method }) {
 
   if (response.ok) {
     return yield response.json();
-  } else {
-    yield response
-      .text()
-      .then(text => { throw new Error(text); });
   }
+
+  yield response
+    .text()
+    .then(text => { throw new Error(text); });
 }
 
 export default {
-  fetch: function ({
-    url = '',
-    params = {}
-  }) {
+  fetch({ url = '', params = {} }) {
     try {
 
       if (typeof params.lng !== 'undefined') {

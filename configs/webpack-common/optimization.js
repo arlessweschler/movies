@@ -1,6 +1,6 @@
 module.exports = function ({ splitBy }) {
-  const cacheGroups = (function (splitBy) {
-    switch (splitBy) {
+  const cacheGroups = (function (mode) {
+    switch (mode) {
 
       case 'packageName':
         return {
@@ -47,7 +47,7 @@ module.exports = function ({ splitBy }) {
       chunks: 'all',
       maxInitialRequests: Infinity,
       minSize: 0,
-      cacheGroups: cacheGroups,
+      cacheGroups,
     }
   };
 };

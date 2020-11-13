@@ -53,7 +53,7 @@ class GenresContainer extends Component {
 
     const text = ids
       .map(id => {
-        let item = data.find(i => i.id === id);
+        const item = data.find(i => i.id === id);
         return item
           ? capitalize(item.name)
           : null;
