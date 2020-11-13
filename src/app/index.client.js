@@ -9,7 +9,9 @@ const renderMethod = process.env.IS_SSR
   : render;
 
 renderMethod(
-  <ClientRouter />,
+  <AppContainer>
+    <ClientRouter />
+  </AppContainer>,
   document.getElementById('root')
 );
 

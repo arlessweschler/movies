@@ -27,10 +27,12 @@ function TagsBlock({ t, cls, data }) {
     return (
       <Fragment key={uuidv4()}>
         {i != (list.length - 1)
-          ? <Fragment>
-            {value}
-            <span className="tag-semicolon">,</span>
-          </Fragment>
+          ? (
+            <>
+              {value}
+              <span className="tag-semicolon">,</span>
+            </>
+          )
           : value}
       </Fragment>
     );
@@ -70,7 +72,7 @@ function TagsBlock({ t, cls, data }) {
       ))}
     </div>
   );
-};
+}
 
 TagsBlock.propTypes = {
   t: PT.func.isRequired,

@@ -1,7 +1,8 @@
 import React from 'react';
+import PT from 'prop-types';
 import cn from 'classnames';
 
-export default function Column({ cls = '', size, smallFullWidth = false, children }) {
+function Column({ cls = '', size, smallFullWidth = false, children }) {
   if (!children) return null;
 
   let classes = [
@@ -22,4 +23,16 @@ export default function Column({ cls = '', size, smallFullWidth = false, childre
       {children}
     </div>
   );
+}
+
+Column.propTypes = {
+  cls: PT.string,
+  size: PT.number,
+  smallFullWidth: PT.bool,
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired
 };
+
+export default Column;

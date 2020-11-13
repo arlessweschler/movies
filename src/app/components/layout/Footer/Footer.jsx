@@ -19,11 +19,13 @@ const Footer = () => {
             className={b('link', { "github": true })}
             href="https://github.com/nk11dev"
             target="_blank"
+            rel="noreferrer"
           >
             <FontAwesomeIcon
               className="mx-1"
-              icon={faGithub} />
-                nk11dev
+              icon={faGithub}
+            />
+            nk11dev
           </a>
           <span>;</span>
         </div>
@@ -33,9 +35,11 @@ const Footer = () => {
             className={b('link')}
             href="https://www.themoviedb.org/"
             target="_blank"
+            rel="noreferrer"
           >
             API powered by
-          <img
+            {' '}
+            <img
               className="ml-1"
               src={tmdbLogo}
             />

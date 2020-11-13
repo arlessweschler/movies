@@ -1,7 +1,8 @@
 import React from 'react';
+import PT from 'prop-types';
 import cn from 'classnames';
 
-export default function Row({ cls = '', children }) {
+function Row({ cls = '', children }) {
   if (!children) return null;
 
   return (
@@ -9,4 +10,14 @@ export default function Row({ cls = '', children }) {
       {children}
     </div>
   );
+}
+
+Row.propTypes = {
+  cls: PT.string,
+  children: PT.oneOfType([
+    PT.arrayOf(PT.node),
+    PT.node
+  ]).isRequired
 };
+
+export default Row;

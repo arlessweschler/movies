@@ -24,7 +24,7 @@ function Backdrop(props) {
       style={style}
     />
   );
-};
+}
 
 Backdrop.propTypes = {
   backdrop_path: PT.string

@@ -11,7 +11,11 @@ import { Row } from 'app_components/layout';
 
 function SearchResultsBlock({ t, cls_base, search, total }) {
   const b = b_.with(cls_base);
-  const quotes = (<span className={b('quotes')}>"</span>);
+  const quotes = (
+    <span className={b('quotes')}>
+      &quot;
+    </span>
+  );
 
 
   if (total == null || !search) return null;
@@ -35,11 +39,13 @@ function SearchResultsBlock({ t, cls_base, search, total }) {
       </span>
 
       <span className={b('highlight')}>
-        {quotes}{search}{quotes}
+        {quotes}
+        {search}
+        {quotes}
       </span>
     </Row>
   );
-};
+}
 
 SearchResultsBlock.propTypes = {
   t: PT.func.isRequired,

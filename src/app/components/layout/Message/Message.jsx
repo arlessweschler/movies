@@ -14,7 +14,7 @@ function Message({ cls = '', text, children=null }) {
         : text}
     </div>
   );
-};
+}
 
 Message.propTypes = {
   cls: PT.string,

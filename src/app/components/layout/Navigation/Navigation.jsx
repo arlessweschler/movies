@@ -29,7 +29,7 @@ const Navigation = () => {
       ...getDefaulQueryParams(),
       lng
     };
-  
+
     dispatch(resetMovies());
     dispatch(getMovies(requestParams));
     redirect(`/?${qs.stringify({ lng })}`);
@@ -45,9 +45,10 @@ const Navigation = () => {
         >
           <FontAwesomeIcon
             className="mr-1"
-            icon={faFilm} />
-              Movies
-          </a>
+            icon={faFilm}
+          />
+          Movies
+        </a>
 
         <NavToggle>
           <SearchForm />

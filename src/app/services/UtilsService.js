@@ -42,9 +42,9 @@ const Utils = {
       value &&
       (typeof value === 'object')
     ) {
-      return Array.isArray(value)
-        ? !Boolean(value.length)
-        : !Boolean(Object.keys(value).length);
+      return !(Array.isArray(value)
+        ? value.length
+        : Object.keys(value).length);
     }
 
     return true;
@@ -52,7 +52,7 @@ const Utils = {
 
   formatLng(lng) {
     const language = LANGUAGES.find(i => i.value == lng);
-  
+
     return `${language.value}-${language.region}`;
   },
 

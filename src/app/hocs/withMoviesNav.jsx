@@ -39,7 +39,7 @@ function withMoviesNav(WrappedComponent) {
 
       dispatch(resetMovieDetails());
       redirect(`/movies/${id}?${qs.stringify({ lng })}`);
-    };
+    }
 
     const {
       moviesType = DEFAULT_MOVIES_TYPE

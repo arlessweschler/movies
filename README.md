@@ -1,4 +1,3 @@
-# Movies
 ## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
 <img src="src/assets/img/build-stack.gif">
 
@@ -13,7 +12,7 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - [Roadmap](#Roadmap)
 
 ## Description
-Application based on custom webpack boilerplate with latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
+Application based on custom webpack boilerplate with the latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
 
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
 
@@ -26,11 +25,11 @@ Application features:
 
 - 🎥 watch movie details:
     - original title, genres, production countries, duration
-    - creators: director, wriring, director of photography, original music composer, actors
+    - creators: director, writing, director of photography, original music composer, actors
     - movie rating based on TMDb users votes
     - tagline and overview
     - poster
-    - youtube trailer 
+    - YouTube trailer 
 <img src="src/assets/img/screens/screen_3.png">
 
 - 🎥 watch image gallery:
@@ -39,7 +38,7 @@ Application features:
 - 🎥 watch recommendations - list of similar movies
 <img src="src/assets/img/screens/screen_5.png">
     
-- 🎥 localization is supported: EN (english) and RU (russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+- 🎥 localization is supported: EN (English) and RU (Russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 <img src="src/assets/img/screens/screen_6.png">
 <img src="src/assets/img/screens/screen_7.png">
 
@@ -48,7 +47,7 @@ Application features:
 - Build
     - 🏄 Babel 7
     - 🎁 Webpack 4
-    - 🚀 Server Side Rendering / Client Side Rendering с Express
+    - 🚀 Server Side Rendering / Client Side Rendering with Express
     - ⚡ Hot Module Replacement  (supports server-side and sagas)
 
 - Main libraries and dependencies

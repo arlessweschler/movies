@@ -37,7 +37,7 @@ function PagingBlock(props) {
       breakLinkClassName={b('link', { break: true })}
     />
   );
-};
+}
 
 PagingBlock.propTypes = {
   linkPage: PT.func.isRequired,

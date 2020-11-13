@@ -1,6 +1,6 @@
 import './TitleBlock.scss';
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PT from 'prop-types';
 import moment from 'moment';
 import b_ from 'b_';
@@ -13,36 +13,36 @@ function TitleBlock({ t, cls, data }) {
   const b = b_.with(cls);
 
   return (
-    <Fragment>
+    <>
       <h1>
-        {title &&
+        {
+          title &&
           <span className={b('title')}>
             {title}
           </span>
         }
 
-        {release_date &&
+        {
+          release_date &&
           <span className={b('year')}>
-            ({moment(release_date).format('YYYY')})
-        </span>
+            {moment(release_date).format('YYYY')}
+          </span>
         }
       </h1>
 
-      {original_title
-        ? (
-          <div className={cn(b('original'), 'mb-2')}>
-            <span className={b('title')}>
-              {original_title}
-            </span>
-            <span className="ml-1">
-              ({t('movie_details.original_title')})
-            </span>
-          </div>
-        )
-        : ''}
-    </Fragment>
+      {original_title && (
+        <div className={cn(b('original'), 'mb-2')}>
+          <span className={b('title')}>
+            {original_title}
+          </span>
+          <span className="ml-1">
+            {t('movie_details.original_title')}
+          </span>
+        </div>
+      )}
+    </>
   );
-};
+}
 
 TitleBlock.propTypes = {
   t: PT.func.isRequired,
@@ -50,6 +50,7 @@ TitleBlock.propTypes = {
 
   data: PT.shape({
     title: PT.string,
+    original_title: PT.string,
     release_date: PT.string
   }).isRequired,
 };

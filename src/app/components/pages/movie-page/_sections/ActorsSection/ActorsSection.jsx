@@ -1,6 +1,6 @@
 import './ActorsSection.scss';
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
@@ -26,61 +26,55 @@ function ActorsSection({ t, transparent = false, context }) {
     ? cast
     : cast.slice(0, 6);
 
-  return (
-    <Fragment>
-      {
-        isNotEmpty(cast)
-          ?
-          <Section
-            cls="pt-3"
-            {...{ transparent }}
+  return (isNotEmpty(cast) &&
+    <Section
+      cls="pt-3"
+      {...{ transparent }}
+    >
+      <div className="row d-flex justify-content-between">
+        <h2>
+          {t('movie_details.actors.section_label')}
+          {':'}
+        </h2>
+
+        {
+          (cast.length > 6) &&
+          <ToggleBlock
+            cls={b('toggle')}
+            handleToggle={() => setShowAll(!showAll)}
+          />
+        }
+      </div>
+
+      <div className="actors-grid">
+        {list.map((person, index) => (
+          <div
+            key={index}
+            className="actors-card"
           >
-            <div className="row d-flex justify-content-between">
-              <h2>
-                {t('movie_details.actors.section_label')}:
-              </h2>
+            <img
+              className={cn('cast-image', { "no-image": !person.profile_path })}
+              src={person.profile_path
+                ? `${TMDB_IMAGE_URL.small + person.profile_path}`
+                : noPhoto}
+            />
 
-              {(cast.length > 6) && <ToggleBlock
-                cls={b('toggle')}
-                handleToggle={() => setShowAll(!showAll)}
-              />}
+            <div className="cast-name">
+              {person.name}
             </div>
-            <div className="actors-grid">
-              {list.map((person, index) =>
-                <div
-                  key={index}
-                  className="actors-card"
-                >
-                  {/* photo */}
-                  {<img
-                    className={cn('cast-image', { "no-image": !person.profile_path })}
-                    src={person.profile_path
-                      ? `${TMDB_IMAGE_URL.small + person.profile_path}`
-                      : noPhoto}
-                  />}
 
-                  {/* name */}
-                  <div className="cast-name">
-                    {person.name}
-                  </div>
+            {
+              person.character &&
+              <div className="small text-secondary">
+                {person.character}
+              </div>
+            }
+          </div>
+        ))}
 
-                  {/* character */}
-                  {person.character
-                    ? <div className="small text-secondary">
-                      ({person.character})
-                      </div>
-                    : ''}
-                </div>
-              )}
-
-            </div>
-          </Section>
-          : ''
-      }
-
-    </Fragment>
-  );
-};
+      </div>
+    </Section>);
+}
 
 ActorsSection.propTypes = {
   t: PT.func.isRequired,
@@ -94,6 +88,4 @@ ActorsSection.propTypes = {
   }).isRequired
 };
 
-export default
-  withTranslation()
-    (withMDetailsContext(ActorsSection));
+export default withTranslation()(withMDetailsContext(ActorsSection));

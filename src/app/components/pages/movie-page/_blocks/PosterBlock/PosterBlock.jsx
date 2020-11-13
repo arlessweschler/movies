@@ -17,13 +17,14 @@ function PosterBlock({ cls, data }) {
   return (
     <img
       className={classes}
-      src={poster_path
-        ? `${TMDB_IMAGE_URL.large}/${poster_path}`
-        : imageNotAvailable
+      src={
+        poster_path
+          ? `${TMDB_IMAGE_URL.large}/${poster_path}`
+          : imageNotAvailable
       }
     />
   );
-};
+}
 
 PosterBlock.propTypes = {
   cls: PT.string,

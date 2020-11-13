@@ -9,4 +9,4 @@ export default function* root() {
     fork(watchMovieBrowser),
     fork(watchMovieDetails)
   ]);
-};
+}

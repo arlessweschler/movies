@@ -37,13 +37,15 @@ function CardBlock(props) {
       </div>
     </div>
   );
-};
+}
 
 CardBlock.propTypes = {
   linkMovie: PT.func.isRequired,
+  cls: PT.string,
 
   printGenres: PT.func.isRequired,
   movie: PT.shape({
+    id: PT.number,
     poster_path: PT.string,
     title: PT.string.isRequired,
     genre_ids: PT.array,

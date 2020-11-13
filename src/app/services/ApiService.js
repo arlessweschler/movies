@@ -1,7 +1,7 @@
 require('isomorphic-fetch');
 import qs from 'query-string';
 
-import { TMDB_API_HOST, TMDB_API_KEY, } from 'app_config';
+import { TMDB_API_HOST } from 'app_config';
 import { formatLng } from 'app_services/UtilsService';
 
 function* fetchJson(url, { method }) {
@@ -14,7 +14,7 @@ function* fetchJson(url, { method }) {
       .text()
       .then(text => { throw new Error(text) })
   }
-};
+}
 
 export default {
   fetch: function ({

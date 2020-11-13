@@ -14,18 +14,20 @@ function ListBlock(props) {
 
   return (
     <div className={cn(`${cls_base}-grid`)}>
-      {movies.map((movie) =>
+      {movies.map((movie) => (
         <CardBlock
           key={movie.id}
           cls={`${cls_base}-card`}
           printGenres={printGenres}
           movie={movie}
-        />)}
+        />
+      ))}
     </div>
   );
-};
+}
 
 ListBlock.propTypes = {
+  cls_base: PT.string,
   movies: PT.array,
   printGenres: PT.func
 };

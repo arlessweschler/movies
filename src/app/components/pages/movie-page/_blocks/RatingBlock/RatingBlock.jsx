@@ -41,7 +41,7 @@ function RatingBlock({ t, cls, data }) {
         : ''}
     </div>
   );
-};
+}
 
 RatingBlock.propTypes = {
   t: PT.func.isRequired,
