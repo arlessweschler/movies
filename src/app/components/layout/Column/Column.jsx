@@ -2,7 +2,9 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-function Column({ cls = '', size, smallFullWidth = false, children }) {
+function Column({
+  cls = '', size, smallFullWidth = false, children
+}) {
   if (!children) return null;
 
   const classes = [

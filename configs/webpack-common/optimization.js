@@ -1,7 +1,6 @@
 module.exports = function ({ splitBy }) {
   const cacheGroups = (function (mode) {
     switch (mode) {
-
       case 'packageName':
         return {
           vendor: {

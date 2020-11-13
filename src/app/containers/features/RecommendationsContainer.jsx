@@ -26,11 +26,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class RecommendationsContainer extends Component {
-
   componentDidUpdate(prevProps) {
     // console.warn('\n--RecommendationsContainer.componentDidUpdate()');
 
-    const { recommendations, actions, location, match } = this.props;
+    const {
+      recommendations, actions, location, match
+    } = this.props;
     const { request } = recommendations;
     const { movie_id } = match.params;
 
@@ -38,9 +39,8 @@ class RecommendationsContainer extends Component {
       match.params !== prevProps.match.params
       || location.search !== prevProps.location.search
     ) {
-
       if (
-        (movie_id != request.movie_id)
+        (movie_id !== request.movie_id)
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
         const { lng } = getQueryParams();
@@ -56,7 +56,7 @@ class RecommendationsContainer extends Component {
     const { request } = recommendations;
     const { movie_id } = match.params;
 
-    if (movie_id != request.movie_id) {
+    if (movie_id !== request.movie_id) {
       const { lng } = getQueryParams();
       actions.getRecommendations({ movie_id, lng });
     }

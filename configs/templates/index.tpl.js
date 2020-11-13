@@ -1,9 +1,9 @@
 function getScript(hash, filename, ext) {
-  return `${(typeof hash !== 'undefined' ? 'script(type="text/javascript", src="/js/' + filename + '.' + hash + '.' + ext + '")' : '')}`;
+  return `${(typeof hash !== 'undefined' ? `script(type="text/javascript", src="/js/${filename}.${hash}.${ext}")` : '')}`;
 }
 
 function getStyle(hash, filename) {
-  return `${(typeof hash !== 'undefined' ? 'link(rel="stylesheet", type="text/css", href="/css/' + filename + '.' + hash + '.css")' : '')}`;
+  return `${(typeof hash !== 'undefined' ? `link(rel="stylesheet", type="text/css", href="/css/${filename}.${hash}.css")` : '')}`;
 }
 
 function favicon() {

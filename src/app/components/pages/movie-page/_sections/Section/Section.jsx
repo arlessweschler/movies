@@ -8,7 +8,9 @@ import cn from 'classnames';
 import { withMDetailsContext } from 'app_contexts';
 
 function Section(props) {
-  const { children, cls = '', transparent, context } = props;
+  const {
+    children, cls = '', transparent, context
+  } = props;
   const { cls_base } = context;
 
   if (!children) return null;

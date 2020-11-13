@@ -10,7 +10,9 @@ import { CardImageBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
-  const { cls, movie, printGenres, linkMovie } = props;
+  const {
+    cls, movie, printGenres, linkMovie
+  } = props;
   const { id, title, genre_ids } = movie;
 
   const b = b_.with(cls);

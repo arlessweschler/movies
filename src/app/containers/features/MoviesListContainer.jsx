@@ -8,7 +8,9 @@ import cn from 'classnames';
 import PTS from 'app_services/PropTypesService';
 import { isEmpty, getQueryParams, hasRequestDiffs } from 'app_services/UtilsService';
 import { Message, ProgressBar, Row } from 'app_components/layout';
-import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from 'app_components/pages/movies-page/_blocks';
+import {
+  ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock
+} from 'app_components/pages/movies-page/_blocks';
 import { getMovies } from 'redux_actions';
 import { GenresContainer } from 'app_containers';
 
@@ -21,7 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class MoviesListContainer extends Component {
-
   componentDidUpdate(prevProps) {
     // console.warn('\n--MoviesListContainer.componentDidUpdate()');
 
@@ -57,7 +58,9 @@ class MoviesListContainer extends Component {
   render() {
     const { moviesList } = this.props;
     const { data, error, isLoading } = moviesList;
-    const { results, total_results, total_pages, page } = data;
+    const {
+      results, total_results, total_pages, page
+    } = data;
     const { search } = getQueryParams();
 
     const cls_base = 'movies-list';

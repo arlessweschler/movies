@@ -16,20 +16,20 @@ class MDetailsContextProvider extends Component {
 
     const isJobsArray = Array.isArray(job);
 
-    const persons = [...new Set(crew.filter(item => (
+    const persons = [...new Set(crew.filter((item) => (
       (item.department === department) &&
       (isJobsArray
         ? job.includes(item.job)
         : (item.job === job)
       )
-    )).map(p => p.name))];
+    )).map((p) => p.name))];
 
     if (isEmpty(persons)) {
       return null;
     }
 
     return persons.map(
-      (person, i) => (i != (persons.length - 1)
+      (person, i) => (i !== (persons.length - 1)
         ? `${person}, `
         : person)
     );
@@ -43,13 +43,15 @@ class MDetailsContextProvider extends Component {
     }
 
     return videos.find((video) => (
-      (video.site == searchParams.site) &&
-      (video.type == searchParams.type)
+      (video.site === searchParams.site) &&
+      (video.type === searchParams.type)
     ));
   };
 
   render() {
-    const { cls_base, movie, videos, credits, images, children } = this.props;
+    const {
+      cls_base, movie, videos, credits, images, children
+    } = this.props;
 
     return (
       <MDetailsContext.Provider

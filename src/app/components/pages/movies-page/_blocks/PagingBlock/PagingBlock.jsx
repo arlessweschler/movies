@@ -10,7 +10,9 @@ import PTS from 'app_services/PropTypesService';
 import withMoviesNav from 'app_hocs/withMoviesNav';
 
 function PagingBlock(props) {
-  const { cls, initialPage, pageCount, linkPage } = props;
+  const {
+    cls, initialPage, pageCount, linkPage
+  } = props;
 
   const cls_base = 'pagination';
   const b = b_.B({ modSeparator: '--' }).with(cls_base);

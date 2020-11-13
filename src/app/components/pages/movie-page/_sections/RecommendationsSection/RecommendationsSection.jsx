@@ -13,8 +13,6 @@ import { ListBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function RecommendationsSection({ t, data_moviesList }) {
-
-  // base component class
   const cls_base = 'movies-list';
   const b = b_.with(cls_base);
 

@@ -1,10 +1,10 @@
-import { 
-  getMovies, 
+import {
+  getMovies,
   getGenres,
   resetMovies
 } from 'app_redux/sagas/movies-list/movies-list.actions';
 
-import { 
+import {
   getDetails,
   getCredits,
   getVideos,

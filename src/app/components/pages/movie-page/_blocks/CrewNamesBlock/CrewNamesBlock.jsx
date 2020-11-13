@@ -4,7 +4,9 @@ import PT from 'prop-types';
 import { withMDetailsContext } from 'app_contexts';
 
 function CrewNamesBlock(props) {
-  const { cls_label = '', cls_value = '', label, searchParams, context } = props;
+  const {
+    cls_label = '', cls_value = '', label, searchParams, context
+  } = props;
   const { getCrewNames } = context;
 
   const names = getCrewNames(searchParams);

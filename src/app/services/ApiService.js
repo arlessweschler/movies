@@ -14,13 +14,12 @@ function* fetchJson(url, { method }) {
 
   yield response
     .text()
-    .then(text => { throw new Error(text); });
+    .then((text) => { throw new Error(text); });
 }
 
 export default {
   fetch({ url = '', params = {} }) {
     try {
-
       if (typeof params.lng !== 'undefined') {
         params.language = params.lng
           ? formatLng(params.lng)
@@ -38,7 +37,6 @@ export default {
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 
       return fetchJson(fetchUrl, { method: 'GET' });
-
     } catch (error) {
       console.log('-- ApiService, error:', error);
       throw new Error('Error in ApiService!');

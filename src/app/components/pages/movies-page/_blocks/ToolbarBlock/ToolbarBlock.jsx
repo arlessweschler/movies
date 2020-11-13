@@ -18,10 +18,10 @@ function ToolbarBlock(props) {
 
   return (
     <ButtonGroup className="movies-filter">
-      {TMDB_MOVIES_TYPES.map(filter => (
+      {TMDB_MOVIES_TYPES.map((filter) => (
         <Button
           key={uuidv4()}
-          color={(activeMoviesType == filter.key)
+          color={(activeMoviesType === filter.key)
             ? 'dark'
             : 'light'}
           onClick={() => changeMoviesType(filter.key)}

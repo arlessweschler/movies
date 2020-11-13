@@ -1,8 +1,8 @@
 const func = function (list) {
-  let arr = [], item;
+  let arr = [];
 
-  for (let i = 0; i < list.length; i++) {
-    item = list[i];
+  for (let i = 0; i < list.length; i += 1) {
+    const item = list[i];
     const { path, routes } = item;
 
     if (path) arr.push(path);
@@ -13,7 +13,7 @@ const func = function (list) {
     }
   }
 
-  return [...new Set(arr)].filter(i => i != '*');
+  return [...new Set(arr)].filter((i) => i !== '*');
 };
 
 export default func;

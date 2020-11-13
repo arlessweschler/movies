@@ -7,7 +7,9 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-
 function* getMoviesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { moviesType, page, lng, search } = request;
+  const {
+    moviesType, page, lng, search
+  } = request;
 
   yield put(actions.start(request));
   try {

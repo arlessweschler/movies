@@ -32,7 +32,7 @@ function withMoviesNav(WrappedComponent) {
       update({ page: selected + 1 });
     }
 
-    // обработчик для перехода на маршрут деталей фильма 
+    // обработчик для перехода на маршрут деталей фильма
     // (из списка фильмов, результатов поиска или рекоммендаций)
     function linkMovie(id) {
       const { location } = props;

@@ -24,10 +24,8 @@ const mapDispatchToProps = (dispatch) => ({
   }, dispatch)
 });
 
-// контейнер маршрута
+// получение данных для отправки разметки с данными при серверном рендеринге
 class MovieRouteContainer extends Component {
-
-  // получение данных для отправки разметки с данными при серверном рендеринге
   static fetchData(store, url, urlParams) {
     console.log('\n--MovieRouteContainer.fetchData(), url:', url);
 

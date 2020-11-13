@@ -24,7 +24,7 @@ module.exports = function ({ srcPath }) {
     server_config: 'server/express-app-config',
   };
   Object.keys(list).forEach(
-    key => {
+    (key) => {
       list[key] = path.resolve(__dirname, `${srcPath}/${list[key]}`);
     }
   );

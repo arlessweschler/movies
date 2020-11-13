@@ -16,7 +16,7 @@ const Utils = {
    */
   difference(comparedObject, baseObject) {
     function changes(object, base) {
-      return _.transform(object, function (result, value, key) {
+      return _.transform(object, (result, value, key) => {
         if (!_.isEqual(value, base[key])) {
           result[key] = (_.isObject(value) && _.isObject(base[key]))
             ? changes(value, base[key])
@@ -39,7 +39,6 @@ const Utils = {
       )
     ) {
       return false;
-
     } if (
       value &&
       (typeof value === 'object')
@@ -53,7 +52,7 @@ const Utils = {
   },
 
   formatLng(lng) {
-    const language = LANGUAGES.find(i => i.value == lng);
+    const language = LANGUAGES.find((i) => i.value === lng);
 
     return `${language.value}-${language.region}`;
   },
@@ -62,7 +61,7 @@ const Utils = {
     return {
       lng: DEFAULT_LANGUAGE.value,
       moviesType: DEFAULT_MOVIES_TYPE,
-      page: 1,
+      page: '1',
       search: ''
     };
   },
@@ -78,11 +77,13 @@ const Utils = {
       search = defaults.search
     } = qs.parse(query);
 
-    return { lng, moviesType, page, search };
+    return {
+      lng, moviesType, page, search
+    };
   },
 
-  // проверяем различия параметров последнего запроса (ключи объекта request) в store с: 
-  // 1. значениями этих параметров из url search query или 
+  // проверяем различия параметров последнего запроса (ключи объекта request) в store с:
+  // 1. значениями этих параметров из url search query или
   // (опционально) 2. дефолтными значениями этих параметров из редюсера
   hasRequestDiffs({ request, checklist }) {
     // console.warn(`\nUtils.hasRequestDiffs()`);
@@ -94,17 +95,16 @@ const Utils = {
       if ({}.hasOwnProperty.call(searchParams, key)) {
         checks.push({
           key,
-          hasDiffs: searchParams[key] != request[key]
+          hasDiffs: searchParams[key] !== request[key]
         });
       }
-
     }
 
     if (checklist) {
-      checks = checks.filter(i => checklist.includes(i.key));
+      checks = checks.filter((i) => checklist.includes(i.key));
     }
 
-    const hasUrlDiffs = checks.some(i => i.hasDiffs);
+    const hasUrlDiffs = checks.some((i) => i.hasDiffs);
 
     // console.log('searchParams:', searchParams);
     // console.log('request:', request);
@@ -115,25 +115,21 @@ const Utils = {
   }
 };
 
-const formatLng = Utils.formatLng;
-const getDefaulQueryParams = Utils.getDefaulQueryParams;
-const getQueryParams = Utils.getQueryParams;
-const hasRequestDiffs = Utils.hasRequestDiffs;
-const difference = Utils.difference;
-const capitalize = Utils.capitalize;
-const isEmpty = Utils.isEmpty;
 const isNotEmpty = (value) => !Utils.isEmpty(value);
-
-export default Utils;
 
 export {
   imageNotAvailable,
+  isNotEmpty
+};
+
+export const {
   formatLng,
   getDefaulQueryParams,
   getQueryParams,
   hasRequestDiffs,
   difference,
   capitalize,
-  isEmpty,
-  isNotEmpty
-};
+  isEmpty
+} = Utils;
+
+export default Utils;

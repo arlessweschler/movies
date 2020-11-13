@@ -22,7 +22,7 @@ function PlayerBlock(props) {
   return (
     <>
       {!isLight && isLoading && <ProgressBar />}
-      
+
       <ReactPlayer
         width="100%"
         height="100%"

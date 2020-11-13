@@ -40,7 +40,7 @@ const SearchForm = ({ t, history }) => {
   }, [searchText]);
 
   const onInputChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     const queryParams = qs.parse(history.location.search);
 
     if (value.length >= 2) {

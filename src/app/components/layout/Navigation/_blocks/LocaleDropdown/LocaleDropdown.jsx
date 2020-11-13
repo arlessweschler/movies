@@ -13,13 +13,13 @@ import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
 
 const LocaleDropdown = (props) => {
   const { i18n, history } = props;
-  const location = history.location;
+  const { location } = history;
   const { lng: langQuery } = qs.parse(location.search);
 
   function findLang(queryValue) {
     if (!queryValue) return DEFAULT_LANGUAGE;
 
-    const finded = LANGUAGES.find(i => i.value == queryValue);
+    const finded = LANGUAGES.find((i) => i.value === queryValue);
 
     return isNotEmpty(finded)
       ? finded
@@ -37,11 +37,11 @@ const LocaleDropdown = (props) => {
 
     const unlisten = history.listen((loc, action) => {
       // console.warn('\n LocaleDropdown.listen(), action:', action);
-      if (action == 'POP') {
+      if (action === 'POP') {
         const { lng } = qs.parse(loc.search);
 
         const searchQueryDiff = Boolean(lng && lng !== lang.value);
-        const defaultDiff = Boolean(typeof lng == 'undefined' && lang.value !== DEFAULT_LANGUAGE.value);
+        const defaultDiff = Boolean(typeof lng === 'undefined' && lang.value !== DEFAULT_LANGUAGE.value);
 
         // console.log('lng:', lng);
         // console.log('lang:', lang);

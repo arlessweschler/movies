@@ -20,7 +20,6 @@ function createAbortableSaga(saga) {
     };
   }
   return saga;
-
 }
 
 const SagaManager = {

@@ -10,9 +10,9 @@ const LANGUAGES = [
   { value: 'ru', region: 'RU', label: 'RU' }
 ];
 
-const DEFAULT_LANGUAGE_VALUE = 'en';
+const defaultLanguageValue = 'en';
 
-const DEFAULT_LANGUAGE = LANGUAGES.find(i => i.value == DEFAULT_LANGUAGE_VALUE);
+const DEFAULT_LANGUAGE = LANGUAGES.find((i) => i.value === defaultLanguageValue);
 
 i18n
   .use(initReactI18next)
@@ -22,7 +22,7 @@ i18n
       en: { translation: en },
       ru: { translation: ru }
     },
-    fallbackLng: DEFAULT_LANGUAGE_VALUE,
+    fallbackLng: defaultLanguageValue,
     debug: false,
     interpolation: {
       escapeValue: false

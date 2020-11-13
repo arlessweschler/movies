@@ -20,7 +20,7 @@ function GallerySection({ t, transparent = false, context }) {
 
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
-  const imagesForGallery = images.map(img => ({
+  const imagesForGallery = images.map((img) => ({
     original: TMDB_IMAGE_URL.original + img.file_path,
     thumbnail: TMDB_IMAGE_URL.small + img.file_path
   }));

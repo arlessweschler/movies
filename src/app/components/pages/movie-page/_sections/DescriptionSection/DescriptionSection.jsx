@@ -3,7 +3,9 @@ import PT from 'prop-types';
 
 import { withMDetailsContext } from 'app_contexts';
 import { Section } from 'app_components/pages/movie-page/_sections';
-import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from 'app_components/pages/movie-page/_blocks';
+import {
+  TitleBlock, TagsBlock, RatingBlock, CrewListBlock
+} from 'app_components/pages/movie-page/_blocks';
 import { Row, Column } from 'app_components/layout';
 
 function DescriptionSection({ transparent = true, context }) {

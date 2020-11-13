@@ -34,7 +34,7 @@ export default function (ROUTES) {
         </StaticRouter>
       );
 
-      if (context.status == 404) {
+      if (context.status === 404) {
         res.status(404);
       }
 
@@ -43,14 +43,13 @@ export default function (ROUTES) {
         preloadedState: preloadedStateStr,
         IS_SSR: true
       });
-
     }).catch((e) => {
       console.log('-- ssr-request-handler, catch, e.message:', e.message);
       res.status(500).send(e.message);
     });
 
     branch.forEach(({ route }) => {
-      const fetchData = route.component.fetchData;
+      const { fetchData } = route.component;
       if (fetchData instanceof Function) {
         fetchData(store, req.url, req.params);
       }

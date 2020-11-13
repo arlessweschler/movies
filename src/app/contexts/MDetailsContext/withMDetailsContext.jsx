@@ -6,7 +6,7 @@ function withMDetailsContext(Component) {
     return (
       <MDetailsContext.Consumer>
         {
-          context => <Component {...props} context={context} />
+          (context) => <Component {...props} context={context} />
         }
       </MDetailsContext.Consumer>
     );

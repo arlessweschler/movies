@@ -9,7 +9,9 @@ import PTS from 'app_services/PropTypesService';
 import { withTranslation } from 'react-i18next';
 import { Row } from 'app_components/layout';
 
-function SearchResultsBlock({ t, cls_base, search, total }) {
+function SearchResultsBlock({
+  t, cls_base, search, total
+}) {
   const b = b_.with(cls_base);
   const quotes = (
     <span className={b('quotes')}>

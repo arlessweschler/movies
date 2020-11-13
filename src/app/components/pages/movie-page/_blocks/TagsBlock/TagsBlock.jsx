@@ -15,10 +15,10 @@ function TagsBlock({ t, className, data }) {
 
   if (production_countries.length < 1 || genres.length < 1 || !runtime) return null;
 
-  const getDuration = mins => {
+  const getDuration = (mins) => {
     const h = Math.floor(mins / 60);
     let m = mins % 60;
-    m = m < 10 ? '0' + m : m;
+    m = m < 10 ? `0${m}` : m;
     return `${h}${t('movie_details.duration.hours')} ${m}${t('movie_details.duration.minutes')}`;
   };
 
@@ -26,7 +26,7 @@ function TagsBlock({ t, className, data }) {
     const value = (<span className="tag-value">{capitalize(item.name)}</span>);
     return (
       <Fragment key={uuidv4()}>
-        {i != (list.length - 1)
+        {i !== (list.length - 1)
           ? (
             <>
               {value}
@@ -41,12 +41,20 @@ function TagsBlock({ t, className, data }) {
   const tags = [];
 
   const fields = [
-    { value: genres, icon: faVideo, func: mapWithSemicolons, cls: 'genres' },
-    { value: production_countries, icon: faGlobe, func: mapWithSemicolons, cls: 'countries' },
-    { value: runtime, icon: faHistory, func: getDuration, cls: 'runtime' },
+    {
+      value: genres, icon: faVideo, func: mapWithSemicolons, cls: 'genres'
+    },
+    {
+      value: production_countries, icon: faGlobe, func: mapWithSemicolons, cls: 'countries'
+    },
+    {
+      value: runtime, icon: faHistory, func: getDuration, cls: 'runtime'
+    },
   ];
 
-  fields.forEach(({ value, icon, cls, func }) => {
+  fields.forEach(({
+    value, icon, cls, func
+  }) => {
     if (isNotEmpty(value)) {
       tags.push({ icon, cls, text: func(value) });
     }

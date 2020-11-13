@@ -62,26 +62,22 @@
         }
       }
     ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    /*     "camelcase": [
+      "error",
+      {
+        "ignoreDestructuring": true
+      }
+    ], */
 
     "linebreak-style": 0,
     "eol-last": 0,
     "no-console": 0,
-    "comma-dangle": 0,
-    "no-trailing-spaces": 0,
-    "prefer-template": 0,
-    "object-curly-newline": 0,
-    "arrow-parens": 0,
-    "no-path-concat": 0,
-    "prefer-destructuring": 0,
-    "func-names": 0,
-    "one-var": 0,
-    "one-var-declaration-per-line": 0,
-    "eqeqeq": 0,
-    "prefer-arrow-callback": 0,
-    "no-plusplus": 0,
-    "padded-blocks": 0,
     "camelcase": 0,
-
+    "func-names": 0,
     "no-param-reassign": 0,
     "no-underscore-dangle": 0,
     "max-len": 0,
@@ -89,7 +85,7 @@
     "no-restricted-syntax": 0,
     "import/no-cycle": 0,
     "valid-typeof": 0,
-
+    
     "import/no-unresolved": "error",
     "import/default": "error",
     "import/namespace": "error",

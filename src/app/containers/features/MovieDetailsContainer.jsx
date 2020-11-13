@@ -7,12 +7,18 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
-import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
+import {
+  isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams
+} from 'app_services/UtilsService';
 import { MDetailsContextProvider } from 'app_contexts';
 import { Backdrop, ProgressBar } from 'app_components/layout';
-import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from 'app_components/pages/movie-page/_sections';
+import {
+  DescriptionSection, MediaSection, ActorsSection, GallerySection
+} from 'app_components/pages/movie-page/_sections';
 import { RecommendationsContainer } from 'app_containers';
-import { getDetails, getCredits, getVideos, getImages } from 'redux_actions';
+import {
+  getDetails, getCredits, getVideos, getImages
+} from 'redux_actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => ({
@@ -30,7 +36,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class MovieDetailsContainer extends Component {
-
   componentDidMount() {
     this.getDataIf(({ data }) => isEmpty(data));
   }
@@ -71,14 +76,16 @@ class MovieDetailsContainer extends Component {
 
   render() {
     const { details } = this.props;
-    const { movie, credits, videos, images } = details;
+    const {
+      movie, credits, videos, images
+    } = details;
 
     const cls_base = 'movie-details';
     const b = b_.with(cls_base);
 
     return (
       <>
-        { Object.keys(details).some(key => details[key].isLoading) && <ProgressBar />}
+        { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
         {isNotEmpty(movie.data) &&
           <MDetailsContextProvider
