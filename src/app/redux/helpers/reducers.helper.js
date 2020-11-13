@@ -1,4 +1,4 @@
-export const createAsyncReducerMap = (
+const createAsyncReducerMap = (
   actionKey,
   params = {}
 ) => {
@@ -11,7 +11,7 @@ export const createAsyncReducerMap = (
       isLoading: true,
       error: null,
       request
-    }
+    };
   };
 
   const successReducerFn = (state, action) => {
@@ -21,7 +21,7 @@ export const createAsyncReducerMap = (
       isLoading: false,
       error: null,
       data
-    }
+    };
   };
 
   const failReducerFn = (state, action) => {
@@ -30,13 +30,13 @@ export const createAsyncReducerMap = (
       ...state,
       isLoading: false,
       error
-    }
+    };
   };
 
   const resetReducerFn = () => {
     return {
       ...initialState
-    }
+    };
   };
 
   return {
@@ -47,7 +47,7 @@ export const createAsyncReducerMap = (
   };
 };
 
-export const createReducer = (
+const createReducer = (
   initialState = {},
   actionHandlerKeyFuncs = {}
 ) => {
@@ -64,7 +64,7 @@ const initialAsyncState = {
   request: {}
 };
 
-export const createAsyncReducer = (
+const createAsyncReducer = (
   actionKey,
   params = {}
 ) => {
@@ -74,4 +74,10 @@ export const createAsyncReducer = (
     initialState,
     createAsyncReducerMap(actionKey, params)
   );
+};
+
+export {
+  createAsyncReducerMap,
+  createReducer,
+  createAsyncReducer
 };

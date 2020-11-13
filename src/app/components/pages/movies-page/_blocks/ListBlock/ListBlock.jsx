@@ -34,6 +34,6 @@ ListBlock.propTypes = {
 
 ListBlock.defaultProps = {
   printGenres: () => { }
-}
+};
 
 export default ListBlock;

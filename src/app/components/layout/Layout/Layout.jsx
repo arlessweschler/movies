@@ -18,7 +18,7 @@ const Layout = (props) => {
       <Footer />
     </>
   );
-}
+};
 
 Layout.propTypes = {
   children: PT.oneOfType([

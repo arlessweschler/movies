@@ -16,15 +16,52 @@
     "react"
   ],
   "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./configs/webpack.config.common.js"
+      }
+    },
     "react": {
       "version": "detect"
     }
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/errors"
   ],
   "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "import/no-unresolved": "error",
+    "import/default": "error",
+    "import/namespace": "error",
+    "import/no-absolute-path": "error",
+    "import/no-dynamic-require": "error",
+    "import/no-webpack-loader-syntax": "error",
+    "import/no-self-import": "error",
+    "import/no-useless-path-segments": "error",
+    "import/export": "error",
+    "import/no-deprecated": "error",
+    "import/exports-last": "error",
+    "import/no-namespace": "error",
+    "import/no-unassigned-import": [
+      "error",
+      {
+        "allow": [
+          "**/*.scss",
+          "**/*.css",
+          "isomorphic-fetch"
+        ]
+      }
+    ],
+    "import/no-named-default": "error",
     "react/jsx-fragments": [
       "error",
       "syntax"

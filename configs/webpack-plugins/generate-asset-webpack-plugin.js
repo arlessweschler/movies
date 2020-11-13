@@ -17,13 +17,13 @@ class GenerateAssetWebpackPlugin {
         compilation.assets[this.filename] = {
           source: () => body,
           size: () => body.length
-        }
+        };
 
         this.files.forEach(file => {
           compilation.assets[file] = {
             source: () => fs.readFileSync(file),
             size: () => fs.statSync(file).size
-          }
+          };
         });
       });
     });

@@ -3,14 +3,6 @@ import { put, takeEvery, all } from 'redux-saga/effects';
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movies-list/movies-list.actions';
 
-// watchers
-export function* watchMovieBrowser() {
-  yield all([
-    takeEvery(actionKeys.MOVIES_LIST, getMoviesSaga),
-    takeEvery(actionKeys.GENRES_LIST, getGenresSaga)
-  ]);
-}
-
 // workers
 function* getMoviesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
@@ -48,4 +40,12 @@ function* getGenresSaga({ type, payload }) {
   } catch (error) {
     yield put(actions.fail(error.message));
   }
+}
+
+// watchers
+export function* watchMovieBrowser() {
+  yield all([
+    takeEvery(actionKeys.MOVIES_LIST, getMoviesSaga),
+    takeEvery(actionKeys.GENRES_LIST, getGenresSaga)
+  ]);
 }

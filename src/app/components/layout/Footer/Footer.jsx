@@ -16,7 +16,7 @@ const Footer = () => {
         <div className={cn(b('link-wrapper'), 'mr-2')}>
           <span>© 2020,</span>
           <a
-            className={b('link', { "github": true })}
+            className={b('link', { 'github': true })}
             href="https://github.com/nk11dev"
             target="_blank"
             rel="noreferrer"
@@ -48,6 +48,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

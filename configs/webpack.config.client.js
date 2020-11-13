@@ -52,7 +52,7 @@ const prodConfig = {
       filename: 'css/[name].[hash].css'
     }),
   ]
-}
+};
 
 module.exports = () => {
   switch (process.env.NODE_ENV) {
@@ -63,4 +63,4 @@ module.exports = () => {
     default:
       throw new Error('No matching webpack configuration was found!');
   }
-}
+};

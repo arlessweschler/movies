@@ -15,7 +15,7 @@ function Column({ cls = '', size, smallFullWidth = false, children }) {
   if (smallFullWidth) {
     classes.push('col-12', 'col-sm-12');
   } else {
-    classes.push(`col-${size}`, `col-sm-${size}`)
+    classes.push(`col-${size}`, `col-sm-${size}`);
   }
 
   return (

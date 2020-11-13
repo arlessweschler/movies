@@ -53,7 +53,7 @@ function ActorsSection({ t, transparent = false, context }) {
             className="actors-card"
           >
             <img
-              className={cn('cast-image', { "no-image": !person.profile_path })}
+              className={cn('cast-image', { 'no-image': !person.profile_path })}
               src={person.profile_path
                 ? `${TMDB_IMAGE_URL.small + person.profile_path}`
                 : noPhoto}

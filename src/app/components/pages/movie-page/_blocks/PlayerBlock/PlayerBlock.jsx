@@ -2,7 +2,7 @@ import './PlayerBlock.scss';
 
 import React, { useState } from 'react';
 import PT from 'prop-types';
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-player/youtube';
 
 import { isEmpty } from 'app_services/UtilsService';
 import { ProgressBar } from 'app_components/layout';

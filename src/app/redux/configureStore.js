@@ -8,7 +8,7 @@ import SagaManager from 'app_redux/sagas/SagaManager';
 
 const IS_CLIENT = (typeof window !== 'undefined');
 
-export function configureStore(initialState = {}, startSagas = false) {
+function configureStore(initialState = {}, startSagas = false) {
   const sagaMiddleware = createSagaMiddleware();
 
   const logger = createLogger({
@@ -41,9 +41,9 @@ export function configureStore(initialState = {}, startSagas = false) {
   // HMR for reducers and sagas
   if (process.env.IS_DEV && module.hot) {
     module.hot.accept('./rootReducer', () => {
-      const nextRootReducer = require('./rootReducer').default
-      store.replaceReducer(nextRootReducer)
-    })
+      const nextRootReducer = require('./rootReducer').default;
+      store.replaceReducer(nextRootReducer);
+    });
 
     module.hot.accept('./sagas/SagaManager', () => {
       SagaManager.cancelSagas(store);
@@ -57,6 +57,10 @@ export function configureStore(initialState = {}, startSagas = false) {
 let initialState = (IS_CLIENT && window.__PRELOADED_STATE__)
   ? window.__PRELOADED_STATE__
   : {};
+
+export {
+  configureStore
+};
 
 // exporting created store is required for correct client-redering HMR
 export default configureStore(

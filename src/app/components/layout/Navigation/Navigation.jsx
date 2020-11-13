@@ -33,7 +33,7 @@ const Navigation = () => {
     dispatch(resetMovies());
     dispatch(getMovies(requestParams));
     redirect(`/?${qs.stringify({ lng })}`);
-  }
+  };
 
   return (
     <nav className={cn(cls_base, 'navbar navbar-expand-sm navbar-dark')}>
@@ -58,6 +58,6 @@ const Navigation = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navigation;

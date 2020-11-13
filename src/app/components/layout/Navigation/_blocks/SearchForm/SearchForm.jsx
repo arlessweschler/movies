@@ -8,8 +8,8 @@ import qs from 'query-string';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from 'app_history';
 import { resetMovies } from 'redux_actions';
@@ -69,7 +69,7 @@ const SearchForm = ({ t, history }) => {
         debounceTimeout={300}
         autoComplete="off"
         spellCheck={false}
-        className={cn('form-control', { "active": searchText })}
+        className={cn('form-control', { 'active': searchText })}
         type="text"
         name="search"
         placeholder={searchPlaceholder}
@@ -79,7 +79,7 @@ const SearchForm = ({ t, history }) => {
       />
     </form>
   );
-}
+};
 
 SearchForm.propTypes = {
   t: PT.func.isRequired,

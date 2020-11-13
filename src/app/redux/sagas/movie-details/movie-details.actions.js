@@ -3,7 +3,7 @@ import {
   createActionsForAsyncAction
 } from 'app_redux/helpers/actions.helper';
 
-export const actionKeys = {
+const actionKeys = {
   MOVIE_DETAILS: 'MOVIE_DETAILS',
   MOVIE_CREDITS: 'MOVIE_CREDITS',
   MOVIE_VIDEOS: 'MOVIE_VIDEOS',
@@ -12,7 +12,7 @@ export const actionKeys = {
   MOVIE_RESET_ALL: 'MOVIE_RESET_ALL',
 };
 
-export const asyncActionMaps = {
+const asyncActionMaps = {
   [actionKeys.MOVIE_DETAILS]: createActionsForAsyncAction(actionKeys.MOVIE_DETAILS),
   [actionKeys.MOVIE_CREDITS]: createActionsForAsyncAction(actionKeys.MOVIE_CREDITS),
   [actionKeys.MOVIE_VIDEOS]: createActionsForAsyncAction(actionKeys.MOVIE_VIDEOS),
@@ -48,8 +48,13 @@ const actions = {
           actionKeys.MOVIE_RECOMMENDATIONS
         ]
       }
-    )
+    );
   }
+};
+
+export {
+  actionKeys,
+  asyncActionMaps
 };
 
 export const {

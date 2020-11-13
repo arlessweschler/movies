@@ -27,7 +27,7 @@ const NavToggle = (props) => {
       </div>
     </>
   );
-}
+};
 
 NavToggle.propTypes = {
   children: PT.oneOfType([

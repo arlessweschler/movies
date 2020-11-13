@@ -3,12 +3,12 @@ import {
   createActionsForAsyncAction
 } from 'app_redux/helpers/actions.helper';
 
-export const actionKeys = {
+const actionKeys = {
   MOVIES_LIST: 'MOVIES_LIST',
   GENRES_LIST: 'GENRES_LIST'
 };
 
-export const asyncActionMaps = {
+const asyncActionMaps = {
   [actionKeys.MOVIES_LIST]: createActionsForAsyncAction(actionKeys.MOVIES_LIST),
   [actionKeys.GENRES_LIST]: createActionsForAsyncAction(actionKeys.GENRES_LIST)
 };
@@ -25,14 +25,13 @@ const actions = {
   }
 };
 
-const getMovies = actions.getMovies;
-const getGenres = actions.getGenres;
-const resetMovies = actions.resetMovies;
-
-export default actions;
-
 export {
+  actionKeys,
+  asyncActionMaps
+};
+
+export const {
   getMovies,
   getGenres,
   resetMovies
-};
+} = actions;

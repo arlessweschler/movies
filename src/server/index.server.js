@@ -1,6 +1,6 @@
 const express = require('express');
 import logger from 'morgan';
-const favicon = require('serve-favicon')
+const favicon = require('serve-favicon');
 const path = require('path');
 const dotenv = require('dotenv-defaults');
 

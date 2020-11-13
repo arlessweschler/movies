@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pug = require('pug');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv-defaults');
 
 const getAlias = require('./webpack-common/alias');

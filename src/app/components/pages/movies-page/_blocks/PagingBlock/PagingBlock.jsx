@@ -4,7 +4,7 @@ import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
 import PTS from 'app_services/PropTypesService';
 import withMoviesNav from 'app_hocs/withMoviesNav';

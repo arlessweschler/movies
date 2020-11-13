@@ -3,7 +3,7 @@ import './ToolbarBlock.scss';
 import React from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { Button, ButtonGroup } from "reactstrap";
+import { Button, ButtonGroup } from 'reactstrap';
 import { withTranslation } from 'react-i18next';
 
 import { TMDB_MOVIES_TYPES } from 'app_config';

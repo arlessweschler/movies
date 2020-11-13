@@ -101,7 +101,7 @@ const LocaleDropdown = (props) => {
       </div>
     </div>
   );
-}
+};
 
 LocaleDropdown.propTypes = {
   i18n: PT.object.isRequired,

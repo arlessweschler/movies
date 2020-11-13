@@ -21,7 +21,7 @@ export default function (ROUTES) {
       console.log('-- ssr-request-handler, toPromise()');
 
       const preloadedState = store.getState();
-      const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, "\\u003c");
+      const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, '\\u003c');
 
       let context = {};
 
@@ -49,10 +49,10 @@ export default function (ROUTES) {
     branch.forEach(({ route }) => {
       const fetchData = route.component.fetchData;
       if (fetchData instanceof Function) {
-        fetchData(store, req.url, req.params)
+        fetchData(store, req.url, req.params);
       }
     });
 
     store.close();
-  }
+  };
 }

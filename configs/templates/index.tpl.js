@@ -55,4 +55,4 @@ html(lang="en")
     ${getScript(hash, 'vendor', 'chunk.js')}
     ${getScript(hash, 'main', 'js')}
 `;
-}
+};

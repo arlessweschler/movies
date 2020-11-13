@@ -16,7 +16,7 @@ function Section(props) {
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
   return (
-    <section className={cn(b('section', { "is-transparent": transparent }), cls)}>
+    <section className={cn(b('section', { 'is-transparent': transparent }), cls)}>
       {children}
     </section>
   );

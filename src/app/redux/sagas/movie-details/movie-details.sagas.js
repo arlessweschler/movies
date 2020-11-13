@@ -1,19 +1,7 @@
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, all } from 'redux-saga/effects';
 
 import ApiService from 'app_services/ApiService';
 import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie-details.actions';
-
-// watchers
-export function* watchMovieDetails() {
-  yield all([
-    takeEvery(actionKeys.MOVIE_DETAILS, getDetailsSaga),
-    takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
-    takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
-    takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
-    takeEvery(actionKeys.MOVIE_RECOMMENDATIONS, getRecommendationsSaga),
-    takeEvery(actionKeys.MOVIE_RESET_ALL, resetMovieDetailsSaga)
-  ]);
-}
 
 // workers
 function* getDetailsSaga({ type, payload }) {
@@ -113,4 +101,16 @@ function* resetMovieDetailsSaga({ payload }) {
       yield put(actions.fail(error.message));
     }
   }
+}
+
+// watchers
+export function* watchMovieDetails() {
+  yield all([
+    takeEvery(actionKeys.MOVIE_DETAILS, getDetailsSaga),
+    takeEvery(actionKeys.MOVIE_CREDITS, getCreditsSaga),
+    takeEvery(actionKeys.MOVIE_VIDEOS, getVideosSaga),
+    takeEvery(actionKeys.MOVIE_IMAGES, getImagesSaga),
+    takeEvery(actionKeys.MOVIE_RECOMMENDATIONS, getRecommendationsSaga),
+    takeEvery(actionKeys.MOVIE_RESET_ALL, resetMovieDetailsSaga)
+  ]);
 }

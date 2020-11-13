@@ -50,7 +50,7 @@ class MDetailsContextProvider extends Component {
       return (
         (video.site == searchParams.site) &&
         (video.type == searchParams.type)
-      )
+      );
     });
   };
 

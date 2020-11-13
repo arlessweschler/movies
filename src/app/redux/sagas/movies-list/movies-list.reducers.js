@@ -1,8 +1,6 @@
 import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
 import { createAsyncReducer, } from 'app_redux/helpers/reducers.helper';
 
-export const DEFAULT_MOVIES_TYPE = 'now_playing';
-
 const DEFAULT_MOVIES_STATE = {
   data: {
     page: 1,
@@ -32,5 +30,7 @@ const moviesReducer = {
     { initialState: DEFAULT_GENRES_STATE }
   )
 };
+
+export const DEFAULT_MOVIES_TYPE = 'now_playing';
 
 export default moviesReducer;

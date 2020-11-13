@@ -108,7 +108,7 @@ const Utils = {
 
     return hasUrlDiffs;
   }
-}
+};
 
 const formatLng = Utils.formatLng;
 const getDefaulQueryParams = Utils.getDefaulQueryParams;
@@ -131,4 +131,4 @@ export {
   capitalize,
   isEmpty,
   isNotEmpty
-}
+};

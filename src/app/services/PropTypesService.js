@@ -9,7 +9,7 @@ function createNullOrCheck(additionalType) {
     )
       ? null
       : new Error(`Property "${key}" value type expected to be null or ${additionalType}, but got type "${typeof value}"`);
-  }
+  };
 }
 
 function asyncShape(dataType) {

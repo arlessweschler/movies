@@ -8,11 +8,11 @@ function* fetchJson(url, { method }) {
   const response = yield fetch(url, { method });
 
   if (response.ok) {
-    return yield response.json()
+    return yield response.json();
   } else {
     yield response
       .text()
-      .then(text => { throw new Error(text) })
+      .then(text => { throw new Error(text); });
   }
 }
 

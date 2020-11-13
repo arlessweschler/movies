@@ -9,7 +9,7 @@ import rootSaga from 'app_redux/rootSaga';
 
 const sagas = [rootSaga];
 
-export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR';
+const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR';
 
 function createAbortableSaga(saga) {
   if (process.env.IS_DEV) {
@@ -34,6 +34,10 @@ const SagaManager = {
       type: CANCEL_SAGAS_HMR
     });
   }
+};
+
+export {
+  CANCEL_SAGAS_HMR
 };
 
 export default SagaManager;
