@@ -14,20 +14,16 @@ import {
 } from 'redux_actions';
 
 // маппинг редюсеров
-const mapStateToProps = ({ movieDetails }) => {
-  return {
-    recommendations: movieDetails.recommendations
-  };
-};
+const mapStateToProps = ({ movieDetails }) => ({
+  recommendations: movieDetails.recommendations
+});
 
 // маппинг экшен креэйторов
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({
-      getRecommendations
-    }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    getRecommendations
+  }, dispatch)
+});
 
 class RecommendationsContainer extends Component {
 

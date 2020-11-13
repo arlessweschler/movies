@@ -20,7 +20,6 @@ function asyncShape(dataType) {
   }).isRequired;
 }
 
-
 export default {
   asyncShape,
   nullOrString: createNullOrCheck('string'),

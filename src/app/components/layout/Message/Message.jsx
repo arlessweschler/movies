@@ -4,14 +4,12 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-function Message({ cls = '', text, children=null }) {
+function Message({ cls = '', text, children = null }) {
   if (!text && !children) return null;
 
   return (
     <div className={cn('message', cls)}>
-      {children
-        ? children
-        : text}
+      {children || text}
     </div>
   );
 }

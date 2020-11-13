@@ -17,7 +17,6 @@ function SearchResultsBlock({ t, cls_base, search, total }) {
     </span>
   );
 
-
   if (total == null || !search) return null;
 
   return (

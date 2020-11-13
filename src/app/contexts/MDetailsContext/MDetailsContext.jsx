@@ -16,26 +16,22 @@ class MDetailsContextProvider extends Component {
 
     const isJobsArray = Array.isArray(job);
 
-    const persons = [...new Set(crew.filter(item => {
-      return (
-        (item.department === department) &&
-        (isJobsArray
-          ? job.includes(item.job)
-          : (item.job === job)
-        )
-      );
-    }
-    ).map(p => p.name))];
+    const persons = [...new Set(crew.filter(item => (
+      (item.department === department) &&
+      (isJobsArray
+        ? job.includes(item.job)
+        : (item.job === job)
+      )
+    )).map(p => p.name))];
 
     if (isEmpty(persons)) {
       return null;
     }
 
     return persons.map(
-      (person, i) =>
-        i != (persons.length - 1)
-          ? `${person}, `
-          : person
+      (person, i) => (i != (persons.length - 1)
+        ? `${person}, `
+        : person)
     );
   };
 
@@ -46,12 +42,10 @@ class MDetailsContextProvider extends Component {
       return null;
     }
 
-    return videos.find((video) => {
-      return (
-        (video.site == searchParams.site) &&
-        (video.type == searchParams.type)
-      );
-    });
+    return videos.find((video) => (
+      (video.site == searchParams.site) &&
+      (video.type == searchParams.type)
+    ));
   };
 
   render() {

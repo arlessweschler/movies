@@ -20,9 +20,7 @@ const actions = {
   getGenres: function (request) {
     return createActionCreator(actionKeys.GENRES_LIST, { request });
   },
-  resetMovies: () => {
-    return asyncActionMaps[actionKeys.MOVIES_LIST].reset();
-  }
+  resetMovies: () => asyncActionMaps[actionKeys.MOVIES_LIST].reset()
 };
 
 export {

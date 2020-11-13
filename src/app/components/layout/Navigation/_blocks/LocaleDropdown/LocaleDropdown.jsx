@@ -16,6 +16,16 @@ const LocaleDropdown = (props) => {
   const location = history.location;
   const { lng: langQuery } = qs.parse(location.search);
 
+  function findLang(queryValue) {
+    if (!queryValue) return DEFAULT_LANGUAGE;
+
+    const finded = LANGUAGES.find(i => i.value == queryValue);
+
+    return isNotEmpty(finded)
+      ? finded
+      : DEFAULT_LANGUAGE;
+  }
+
   const defaultLang = findLang(langQuery);
   const [lang, setLang] = useState(defaultLang);
 
@@ -49,16 +59,6 @@ const LocaleDropdown = (props) => {
       unlisten();
     };
   }, [lang]);
-
-  function findLang(queryValue) {
-    if (!queryValue) return DEFAULT_LANGUAGE;
-
-    const finded = LANGUAGES.find(i => i.value == queryValue);
-
-    return isNotEmpty(finded)
-      ? finded
-      : DEFAULT_LANGUAGE;
-  }
 
   function onLangChange(e, location, nextLang) {
     e.preventDefault();

@@ -1,8 +1,9 @@
-require('isomorphic-fetch');
 import qs from 'query-string';
 
 import { TMDB_API_HOST } from 'app_config';
 import { formatLng } from 'app_services/UtilsService';
+
+require('isomorphic-fetch');
 
 function* fetchJson(url, { method }) {
   const response = yield fetch(url, { method });

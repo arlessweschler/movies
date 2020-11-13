@@ -1,15 +1,17 @@
-const express = require('express');
 import logger from 'morgan';
-const favicon = require('serve-favicon');
-const path = require('path');
-const dotenv = require('dotenv-defaults');
 
 import appResponseHeaders from 'server_config/app-response-headers';
 import extractRoutes from 'server_config/routes-extractor';
 import getSsrRequestHandler from 'server_config/ssr-request-handler';
 import REACT_ROUTES from 'app_routing/routes';
-const CLIENT_FOLDER = 'dist/client';
+
+const express = require('express');
+const favicon = require('serve-favicon');
+const path = require('path');
+const dotenv = require('dotenv-defaults');
+
 const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
+const CLIENT_FOLDER = 'dist/client';
 
 console.log(`index.server.js, env: ${JSON.stringify(env, null, 4)}`);
 console.log('index.server.js, process.env.PORT:', process.env.PORT);

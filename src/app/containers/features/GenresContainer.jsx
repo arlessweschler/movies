@@ -9,20 +9,16 @@ import { ProgressBar } from 'app_components/layout';
 import { getGenres } from 'redux_actions';
 
 // маппинг редюсеров
-const mapStateToProps = ({ genresList }) => {
-  return {
-    genresList
-  };
-};
+const mapStateToProps = ({ genresList }) => ({
+  genresList
+});
 
 // маппинг экшен креэйторов
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({
-      getGenres
-    }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    getGenres
+  }, dispatch)
+});
 
 class GenresContainer extends Component {
 
@@ -79,8 +75,7 @@ class GenresContainer extends Component {
         {genresList.isLoading && <ProgressBar />}
 
         {
-          React.cloneElement(
-            this.props.children, {
+          React.cloneElement(this.props.children, {
             printGenres: this.printGenres
           })
         }

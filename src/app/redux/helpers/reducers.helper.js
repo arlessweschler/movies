@@ -1,3 +1,10 @@
+const initialAsyncState = {
+  data: {},
+  isLoading: false,
+  error: null,
+  request: {}
+};
+
 const createAsyncReducerMap = (
   actionKey,
   params = {}
@@ -33,11 +40,9 @@ const createAsyncReducerMap = (
     };
   };
 
-  const resetReducerFn = () => {
-    return {
-      ...initialState
-    };
-  };
+  const resetReducerFn = () => ({
+    ...initialState
+  });
 
   return {
     [`${actionKey}_START`]: startReducerFn,
@@ -50,18 +55,9 @@ const createAsyncReducerMap = (
 const createReducer = (
   initialState = {},
   actionHandlerKeyFuncs = {}
-) => {
-  return (state = initialState, action) => {
-    const actionHandler = actionHandlerKeyFuncs[action.type];
-    return actionHandler ? actionHandler(state, action) : state;
-  };
-};
-
-const initialAsyncState = {
-  data: {},
-  isLoading: false,
-  error: null,
-  request: {}
+) => (state = initialState, action) => {
+  const actionHandler = actionHandlerKeyFuncs[action.type];
+  return actionHandler ? actionHandler(state, action) : state;
 };
 
 const createAsyncReducer = (

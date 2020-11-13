@@ -13,18 +13,16 @@ import {
   getRecommendations,
 } from 'redux_actions';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({
-      getDetails,
-      getCredits,
-      getVideos,
-      getImages,
-      getGenres,
-      getRecommendations,
-    }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    getDetails,
+    getCredits,
+    getVideos,
+    getImages,
+    getGenres,
+    getRecommendations,
+  }, dispatch)
+});
 
 // контейнер маршрута
 class MovieRouteContainer extends Component {

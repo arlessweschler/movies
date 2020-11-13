@@ -6,12 +6,10 @@ import routes from 'app_routing/routes';
 import history from 'app_history';
 import store from 'redux_store';
 
-const ClientRouter = () => {
-  return (
-    <Router history={history}>
-      {renderRoutes(routes, { store })}
-    </Router>
-  );
-};
+const ClientRouter = () => (
+  <Router history={history}>
+    {renderRoutes(routes, { store })}
+  </Router>
+);
 
 export default ClientRouter;

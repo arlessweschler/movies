@@ -40,7 +40,7 @@ module.exports = function ({ splitBy }) {
       default:
         throw new Error('No matching webpack optimization "splitBy" value found!');
     }
-  })(splitBy);
+  }(splitBy));
 
   return {
     splitChunks: {

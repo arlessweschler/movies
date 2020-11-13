@@ -11,17 +11,14 @@ import { Message, ProgressBar, Row } from 'app_components/layout';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from 'app_components/pages/movies-page/_blocks';
 import { getMovies } from 'redux_actions';
 import { GenresContainer } from 'app_containers';
+
 // маппинг редюсеров
-const mapStateToProps = ({ moviesList }) => {
-  return { moviesList };
-};
+const mapStateToProps = ({ moviesList }) => ({ moviesList });
 
 // маппинг экшен креэйторов
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({ getMovies }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({ getMovies }, dispatch)
+});
 
 class MoviesListContainer extends Component {
 

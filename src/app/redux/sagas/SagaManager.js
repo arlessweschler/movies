@@ -2,7 +2,6 @@
 // Note that reloading sagas has several issues/caveats to be aware of.
 // See https://github.com/yelouafi/redux-saga/issues/22#issuecomment-218737951 for discussion.
 
-
 import { take, fork, cancel } from 'redux-saga/effects';
 
 import rootSaga from 'app_redux/rootSaga';

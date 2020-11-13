@@ -8,7 +8,6 @@ import { Row, Column } from 'app_components/layout';
 
 function DescriptionSection({ transparent = true, context }) {
   const { movie, cls_base } = context;
-  const { title, original_title, production_countries, genres, release_date, runtime, vote_average, vote_count, tagline, overview } = movie;
 
   return (
     <Section {...{ transparent }}>
@@ -16,35 +15,45 @@ function DescriptionSection({ transparent = true, context }) {
         <Column size={9} cls="p-0">
           <TitleBlock
             cls={cls_base}
-            data={{ title, release_date, original_title }}
+            data={{
+              title: movie.title,
+              release_date: movie.release_date,
+              original_title: movie.original_title
+            }}
           />
         </Column>
 
         <Column size={3} cls="p-0">
           <RatingBlock
             cls={`${cls_base}-rating`}
-            data={{ vote_average, vote_count }}
+            data={{
+              vote_average: movie.vote_average, vote_count: movie.vote_count
+            }}
           />
         </Column>
       </Row>
 
       <TagsBlock
         cls={`${cls_base}-top`}
-        data={{ production_countries, genres, runtime }}
+        data={{
+          production_countries: movie.production_countries,
+          genres: movie.genres,
+          runtime: movie.runtime
+        }}
       />
 
       <CrewListBlock
         cls={`${cls_base}-crew`}
       />
 
-      {(tagline || overview) && <hr />}
+      {(movie.tagline || movie.overview) && <hr />}
 
       <Row cls="tagline">
-        {tagline}
+        {movie.tagline}
       </Row>
 
       <Row>
-        {overview}
+        {movie.overview}
       </Row>
     </Section>
   );

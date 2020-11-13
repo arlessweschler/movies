@@ -1,11 +1,11 @@
 import qs from 'query-string';
-const _ = require('lodash');
-
-import history from 'app_history';
-import imageNotAvailable from 'app_assets/img/image_not_available.png';
 
 import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
 import { DEFAULT_LANGUAGE, LANGUAGES } from 'app_i18n';
+import history from 'app_history';
+import imageNotAvailable from 'app_assets/img/image_not_available.png';
+
+const _ = require('lodash');
 
 const Utils = {
   /**
@@ -18,7 +18,9 @@ const Utils = {
     function changes(object, base) {
       return _.transform(object, function (result, value, key) {
         if (!_.isEqual(value, base[key])) {
-          result[key] = (_.isObject(value) && _.isObject(base[key])) ? changes(value, base[key]) : value;
+          result[key] = (_.isObject(value) && _.isObject(base[key]))
+            ? changes(value, base[key])
+            : value;
         }
       });
     }

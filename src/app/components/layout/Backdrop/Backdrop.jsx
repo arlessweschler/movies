@@ -19,8 +19,7 @@ function Backdrop(props) {
   return (
     <div
       className={cn('backdrop fixed-top',
-        { 'backdrop--main': !backdrop_path }
-      )}
+        { 'backdrop--main': !backdrop_path })}
       style={style}
     />
   );

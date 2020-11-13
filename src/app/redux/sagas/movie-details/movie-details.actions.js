@@ -21,35 +21,23 @@ const asyncActionMaps = {
 };
 
 const actions = {
-  getDetails: (request) => {
-    return createActionCreator(actionKeys.MOVIE_DETAILS, { request });
-  },
-  getCredits: (request) => {
-    return createActionCreator(actionKeys.MOVIE_CREDITS, { request });
-  },
-  getVideos: (request) => {
-    return createActionCreator(actionKeys.MOVIE_VIDEOS, { request });
-  },
-  getImages: (request) => {
-    return createActionCreator(actionKeys.MOVIE_IMAGES, { request });
-  },
-  getRecommendations: (request) => {
-    return createActionCreator(actionKeys.MOVIE_RECOMMENDATIONS, { request });
-  },
-  resetMovieDetails: () => {
-    return createActionCreator(
-      actionKeys.MOVIE_RESET_ALL,
-      {
-        resetList: [
-          actionKeys.MOVIE_DETAILS,
-          actionKeys.MOVIE_CREDITS,
-          actionKeys.MOVIE_VIDEOS,
-          actionKeys.MOVIE_IMAGES,
-          actionKeys.MOVIE_RECOMMENDATIONS
-        ]
-      }
-    );
-  }
+  getDetails: (request) => createActionCreator(actionKeys.MOVIE_DETAILS, { request }),
+  getCredits: (request) => createActionCreator(actionKeys.MOVIE_CREDITS, { request }),
+  getVideos: (request) => createActionCreator(actionKeys.MOVIE_VIDEOS, { request }),
+  getImages: (request) => createActionCreator(actionKeys.MOVIE_IMAGES, { request }),
+  getRecommendations: (request) => createActionCreator(actionKeys.MOVIE_RECOMMENDATIONS, { request }),
+  resetMovieDetails: () => createActionCreator(
+    actionKeys.MOVIE_RESET_ALL,
+    {
+      resetList: [
+        actionKeys.MOVIE_DETAILS,
+        actionKeys.MOVIE_CREDITS,
+        actionKeys.MOVIE_VIDEOS,
+        actionKeys.MOVIE_IMAGES,
+        actionKeys.MOVIE_RECOMMENDATIONS
+      ]
+    }
+  )
 };
 
 export {

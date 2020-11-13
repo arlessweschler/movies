@@ -9,14 +9,12 @@ import {
   getGenres
 } from 'redux_actions';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({
-      getMovies,
-      getGenres
-    }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    getMovies,
+    getGenres
+  }, dispatch)
+});
 
 // контейнер маршрута
 class MoviesRouteContainer extends Component {

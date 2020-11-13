@@ -15,23 +15,19 @@ import { RecommendationsContainer } from 'app_containers';
 import { getDetails, getCredits, getVideos, getImages } from 'redux_actions';
 
 // маппинг редюсеров
-const mapStateToProps = ({ movieDetails }) => {
-  return {
-    details: movieDetails
-  };
-};
+const mapStateToProps = ({ movieDetails }) => ({
+  details: movieDetails
+});
 
 // маппинг экшен креэйторов
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators({
-      getDetails,
-      getCredits,
-      getVideos,
-      getImages
-    }, dispatch)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({
+    getDetails,
+    getCredits,
+    getVideos,
+    getImages
+  }, dispatch)
+});
 
 class MovieDetailsContainer extends Component {
 

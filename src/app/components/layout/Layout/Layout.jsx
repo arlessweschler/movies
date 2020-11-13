@@ -5,20 +5,18 @@ import PT from 'prop-types';
 
 import { Header, Footer, Backdrop } from 'app_components/layout';
 
-const Layout = (props) => {
-  return (
-    <>
-      <Header />
-      <main className="layout">
-        <div className="container position-relative p-0">
-          <Backdrop />
-          {props.children}
-        </div>
-      </main>
-      <Footer />
-    </>
-  );
-};
+const Layout = (props) => (
+  <>
+    <Header />
+    <main className="layout">
+      <div className="container position-relative p-0">
+        <Backdrop />
+        {props.children}
+      </div>
+    </main>
+    <Footer />
+  </>
+);
 
 Layout.propTypes = {
   children: PT.oneOfType([
