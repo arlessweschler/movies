@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
-import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
 import { isEmpty, getQueryParams, hasRequestDiffs } from 'app_services/UtilsService';
-import { Message, ProgressBar, Row } from 'app_components/layout';
+import {
+  Page, Message, ProgressBar, Row
+} from 'app_components/layout';
 import {
   ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock
 } from 'app_components/pages/movies-page/_blocks';
@@ -62,8 +63,6 @@ class MoviesListContainer extends Component {
       results, total_results, total_pages, page
     } = data;
     const { search } = getQueryParams();
-
-    const cls_base = 'movies-list';
     const hasMovies = !isEmpty(results);
 
     const props_paging = {
@@ -72,12 +71,11 @@ class MoviesListContainer extends Component {
     };
 
     return (
-      <div className={cn(cls_base)}>
+      <Page>
         {error && <Message cls="mb-3" text={error} />}
         {isLoading && <ProgressBar />}
 
         <SearchResultsBlock
-          cls_base={`${cls_base}-search-results`}
           search={search}
           total={total_results}
         />
@@ -99,7 +97,7 @@ class MoviesListContainer extends Component {
         </Row>
 
         <GenresContainer>
-          <ListBlock cls_base={cls_base} movies={results} />
+          <ListBlock movies={results} />
         </GenresContainer>
 
         {(hasMovies && total_results > 20) && (
@@ -107,7 +105,7 @@ class MoviesListContainer extends Component {
             <PagingBlock cls="m-0" {...props_paging} />
           </Row>
         )}
-      </div>
+      </Page>
     );
   }
 }

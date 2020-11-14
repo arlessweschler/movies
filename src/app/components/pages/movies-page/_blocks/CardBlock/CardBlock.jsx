@@ -10,12 +10,9 @@ import { CardImageBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
-  const {
-    cls, movie, printGenres, linkMovie
-  } = props;
+  const { movie, printGenres, linkMovie } = props;
   const { id, title, genre_ids } = movie;
-
-  const b = b_.with(cls);
+  const b = b_.with('list-card');
 
   return (
     <div
@@ -23,8 +20,7 @@ function CardBlock(props) {
       onClick={() => linkMovie(id)}
     >
       <CardImageBlock
-        cls={cls}
-        movie={movie}
+        {...{ movie }}
       />
 
       <div className={b('body')}>
@@ -43,7 +39,6 @@ function CardBlock(props) {
 
 CardBlock.propTypes = {
   linkMovie: PT.func.isRequired,
-  cls: PT.string,
 
   printGenres: PT.func.isRequired,
   movie: PT.shape({

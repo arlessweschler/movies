@@ -14,8 +14,7 @@ function PagingBlock(props) {
     cls, initialPage, pageCount, linkPage
   } = props;
 
-  const cls_base = 'pagination';
-  const b = b_.B({ modSeparator: '--' }).with(cls_base);
+  const b = b_.B({ modSeparator: '--' }).with('pagination');
 
   return (
     <ReactPaginate

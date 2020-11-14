@@ -1,9 +1,6 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-navbar-cls;
-
-.#{$b}.navbar {
+.movies-navbar.navbar {
   background-color: $purple;
   border-bottom: 1px solid $black-btn-border;
 
@@ -22,7 +19,7 @@ $b: $movie-navbar-cls;
     font-size: 1.8rem;
     line-height: 0;
     font-weight: 500;
-    font-family: "Bebas Neue", cursive;
+    font-family: 'Bebas Neue', cursive;
 
     &:hover {
       color: $yellow;

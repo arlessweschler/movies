@@ -7,6 +7,7 @@ import Row from 'app_components/layout/Row/Row';
 import Column from 'app_components/layout/Column/Column';
 import Backdrop from 'app_components/layout/Backdrop/Backdrop';
 import Message from 'app_components/layout/Message/Message';
+import Page from 'app_components/layout/Page/Page';
 
 export {
   Layout,
@@ -17,5 +18,6 @@ export {
   Row,
   Column,
   Backdrop,
-  Message
+  Message,
+  Page
 };

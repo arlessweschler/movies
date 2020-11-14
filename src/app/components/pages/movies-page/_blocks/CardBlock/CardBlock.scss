@@ -1,47 +1,40 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/base_classes';
+@import 'app_assets/css/variables/colors';
+@import 'app_assets/css/variables/mixins';
 
-$b: $movies-list-base-cls;
-$b_grid: "#{$b}-grid";
-$b_card: "#{$b}-card";
+$base: 'list-card';
 
-$title-text-color: $white_mod;
-$genres-text-color: $lightblue;
+.#{$base} {
+  display: flex;
+  flex-direction: column;
+  width: $list-card-width;
+  margin-bottom: 15px;
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 
-@mixin text-ellipsis {
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+  @media screen and (max-width: 576px) {
+    width: $list-card-width--sm;
+  }
 
-.#{$b} {
-  .#{$b_card} {
-    &:hover {
-      text-decoration: none;
-      transform: scale(1.1);
-      cursor: pointer;
-    }
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 
-    &__body {
-      flex: 1 1 auto;
-      position: relative;
-      padding: 0.3rem;
+  .#{$base}__body {
+    flex: 1 1 auto;
+    position: relative;
+    padding: 0.3rem;
+  }
 
-      // padding: 5px 10px;
-      // background-color: rgba(0, 0, 0, 0.5);
-      // border-radius: 0px 0px 8px 8px;
-    }
+  .#{$base}__title {
+    @include text-ellipsis;
+    line-height: 1.2;
+    color: $white_mod;
+  }
 
-    &__title {
-      @include text-ellipsis;
-      line-height: 1.2;
-      color: $title-text-color;
-    }
-
-    &__genres {
-      @include text-ellipsis;
-      color: $genres-text-color;
-    }
+  .#{$base}__genres {
+    @include text-ellipsis;
+    color: $lightblue;
   }
 }

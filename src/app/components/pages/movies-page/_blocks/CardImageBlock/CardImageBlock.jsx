@@ -10,14 +10,12 @@ import { CardRatingBlock } from
   'app_components/pages/movies-page/_blocks';
 
 function CardImageBlock(props) {
-  const { t, cls, movie } = props;
+  const { t, movie } = props;
   const { poster_path, vote_average } = movie;
-
-  const b = b_.with(cls);
+  const b = b_.with('list-card');
 
   return (
     <div className={b('image-wrapper')}>
-
       {
         poster_path
           ? (
@@ -34,8 +32,7 @@ function CardImageBlock(props) {
       }
 
       <CardRatingBlock
-        vote_average={vote_average}
-        cls={cls}
+        {...{ vote_average }}
       />
     </div>
   );
@@ -43,7 +40,6 @@ function CardImageBlock(props) {
 
 CardImageBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string,
 
   movie: PT.shape({
     poster_path: PT.string,

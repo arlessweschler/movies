@@ -64,18 +64,13 @@ class RecommsContainer extends Component {
 
   render() {
     const { recommsList } = this.props;
-    const { data, error } = recommsList;
+    const { data, isLoading } = recommsList;
 
     return (
       <>
-        {recommsList.isLoading && <ProgressBar />}
+        {isLoading && <ProgressBar />}
 
-        <RecommsSection
-          data_moviesList={{
-            movies: data.results,
-            error
-          }}
-        />
+        <RecommsSection movies={data.results} />
       </>
     );
   }

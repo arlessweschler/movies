@@ -18,7 +18,6 @@ import {
 } from 'app_components/layout/Navigation/_blocks/';
 
 const Navigation = () => {
-  const cls_base = 'movies-navbar';
   const dispatch = useDispatch();
 
   const goHome = (e) => {
@@ -36,7 +35,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={cn(cls_base, 'navbar navbar-expand-sm navbar-dark')}>
+    <nav className={cn('movies-navbar', 'navbar navbar-expand-sm navbar-dark')}>
       <div className="container p-0">
         <a
           href="/"

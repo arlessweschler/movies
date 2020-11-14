@@ -1,8 +1,6 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movies-list-base-cls;
-$b_card: "#{$b}-card";
+$base: 'list-card';
 
 $image-height: 300px;
 $image-height--sm: 400px;
@@ -14,37 +12,32 @@ $image-height--sm: 400px;
   border-radius: 8px;
 }
 
-.#{$b} {
+.#{$base}__image-wrapper {
+  position: relative;
+  height: $image-height;
 
-  .#{$b_card} {
-    &__image-wrapper {
-      position: relative;
-      height: $image-height;
+  @media screen and (max-width: 576px) {
+    height: $image-height--sm;
+  }
 
-      @media screen and (max-width: 576px) {
-        height: $image-height--sm;
-      }
+  .#{$base}__image {
+    @include card-image;
+    object-fit: cover;
+    animation: animateOpacity 0.7s ease;
+    border: 1px solid $black_mod;
+  }
 
-      .#{$b_card}__image {
-        @include card-image;
-        object-fit: cover;
-        animation: animateOpacity 0.7s ease;
-        border: 1px solid $black_mod;
-      }
+  .no-image-text {
+    @include card-image;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
 
-      .no-image-text {
-        @include card-image;
-        display: flex;
-        padding: 10px;
-        justify-content: center;
-        align-items: center;
-
-        font-size: 1.1rem;
-        word-break: break-word;
-        color: $lightgray;
-        background-color: rgba(0, 0, 0, 0.5);
-        border: 1px solid $black_mod;
-      }
-    }
+    font-size: 1.1rem;
+    word-break: break-word;
+    color: $lightgray;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid $black_mod;
   }
 }
