@@ -17,19 +17,19 @@ function MediaSection({ transparent = true, context }) {
   const b = b_.B({ modSeparator: '--' }).with(cls_base);
 
   // classes for keeping 16by9 aspect ration
-  const cls_embed = 'embed-responsive';
+  const clsEmbed = 'embed-responsive';
   const keepAspectRatio = true;
 
   const cls = {
-    poster_col: cn(b('column', { left: true }), {
-      [cls_embed]: keepAspectRatio
+    posterCol: cn(b('column', { left: true }), {
+      [clsEmbed]: keepAspectRatio
     }),
     poster: cn({
-      [`${cls_embed}-item`]: keepAspectRatio
+      [`${clsEmbed}-item`]: keepAspectRatio
     }),
-    player_col: cn(b('column'), {
-      [cls_embed]: keepAspectRatio,
-      [`${cls_embed}-16by9`]: keepAspectRatio
+    playerCol: cn(b('column'), {
+      [clsEmbed]: keepAspectRatio,
+      [`${clsEmbed}-16by9`]: keepAspectRatio
     })
   };
 
@@ -40,7 +40,7 @@ function MediaSection({ transparent = true, context }) {
     >
       <Row cls="px-3">
         <Column
-          cls={cls.poster_col}
+          cls={cls.posterCol}
           size={4}
           smallFullWidth={true}
         >
@@ -51,7 +51,7 @@ function MediaSection({ transparent = true, context }) {
         </Column>
 
         <Column
-          cls={cls.player_col}
+          cls={cls.playerCol}
           size={8}
           smallFullWidth={true}
         >

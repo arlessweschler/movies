@@ -42,14 +42,14 @@ class MovieDetailsContainer extends Component {
 
   componentDidUpdate(prevProps) {
     const { match, location } = this.props;
-    const { movie_id } = match.params;
+    const { movieId } = match.params;
 
     if (
       (match.params !== prevProps.match.params)
       || (location.search !== prevProps.location.search)
     ) {
       this.getDataIf(({ request }) => (
-        (movie_id !== request.movie_id)
+        (movieId !== request.movieId)
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ));
     }
@@ -57,7 +57,7 @@ class MovieDetailsContainer extends Component {
 
   getDataIf = (condition) => {
     const { details, match, actions } = this.props;
-    const { movie_id } = match.params;
+    const { movieId } = match.params;
     const { lng } = getQueryParams();
 
     const sections = [
@@ -69,7 +69,7 @@ class MovieDetailsContainer extends Component {
 
     sections.forEach(({ sectionName, methodName }) => {
       if (condition(details[sectionName])) {
-        actions[methodName]({ movie_id, lng });
+        actions[methodName]({ movieId, lng });
       }
     });
   }
@@ -113,7 +113,7 @@ class MovieDetailsContainer extends Component {
 MovieDetailsContainer.propTypes = {
   match: PT.shape({
     params: PT.shape({
-      movie_id: PT.string.isRequired
+      movieId: PT.string.isRequired
     })
   }),
 

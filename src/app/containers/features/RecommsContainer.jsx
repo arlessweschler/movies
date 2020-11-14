@@ -33,18 +33,18 @@ class RecommsContainer extends Component {
       recommsList, actions, location, match
     } = this.props;
     const { request } = recommsList;
-    const { movie_id } = match.params;
+    const { movieId } = match.params;
 
     if (
       match.params !== prevProps.match.params
       || location.search !== prevProps.location.search
     ) {
       if (
-        (movie_id !== request.movie_id)
+        (movieId !== request.movieId)
         || hasRequestDiffs({ request, checklist: ['lng'] })
       ) {
         const { lng } = getQueryParams();
-        actions.getRecomms({ movie_id, lng });
+        actions.getRecomms({ movieId, lng });
       }
     }
   }
@@ -54,11 +54,11 @@ class RecommsContainer extends Component {
 
     const { recommsList, match, actions } = this.props;
     const { request } = recommsList;
-    const { movie_id } = match.params;
+    const { movieId } = match.params;
 
-    if (movie_id !== request.movie_id) {
+    if (movieId !== request.movieId) {
       const { lng } = getQueryParams();
-      actions.getRecomms({ movie_id, lng });
+      actions.getRecomms({ movieId, lng });
     }
   }
 
@@ -84,7 +84,7 @@ class RecommsContainer extends Component {
 RecommsContainer.propTypes = {
   match: PT.shape({
     params: PT.shape({
-      movie_id: PT.string.isRequired
+      movieId: PT.string.isRequired
     })
   }),
 
@@ -100,7 +100,7 @@ RecommsContainer.propTypes = {
     isLoading: PT.bool.isRequired,
     error: PTS.nullOrString,
     request: PT.shape({
-      movie_id: PT.string,
+      movieId: PT.string,
       lng: PT.string,
     }).isRequired,
     data: PT.shape({

@@ -19,10 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 // получение данных для отправки разметки с данными при серверном рендеринге
 class MoviesRouteContainer extends Component {
   static fetchData(store, url) {
-    console.log('\n--MoviesRouteContainer.fetchData(), url:', url);
-
     const queryParams = getQueryParams(url.split('?').pop());
-    console.log('queryParams:', queryParams);
 
     store.dispatch(getGenres(queryParams));
     store.dispatch(getMovies(queryParams));

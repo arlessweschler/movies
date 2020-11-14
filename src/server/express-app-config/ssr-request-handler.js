@@ -8,17 +8,15 @@ import rootSaga from 'app_redux/rootSaga';
 
 export default (ROUTES) => (req, res) => {
   const branch = matchRoutes(ROUTES, req.path);
-  console.log('-- ssr-request-handler');
+  /* eslint-disable no-console */
+  console.log('\n--ssr-request-handler');
   console.log('req.url:', req.url);
-  console.log('req.path :', req.path);
-  console.log('req.params:', req.params);
   console.log('req.query:', req.query);
+  /* eslint-disable no-console */
 
   const store = configureStore();
 
   store.runSaga(rootSaga).toPromise().then(() => {
-    console.log('-- ssr-request-handler, toPromise()');
-
     const preloadedState = store.getState();
     const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, '\\u003c');
 
@@ -43,7 +41,6 @@ export default (ROUTES) => (req, res) => {
       IS_SSR: true
     });
   }).catch((e) => {
-    console.log('-- ssr-request-handler, catch, e.message:', e.message);
     res.status(500).send(e.message);
   });
 

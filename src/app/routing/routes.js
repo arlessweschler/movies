@@ -18,7 +18,7 @@ const routes = [
       },
 
       {
-        path: '/movies/:movie_id',
+        path: '/movies/:movieId',
         exact: true,
         component: MovieRouteContainer
       },

@@ -34,11 +34,11 @@
   ],
   "rules": {
     "semi": [
-      "error",
+      "warn",
       "always"
     ],
     "quotes": [
-      "error",
+      "warn",
       "single"
     ],
     "quote-props": [
@@ -54,7 +54,7 @@
       }
     ],
     "operator-linebreak": [
-      "error",
+      "warn",
       "before",
       {
         "overrides": {
@@ -63,22 +63,31 @@
       }
     ],
     "comma-dangle": [
-      "error",
+      "warn",
       "only-multiline"
     ],
-    /*     "camelcase": [
+    "no-trailing-spaces": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-multi-spaces": "warn",
+    "space-before-function-paren": "warn",
+    "space-before-blocks": "warn",
+    "object-curly-spacing": "warn",
+    "comma-spacing": "warn",
+    "space-in-parens": "warn",
+    "padded-blocks": "warn",
+    "indent": "warn",
+    "no-console": "warn",
+/*     "camelcase": [
       "error",
       {
+        "properties": "never",
         "ignoreDestructuring": true
       }
     ], */
-
     "linebreak-style": 0,
     "eol-last": 0,
-    "no-console": 0,
     "camelcase": 0,
     "import/no-cycle": 0,
-    
     "import/no-unresolved": "error",
     "import/default": "error",
     "import/namespace": "error",
@@ -86,14 +95,14 @@
     "import/no-dynamic-require": "error",
     "import/no-webpack-loader-syntax": "error",
     "import/no-self-import": "error",
-    "import/no-useless-path-segments": "error",
-    "import/first": "error",
+    "import/no-useless-path-segments": "warn",
+    "import/first": "warn",
     "import/export": "error",
     "import/no-deprecated": "error",
-    "import/exports-last": "error",
+    "import/exports-last": "warn",
     "import/no-namespace": "error",
     "import/no-unassigned-import": [
-      "error",
+      "warn",
       {
         "allow": [
           "**/*.scss",
@@ -104,19 +113,19 @@
     ],
     "import/no-named-default": "error",
     "react/jsx-fragments": [
-      "error",
+      "warn",
       "syntax"
     ],
-    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-no-useless-fragment": "warn",
     "react/default-props-match-prop-types": "error",
     "react/forbid-foreign-prop-types": "error",
     "react/jsx-boolean-value": [
       "error",
       "always"
     ],
-    "react/jsx-child-element-spacing": "error",
-    "react/jsx-closing-bracket-location": "error",
-    "react/jsx-closing-tag-location": "error",
+    "react/jsx-child-element-spacing": "warn",
+    "react/jsx-closing-bracket-location": "warn",
+    "react/jsx-closing-tag-location": "warn",
     "react/jsx-curly-brace-presence": [
       "error",
       {
@@ -132,13 +141,13 @@
       }
     ],
     "react/jsx-curly-spacing": [
-      "error",
+      "warn",
       {
         "when": "never"
       }
     ],
     "react/jsx-equals-spacing": [
-      "error",
+      "warn",
       "never"
     ],
     "react/jsx-filename-extension": [
@@ -151,7 +160,7 @@
       }
     ],
     "react/jsx-indent": [
-      "error",
+      "warn",
       2,
       {
         "indentLogicalExpressions": false
@@ -172,7 +181,7 @@
     "react/jsx-pascal-case": "error",
     "react/jsx-props-no-multi-spaces": "error",
     "react/jsx-tag-spacing": [
-      "error",
+      "warn",
       {
         "closingSlash": "never",
         "beforeSelfClosing": "always",

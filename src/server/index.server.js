@@ -13,16 +13,12 @@ const dotenv = require('dotenv-defaults');
 const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
 const CLIENT_FOLDER = 'dist/client';
 
-console.log(`index.server.js, env: ${JSON.stringify(env, null, 4)}`);
-console.log('index.server.js, process.env.PORT:', process.env.PORT);
-
 const app = express();
 app.use(favicon(path.join(`${__dirname}/client/favicon.ico`)));
 app.use(logger('dev'));
 app.use(appResponseHeaders);
 
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
-console.log('EXPRESS_ROUTES:', EXPRESS_ROUTES);
 
 // серверный рендеринг
 if (env.RENDERING === 'server') {
@@ -57,5 +53,7 @@ if (env.RENDERING === 'server') {
 const PORT = process.env.PORT || env.PORT_SERVER;
 const listener = app.listen(PORT, (err) => {
   if (err) throw new Error('Express app port listening error:', err);
+  /* eslint-disable no-console */
   console.log('\n--Express app listening on:', listener.address());
+  /* eslint-disable no-console */
 });

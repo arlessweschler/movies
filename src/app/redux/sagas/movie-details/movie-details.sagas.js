@@ -7,12 +7,12 @@ import { actionKeys, asyncActionMaps } from 'app_redux/sagas/movie-details/movie
 function* getDetailsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { movie_id, lng } = request;
+  const { movieId, lng } = request;
 
   yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movie_id}`,
+      url: `/movie/${movieId}`,
       params: { lng }
     });
     yield put(actions.success(data));
@@ -24,12 +24,12 @@ function* getDetailsSaga({ type, payload }) {
 function* getCreditsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { movie_id, lng } = request;
+  const { movieId, lng } = request;
 
   yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movie_id}/credits`,
+      url: `/movie/${movieId}/credits`,
       params: { lng }
     });
     yield put(actions.success(data));
@@ -41,12 +41,12 @@ function* getCreditsSaga({ type, payload }) {
 function* getVideosSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { movie_id, lng } = request;
+  const { movieId, lng } = request;
 
   yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movie_id}/videos`,
+      url: `/movie/${movieId}/videos`,
       params: { lng }
     });
     yield put(actions.success(data.results));
@@ -58,12 +58,12 @@ function* getVideosSaga({ type, payload }) {
 function* getImagesSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { movie_id } = request;
+  const { movieId } = request;
 
   yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movie_id}/images`,
+      url: `/movie/${movieId}/images`,
       params: { lng: null }
     });
     yield put(actions.success(data.backdrops));
@@ -75,12 +75,12 @@ function* getImagesSaga({ type, payload }) {
 function* getRecommsSaga({ type, payload }) {
   const actions = asyncActionMaps[type];
   const { request } = payload;
-  const { movie_id, lng } = request;
+  const { movieId, lng } = request;
 
   yield put(actions.start(request));
   try {
     const data = yield ApiService.fetch({
-      url: `/movie/${movie_id}/recommendations`,
+      url: `/movie/${movieId}/recommendations`,
       params: { page: 1, lng }
     });
     yield put(actions.success(data));
