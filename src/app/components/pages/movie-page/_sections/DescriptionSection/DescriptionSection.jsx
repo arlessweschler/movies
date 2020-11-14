@@ -2,21 +2,19 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { withMDetailsContext } from 'app_contexts';
-import { Section } from 'app_components/pages/movie-page/_sections';
 import {
   TitleBlock, TagsBlock, RatingBlock, CrewListBlock
 } from 'app_components/pages/movie-page/_blocks';
-import { Row, Column } from 'app_components/layout';
+import { Section, Row, Column } from 'app_components/layout';
 
-function DescriptionSection({ transparent = true, context }) {
-  const { movie, cls_base } = context;
+function DescriptionSection({ context }) {
+  const { movie } = context;
 
   return (
-    <Section {...{ transparent }}>
+    <Section transparent={true}>
       <Row>
         <Column size={9} cls="p-0">
           <TitleBlock
-            cls={cls_base}
             data={{
               title: movie.title,
               release_date: movie.release_date,
@@ -27,7 +25,6 @@ function DescriptionSection({ transparent = true, context }) {
 
         <Column size={3} cls="p-0">
           <RatingBlock
-            cls={`${cls_base}-rating`}
             data={{
               vote_average: movie.vote_average, vote_count: movie.vote_count
             }}
@@ -36,17 +33,15 @@ function DescriptionSection({ transparent = true, context }) {
       </Row>
 
       <TagsBlock
-        className={`${cls_base}-top`}
         data={{
           production_countries: movie.production_countries,
           genres: movie.genres,
+          release_date: movie.release_date,
           runtime: movie.runtime
         }}
       />
 
-      <CrewListBlock
-        cls={`${cls_base}-crew`}
-      />
+      <CrewListBlock />
 
       {(movie.tagline || movie.overview) && <hr />}
 
@@ -62,10 +57,7 @@ function DescriptionSection({ transparent = true, context }) {
 }
 
 DescriptionSection.propTypes = {
-  transparent: PT.bool,
-
   context: PT.shape({
-    cls_base: PT.string.isRequired,
     movie: PT.shape({
       title: PT.string,
       original_title: PT.string,

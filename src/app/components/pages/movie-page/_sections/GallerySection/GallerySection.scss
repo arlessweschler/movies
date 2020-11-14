@@ -1,17 +1,9 @@
-@import "app_assets/css/variables/base_classes";
+.image-gallery {
+  width: 100%;
 
-$b: $movie-details-base-cls;
-
-.#{$b} {
-  .#{$b}__gallery {
-    img {
-      margin-right: 10px;
-      margin-bottom: 10px;
-      border: 1px solid lightgray;
-    }
-
-    .image-gallery {
-      width: 100%;
-    }
+  img {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
   }
 }

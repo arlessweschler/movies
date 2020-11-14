@@ -2,16 +2,19 @@ import './TagsBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
+import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import b_ from 'b_';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHistory, faVideo, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faHistory, faVideo, faGlobe, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { withTranslation } from 'react-i18next';
 import { isNotEmpty, capitalize } from 'app_services/UtilsService';
 
-function TagsBlock({ t, className, data }) {
-  const { production_countries, genres, runtime } = data;
+function TagsBlock({ t, data }) {
+  const {
+    production_countries, genres, release_date, runtime
+  } = data;
 
   if (production_countries.length < 1 || genres.length < 1 || !runtime) return null;
 
@@ -21,6 +24,8 @@ function TagsBlock({ t, className, data }) {
     m = m < 10 ? `0${m}` : m;
     return `${h}${t('movie_details.duration.hours')} ${m}${t('movie_details.duration.minutes')}`;
   };
+
+  const getReleaseDate = (val) => moment(val).format('DD.MM.YYYY');
 
   const mapWithSemicolons = (list) => list.map((item, i) => {
     const value = (<span className="tag-value">{capitalize(item.name)}</span>);
@@ -48,6 +53,9 @@ function TagsBlock({ t, className, data }) {
       value: production_countries, icon: faGlobe, func: mapWithSemicolons, cls: 'countries'
     },
     {
+      value: release_date, icon: faCalendarAlt, func: getReleaseDate, cls: 'release-date'
+    },
+    {
       value: runtime, icon: faHistory, func: getDuration, cls: 'runtime'
     },
   ];
@@ -60,7 +68,7 @@ function TagsBlock({ t, className, data }) {
     }
   });
 
-  const b = b_.B({ modSeparator: '--' }).with(className);
+  const b = b_.B({ modSeparator: '--' }).with('movie-details-tags');
 
   return (
     <div className={b()}>
@@ -84,11 +92,11 @@ function TagsBlock({ t, className, data }) {
 
 TagsBlock.propTypes = {
   t: PT.func.isRequired,
-  className: PT.string.isRequired,
 
   data: PT.shape({
     production_countries: PT.array,
     genres: PT.array,
+    release_date: PT.string,
     runtime: PT.number
   }).isRequired
 };

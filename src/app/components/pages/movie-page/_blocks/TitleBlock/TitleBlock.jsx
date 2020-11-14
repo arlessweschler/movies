@@ -8,9 +8,9 @@ import cn from 'classnames';
 
 import { withTranslation } from 'react-i18next';
 
-function TitleBlock({ t, cls, data }) {
+function TitleBlock({ t, data }) {
   const { title, release_date, original_title } = data;
-  const b = b_.with(cls);
+  const b = b_.with('movie-details-header');
 
   return (
     <>
@@ -25,7 +25,7 @@ function TitleBlock({ t, cls, data }) {
         {
           release_date &&
           <span className={b('year')}>
-            {moment(release_date).format('YYYY')}
+            {`(${moment(release_date).format('YYYY')})`}
           </span>
         }
       </h1>
@@ -36,7 +36,7 @@ function TitleBlock({ t, cls, data }) {
             {original_title}
           </span>
           <span className="ml-1">
-            {t('movie_details.original_title')}
+            {`(${t('movie_details.original_title')})`}
           </span>
         </div>
       )}
@@ -46,7 +46,6 @@ function TitleBlock({ t, cls, data }) {
 
 TitleBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string.isRequired,
 
   data: PT.shape({
     title: PT.string,

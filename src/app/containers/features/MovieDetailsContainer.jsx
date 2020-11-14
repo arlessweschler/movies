@@ -3,15 +3,13 @@ import PT from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import b_ from 'b_';
-import cn from 'classnames';
 
 import PTS from 'app_services/PropTypesService';
 import {
   isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams
 } from 'app_services/UtilsService';
 import { MDetailsContextProvider } from 'app_contexts';
-import { Backdrop, ProgressBar } from 'app_components/layout';
+import { Page, Backdrop, ProgressBar } from 'app_components/layout';
 import {
   DescriptionSection, MediaSection, ActorsSection, GallerySection
 } from 'app_components/pages/movie-page/_sections';
@@ -80,16 +78,12 @@ class MovieDetailsContainer extends Component {
       movie, credits, videos, images
     } = details;
 
-    const cls_base = 'movie-details';
-    const b = b_.with(cls_base);
-
     return (
       <>
         { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
         {isNotEmpty(movie.data) &&
           <MDetailsContextProvider
-            cls_base={cls_base}
             credits={credits.data}
             videos={videos.data}
             movie={movie.data}
@@ -97,13 +91,13 @@ class MovieDetailsContainer extends Component {
           >
             <Backdrop backdrop_path={movie.data.backdrop_path} />
 
-            <div className={cn(b())}>
+            <Page>
               <DescriptionSection />
               <MediaSection />
               <ActorsSection />
               <GallerySection />
               <RecommsContainer />
-            </div>
+            </Page>
           </MDetailsContextProvider>}
       </>
     );

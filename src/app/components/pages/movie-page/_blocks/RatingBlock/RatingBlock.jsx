@@ -3,14 +3,13 @@ import './RatingBlock.scss';
 import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
+import { withTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import { withTranslation } from 'react-i18next';
-
-function RatingBlock({ t, cls, data }) {
+function RatingBlock({ t, data }) {
   const { vote_average, vote_count } = data;
-  const b = b_.with(cls);
+  const b = b_.with('movie-details-rating');
 
   if (!vote_average) return null;
 
@@ -45,7 +44,6 @@ function RatingBlock({ t, cls, data }) {
 
 RatingBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string.isRequired,
 
   data: PT.shape({
     vote_average: PT.number,

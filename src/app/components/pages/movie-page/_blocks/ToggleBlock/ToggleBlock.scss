@@ -1,21 +1,16 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-details-base-cls;
-
-.#{$b} {
-  .#{$b}__toggle {
-    .custom-control-label {
-      &:hover {
-        cursor: pointer;
-      }
+.toggle-block {
+  .custom-control-label {
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    .custom-control-input:checked ~ .custom-control-label {
-      &::before {
-        border-color: $lightpurple;
-        background-color: $lightpurple;
-      }
+  .custom-control-input:checked ~ .custom-control-label {
+    &::before {
+      border-color: $lightpurple;
+      background-color: $lightpurple;
     }
   }
 }

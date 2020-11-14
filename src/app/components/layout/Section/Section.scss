@@ -1,0 +1,20 @@
+@import 'app_assets/css/variables/colors';
+
+$b: 'page-content';
+
+.#{$b} {
+  &__section {
+    padding: 20px 15px;
+    color: $black_mod;
+    background-color: #fff;
+  }
+
+  &__section--is-transparent {
+    color: $white_mod;
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+
+  hr {
+    background-color: rgba(245, 245, 245, 0.2);
+  }
+}

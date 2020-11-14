@@ -1,35 +1,29 @@
-@import 'app_assets/css/variables/base_classes';
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-details-base-cls;
+.movie-details__poster {
+  border: 1px solid $black_mod !important;
 
-.#{$b} {
-  .#{$b}__poster {
-    border: 1px solid $black_mod !important;
+  // fit parent column width if no responsive needed
+  width: 100%;
 
-    // fit parent column width if no responsive needed
-    width: 100%;
-
-    &.no-image {
-      border: 1px solid lightgray;
-    }
-
-    &.embed-responsive-item {
-      // fix image 16by9 width proportion
-      width: auto !important;
-      animation: animateOpacity 0.5s ease;
-
-      @media (max-width: 768px) {
-        // fix image 16by9 width proportion
-        position: relative !important;
-
-        display: block;
-        max-height: 400px;
-        width: auto;
-        height: auto;
-        margin: 0 auto;
-      }
-    }
+  &.no-image {
+    border: 1px solid lightgray;
   }
 
+  &.embed-responsive-item {
+    // fix image 16by9 width proportion
+    width: auto !important;
+    animation: animateOpacity 0.5s ease;
+
+    @media (max-width: 768px) {
+      // fix image 16by9 width proportion
+      position: relative !important;
+
+      display: block;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
 }

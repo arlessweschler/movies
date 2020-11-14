@@ -2,13 +2,12 @@ import './ToggleBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
-import cn from 'classnames';
 
 import { withTranslation } from 'react-i18next';
 
-function ToggleBlock({ t, cls, handleToggle }) {
+function ToggleBlock({ t, handleToggle }) {
   return (
-    <div className={cn(cls, 'custom-control custom-switch my-auto')}>
+    <div className="toggle-block custom-control custom-switch my-auto">
       <input
         id="ActorsToggle"
         type="checkbox"
@@ -27,8 +26,6 @@ function ToggleBlock({ t, cls, handleToggle }) {
 
 ToggleBlock.propTypes = {
   t: PT.func.isRequired,
-  cls: PT.string,
-
   handleToggle: PT.func.isRequired
 };
 

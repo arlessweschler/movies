@@ -10,9 +10,7 @@ import { imageNotAvailable } from 'app_services/UtilsService';
 function PosterBlock({ cls, data }) {
   const { poster_path } = data;
 
-  const classes = cn(cls, {
-    'no-image': !poster_path
-  });
+  const classes = cn(cls, 'movie-details__poster', { 'no-image': !poster_path });
 
   return (
     <img

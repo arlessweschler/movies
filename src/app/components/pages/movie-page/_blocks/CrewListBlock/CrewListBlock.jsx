@@ -10,12 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { CrewNamesBlock } from 'app_components/pages/movie-page/_blocks';
 import { Row } from 'app_components/layout';
 
-function CrewListBlock({ cls, t }) {
-  const b = b_.with(cls);
-  const cls_defaults = {
-    cls_label: cn(b('label'), 'pr-1 col-12 col-md-auto p-0'),
-    cls_value: cn(b('value'), 'col p-0')
-  };
+function CrewListBlock({ t }) {
+  const b = b_.with('movie-details-crew');
 
   const crewList = [
     {
@@ -44,7 +40,8 @@ function CrewListBlock({ cls, t }) {
           cls={b()}
         >
           <CrewNamesBlock
-            {...cls_defaults}
+            labelCls={cn(b('label'), 'pr-1 col-12 col-md-auto p-0')}
+            valueCls={cn(b('value'), 'col p-0')}
             label={item.label}
             searchParams={item.searchParams}
           />
@@ -55,7 +52,6 @@ function CrewListBlock({ cls, t }) {
 }
 
 CrewListBlock.propTypes = {
-  cls: PT.string.isRequired,
   t: PT.func.isRequired
 };
 

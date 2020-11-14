@@ -1,31 +1,12 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
+@import 'app_assets/css/variables/mixins';
 
-$b: $movie-details-base-cls;
-
-@mixin embed-responsive-item {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.#{$b} {
-  .movie-player {
-    .react-player__preview {
-      @include embed-responsive-item;
-    }
-
-    iframe {
-      border: 1px solid $black_mod;
-    }
+.movie-player {
+  .react-player__preview {
+    @include embed-responsive-item;
   }
 
-  // movie player progress bar
-  .cstm-progress {
-    top: 0px;
+  iframe {
+    border: 1px solid $black_mod;
   }
 }

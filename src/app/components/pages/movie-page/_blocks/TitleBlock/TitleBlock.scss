@@ -1,27 +1,24 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-details-base-cls;
-
-.#{$b} {
-  .#{$b}__title {
+.movie-details-header {
+  &__title {
     font-weight: bold;
     color: $yellow;
   }
-  .#{$b}__year {
+  &__year {
     color: $lightgray;
     padding-left: 10px;
     font-size: calc(1.375rem + 0.5vw);
     font-weight: 400;
   }
 
-  .#{$b}__original {
+  &__original {
     color: $lightgray;
   }
+}
 
-  .tagline {
-    font-style: italic;
-    color:$gray;
-    margin-bottom: 10px;
-  }
+.tagline {
+  font-style: italic;
+  color: $gray;
+  margin-bottom: 10px;
 }

@@ -8,6 +8,7 @@ import Column from 'app_components/layout/Column/Column';
 import Backdrop from 'app_components/layout/Backdrop/Backdrop';
 import Message from 'app_components/layout/Message/Message';
 import Page from 'app_components/layout/Page/Page';
+import Section from 'app_components/layout/Section/Section';
 
 export {
   Layout,
@@ -19,5 +20,6 @@ export {
   Column,
   Backdrop,
   Message,
-  Page
+  Page,
+  Section
 };

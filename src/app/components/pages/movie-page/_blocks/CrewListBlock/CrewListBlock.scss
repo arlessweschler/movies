@@ -1,16 +1,10 @@
-@import "app_assets/css/variables/base_classes";
-@import "app_assets/css/variables/colors";
+@import 'app_assets/css/variables/colors';
 
-$b: $movie-details-base-cls;
-$b_crew: #{$b}-crew;
-
-.#{$b} {
-  .#{$b_crew} {
-    .#{$b_crew}__label {
-      color: $gray;
-    }
-    .#{$b_crew}__value {
-      color: $lightgray;
-    }
+.movie-details-crew {
+  &__label {
+    color: $gray;
+  }
+  &__value {
+    color: $lightgray;
   }
 }

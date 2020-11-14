@@ -5,7 +5,7 @@ import { withMDetailsContext } from 'app_contexts';
 
 function CrewNamesBlock(props) {
   const {
-    cls_label = '', cls_value = '', label, searchParams, context
+    labelCls = '', valueCls = '', label, searchParams, context
   } = props;
   const { getCrewNames } = context;
 
@@ -14,12 +14,12 @@ function CrewNamesBlock(props) {
 
   return (
     <>
-      <div className={cls_label}>
+      <div className={labelCls}>
         {label}
         {':'}
       </div>
 
-      <div className={cls_value}>
+      <div className={valueCls}>
         {names}
       </div>
     </>
@@ -27,8 +27,8 @@ function CrewNamesBlock(props) {
 }
 
 CrewNamesBlock.propTypes = {
-  cls_label: PT.string,
-  cls_value: PT.string,
+  labelCls: PT.string,
+  valueCls: PT.string,
 
   label: PT.string.isRequired,
   searchParams: PT.shape({

@@ -5,17 +5,10 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import { withMDetailsContext } from 'app_contexts';
-
-function Section(props) {
-  const {
-    children, cls = '', transparent, context
-  } = props;
-  const { cls_base } = context;
-
+function Section({ cls = '', transparent, children }) {
   if (!children) return null;
 
-  const b = b_.B({ modSeparator: '--' }).with(cls_base);
+  const b = b_.B({ modSeparator: '--' }).with('page-content');
 
   return (
     <section className={cn(b('section', { 'is-transparent': transparent }), cls)}>
@@ -30,11 +23,7 @@ Section.propTypes = {
   children: PT.oneOfType([
     PT.arrayOf(PT.node),
     PT.node
-  ]).isRequired,
-
-  context: PT.shape({
-    cls_base: PT.string.isRequired
-  }).isRequired
+  ]).isRequired
 };
 
-export default withMDetailsContext(Section);
+export default Section;

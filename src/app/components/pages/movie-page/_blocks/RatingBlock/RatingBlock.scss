@@ -1,23 +1,19 @@
-@import 'app_assets/css/variables/base_classes';
 @import 'app_assets/css/variables/colors';
 
-$b: $movie-details-base-cls;
-$b_rate: #{$b}-rating;
+$base: 'movie-details-rating';
 
-.#{$b} {
-  .#{$b_rate} {
-    float: right;
-    font-size: calc(1rem + 1.2vw);
+.#{$base} {
+  float: right;
+  font-size: calc(1rem + 1.2vw);
 
-    .#{$b_rate}__icon {
-      margin-right: 5px;
-      color: $yellow;
-    }
+  .#{$base}__icon {
+    margin-right: 5px;
+    color: $yellow;
+  }
 
-    .#{$b_rate}__scale,
-    .#{$b_rate}__votes {
-      font-size: calc(0.8rem + 0.3vw);
-      color: $gray;
-    }
+  .#{$base}__scale,
+  .#{$base}__votes {
+    font-size: calc(0.8rem + 0.3vw);
+    color: $gray;
   }
 }

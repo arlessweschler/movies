@@ -50,13 +50,12 @@ class MDetailsContextProvider extends Component {
 
   render() {
     const {
-      cls_base, movie, videos, credits, images, children
+      movie, videos, credits, images, children
     } = this.props;
 
     return (
       <MDetailsContext.Provider
         value={{
-          cls_base,
           movie,
           videos,
           credits,
@@ -72,7 +71,6 @@ class MDetailsContextProvider extends Component {
 }
 
 MDetailsContextProvider.propTypes = {
-  cls_base: PT.string.isRequired,
   children: PT.oneOfType([
     PT.arrayOf(PT.node),
     PT.node
