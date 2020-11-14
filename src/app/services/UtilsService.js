@@ -16,6 +16,7 @@ const Utils = {
    */
   difference(comparedObject, baseObject) {
     function changes(object, base) {
+      /* eslint-disable no-param-reassign */
       return _.transform(object, (result, value, key) => {
         if (!_.isEqual(value, base[key])) {
           result[key] = (_.isObject(value) && _.isObject(base[key]))
@@ -23,6 +24,7 @@ const Utils = {
             : value;
         }
       });
+      /* eslint-enable no-param-reassign */
     }
     return changes(comparedObject, baseObject);
   },
@@ -91,14 +93,15 @@ const Utils = {
     const searchParams = Utils.getQueryParams();
 
     let checks = [];
-    for (const key in searchParams) {
+
+    Object.keys(searchParams).forEach((key) => {
       if ({}.hasOwnProperty.call(searchParams, key)) {
         checks.push({
           key,
           hasDiffs: searchParams[key] !== request[key]
         });
       }
-    }
+    });
 
     if (checklist) {
       checks = checks.filter((i) => checklist.includes(i.key));

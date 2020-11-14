@@ -14,6 +14,7 @@ class GenerateAssetWebpackPlugin {
           throw new Error('Error in GenerateAssetWebpackPlugin!');
         }
 
+        /* eslint-disable no-param-reassign */
         compilation.assets[this.filename] = {
           source: () => body,
           size: () => body.length
@@ -25,6 +26,7 @@ class GenerateAssetWebpackPlugin {
             size: () => fs.statSync(file).size
           };
         });
+        /* eslint-enable no-param-reassign */
       });
     });
   }

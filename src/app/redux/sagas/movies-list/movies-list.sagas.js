@@ -19,7 +19,7 @@ function* getMoviesSaga({ type, payload }) {
         : `/movie/${moviesType}`,
       params: search
         ? { page, query: search }
-        : { page, lng }
+        : { page, lng, region: 'RU' }
     });
     yield put(actions.success(data));
   } catch (error) {

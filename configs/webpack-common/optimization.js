@@ -1,5 +1,5 @@
-module.exports = function ({ splitBy }) {
-  const cacheGroups = (function (mode) {
+module.exports = ({ splitBy }) => {
+  const cacheGroups = ((mode) => {
     switch (mode) {
       case 'packageName':
         return {
@@ -39,7 +39,7 @@ module.exports = function ({ splitBy }) {
       default:
         throw new Error('No matching webpack optimization "splitBy" value found!');
     }
-  }(splitBy));
+  })(splitBy);
 
   return {
     splitChunks: {

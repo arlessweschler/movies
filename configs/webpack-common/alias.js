@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = function ({ srcPath }) {
+module.exports = ({ srcPath }) => {
   const list = {
     app_routing: 'app/routing',
     app_config: 'app/config',

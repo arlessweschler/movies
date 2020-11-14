@@ -25,7 +25,7 @@ function printRenderingType() {
   `;
 }
 
-module.exports = function (compilation = {}) {
+module.exports = (compilation = {}) => {
   const { hash } = compilation;
 
   return `

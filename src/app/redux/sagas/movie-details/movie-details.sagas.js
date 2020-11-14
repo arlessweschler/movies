@@ -93,6 +93,7 @@ function* resetMovieDetailsSaga({ payload }) {
   const { resetList } = payload;
   let actions;
 
+  /* eslint-disable no-restricted-syntax */
   for (const item of resetList) {
     actions = asyncActionMaps[item];
     try {
@@ -101,6 +102,7 @@ function* resetMovieDetailsSaga({ payload }) {
       yield put(actions.fail(error.message));
     }
   }
+  /* eslint-enable no-restricted-syntax */
 }
 
 // watchers

@@ -39,7 +39,6 @@ function configureStore(initialState = {}, startSagas = false) {
   }
 
   // HMR for reducers and sagas
-
   /* eslint-disable global-require */
   if (process.env.IS_DEV && module.hot) {
     module.hot.accept('./rootReducer', () => {
@@ -57,9 +56,11 @@ function configureStore(initialState = {}, startSagas = false) {
   return store;
 }
 
+/* eslint-disable no-underscore-dangle */
 const initialState = (IS_CLIENT && window.__PRELOADED_STATE__)
   ? window.__PRELOADED_STATE__
   : {};
+/* eslint-enable no-underscore-dangle */
 
 export {
   configureStore

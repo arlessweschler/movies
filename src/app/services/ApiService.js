@@ -20,25 +20,33 @@ function* fetchJson(url, { method }) {
 export default {
   fetch({ url = '', params = {} }) {
     try {
-      if (typeof params.lng !== 'undefined') {
-        params.language = params.lng
-          ? formatLng(params.lng)
-          : null;
-        delete params.lng;
-      }
+      const queryObject = (({
+        lng, query, page, region
+      }) => ({
+        ...(typeof lng !== 'undefined' && {
+          language: lng ? formatLng(lng) : null
+        }),
+        query,
+        page,
+        region
+      }))(params);
 
-      const queryParams = qs.stringify({
-        ...params,
+      // console.log('\n-- ApiService, queryObject:', queryObject);
+
+      const queryString = qs.stringify({
+        ...queryObject,
         api_key: process.env.TMDB_API_KEY
       });
 
-      const fetchUrl = `${TMDB_API_HOST}${url}?${queryParams}`;
+      // console.log('\n-- ApiService, queryString:', queryString);
+
+      const fetchUrl = `${TMDB_API_HOST}${url}?${queryString}`;
 
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 
       return fetchJson(fetchUrl, { method: 'GET' });
     } catch (error) {
-      console.log('-- ApiService, error:', error);
+      // console.log('-- ApiService, error:', error);
       throw new Error('Error in ApiService!');
     }
   }
