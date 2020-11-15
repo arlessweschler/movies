@@ -10,7 +10,7 @@ import {
   getVideos,
   getImages,
   getGenres,
-  getRecomms,
+  getRecomms
 } from '@/redux/actions';
 
 const mapDispatchToProps = (dispatch) => ({

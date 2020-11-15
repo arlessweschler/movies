@@ -5,18 +5,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PTS from '@/services/PropTypesService';
-import {
-  isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams
-} from '@/services/UtilsService';
+import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
 import { MDetailsContextProvider } from '@/contexts';
 import { Page, Backdrop, ProgressBar } from '@/components/layout';
-import {
-  DescriptionSection, MediaSection, ActorsSection, GallerySection
-} from '@/components/pages/movie-page/_sections';
+import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/components/pages/movie-page/_sections';
 import { RecommsContainer } from '@/containers';
-import {
-  getDetails, getCredits, getVideos, getImages
-} from '@/redux/actions';
+import { getDetails, getCredits, getVideos, getImages } from '@/redux/actions';
 
 const mapStateToProps = ({ movieDetails }) => ({
   details: movieDetails
@@ -24,10 +18,7 @@ const mapStateToProps = ({ movieDetails }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
-    getDetails,
-    getCredits,
-    getVideos,
-    getImages
+    getDetails, getCredits, getVideos, getImages
   }, dispatch)
 });
 

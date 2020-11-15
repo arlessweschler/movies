@@ -2,9 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { withMDetailsContext } from '@/contexts';
-import {
-  TitleBlock, TagsBlock, RatingBlock, CrewListBlock
-} from '@/components/pages/movie-page/_blocks';
+import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/components/pages/movie-page/_blocks';
 import { Section, Row, Column } from '@/components/layout';
 
 function DescriptionSection({ context }) {

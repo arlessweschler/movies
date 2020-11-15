@@ -6,8 +6,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 
 import withMoviesNav from '@/hocs/withMoviesNav';
-import { CardImageBlock } from
-  '@/components/pages/movies-page/_blocks';
+import { CardImageBlock } from '@/components/pages/movies-page';
 
 function CardBlock(props) {
   const { movie, printGenres, linkMovie } = props;

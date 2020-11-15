@@ -4,18 +4,14 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-  isEmpty, getQueryParams, capitalize, hasRequestDiffs
-} from '@/services/UtilsService';
+import { isEmpty, getQueryParams, capitalize, hasRequestDiffs } from '@/services/UtilsService';
 import { ProgressBar } from '@/components/layout';
 import { getGenres } from '@/redux/actions';
 
-// маппинг редюсеров
 const mapStateToProps = ({ genresList }) => ({
   genresList
 });
 
-// маппинг экшен креэйторов
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
     getGenres

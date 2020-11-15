@@ -6,19 +6,13 @@ import PT from 'prop-types';
 
 import PTS from '@/services/PropTypesService';
 import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
-import {
-  ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock
-} from '@/components/pages/movies-page/_blocks';
-import {
-  Page, Message, ProgressBar, Row
-} from '@/components/layout';
+import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/components/pages/movies-page';
+import { Page, Message, ProgressBar, Row } from '@/components/layout';
 import { GenresContainer } from '@/containers';
 import { getMovies } from '@/redux/actions';
 
-// маппинг редюсеров
 const mapStateToProps = ({ moviesList }) => ({ moviesList });
 
-// маппинг экшен креэйторов
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ getMovies }, dispatch)
 });
