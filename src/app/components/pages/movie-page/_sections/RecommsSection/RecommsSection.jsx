@@ -4,8 +4,8 @@ import { withTranslation } from 'react-i18next';
 
 import { isEmpty } from '@/services/UtilsService';
 import GenresContainer from '@/containers/features/GenresContainer';
-import { Message } from '@/components/markup';
-import { ListBlock } from '@/components/pages/movies-page';
+import { Message } from '@/markup';
+import { ListBlock } from '@/pages/movies-page';
 
 function RecommsSection({ t, movies }) {
   if (isEmpty(movies)) return null;

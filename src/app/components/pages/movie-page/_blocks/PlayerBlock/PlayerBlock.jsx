@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player/youtube';
 
 import { isEmpty } from '@/services/UtilsService';
 import { withMDetailsContext } from '@/contexts';
-import { ProgressBar } from '@/components/layout';
+import { ProgressBar } from '@/layout';
 
 function PlayerBlock(props) {
   const { searchParams, context } = props;

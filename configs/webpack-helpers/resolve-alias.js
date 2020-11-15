@@ -3,11 +3,15 @@ const path = require('path');
 const SRC_PATH = path.resolve(__dirname, '../../src');
 
 const aliases = {
-  '@/components': 'app/components',
+  '@/layout': 'app/components/layout',
+  '@/markup': 'app/components/markup',
+  '@/pages': 'app/components/pages',
   '@/containers': 'app/containers',
   '@/contexts': 'app/contexts',
   '@/hocs': 'app/hocs',
   '@/redux': 'app/redux/',
+  '@/actions': 'app/redux/actions',
+  '@/sagas': 'app/redux/sagas',
   '@/routing': 'app/routing',
   '@/history': 'app/services/HistoryService',
   '@/services': 'app/services',

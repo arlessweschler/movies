@@ -7,10 +7,10 @@ import { withRouter } from 'react-router-dom';
 import PTS from '@/services/PropTypesService';
 import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
 import { MDetailsContextProvider } from '@/contexts';
-import { ProgressBar, Backdrop, Page } from '@/components/layout';
-import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/components/pages/movie-page/_sections';
+import { ProgressBar, Backdrop, Page } from '@/layout';
+import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page/_sections';
 import RecommsContainer from '@/containers/features/RecommsContainer';
-import { getDetails, getCredits, getVideos, getImages } from '@/redux/actions';
+import { getDetails, getCredits, getVideos, getImages } from '@/actions';
 
 const mapStateToProps = ({ movieDetails }) => ({
   details: movieDetails

@@ -5,8 +5,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { isEmpty, getQueryParams, capitalize, hasRequestDiffs } from '@/services/UtilsService';
-import { ProgressBar } from '@/components/layout';
-import { getGenres } from '@/redux/actions';
+import { ProgressBar } from '@/layout';
+import { getGenres } from '@/actions';
 
 const mapStateToProps = ({ genresList }) => ({
   genresList

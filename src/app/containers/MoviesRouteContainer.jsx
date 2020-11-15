@@ -7,7 +7,7 @@ import MoviesListContainer from '@/containers/features/MoviesListContainer';
 import {
   getMovies,
   getGenres
-} from '@/redux/actions';
+} from '@/actions';
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({

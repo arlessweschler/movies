@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from '@/redux/rootReducer';
-import SagaManager from '@/redux/sagas/SagaManager';
+import SagaManager from '@/sagas/SagaManager';
 
 const IS_CLIENT = (typeof window !== 'undefined');
 

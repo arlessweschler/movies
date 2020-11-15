@@ -1,7 +1,7 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 
 import ApiService from '@/services/ApiService';
-import { actionKeys, asyncActionMaps } from '@/redux/sagas/movies-list/movies-list.actions';
+import { actionKeys, asyncActionMaps } from '@/sagas/movies-list/movies-list.actions';
 
 // workers
 function* getMoviesSaga({ type, payload }) {

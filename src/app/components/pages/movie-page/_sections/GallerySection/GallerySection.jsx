@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
 import { isNotEmpty } from '@/services/UtilsService';
 import { withMDetailsContext } from '@/contexts';
-import { Section } from '@/components/markup';
+import { Section } from '@/markup';
 
 function GallerySection({ t, context }) {
   const { images } = context;

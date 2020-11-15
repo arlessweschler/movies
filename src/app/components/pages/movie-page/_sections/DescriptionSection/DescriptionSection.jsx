@@ -2,8 +2,8 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { withMDetailsContext } from '@/contexts';
-import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/components/pages/movie-page/_blocks';
-import { Section, Row, Column } from '@/components/markup';
+import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/pages/movie-page/_blocks';
+import { Section, Row, Column } from '@/markup';
 
 function DescriptionSection({ context }) {
   const { movie } = context;

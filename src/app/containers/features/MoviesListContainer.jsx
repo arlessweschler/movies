@@ -6,11 +6,11 @@ import PT from 'prop-types';
 
 import PTS from '@/services/PropTypesService';
 import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
-import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/components/pages/movies-page';
-import { Page, ProgressBar } from '@/components/layout';
-import { Message, Row } from '@/components/markup';
+import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/pages/movies-page';
+import { Page, ProgressBar } from '@/layout';
+import { Message, Row } from '@/markup';
 import GenresContainer from '@/containers/features/GenresContainer';
-import { getMovies } from '@/redux/actions';
+import { getMovies } from '@/actions';
 
 const mapStateToProps = ({ moviesList }) => ({ moviesList });
 

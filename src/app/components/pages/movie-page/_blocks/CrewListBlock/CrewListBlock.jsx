@@ -7,7 +7,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Row } from '@/components/markup';
+import { Row } from '@/markup';
 import CrewNamesBlock from './CrewNamesBlock';
 
 function CrewListBlock({ t }) {

@@ -6,7 +6,7 @@ import { getQueryParams } from '@/services/UtilsService';
 import {
   getDetails, getCredits, getVideos,
   getImages, getGenres, getRecomms
-} from '@/redux/actions';
+} from '@/actions';
 import MovieDetailsContainer from './features/MovieDetailsContainer';
 
 const mapDispatchToProps = (dispatch) => ({

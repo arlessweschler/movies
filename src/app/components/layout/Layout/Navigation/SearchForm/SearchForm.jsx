@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '@/history';
-import { resetMovies } from '@/redux/actions';
+import { resetMovies } from '@/actions';
 
 const SearchForm = ({ t, history }) => {
   const dispatch = useDispatch();

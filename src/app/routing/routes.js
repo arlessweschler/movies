@@ -1,5 +1,5 @@
 import RootRoute from '@/routing/RootRoute';
-import NotFoundPage from '@/components/pages';
+import NotFoundPage from '@/pages';
 import MoviesRouteContainer from '@/containers/MoviesRouteContainer';
 import MovieRouteContainer from '@/containers/MovieRouteContainer';
 

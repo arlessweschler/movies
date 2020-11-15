@@ -5,7 +5,7 @@ import { I18nextProvider } from 'react-i18next';
 import { renderRoutes } from 'react-router-config';
 
 import i18n from '@/settings/i18n';
-import Layout from '@/components/layout/Layout';
+import Layout from '@/layout/Layout';
 
 const RootRoute = (props) => {
   const { route, store } = props;

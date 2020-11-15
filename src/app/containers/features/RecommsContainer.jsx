@@ -6,9 +6,9 @@ import { withRouter } from 'react-router-dom';
 
 import PTS from '@/services/PropTypesService';
 import { hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
-import { RecommsSection } from '@/components/pages/movie-page/_sections';
-import { ProgressBar } from '@/components/layout';
-import { getRecomms } from '@/redux/actions';
+import { RecommsSection } from '@/pages/movie-page/_sections';
+import { ProgressBar } from '@/layout';
+import { getRecomms } from '@/actions';
 
 const mapStateToProps = ({ movieDetails }) => ({
   recommsList: movieDetails.recommsList

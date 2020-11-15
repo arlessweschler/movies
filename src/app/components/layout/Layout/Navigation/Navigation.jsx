@@ -9,7 +9,7 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '@/history';
 import { getDefaulQueryParams, getQueryParams } from '@/services/UtilsService';
-import { resetMovies, getMovies } from '@/redux/actions';
+import { resetMovies, getMovies } from '@/actions';
 import NavToggle from './NavToggle';
 import LocaleDropdown from './LocaleDropdown';
 import SearchForm from './SearchForm';

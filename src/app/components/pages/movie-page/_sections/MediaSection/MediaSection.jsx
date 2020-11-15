@@ -3,8 +3,8 @@ import PT from 'prop-types';
 import cn from 'classnames';
 
 import { withMDetailsContext } from '@/contexts';
-import { Section, Row, Column } from '@/components/markup';
-import { PlayerBlock, PosterBlock } from '@/components/pages/movie-page/_blocks';
+import { Section, Row, Column } from '@/markup';
+import { PlayerBlock, PosterBlock } from '@/pages/movie-page/_blocks';
 
 function MediaSection({ context }) {
   const { movie } = context;

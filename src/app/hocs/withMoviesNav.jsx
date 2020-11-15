@@ -6,7 +6,7 @@ import qs from 'query-string';
 
 import { DEFAULT_MOVIES_TYPE } from '@/settings/tmdb';
 import { redirect } from '@/history';
-import { resetMovieDetails } from '@/redux/actions';
+import { resetMovieDetails } from '@/actions';
 
 function withMoviesNav(WrappedComponent) {
   const MoviesNav = (props) => {

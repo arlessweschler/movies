@@ -3,7 +3,7 @@ import './Layout.scss';
 import React from 'react';
 import PT from 'prop-types';
 
-import { Backdrop } from '@/components/layout';
+import { Backdrop } from '@/layout';
 import Header from './Header';
 import Footer from './Footer';
 
