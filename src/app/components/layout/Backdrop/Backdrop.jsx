@@ -4,7 +4,7 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import { TMDB_IMAGE_URL } from 'app_config';
+import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
 
 function Backdrop(props) {
   const { backdrop_path = null } = props;

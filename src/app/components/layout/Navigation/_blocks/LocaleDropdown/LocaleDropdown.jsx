@@ -9,7 +9,7 @@ import qs from 'query-string';
 
 import { redirect } from 'app_history';
 import { isNotEmpty } from 'app_services/UtilsService';
-import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_i18n';
+import { LANGUAGES, DEFAULT_LANGUAGE } from 'app_settings_i18n';
 
 const LocaleDropdown = (props) => {
   const { i18n, history } = props;

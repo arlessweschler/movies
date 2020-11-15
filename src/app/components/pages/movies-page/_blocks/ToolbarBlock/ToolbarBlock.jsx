@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Button, ButtonGroup } from 'reactstrap';
 import { withTranslation } from 'react-i18next';
 
-import { TMDB_MOVIES_TYPES } from 'app_config';
+import { TMDB_MOVIES_TYPES } from 'app_settings_tmdb';
 import withMoviesNav from 'app_hocs/withMoviesNav';
 
 function ToolbarBlock(props) {
@@ -18,15 +18,15 @@ function ToolbarBlock(props) {
 
   return (
     <ButtonGroup className="movies-filter">
-      {TMDB_MOVIES_TYPES.map((filter) => (
+      {TMDB_MOVIES_TYPES.map((moviesType) => (
         <Button
           key={uuidv4()}
-          color={(activeMoviesType === filter.key)
+          color={(activeMoviesType === moviesType)
             ? 'dark'
             : 'light'}
-          onClick={() => changeMoviesType(filter.key)}
+          onClick={() => changeMoviesType(moviesType)}
         >
-          {t(`movie_types.${filter.key}`)}
+          {t(`movie_types.${moviesType}`)}
         </Button>
       ))}
     </ButtonGroup>

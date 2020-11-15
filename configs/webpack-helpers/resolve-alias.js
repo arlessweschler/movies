@@ -4,8 +4,8 @@ const SRC_PATH = path.resolve(__dirname, '../../src');
 
 const aliases = {
   app_routing: 'app/routing',
-  app_config: 'app/config',
-  app_i18n: 'app/i18n',
+  app_settings_tmdb: 'app/settings/tmdb',
+  app_settings_i18n: 'app/settings/i18n',
   app_locales: 'locales',
   app_components: 'app/components',
   app_containers: 'app/containers',

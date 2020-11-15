@@ -31,6 +31,4 @@ const moviesReducer = {
   )
 };
 
-export const DEFAULT_MOVIES_TYPE = 'now_playing';
-
 export default moviesReducer;

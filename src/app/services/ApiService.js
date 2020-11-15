@@ -1,6 +1,5 @@
 import qs from 'query-string';
 
-import { TMDB_API_HOST } from 'app_config';
 import { formatLng } from 'app_services/UtilsService';
 
 require('isomorphic-fetch');
@@ -40,7 +39,7 @@ export default {
 
       // console.log('\n-- ApiService, queryString:', queryString);
 
-      const fetchUrl = `${TMDB_API_HOST}${url}?${queryString}`;
+      const fetchUrl = `${process.env.TMDB_API_HOST}${url}?${queryString}`;
 
       // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
 

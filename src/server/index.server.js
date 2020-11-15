@@ -10,8 +10,12 @@ const favicon = require('serve-favicon');
 const path = require('path');
 const dotenv = require('dotenv-defaults');
 
-const env = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
+const envConfig = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
 const CLIENT_FOLDER = 'dist/client';
+
+/* eslint-disable no-console */
+console.log('--index.server.js, envConfig:', envConfig);
+/* eslint-disable no-console */
 
 const app = express();
 app.use(favicon(path.join(`${__dirname}/client/favicon.ico`)));
@@ -21,7 +25,7 @@ app.use(appResponseHeaders);
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
 // серверный рендеринг
-if (env.RENDERING === 'server') {
+if (envConfig.RENDERING === 'server') {
   const RESOURCES = ['js', 'css', 'assets'];
 
   RESOURCES.forEach((item) => {
@@ -50,7 +54,7 @@ if (env.RENDERING === 'server') {
   });
 }
 
-const PORT = process.env.PORT || env.PORT_SERVER;
+const PORT = process.env.PORT || envConfig.PORT_SERVER;
 const listener = app.listen(PORT, (err) => {
   if (err) throw new Error('Express app port listening error:', err);
   /* eslint-disable no-console */

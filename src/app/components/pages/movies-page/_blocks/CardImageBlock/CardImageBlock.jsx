@@ -5,7 +5,7 @@ import PT from 'prop-types';
 import b_ from 'b_';
 
 import { withTranslation } from 'react-i18next';
-import { TMDB_IMAGE_URL } from 'app_config';
+import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
 import { CardRatingBlock } from
   'app_components/pages/movies-page/_blocks';
 

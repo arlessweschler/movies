@@ -6,7 +6,7 @@ import ImageGallery from 'react-image-gallery';
 
 import { withTranslation } from 'react-i18next';
 import { withMDetailsContext } from 'app_contexts';
-import { TMDB_IMAGE_URL } from 'app_config';
+import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
 import { isNotEmpty } from 'app_services/UtilsService';
 import { Section } from 'app_components/layout';
 

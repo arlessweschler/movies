@@ -1,7 +1,7 @@
 import qs from 'query-string';
 
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
-import { DEFAULT_LANGUAGE, LANGUAGES } from 'app_i18n';
+import { DEFAULT_MOVIES_TYPE } from 'app_settings_tmdb';
+import { DEFAULT_LANGUAGE, LANGUAGES } from 'app_settings_i18n';
 import history from 'app_history';
 import imageNotAvailable from 'app_assets/img/image_not_available.png';
 

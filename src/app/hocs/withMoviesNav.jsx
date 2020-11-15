@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
-import { DEFAULT_MOVIES_TYPE } from 'app_redux/sagas/movies-list/movies-list.reducers';
+import { DEFAULT_MOVIES_TYPE } from 'app_settings_tmdb';
 import { redirect } from 'app_history';
 import { resetMovieDetails } from 'redux_actions';
 
