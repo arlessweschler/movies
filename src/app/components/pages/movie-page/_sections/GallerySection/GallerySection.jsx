@@ -3,12 +3,12 @@ import './GallerySection.scss';
 import React from 'react';
 import PT from 'prop-types';
 import ImageGallery from 'react-image-gallery';
-
 import { withTranslation } from 'react-i18next';
-import { withMDetailsContext } from 'app_contexts';
-import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
-import { isNotEmpty } from 'app_services/UtilsService';
-import { Section } from 'app_components/layout';
+
+import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { isNotEmpty } from '@/services/UtilsService';
+import { withMDetailsContext } from '@/contexts';
+import { Section } from '@/components/layout';
 
 function GallerySection({ t, context }) {
   const { images } = context;

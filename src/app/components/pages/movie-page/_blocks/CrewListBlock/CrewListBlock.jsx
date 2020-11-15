@@ -7,8 +7,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-import { CrewNamesBlock } from 'app_components/pages/movie-page/_blocks';
-import { Row } from 'app_components/layout';
+import { Row } from '@/components/layout';
+import { CrewNamesBlock } from '@/components/pages/movie-page/_blocks';
 
 function CrewListBlock({ t }) {
   const b = b_.with('movie-details-crew');

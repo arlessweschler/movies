@@ -2,7 +2,6 @@ import './ToggleBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
-
 import { withTranslation } from 'react-i18next';
 
 function ToggleBlock({ t, handleToggle }) {

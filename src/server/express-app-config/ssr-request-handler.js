@@ -3,18 +3,18 @@ import { renderToString } from 'react-dom/server';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
-import { configureStore } from 'redux_store';
-import rootSaga from 'app_redux/rootSaga';
+import rootSaga from '@/redux/rootSaga';
+import { configureStore } from '@/redux/configureStore';
 
 export default (ROUTES) => (req, res) => {
   const branch = matchRoutes(ROUTES, req.path);
+  const store = configureStore();
+
   /* eslint-disable no-console */
   console.log('\n--ssr-request-handler');
   console.log('req.url:', req.url);
   console.log('req.query:', req.query);
   /* eslint-disable no-console */
-
-  const store = configureStore();
 
   store.runSaga(rootSaga).toPromise().then(() => {
     const preloadedState = store.getState();

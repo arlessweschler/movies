@@ -1,4 +1,4 @@
-import 'app_assets/css/index.scss';
+import '@/assets/css/index.scss';
 
 // This ensures that the icon CSS is loaded immediately before attempting to render icons
 import '@fortawesome/fontawesome-svg-core/styles.css';

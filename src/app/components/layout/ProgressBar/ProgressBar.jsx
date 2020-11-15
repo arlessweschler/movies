@@ -1,4 +1,4 @@
-import 'app_components/layout/ProgressBar/ProgressBar.scss';
+import './ProgressBar.scss';
 
 import React from 'react';
 

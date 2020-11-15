@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getQueryParams } from 'app_services/UtilsService';
-import { MoviesListContainer } from 'app_containers';
+import { getQueryParams } from '@/services/UtilsService';
+import { MoviesListContainer } from '@/containers';
 import {
   getMovies,
   getGenres
-} from 'redux_actions';
+} from '@/redux/actions';
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({

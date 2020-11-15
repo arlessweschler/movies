@@ -4,7 +4,7 @@
 
 import { take, fork, cancel } from 'redux-saga/effects';
 
-import rootSaga from 'app_redux/rootSaga';
+import rootSaga from '@/redux/rootSaga';
 
 const sagas = [rootSaga];
 

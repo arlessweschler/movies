@@ -4,10 +4,10 @@ import React from 'react';
 import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
-
-import PTS from 'app_services/PropTypesService';
 import { withTranslation } from 'react-i18next';
-import { Row } from 'app_components/layout';
+
+import PTS from '@/services/PropTypesService';
+import { Row } from '@/components/layout';
 
 function SearchResultsBlock(props) {
   const { t, search, total } = props;

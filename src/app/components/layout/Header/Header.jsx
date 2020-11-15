@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Navigation } from 'app_components/layout';
+import { Navigation } from '@/components/layout';
 
 const Header = () => (
   <header className="fixed-top">

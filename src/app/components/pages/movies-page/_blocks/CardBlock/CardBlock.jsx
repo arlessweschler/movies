@@ -5,9 +5,9 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import cn from 'classnames';
 
-import withMoviesNav from 'app_hocs/withMoviesNav';
+import withMoviesNav from '@/hocs/withMoviesNav';
 import { CardImageBlock } from
-  'app_components/pages/movies-page/_blocks';
+  '@/components/pages/movies-page/_blocks';
 
 function CardBlock(props) {
   const { movie, printGenres, linkMovie } = props;

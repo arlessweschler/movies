@@ -1,9 +1,9 @@
 import qs from 'query-string';
 
-import { DEFAULT_MOVIES_TYPE } from 'app_settings_tmdb';
-import { DEFAULT_LANGUAGE, LANGUAGES } from 'app_settings_i18n';
-import history from 'app_history';
-import imageNotAvailable from 'app_assets/img/image_not_available.png';
+import { DEFAULT_MOVIES_TYPE } from '@/settings/tmdb';
+import { DEFAULT_LANGUAGE, LANGUAGES } from '@/settings/i18n';
+import history from '@/history';
+import imageNotAvailable from '@/assets/img/image_not_available.png';
 
 const _ = require('lodash');
 

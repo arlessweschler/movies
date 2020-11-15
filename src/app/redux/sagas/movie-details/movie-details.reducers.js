@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { actionKeys } from 'app_redux/sagas/movie-details/movie-details.actions';
-import { createAsyncReducer } from 'app_redux/helpers/reducers.helper';
+import { createAsyncReducer } from '@/redux/helpers/reducers.helper';
+import { actionKeys } from '@/redux/sagas/movie-details/movie-details.actions';
 
 const DEFAULT_VIDEOS_STATE = {
   data: [],

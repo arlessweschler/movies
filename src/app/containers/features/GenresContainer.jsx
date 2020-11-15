@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 
 import {
   isEmpty, getQueryParams, capitalize, hasRequestDiffs
-} from 'app_services/UtilsService';
-import { ProgressBar } from 'app_components/layout';
-import { getGenres } from 'redux_actions';
+} from '@/services/UtilsService';
+import { ProgressBar } from '@/components/layout';
+import { getGenres } from '@/redux/actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ genresList }) => ({

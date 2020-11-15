@@ -3,8 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 
-import rootReducer from 'redux_reducers';
-import SagaManager from 'app_redux/sagas/SagaManager';
+import rootReducer from '@/redux/rootReducer';
+import SagaManager from '@/redux/sagas/SagaManager';
 
 const IS_CLIENT = (typeof window !== 'undefined');
 

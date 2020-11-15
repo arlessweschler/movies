@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import PT from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
 
-import { isEmpty } from 'app_services/UtilsService';
-import { ProgressBar } from 'app_components/layout';
-import { withMDetailsContext } from 'app_contexts';
+import { isEmpty } from '@/services/UtilsService';
+import { withMDetailsContext } from '@/contexts';
+import { ProgressBar } from '@/components/layout';
 
 function PlayerBlock(props) {
   const { searchParams, context } = props;

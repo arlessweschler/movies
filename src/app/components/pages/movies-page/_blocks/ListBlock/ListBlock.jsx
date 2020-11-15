@@ -3,7 +3,7 @@ import './ListBlock.scss';
 import React from 'react';
 import PT from 'prop-types';
 
-import { CardBlock } from 'app_components/pages/movies-page/_blocks';
+import { CardBlock } from '@/components/pages/movies-page/_blocks';
 
 function ListBlock({ movies, printGenres }) {
   if (!movies || movies.length < 1) return null;

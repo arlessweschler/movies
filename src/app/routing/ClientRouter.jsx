@@ -2,9 +2,9 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
-import routes from 'app_routing/routes';
-import history from 'app_history';
-import store from 'redux_store';
+import history from '@/history';
+import routes from '@/routing/routes';
+import store from '@/redux/configureStore';
 
 const ClientRouter = () => (
   <Router history={history}>

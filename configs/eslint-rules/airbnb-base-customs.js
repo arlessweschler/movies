@@ -11,7 +11,7 @@ module.exports = {
     'operator-linebreak': [1, 'before',
       { overrides: { '&&': 'after' } }
     ],
-    'quote-props': [2, 'consistent'],
+    'quote-props': [1, 'consistent'],
     'class-methods-use-this': [2, {
       exceptMethods: ['render']
     }],

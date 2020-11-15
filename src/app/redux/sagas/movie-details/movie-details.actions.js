@@ -1,7 +1,7 @@
 import {
   createActionCreator,
   createActionsForAsyncAction
-} from 'app_redux/helpers/actions.helper';
+} from '@/redux/helpers/actions.helper';
 
 const actionKeys = {
   MOVIE_DETAILS: 'MOVIE_DETAILS',

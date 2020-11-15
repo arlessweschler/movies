@@ -4,8 +4,8 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
-import { imageNotAvailable } from 'app_services/UtilsService';
+import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { imageNotAvailable } from '@/services/UtilsService';
 
 function PosterBlock({ cls, data }) {
   const { poster_path } = data;

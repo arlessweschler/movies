@@ -3,14 +3,14 @@ import './ActorsSection.scss';
 import React, { useState } from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
-
-import noPhoto from 'app_assets/img/no_photo.png';
 import { withTranslation } from 'react-i18next';
-import { withMDetailsContext } from 'app_contexts';
-import { TMDB_IMAGE_URL } from 'app_settings_tmdb';
-import { isNotEmpty } from 'app_services/UtilsService';
-import { Section } from 'app_components/layout';
-import { ToggleBlock } from 'app_components/pages/movie-page/_blocks';
+
+import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { isNotEmpty } from '@/services/UtilsService';
+import { withMDetailsContext } from '@/contexts';
+import { Section } from '@/components/layout';
+import { ToggleBlock } from '@/components/pages/movie-page/_blocks';
+import noPhoto from '@/assets/img/no_photo.png';
 
 function ActorsSection({ t, context }) {
   const { credits } = context;

@@ -11,8 +11,8 @@ import { DebounceInput } from 'react-debounce-input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { redirect } from 'app_history';
-import { resetMovies } from 'redux_actions';
+import { redirect } from '@/history';
+import { resetMovies } from '@/redux/actions';
 
 const SearchForm = ({ t, history }) => {
   const dispatch = useDispatch();

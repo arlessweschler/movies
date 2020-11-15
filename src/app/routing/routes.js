@@ -1,10 +1,9 @@
-import RootRoute from 'app_routing/RootRoute';
-import NotFoundPage from 'app_components/pages';
-
+import RootRoute from '@/routing/RootRoute';
+import NotFoundPage from '@/components/pages';
 import {
   MoviesRouteContainer,
   MovieRouteContainer
-} from 'app_containers';
+} from '@/containers';
 
 const routes = [
   {

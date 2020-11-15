@@ -1,5 +1,5 @@
-import { actionKeys } from 'app_redux/sagas/movies-list/movies-list.actions';
-import { createAsyncReducer } from 'app_redux/helpers/reducers.helper';
+import { createAsyncReducer } from '@/redux/helpers/reducers.helper';
+import { actionKeys } from '@/redux/sagas/movies-list/movies-list.actions';
 
 const DEFAULT_MOVIES_STATE = {
   data: {

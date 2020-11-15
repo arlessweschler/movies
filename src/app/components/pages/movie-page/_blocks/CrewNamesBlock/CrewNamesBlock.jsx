@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { withMDetailsContext } from 'app_contexts';
+import { withMDetailsContext } from '@/contexts';
 
 function CrewNamesBlock(props) {
   const {

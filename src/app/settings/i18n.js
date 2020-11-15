@@ -2,8 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import en from 'app_locales/en.json';
-import ru from 'app_locales/ru.json';
+import en from '@/locales/en.json';
+import ru from '@/locales/ru.json';
 
 const LANGUAGES = [
   { value: 'en', region: 'US', label: 'EN' },

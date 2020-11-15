@@ -1,9 +1,11 @@
 import logger from 'morgan';
 
-import appResponseHeaders from 'server_config/app-response-headers';
-import extractRoutes from 'server_config/routes-extractor';
-import getSsrRequestHandler from 'server_config/ssr-request-handler';
-import REACT_ROUTES from 'app_routing/routes';
+import REACT_ROUTES from '@/routing/routes';
+import {
+  responseHeaders,
+  extractRoutes,
+  handleSSR
+} from '@/server/express-app-config';
 
 const express = require('express');
 const favicon = require('serve-favicon');
@@ -20,7 +22,7 @@ console.log('--index.server.js, envConfig:', envConfig);
 const app = express();
 app.use(favicon(path.join(`${__dirname}/client/favicon.ico`)));
 app.use(logger('dev'));
-app.use(appResponseHeaders);
+app.use(responseHeaders);
 
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
@@ -35,7 +37,7 @@ if (envConfig.RENDERING === 'server') {
   app.set('view engine', 'pug');
   app.set('views', path.join(`${__dirname}/client/views`));
 
-  app.get('*', getSsrRequestHandler(REACT_ROUTES));
+  app.get('*', handleSSR(REACT_ROUTES));
 
   // клиентский рендеринг
 } else {

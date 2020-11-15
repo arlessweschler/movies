@@ -5,7 +5,6 @@ import PT from 'prop-types';
 import moment from 'moment';
 import b_ from 'b_';
 import cn from 'classnames';
-
 import { withTranslation } from 'react-i18next';
 
 function TitleBlock({ t, data }) {

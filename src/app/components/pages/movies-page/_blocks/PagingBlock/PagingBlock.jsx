@@ -6,8 +6,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 import ReactPaginate from 'react-paginate';
 
-import PTS from 'app_services/PropTypesService';
-import withMoviesNav from 'app_hocs/withMoviesNav';
+import PTS from '@/services/PropTypesService';
+import withMoviesNav from '@/hocs/withMoviesNav';
 
 function PagingBlock(props) {
   const {

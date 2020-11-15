@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 import { renderRoutes } from 'react-router-config';
 
-import { Layout } from 'app_components/layout';
-import i18n from 'app_settings_i18n';
+import i18n from '@/settings/i18n';
+import { Layout } from '@/components/layout';
 
 const RootRoute = (props) => {
   const { route, store } = props;

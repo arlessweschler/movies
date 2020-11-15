@@ -1,4 +1,4 @@
-export const createActionCreator = (type, actionProps = {}) => {
+const createActionCreator = (type, actionProps = {}) => {
   const actionCreator = {
     type,
     payload: actionProps
@@ -7,7 +7,7 @@ export const createActionCreator = (type, actionProps = {}) => {
   return actionCreator;
 };
 
-export const createActionsForAsyncAction = (
+const createActionsForAsyncAction = (
   actionKey
 ) => {
   const actionsForAsyncAction = {
@@ -18,4 +18,9 @@ export const createActionsForAsyncAction = (
   };
 
   return actionsForAsyncAction;
+};
+
+export {
+  createActionCreator,
+  createActionsForAsyncAction
 };

@@ -1,4 +1,4 @@
 // общие компоненты
-import NotFoundPage from 'app_components/pages/not-found-page/NotFoundPage';
+import NotFoundPage from '@/components/pages/not-found-page/NotFoundPage';
 
 export default NotFoundPage;

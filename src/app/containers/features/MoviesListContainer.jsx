@@ -4,16 +4,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import PTS from 'app_services/PropTypesService';
-import { isEmpty, getQueryParams, hasRequestDiffs } from 'app_services/UtilsService';
-import {
-  Page, Message, ProgressBar, Row
-} from 'app_components/layout';
+import PTS from '@/services/PropTypesService';
+import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
 import {
   ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock
-} from 'app_components/pages/movies-page/_blocks';
-import { getMovies } from 'redux_actions';
-import { GenresContainer } from 'app_containers';
+} from '@/components/pages/movies-page/_blocks';
+import {
+  Page, Message, ProgressBar, Row
+} from '@/components/layout';
+import { GenresContainer } from '@/containers';
+import { getMovies } from '@/redux/actions';
 
 // маппинг редюсеров
 const mapStateToProps = ({ moviesList }) => ({ moviesList });

@@ -5,7 +5,8 @@ import b_ from 'b_';
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import tmdbLogo from 'app_assets/img/tmdb_logo.svg';
+
+import tmdbLogo from '@/assets/img/tmdb_logo.svg';
 
 const Footer = () => {
   const b = b_.B({ modSeparator: '--' }).with('footer');

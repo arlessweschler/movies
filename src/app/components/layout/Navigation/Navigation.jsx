@@ -7,15 +7,12 @@ import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
-import { redirect } from 'app_history';
-
-import { getDefaulQueryParams, getQueryParams } from 'app_services/UtilsService';
-import { resetMovies, getMovies } from 'redux_actions';
+import { redirect } from '@/history';
+import { getDefaulQueryParams, getQueryParams } from '@/services/UtilsService';
 import {
-  NavToggle,
-  LocaleDropdown,
-  SearchForm
-} from 'app_components/layout/Navigation/_blocks/';
+  NavToggle, LocaleDropdown, SearchForm
+} from '@/components/layout/Navigation/_blocks/';
+import { resetMovies, getMovies } from '@/redux/actions';
 
 const Navigation = () => {
   const dispatch = useDispatch();

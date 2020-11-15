@@ -2,7 +2,7 @@ import {
   getMovies,
   getGenres,
   resetMovies
-} from 'app_redux/sagas/movies-list/movies-list.actions';
+} from '@/redux/sagas/movies-list/movies-list.actions';
 
 import {
   getDetails,
@@ -11,7 +11,7 @@ import {
   getImages,
   getRecomms,
   resetMovieDetails
-} from 'app_redux/sagas/movie-details/movie-details.actions';
+} from '@/redux/sagas/movie-details/movie-details.actions';
 
 export {
   getMovies,

@@ -2,9 +2,9 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import { withMDetailsContext } from 'app_contexts';
-import { PlayerBlock, PosterBlock } from 'app_components/pages/movie-page/_blocks';
-import { Section, Row, Column } from 'app_components/layout';
+import { withMDetailsContext } from '@/contexts';
+import { Section, Row, Column } from '@/components/layout';
+import { PlayerBlock, PosterBlock } from '@/components/pages/movie-page/_blocks';
 
 function MediaSection({ context }) {
   const { movie } = context;

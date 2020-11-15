@@ -4,21 +4,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import PTS from 'app_services/PropTypesService';
-import { hasRequestDiffs, getQueryParams } from 'app_services/UtilsService';
-import { RecommsSection } from 'app_components/pages/movie-page/_sections';
-import { ProgressBar } from 'app_components/layout';
+import PTS from '@/services/PropTypesService';
+import { hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
+import { RecommsSection } from '@/components/pages/movie-page/_sections';
+import { ProgressBar } from '@/components/layout';
+import { getRecomms } from '@/redux/actions';
 
-import {
-  getRecomms
-} from 'redux_actions';
-
-// маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => ({
   recommsList: movieDetails.recommsList
 });
 
-// маппинг экшен креэйторов
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
     getRecomms

@@ -4,26 +4,24 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import PTS from 'app_services/PropTypesService';
+import PTS from '@/services/PropTypesService';
 import {
   isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams
-} from 'app_services/UtilsService';
-import { MDetailsContextProvider } from 'app_contexts';
-import { Page, Backdrop, ProgressBar } from 'app_components/layout';
+} from '@/services/UtilsService';
+import { MDetailsContextProvider } from '@/contexts';
+import { Page, Backdrop, ProgressBar } from '@/components/layout';
 import {
   DescriptionSection, MediaSection, ActorsSection, GallerySection
-} from 'app_components/pages/movie-page/_sections';
-import { RecommsContainer } from 'app_containers';
+} from '@/components/pages/movie-page/_sections';
+import { RecommsContainer } from '@/containers';
 import {
   getDetails, getCredits, getVideos, getImages
-} from 'redux_actions';
+} from '@/redux/actions';
 
-// маппинг редюсеров
 const mapStateToProps = ({ movieDetails }) => ({
   details: movieDetails
 });
 
-// маппинг экшен креэйторов
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({
     getDetails,

@@ -12,7 +12,7 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - [Roadmap](#Roadmap)
 
 ## Description
-Application based on custom webpack boilerplate with the latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). 
+Application based on custom webpack boilerplate with the latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). This app shows data for Russian region, but you can specify the region you need. 
 
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
 
@@ -85,6 +85,7 @@ There is some environment variables with default values stored in `/configs/.env
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |
+| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `ApiService.js` for fetching movies data |
 | `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `ApiService.js` for fetching movies data |
 | `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
 | `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
@@ -92,16 +93,15 @@ There is some environment variables with default values stored in `/configs/.env
 
 ## Roadmap
 - ✅ live  demo on Heroku
+- ✅ linting ("eslint:recommended", "plugin:react/recommended", "plugin:import/errors", "eslint-config-airbnb-base")
+- ✅ refactoring: more readable internal aliases with "@" symbol naming
+- 🔲 refactoring: scss variables auto import
+- 🔲 refactoring: move layout component outside of application routing (to prevent rudundant rerenders)
 - 🐾 bugfixes
 - 🔲 qa: tests
 - 🔲 ci-cd: github actions for CI/CD with Heroku
 - 🔲 ci-cd: build flags for github repo
 - 🔲 ci-cd: keep-alive cron for Heroku
-- 🔲 qa: linting
-- 🔲 refactoring: move layout component outside of application routing (to prevent rudundant rerenders)
-- 🔲 refactoring: more readable internal aliases with "@" symbol naming
-- 🔲 refactoring: scss variables auto import
-- 🔲 refactoring: styles isolation
 - 🔲 tech: flow static type checking
 - 🔲 tech: firebase authorization
 - 💥 and most important thing: series of articles with how to code this application tutorial and how it works in details

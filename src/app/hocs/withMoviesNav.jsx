@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
-import { DEFAULT_MOVIES_TYPE } from 'app_settings_tmdb';
-import { redirect } from 'app_history';
-import { resetMovieDetails } from 'redux_actions';
+import { DEFAULT_MOVIES_TYPE } from '@/settings/tmdb';
+import { redirect } from '@/history';
+import { resetMovieDetails } from '@/redux/actions';
 
 function withMoviesNav(WrappedComponent) {
   const MoviesNav = (props) => {
