@@ -73,12 +73,16 @@ RENDERING=client
 
 
 ##### Development mode
-- `npm run dev-client` - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
-- `npm run dev-server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
+- `npm run dev:client` (`npm run dev`) - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
+- `npm run dev:server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
 
 ##### Production mode
 - `npm run build` - build client and server for production
 - `npm start` - launch builded express server for hosting `/dist/client/` folder 
+
+##### Other
+- `npm run lint` - run eslint with `./**` search pattern 
+- `npm run lint:fix` - run eslint with `--fix` flag
 
 ## Environment variables
 
@@ -94,10 +98,7 @@ There is some environment variables with default values stored in `/configs/.env
 
 ## Roadmap
 - ✅ live  demo on Heroku
-- ✅ linting ("eslint:recommended", "plugin:react/recommended", "plugin:import/errors", "eslint-config-airbnb-base")
-- ✅ refactoring: more readable internal aliases with "@" symbol naming
-- 🔲 refactoring: scss variables auto import
-- 🔲 refactoring: move layout component outside of application routing (to prevent rudundant rerenders)
+- ✅ linting ("eslint:recommended", "eslint-plugin-react", "eslint-plugin-import", "eslint-config-airbnb-base")
 - 🐾 bugfixes
 - 🔲 qa: tests
 - 🔲 ci-cd: github actions for CI/CD with Heroku
