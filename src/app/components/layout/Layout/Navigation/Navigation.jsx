@@ -9,8 +9,10 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '@/history';
 import { getDefaulQueryParams, getQueryParams } from '@/services/UtilsService';
-import { NavToggle, LocaleDropdown, SearchForm } from './_blocks';
 import { resetMovies, getMovies } from '@/redux/actions';
+import NavToggle from './NavToggle';
+import LocaleDropdown from './LocaleDropdown';
+import SearchForm from './SearchForm';
 
 const Navigation = () => {
   const dispatch = useDispatch();

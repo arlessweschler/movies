@@ -3,15 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getQueryParams } from '@/services/UtilsService';
-import MovieDetailsContainer from './features/MovieDetailsContainer';
 import {
-  getDetails,
-  getCredits,
-  getVideos,
-  getImages,
-  getGenres,
-  getRecomms
+  getDetails, getCredits, getVideos,
+  getImages, getGenres, getRecomms
 } from '@/redux/actions';
+import MovieDetailsContainer from './features/MovieDetailsContainer';
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({

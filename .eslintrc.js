@@ -40,11 +40,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:import/errors',
+    'plugin:import/warnings',
     'eslint-config-airbnb-base',
     './configs/eslint-rules/airbnb-base-customs',
     './configs/eslint-rules/import-customs',
     './configs/eslint-rules/react-customs',
     './configs/eslint-rules/warnings'
-  ],
-  rules: {}
+  ]
 };

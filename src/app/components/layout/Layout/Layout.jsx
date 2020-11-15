@@ -4,7 +4,8 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { Backdrop } from '@/components/layout';
-import { Header, Footer } from './_blocks';
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = (props) => (
   <>
