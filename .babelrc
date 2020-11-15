@@ -17,7 +17,7 @@
         "legacy": true
       }
     ],
-/*     [
+    /*     [
       "transform-remove-console",
       {
         "exclude": [

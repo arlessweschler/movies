@@ -62,7 +62,7 @@ Application features:
 - `npm install`
 
 Notation: for getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
-Example of `.env` file you could find in `/configs/defaults/.env.defaults` file.
+Example of `.env` file you could find in `/configs/.env.defaults` file.
 ```yaml
 TMDB_API_KEY=put_your_api_key_here
 PORT_CLIENT=8080
@@ -81,7 +81,7 @@ RENDERING=client
 
 ## Environment variables
 
-There is some environment variables with default values stored in `/configs/defaults/.env.defaults`
+There is some environment variables with default values stored in `/configs/.env.defaults`
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |

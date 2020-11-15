@@ -1,33 +1,32 @@
 const path = require('path');
+
+// webpack plugins and common modules
 const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const rules = require('./webpack-common/rules');
-const getAlias = require('./webpack-common/alias');
+// internal confuguration modules
+const aliases = require('./webpack-helpers/resolve-alias');
+const rules = require('./webpack-helpers/module-rules');
 
 const FILENAME = 'server.js';
 const SRC_PATH = path.resolve(__dirname, '../src');
 
 const commonConfig = {
-  entry: `${SRC_PATH}/server/index.${FILENAME}`,
-
+  ...aliases,
   target: 'node',
   node: {
     __dirname: false
   },
   externals: [nodeExternals()],
-  stats: 'minimal',
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json', '.css'],
-    alias: getAlias({ srcPath: SRC_PATH })
-  },
+  entry: `${SRC_PATH}/server/index.${FILENAME}`,
   output: {
     filename: FILENAME,
     path: path.resolve(__dirname, '../dist')
   },
+  stats: 'minimal',
   optimization: {
     minimize: false
   },

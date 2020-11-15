@@ -10,7 +10,7 @@ const favicon = require('serve-favicon');
 const path = require('path');
 const dotenv = require('dotenv-defaults');
 
-const env = dotenv.config({ defaults: path.resolve('./configs/defaults/.env.defaults') }).parsed;
+const env = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
 const CLIENT_FOLDER = 'dist/client';
 
 const app = express();

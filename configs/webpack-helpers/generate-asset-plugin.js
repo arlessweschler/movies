@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class GenerateAssetWebpackPlugin {
+class GenerateAssetPlugin {
   constructor(options) {
     this.filename = options.filename;
     this.fn = options.fn;
@@ -32,4 +32,4 @@ class GenerateAssetWebpackPlugin {
   }
 }
 
-module.exports = GenerateAssetWebpackPlugin;
+module.exports = GenerateAssetPlugin;

@@ -65,7 +65,7 @@ class MoviesListContainer extends Component {
     const { search } = getQueryParams();
     const hasMovies = !isEmpty(results);
 
-    const props_paging = {
+    const pagingParams = {
       initialPage: (page - 1),
       pageCount: total_pages
     };
@@ -89,8 +89,9 @@ class MoviesListContainer extends Component {
 
           {(hasMovies && total_results > 20) && (
             <div className="col-12 col-lg p-0 pagination-wrapper">
-              <PagingBlock cls="justify-content-lg-end m-0"
-                {...props_paging}
+              <PagingBlock
+                cls="justify-content-lg-end m-0"
+                {...pagingParams}
               />
             </div>
           )}
@@ -102,7 +103,10 @@ class MoviesListContainer extends Component {
 
         {(hasMovies && total_results > 20) && (
           <Row cls="pagination-wrapper mt-3">
-            <PagingBlock cls="m-0" {...props_paging} />
+            <PagingBlock
+              cls="m-0"
+              {...pagingParams}
+            />
           </Row>
         )}
       </Page>
