@@ -3,8 +3,8 @@ import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 
 import { isEmpty } from '@/services/UtilsService';
-import { GenresContainer } from '@/containers';
-import { Message } from '@/components/layout';
+import GenresContainer from '@/containers/features/GenresContainer';
+import { Message } from '@/components/markup';
 import { ListBlock } from '@/components/pages/movies-page';
 
 function RecommsSection({ t, movies }) {

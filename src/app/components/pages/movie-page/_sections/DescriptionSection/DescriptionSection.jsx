@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import { withMDetailsContext } from '@/contexts';
 import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/components/pages/movie-page/_blocks';
-import { Section, Row, Column } from '@/components/layout';
+import { Section, Row, Column } from '@/components/markup';
 
 function DescriptionSection({ context }) {
   const { movie } = context;

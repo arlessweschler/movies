@@ -7,7 +7,7 @@ import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 
 import PTS from '@/services/PropTypesService';
-import { Row } from '@/components/layout';
+import { Row } from '@/components/markup';
 
 function SearchResultsBlock(props) {
   const { t, search, total } = props;

@@ -7,8 +7,9 @@ import PT from 'prop-types';
 import PTS from '@/services/PropTypesService';
 import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/components/pages/movies-page';
-import { Page, Message, ProgressBar, Row } from '@/components/layout';
-import { GenresContainer } from '@/containers';
+import { Page, ProgressBar } from '@/components/layout';
+import { Message, Row } from '@/components/markup';
+import GenresContainer from '@/containers/features/GenresContainer';
 import { getMovies } from '@/redux/actions';
 
 const mapStateToProps = ({ moviesList }) => ({ moviesList });

@@ -3,7 +3,8 @@ import './Layout.scss';
 import React from 'react';
 import PT from 'prop-types';
 
-import { Header, Footer, Backdrop } from '@/components/layout';
+import { Backdrop } from '@/components/layout';
+import { Header, Footer } from './_blocks';
 
 const Layout = (props) => (
   <>

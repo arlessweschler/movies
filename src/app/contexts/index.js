@@ -1,8 +1,7 @@
-import MDetailsContext, { MDetailsContextProvider } from '@/contexts/MDetailsContext/MDetailsContext';
-import withMDetailsContext from '@/contexts/MDetailsContext/withMDetailsContext';
+import { MDetailsContextProvider } from './MDetailsContext/MDetailsContext';
+import withMDetailsContext from './MDetailsContext/withMDetailsContext';
 
 export {
-  MDetailsContext,
   MDetailsContextProvider,
   withMDetailsContext
 };

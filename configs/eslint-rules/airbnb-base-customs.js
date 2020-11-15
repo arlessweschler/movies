@@ -4,7 +4,6 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'eol-last': 0,
-    'import/no-cycle': 0,
     'object-curly-newline': 0,
     'comma-dangle': [1, 'only-multiline'],
     'semi': [1, 'always'],

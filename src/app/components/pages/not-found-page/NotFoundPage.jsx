@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import { Route } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 
-import { Message } from '@/components/layout';
+import { Message } from '@/components/markup';
 
 function NotFoundPage({ t }) {
   return (

@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
 import { isNotEmpty } from '@/services/UtilsService';
 import { withMDetailsContext } from '@/contexts';
-import { Section } from '@/components/layout';
+import { Section } from '@/components/markup';
 import { ToggleBlock } from '@/components/pages/movie-page/_blocks';
 import noPhoto from '@/assets/img/no_photo.png';
 

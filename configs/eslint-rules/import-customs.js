@@ -1,5 +1,6 @@
 module.exports = {
   rules: {
+    'import/order': 0,
     'import/no-useless-path-segments': 1,
     'import/first': 1,
     'import/exports-last': 1,

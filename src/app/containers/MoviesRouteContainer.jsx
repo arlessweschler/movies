@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { getQueryParams } from '@/services/UtilsService';
-import { MoviesListContainer } from '@/containers';
+import MoviesListContainer from '@/containers/features/MoviesListContainer';
 import {
   getMovies,
   getGenres

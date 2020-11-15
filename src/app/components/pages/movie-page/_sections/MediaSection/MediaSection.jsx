@@ -3,7 +3,7 @@ import PT from 'prop-types';
 import cn from 'classnames';
 
 import { withMDetailsContext } from '@/contexts';
-import { Section, Row, Column } from '@/components/layout';
+import { Section, Row, Column } from '@/components/markup';
 import { PlayerBlock, PosterBlock } from '@/components/pages/movie-page/_blocks';
 
 function MediaSection({ context }) {

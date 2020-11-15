@@ -6,7 +6,7 @@ import b_ from 'b_';
 import { withTranslation } from 'react-i18next';
 
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
-import { CardRatingBlock } from '@/components/pages/movies-page';
+import CardRatingBlock from '../CardRatingBlock';
 
 function CardImageBlock(props) {
   const { t, movie } = props;
