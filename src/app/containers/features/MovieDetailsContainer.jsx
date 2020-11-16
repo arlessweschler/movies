@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import PTS from '@/services/PropTypesService';
 import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
-import { MDetailsContextProvider } from '@/contexts';
+import { CreditsContextProvider, VideosContextProvider } from '@/contexts';
 import { ProgressBar, Backdrop, Page } from '@/layout';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page/_sections';
 import RecommsContainer from '@/containers/features/RecommsContainer';
@@ -63,32 +63,30 @@ class MovieDetailsContainer extends Component {
 
   render() {
     const { details } = this.props;
-    const {
-      movie, credits, videos, images
-    } = details;
+    const { movie, credits, videos, images } = details;
+    const { data: movieData } = movie || {};
+    const { backdrop_path, poster_path } = movieData || {};
 
     return (
-      <>
+      <Page>
         { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
-        {isNotEmpty(movie.data) &&
-          <MDetailsContextProvider
-            credits={credits.data}
-            videos={videos.data}
-            movie={movie.data}
-            images={images.data}
-          >
-            <Backdrop backdrop_path={movie.data.backdrop_path} />
+        {isNotEmpty(movieData) && (
+          <>
+            <Backdrop {...{ backdrop_path }} />
 
-            <Page>
-              <DescriptionSection />
-              <MediaSection />
+            <CreditsContextProvider {...{ credits }}>
+              <DescriptionSection movie={movieData} />
+              <VideosContextProvider {...{ videos }}>
+                <MediaSection {...{ poster_path }} />
+              </VideosContextProvider>
               <ActorsSection />
-              <GallerySection />
+              <GallerySection images={images.data} />
               <RecommsContainer />
-            </Page>
-          </MDetailsContextProvider>}
-      </>
+            </CreditsContextProvider>
+          </>
+        )}
+      </Page>
     );
   }
 }

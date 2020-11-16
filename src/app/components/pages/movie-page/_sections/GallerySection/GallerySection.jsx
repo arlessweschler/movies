@@ -7,12 +7,9 @@ import { withTranslation } from 'react-i18next';
 
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
 import { isNotEmpty } from '@/services/UtilsService';
-import { withMDetailsContext } from '@/contexts';
 import { Section } from '@/markup';
 
-function GallerySection({ t, context }) {
-  const { images } = context;
-
+function GallerySection({ t, images }) {
   if (!images || images.length < 1) return null;
 
   const items = images.map((img) => ({
@@ -43,10 +40,7 @@ function GallerySection({ t, context }) {
 
 GallerySection.propTypes = {
   t: PT.func.isRequired,
-
-  context: PT.shape({
-    images: PT.array.isRequired
-  }).isRequired
+  images: PT.array.isRequired
 };
 
-export default withTranslation()(withMDetailsContext(GallerySection));
+export default withTranslation()(GallerySection);

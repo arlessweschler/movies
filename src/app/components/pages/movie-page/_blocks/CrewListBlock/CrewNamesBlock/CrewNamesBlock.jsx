@@ -1,15 +1,15 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { withMDetailsContext } from '@/contexts';
+import { withCreditsContext } from '@/contexts';
 
 function CrewNamesBlock(props) {
   const {
     labelCls = '', valueCls = '', label, searchParams, context
   } = props;
-  const { getCrewNames } = context;
+  const { searchCrewNames } = context;
 
-  const names = getCrewNames(searchParams);
+  const names = searchCrewNames(searchParams);
   if (!names) return null;
 
   return (
@@ -40,8 +40,8 @@ CrewNamesBlock.propTypes = {
   }).isRequired,
 
   context: PT.shape({
-    getCrewNames: PT.func.isRequired
+    searchCrewNames: PT.func.isRequired
   }).isRequired
 };
 
-export default withMDetailsContext(CrewNamesBlock);
+export default withCreditsContext(CrewNamesBlock);

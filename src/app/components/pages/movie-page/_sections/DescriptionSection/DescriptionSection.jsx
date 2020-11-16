@@ -1,13 +1,10 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { withMDetailsContext } from '@/contexts';
-import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/pages/movie-page/_blocks';
 import { Section, Row, Column } from '@/markup';
+import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/pages/movie-page/_blocks';
 
-function DescriptionSection({ context }) {
-  const { movie } = context;
-
+function DescriptionSection({ movie }) {
   return (
     <Section transparent={true}>
       <Row>
@@ -55,20 +52,18 @@ function DescriptionSection({ context }) {
 }
 
 DescriptionSection.propTypes = {
-  context: PT.shape({
-    movie: PT.shape({
-      title: PT.string,
-      original_title: PT.string,
-      production_countries: PT.array,
-      genres: PT.array,
-      release_date: PT.string,
-      runtime: PT.number,
-      vote_average: PT.number,
-      vote_count: PT.number,
-      overview: PT.string,
-      tagline: PT.string
-    }).isRequired
+  movie: PT.shape({
+    title: PT.string,
+    original_title: PT.string,
+    production_countries: PT.array,
+    genres: PT.array,
+    release_date: PT.string,
+    runtime: PT.number,
+    vote_average: PT.number,
+    vote_count: PT.number,
+    overview: PT.string,
+    tagline: PT.string
   }).isRequired
 };
 
-export default withMDetailsContext(DescriptionSection);
+export default DescriptionSection;

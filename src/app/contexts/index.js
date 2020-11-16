@@ -1,7 +1,13 @@
-import { MDetailsContextProvider } from './MDetailsContext/MDetailsContext';
-import withMDetailsContext from './MDetailsContext/withMDetailsContext';
+import { CreditsContextProvider } from './CreditsContext/CreditsContext';
+import withCreditsContext from './CreditsContext/withCreditsContext';
+
+import { VideosContextProvider } from './VideosContext/VideosContext';
+import withVideosContext from './VideosContext/withVideosContext';
 
 export {
-  MDetailsContextProvider,
-  withMDetailsContext
+  CreditsContextProvider,
+  withCreditsContext,
+
+  VideosContextProvider,
+  withVideosContext
 };

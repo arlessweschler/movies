@@ -4,19 +4,18 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import { withMDetailsContext } from '@/contexts';
+import { withVideosContext } from '@/contexts';
 import { Section, Row, Column } from '@/markup';
 import { PlayerBlock, PosterBlock } from '@/pages/movie-page/_blocks';
 
-function MediaSection({ context }) {
-  const { movie, getTrailer } = context;
-  const { poster_path } = movie;
+function MediaSection({ poster_path, context }) {
+  const { searchVideos } = context;
 
   // classes for keeping 16by9 aspect ration
   const clsEmbed = 'embed-responsive';
   const keepAspectRatio = true;
 
-  const trailer = getTrailer({
+  const trailer = searchVideos({
     site: 'YouTube',
     type: 'Trailer'
   });
@@ -62,12 +61,11 @@ function MediaSection({ context }) {
 }
 
 MediaSection.propTypes = {
+  poster_path: PT.string,
+
   context: PT.shape({
-    getTrailer: PT.func.isRequired,
-    movie: PT.shape({
-      poster_path: PT.string
-    }).isRequired
+    searchVideos: PT.func.isRequired
   }).isRequired
 };
 
-export default withMDetailsContext(MediaSection);
+export default withVideosContext(MediaSection);
