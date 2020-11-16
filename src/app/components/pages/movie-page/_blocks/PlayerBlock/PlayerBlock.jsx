@@ -4,17 +4,13 @@ import React, { useState } from 'react';
 import PT from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
 
-import { isEmpty } from '@/services/UtilsService';
-import { withMDetailsContext } from '@/contexts';
 import { ProgressBar } from '@/layout';
 
 function PlayerBlock(props) {
-  const { searchParams, context } = props;
-  const { getTrailer } = context;
+  const { trailer } = props;
   const isLight = true;
 
-  const trailer = getTrailer(searchParams);
-  if (isEmpty(trailer)) return null;
+  if (!trailer) return null;
 
   const [isLoading, setLoading] = useState(true);
   const host = 'https://www.youtube.com';
@@ -39,14 +35,9 @@ function PlayerBlock(props) {
 }
 
 PlayerBlock.propTypes = {
-  searchParams: PT.shape({
-    site: PT.string.isRequired,
-    type: PT.string.isRequired
-  }).isRequired,
-
-  context: PT.shape({
-    getTrailer: PT.func.isRequired
-  }).isRequired
+  trailer: PT.shape({
+    key: PT.string.isRequired
+  })
 };
 
-export default withMDetailsContext(PlayerBlock);
+export default PlayerBlock;

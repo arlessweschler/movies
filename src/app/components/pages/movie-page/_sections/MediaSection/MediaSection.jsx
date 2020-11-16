@@ -1,3 +1,5 @@
+import './MediaSection.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
@@ -7,21 +9,30 @@ import { Section, Row, Column } from '@/markup';
 import { PlayerBlock, PosterBlock } from '@/pages/movie-page/_blocks';
 
 function MediaSection({ context }) {
-  const { movie } = context;
+  const { movie, getTrailer } = context;
   const { poster_path } = movie;
 
   // classes for keeping 16by9 aspect ration
   const clsEmbed = 'embed-responsive';
   const keepAspectRatio = true;
 
+  const trailer = getTrailer({
+    site: 'YouTube',
+    type: 'Trailer'
+  });
+
   return (
     <Section
       cls="px-0 pt-1 pb-4"
       transparent={true}
     >
-      <Row cls="px-3">
+      <Row
+        cls={cn('px-3', {
+          'row--has-videos': trailer
+        })}
+      >
         <Column
-          cls={cn('pb-md-0 pb-4', {
+          cls={cn('column--poster', {
             [clsEmbed]: keepAspectRatio
           })}
           size={4}
@@ -36,16 +47,14 @@ function MediaSection({ context }) {
         </Column>
 
         <Column
-          cls={cn({
+          cls={cn('column--trailer', {
             [clsEmbed]: keepAspectRatio,
             [`${clsEmbed}-16by9`]: keepAspectRatio
           })}
           size={8}
           smallFullWidth={true}
         >
-          <PlayerBlock
-            searchParams={{ site: 'YouTube', type: 'Trailer' }}
-          />
+          <PlayerBlock {...{ trailer }} />
         </Column>
       </Row>
     </Section>
@@ -54,6 +63,7 @@ function MediaSection({ context }) {
 
 MediaSection.propTypes = {
   context: PT.shape({
+    getTrailer: PT.func.isRequired,
     movie: PT.shape({
       poster_path: PT.string
     }).isRequired
