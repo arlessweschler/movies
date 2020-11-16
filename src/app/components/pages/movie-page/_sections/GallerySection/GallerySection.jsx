@@ -33,7 +33,10 @@ function GallerySection({ t, context }) {
       </div>
 
       <div className="row">
-        <ImageGallery {...{ items }} />
+        <ImageGallery
+          {...{ items }}
+          lazyLoad={true}
+        />
       </div>
     </Section>);
 }

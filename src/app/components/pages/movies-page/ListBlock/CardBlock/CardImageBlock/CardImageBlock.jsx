@@ -20,7 +20,7 @@ function CardImageBlock(props) {
           ? (
             <img
               className={b('image')}
-              src={`${TMDB_IMAGE_URL.medium}/${poster_path}`}
+              src={`${TMDB_IMAGE_URL.small}/${poster_path}`}
             />
           )
           : (

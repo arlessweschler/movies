@@ -17,7 +17,7 @@ function PosterBlock({ cls, data }) {
       className={classes}
       src={
         poster_path
-          ? `${TMDB_IMAGE_URL.large}/${poster_path}`
+          ? `${TMDB_IMAGE_URL.medium}/${poster_path}`
           : imageNotAvailable
       }
     />
