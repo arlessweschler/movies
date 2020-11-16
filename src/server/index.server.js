@@ -17,6 +17,8 @@ const CLIENT_FOLDER = 'dist/client';
 
 /* eslint-disable no-console */
 console.log('--index.server.js, envConfig:', envConfig);
+console.log('process.env.RENDERING:', process.env.RENDERING);
+console.log('process.env.RENDERING === "server":', process.env.RENDERING === 'server');
 /* eslint-disable no-console */
 
 const app = express();
@@ -27,7 +29,10 @@ app.use(responseHeaders);
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
 // серверный рендеринг
-if (envConfig.RENDERING === 'server') {
+if (
+  (process.env.RENDERING === 'server')
+  || (envConfig.RENDERING === 'server')
+) {
   const RESOURCES = ['js', 'css', 'assets'];
 
   RESOURCES.forEach((item) => {

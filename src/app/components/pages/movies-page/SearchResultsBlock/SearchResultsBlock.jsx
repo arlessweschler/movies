@@ -11,14 +11,15 @@ import { Row } from '@/markup';
 
 function SearchResultsBlock(props) {
   const { t, search, total } = props;
+
+  if (total == null || !search) return null;
+
   const b = b_.with('search-results');
   const quotes = (
     <span className={b('quotes')}>
       &quot;
     </span>
   );
-
-  if (total == null || !search) return null;
 
   return (
     <Row cls={cn(b(), 'mb-lg-2')}>
