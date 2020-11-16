@@ -19,14 +19,9 @@ const SearchForm = ({ t, history }) => {
   const searchPlaceholder = t('movie_search.input_placeholder');
   const { search = '' } = qs.parse(history.location.search);
 
-  // console.warn('-- SearchForm.render()');
-  // console.log('history.location.search:', history.location.search);
-
   const [searchText, setSearchText] = useState(search);
 
   useEffect(() => {
-    // console.warn('-- SearchForm.useEffect()');
-
     const unlisten = history.listen(() => {
       const { search: newSearch = '' } = qs.parse(history.location.search);
 
@@ -34,25 +29,32 @@ const SearchForm = ({ t, history }) => {
     });
 
     return () => {
-      // console.warn('-- LocaleDropdown.unmount()');
       unlisten();
     };
   }, [searchText]);
 
+  const resetAndRedirect = (params) => {
+    dispatch(resetMovies());
+    redirect(`/?${qs.stringify(params)}`);
+  };
+
   const onInputChange = (e) => {
     const { value } = e.target;
+
     const queryParams = qs.parse(history.location.search);
 
     if (value.length >= 2) {
       queryParams.search = value;
       queryParams.page = 1;
-    } else {
+      resetAndRedirect(queryParams);
+
+    } else if (value.length === 0) {
       delete queryParams.search;
+      delete queryParams.page;
+      resetAndRedirect(queryParams);
     }
 
     setSearchText(value);
-    dispatch(resetMovies());
-    redirect(`/?${qs.stringify(queryParams)}`);
   };
 
   return (

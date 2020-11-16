@@ -19,6 +19,10 @@ $base: 'list-card';
     text-decoration: none;
     transform: scale(1.1);
     cursor: pointer;
+
+    @media screen and (max-width: 576px) {
+      transform: none;
+    }
   }
 
   .#{$base}__body {

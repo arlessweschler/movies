@@ -15,24 +15,22 @@ function RatingBlock({ t, data }) {
 
   return (
     <div className={b()}>
-      <div>
-        <FontAwesomeIcon
-          className={b('icon')}
-          icon={faStar}
-        />
-        {vote_average}
-        <span className={b('scale')}>
-          /10
-        </span>
-      </div>
+      <FontAwesomeIcon
+        className={b('icon')}
+        icon={faStar}
+      />
+      {vote_average}
+      <span className={b('scale')}>
+        /10
+      </span>
 
       {vote_count
         ? (
           <div className={b('votes')}>
-            <span>
+            <span className={b('votes-label')}>
               {vote_count}
             </span>
-            <span className="ml-1">
+            <span className={b('votes-value')}>
               {t('movie_details.rating_votes.count', { count: vote_count })}
             </span>
           </div>

@@ -6,8 +6,12 @@ $base: 'movie-details-rating';
   float: right;
   font-size: calc(1rem + 1.2vw);
 
+  @media (max-width: 576px) {
+    text-align: right;
+  }
+
   .#{$base}__icon {
-    margin-right: 5px;
+    margin-right: 3px;
     color: $yellow;
   }
 
@@ -15,5 +19,15 @@ $base: 'movie-details-rating';
   .#{$base}__votes {
     font-size: calc(0.8rem + 0.3vw);
     color: $gray;
+
+    &-value {
+      margin-left: 3px;
+    }
+
+    &-label, &-value {
+      @media (max-width: 576px) {
+        display: block;
+      }
+    }
   }
 }
