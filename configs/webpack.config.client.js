@@ -18,7 +18,7 @@ const getIndexTemplate = require('./index.template.js');
 const GenerateAssetPlugin = require('./webpack-helpers/generate-asset-plugin');
 
 const envConfig = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
-const IS_SSR = (envConfig.RENDERING === 'server');
+const IS_SSR = (process.env.RENDERING === 'server') || (envConfig.RENDERING === 'server');
 const SRC_PATH = path.resolve(__dirname, '../src');
 
 let commonConfig = {
