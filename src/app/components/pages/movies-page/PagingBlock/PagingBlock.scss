@@ -21,6 +21,7 @@ ul.pagination {
 
   li {
     padding: 7px 5px;
+    word-break: normal;
 
     &.active {
       @media (max-width: 576px) {

@@ -18,7 +18,12 @@ function TagsBlock({ t, data }) {
     production_countries, genres, release_date, runtime
   } = data;
 
-  if (production_countries.length < 1 || genres.length < 1 || !runtime) return null;
+  if (
+    (production_countries.length < 1) &&
+    (genres.length < 1) &&
+    !release_date &&
+    !runtime
+  ) return null;
 
   const getDuration = (mins) => {
     const h = Math.floor(mins / 60);
