@@ -24,9 +24,9 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
 ## Description
-Application based on custom webpack boilerplate with the latest dependency versions an uses real data API provided by The Movie Database (TMDb).
+Movies is a a responsive React app written from scratch that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api)).
 
-*Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
+*Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key.* 
 
 ### Features: 
 ##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
@@ -35,7 +35,7 @@ Application based on custom webpack boilerplate with the latest dependency versi
 <img src="src/assets/img/screens/screen_1.png">
 
 ##### 🎥 search movies by title
-*Example: Found 60 movies by search query"Terminator":*
+*Example: Found 60 movies by search query "Terminator":*
 
 <img src="src/assets/img/screens/screen_2.png">
 
@@ -65,6 +65,7 @@ Application based on custom webpack boilerplate with the latest dependency versi
 
 EN (English) and RU (Russian) languages are available. 
 With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+
 *Example: English localization for "Avengers: Endgame" (2019):*
 
 <img src="src/assets/img/screens/screen_6.png">
