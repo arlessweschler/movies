@@ -29,35 +29,24 @@ const LocaleDropdown = (props) => {
   const defaultLang = findLang(langQuery);
   const [lang, setLang] = useState(defaultLang);
 
-  // console.warn('-- LocaleDropdown.render()');
-  // console.log('lang:', lang);
-
   useEffect(() => {
-    // console.warn('-- LocaleDropdown.useEffect()');
-
     const unlisten = history.listen((loc, action) => {
-      // console.warn('\n LocaleDropdown.listen(), action:', action);
       if (action === 'POP') {
         const { lng } = qs.parse(loc.search);
 
         const searchQueryDiff = Boolean(lng && lng !== lang.value);
         const defaultDiff = Boolean(typeof lng === 'undefined' && lang.value !== DEFAULT_LANGUAGE.value);
 
-        // console.log('lng:', lng);
-        // console.log('lang:', lang);
-        // console.log('searchQueryDiff:', searchQueryDiff);
-        // console.log('defaultDiff:', defaultDiff);
-
         if (searchQueryDiff || defaultDiff) {
-          setLang(findLang(lng));
+          const newLang = findLang(lng);
+
+          setLang(newLang);
+          i18n.changeLanguage(newLang.value);
         }
       }
     });
 
-    return () => {
-      // console.warn('-- LocaleDropdown.unmount()');
-      unlisten();
-    };
+    return () => { unlisten(); };
   }, [lang]);
 
   function onLangChange(e, loc, nextLang) {

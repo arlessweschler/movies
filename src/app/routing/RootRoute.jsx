@@ -4,11 +4,10 @@ import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 import { renderRoutes } from 'react-router-config';
 
-import i18n from '@/settings/i18n';
 import Layout from '@/layout/Layout';
 
 const RootRoute = (props) => {
-  const { route, store } = props;
+  const { route, store, i18n } = props;
 
   return (
     <Provider store={store}>
@@ -25,6 +24,7 @@ RootRoute.propTypes = {
   route: PropTypes.shape({
     routes: PropTypes.array
   }).isRequired,
+  i18n: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
 };
 

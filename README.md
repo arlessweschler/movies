@@ -1,13 +1,13 @@
 <img src="src/assets/img/readme-images/movies_readme_banner_white_mixed.png">
 
-## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
+Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
 Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
 #### List of contents
 
 - [Technology stack](#Technology-stack)
-- [Description](#Description)
+- [Features](#Features)
 - [NPM scripts](#NPM-scripts)
 - [Environment variables](#Environment-variables)
 - [Roadmap](#Roadmap)
@@ -24,12 +24,7 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - ✔️ React i18next for multi language support
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
-## Description
-Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
-
-*Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key.* 
-
-### Features: 
+## Features: 
 ##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 *Example: "Top rated" category, page 1 for Russian region*:
 
@@ -79,7 +74,8 @@ With locale changing also changes movie displayed data (in relation with selecte
 ##### Installation
 - `npm install`
 
-Notation: for getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
+Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key. For getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
+
 Example of `.env` file you could find in `/configs/.env.defaults` file.
 ```yaml
 TMDB_API_KEY=put_your_api_key_here
@@ -90,10 +86,9 @@ PORT_SERVER=8081
 RENDERING=client
 ```
 
-
 ##### Development mode
-- `npm run dev:client` (`npm run dev`) - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*
-- `npm run dev:server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*
+- `npm run dev:client` (`npm run dev`) - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*. *If your changes affects only client-side, running this script will be enough for you.*
+- `npm run dev:server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*. *This script useful if you want to change server-side behavior or work with client-side as express-hosted app.*
 
 ##### Production mode
 - `npm run build` - build client and server for production

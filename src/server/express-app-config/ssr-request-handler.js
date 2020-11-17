@@ -4,17 +4,22 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
 import rootSaga from '@/redux/rootSaga';
+import { configureI18next } from '@/settings/i18n';
 import { configureStore } from '@/redux/configureStore';
 
 export default (ROUTES) => (req, res) => {
   const branch = matchRoutes(ROUTES, req.path);
-  const store = configureStore();
+  const { lng: initialLanguage = 'en' } = req.query;
 
   /* eslint-disable no-console */
   console.log('\n--ssr-request-handler');
   console.log('req.url:', req.url);
   console.log('req.query:', req.query);
+  console.log('initialLanguage:', initialLanguage);
   /* eslint-disable no-console */
+
+  const store = configureStore();
+  const i18n = configureI18next(initialLanguage);
 
   store.runSaga(rootSaga).toPromise().then(() => {
     const preloadedState = store.getState();
@@ -27,7 +32,7 @@ export default (ROUTES) => (req, res) => {
         location={req.url}
         context={context}
       >
-        {renderRoutes(ROUTES, { store })}
+        {renderRoutes(ROUTES, { store, i18n })}
       </StaticRouter>
     );
 

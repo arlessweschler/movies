@@ -14,28 +14,32 @@ const defaultLanguageValue = 'en';
 
 const DEFAULT_LANGUAGE = LANGUAGES.find((i) => i.value === defaultLanguageValue);
 
-i18n
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .init({
-    resources: {
-      en: { translation: en },
-      ru: { translation: ru }
-    },
-    fallbackLng: defaultLanguageValue,
-    debug: false,
-    interpolation: {
-      escapeValue: false
-    },
-    detection: {
-      order: ['querystring'],
-      lookupQuerystring: 'lng',
-    }
-  });
+const configureI18next = (initialLanguage = null) => {
+  i18n
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+      resources: {
+        en: { translation: en },
+        ru: { translation: ru }
+      },
+      fallbackLng: defaultLanguageValue,
+      lng: initialLanguage,
+      debug: false,
+      interpolation: {
+        escapeValue: false
+      },
+      detection: {
+        order: ['querystring'],
+        lookupQuerystring: 'lng',
+      }
+    });
+
+  return i18n;
+};
 
 export {
   LANGUAGES,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  configureI18next
 };
-
-export default i18n;
