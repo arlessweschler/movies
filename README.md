@@ -24,7 +24,7 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
 ## Description
-Movies is a a responsive React app written from scratch that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api)).
+Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key.* 
 
