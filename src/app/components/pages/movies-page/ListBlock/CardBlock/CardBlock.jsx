@@ -19,7 +19,7 @@ function CardBlock(props) {
       onClick={() => linkMovie(id)}
     >
       <CardImageBlock
-        {...{ movie }}
+        movie={movie}
       />
 
       <div className={b('body')}>

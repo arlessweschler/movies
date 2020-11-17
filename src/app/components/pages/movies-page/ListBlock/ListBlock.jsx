@@ -14,7 +14,7 @@ function ListBlock({ movies, printGenres }) {
         <CardBlock
           key={movie.id}
           printGenres={printGenres}
-          {...{ movie }}
+          movie={movie}
         />
       ))}
     </div>

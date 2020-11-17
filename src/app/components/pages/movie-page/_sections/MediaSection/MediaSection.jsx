@@ -53,7 +53,9 @@ function MediaSection({ poster_path, context }) {
           size={8}
           smallFullWidth={true}
         >
-          <PlayerBlock {...{ trailer }} />
+          <PlayerBlock
+            trailer={trailer}
+          />
         </Column>
       </Row>
     </Section>

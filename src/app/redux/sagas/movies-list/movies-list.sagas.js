@@ -19,7 +19,7 @@ function* getMoviesSaga({ type, payload }) {
         : `/movie/${moviesType}`,
       params: search
         ? { page, query: search }
-        : { page, lng, region: 'RU' }
+        : { page, lng, region: process.env.TMDB_API_REGION }
     });
     yield put(actions.success(data));
   } catch (error) {

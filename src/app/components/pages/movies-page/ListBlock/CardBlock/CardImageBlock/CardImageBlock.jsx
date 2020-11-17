@@ -31,7 +31,7 @@ function CardImageBlock(props) {
       }
 
       <CardRatingBlock
-        {...{ vote_average }}
+        vote_average={vote_average}
       />
     </div>
   );

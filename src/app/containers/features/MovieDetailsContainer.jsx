@@ -63,25 +63,35 @@ class MovieDetailsContainer extends Component {
 
   render() {
     const { details } = this.props;
-    const { movie, credits, videos, images } = details;
-    const { data: movieData } = movie || {};
-    const { backdrop_path, poster_path } = movieData || {};
+    const { movie } = details;
+    const { data } = movie;
+    const { backdrop_path, poster_path } = data;
 
     return (
       <Page>
         { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
-        {isNotEmpty(movieData) && (
+        {isNotEmpty(data) && (
           <>
-            <Backdrop {...{ backdrop_path }} />
+            <Backdrop
+              backdrop_path={backdrop_path}
+            />
 
-            <CreditsContextProvider {...{ credits }}>
-              <DescriptionSection movie={movieData} />
-              <VideosContextProvider {...{ videos }}>
-                <MediaSection {...{ poster_path }} />
+            <CreditsContextProvider
+              credits={details.credits}
+            >
+              <DescriptionSection movie={data} />
+              <VideosContextProvider
+                videos={details.videos}
+              >
+                <MediaSection
+                  poster_path={poster_path}
+                />
               </VideosContextProvider>
               <ActorsSection />
-              <GallerySection images={images.data} />
+              <GallerySection
+                images={details.images}
+              />
               <RecommsContainer />
             </CreditsContextProvider>
           </>

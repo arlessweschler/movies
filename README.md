@@ -5,11 +5,23 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 
 ## List of contents
 
-- [Description](#Description)
 - [Technology stack](#Technology-stack)
+- [Description](#Description)
 - [NPM scripts](#NPM-scripts)
 - [Environment variables](#Environment-variables)
 - [Roadmap](#Roadmap)
+
+## Technology stack
+- 🏄 Babel 7
+- 🎁 Webpack 4
+- 📐 ESLint 7 (based on "eslint-plugin-import", "eslint-plugin-react", "eslint-config-airbnb-base" + some customizations)
+- 🚀 Server Side Rendering / Client Side Rendering with Express
+- ⚡ Hot Module Replacement  (supports server-side and sagas)
+- ✔️ React 16.x (latest), with Hooks
+- ✔️ Redux + Sagas
+- ✔️ React Router 4
+- ✔️ React i18next for multi language support
+- 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
 ## Description
 Application based on custom webpack boilerplate with the latest dependency versions. Application uses real data API provided by The Movie Database (TMDb). This app shows data for Russian region, but you can specify the region you need. 
@@ -42,21 +54,6 @@ Application features:
 <img src="src/assets/img/screens/screen_6.png">
 <img src="src/assets/img/screens/screen_7.png">
 
-## Technology stack
-
-- Build
-    - 🏄 Babel 7
-    - 🎁 Webpack 4
-    - 🚀 Server Side Rendering / Client Side Rendering with Express
-    - ⚡ Hot Module Replacement  (supports server-side and sagas)
-
-- Main libraries and dependencies
-  - ✔️ React 16.x (latest)
-  - ✔️ Redux + Sagas
-  - ✔️ React Router 4
-  - ✔️ React i18next
-  - 🍦️ Bootstrap 4 + Fontawesome 5
-
 ## NPM scripts
 ##### Installation
 - `npm install`
@@ -64,8 +61,9 @@ Application features:
 Notation: for getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
 Example of `.env` file you could find in `/configs/.env.defaults` file.
 ```yaml
-TMDB_API_HOST=https://api.themoviedb.org/3
 TMDB_API_KEY=put_your_api_key_here
+TMDB_API_HOST=https://api.themoviedb.org/3
+TMDB_API_REGION=RU
 PORT_CLIENT=8080
 PORT_SERVER=8081
 RENDERING=client
@@ -90,16 +88,14 @@ There is some environment variables with default values stored in `/configs/.env
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |
-| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `ApiService.js` for fetching movies data |
 | `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `ApiService.js` for fetching movies data |
+| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `ApiService.js` for fetching movies data |
+| `TMDB_API_REGION` | RU | TMDb API region paramater will act as a filter to search for and display matching release date information. This parameter is expected to be an [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.|
 | `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
 | `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
 | `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
 
 ## Roadmap
-- ✅ live  demo on Heroku
-- ✅ linting ("eslint:recommended", "eslint-plugin-react", "eslint-plugin-import", "eslint-config-airbnb-base")
-- 🐾 bugfixes
 - 🔲 qa: tests
 - 🔲 ci-cd: github actions for CI/CD with Heroku
 - 🔲 ci-cd: build flags for github repo
