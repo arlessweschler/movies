@@ -32,7 +32,7 @@ Application based on custom webpack boilerplate with the latest dependency versi
 ##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 <img src="src/assets/img/screens/screen_1.png">
 
-##### 🎥 search movies by title
+##### 🎥 search movies by title:
 <img src="src/assets/img/screens/screen_2.png">
 
 ##### 🎥 watch movie details:
@@ -48,10 +48,10 @@ Application based on custom webpack boilerplate with the latest dependency versi
 ##### 🎥 watch image gallery:
 <img src="src/assets/img/screens/screen_4.png">
 
-##### 🎥 watch recommendations - list of similar movies
+##### 🎥 watch recommendations - list of similar movies:
 <img src="src/assets/img/screens/screen_5.png">
     
-##### 🎥 switch localizations 
+##### 🎥 switch localizations:
 
 EN (English) and RU (Russian) languages are available. 
 With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
