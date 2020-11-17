@@ -30,15 +30,16 @@ Application based on custom webpack boilerplate with the latest dependency versi
 
 ### Features: 
 ##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
-*Example: "Top rated"m page 1 list for russian region*:
+*Example: "Top rated" category, page 1 for Russian region*:
+
 <img src="src/assets/img/screens/screen_1.png">
 
 ##### 🎥 search movies by title
 *Example: Found 60 movies by search query"Terminator":*
+
 <img src="src/assets/img/screens/screen_2.png">
 
 ##### 🎥 watch movie details
-*Example: Movie details for "The Usual Suspects" (1995):*
 - original title, genres, production countries, release date, duration
 - creators: director, writing, director of photography, original music composer, actors
 - movie rating based on TMDb users votes
@@ -46,14 +47,18 @@ Application based on custom webpack boilerplate with the latest dependency versi
 - poster
 - YouTube trailer 
 
+*Example: movie details for "The Usual Suspects" (1995):*
+
 <img src="src/assets/img/screens/screen_3.png">
 
 ##### 🎥 watch image gallery:
-*Example: Image gallary for "Kill Bill: Vol. 1" (2003):*
+*Example: actors and image gallery for "Kill Bill: Vol. 1" (2003):*
+
 <img src="src/assets/img/screens/screen_4.png">
 
 ##### 🎥 watch recommendations - list of similar movies:
-*Example: Recommendation for "Kung Fu Panda" (2008):*
+*Example: recommendation for "Kung Fu Panda" (2008):*
+
 <img src="src/assets/img/screens/screen_5.png">
     
 ##### 🎥 switch localizations:
@@ -61,8 +66,11 @@ Application based on custom webpack boilerplate with the latest dependency versi
 EN (English) and RU (Russian) languages are available. 
 With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 *Example: English localization for "Avengers: Endgame" (2019):*
+
 <img src="src/assets/img/screens/screen_6.png">
+
 *Example: Russian localization for "Avengers: Endgame" (2019):*
+
 <img src="src/assets/img/screens/screen_7.png">
 
 ## NPM scripts
