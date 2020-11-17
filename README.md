@@ -1,4 +1,4 @@
-<img src="src/assets/img/readme-images/movies_readme_banner_white_big.png">
+<img src="src/assets/img/readme-images/movies_readme_banner_white_mixed.png">
 
 ## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
 
