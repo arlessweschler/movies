@@ -1,5 +1,5 @@
 ## Application for movies search, based on Webpack 4 / Express / React + Redux-Saga / SSR
-<img src="src/assets/img/readme-images/movies_readme_banner.png">
+<img src="src/assets/img/readme-images/movies_readme_banner_white.png">
 
 Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
