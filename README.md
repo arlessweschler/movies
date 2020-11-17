@@ -2,9 +2,9 @@
 
 Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
-Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
+### Live demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
-#### List of contents
+### List of contents
 
 - [Technology stack](#Technology-stack)
 - [Features](#Features)
@@ -25,17 +25,17 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
 ## Features: 
-##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+##### 🎥 Watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 *Example: "Top rated" category, page 1 for Russian region*:
 
 <img src="src/assets/img/readme-images/screens/screen_1.png">
 
-##### 🎥 search movies by title
+##### 🎥 Search movies by title
 *Example: Found 60 movies by search query "Terminator":*
 
 <img src="src/assets/img/readme-images/screens/screen_2.png">
 
-##### 🎥 watch movie details
+##### 🎥 Watch movie details
 - original title, genres, production countries, release date, duration
 - creators: director, writing, director of photography, original music composer, actors
 - movie rating based on TMDb users votes
@@ -47,17 +47,17 @@ Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.
 
 <img src="src/assets/img/readme-images/screens/screen_3.png">
 
-##### 🎥 watch image gallery:
+##### 🎥 Watch image gallery
 *Example: actors and image gallery for "Kill Bill: Vol. 1" (2003):*
 
 <img src="src/assets/img/readme-images/screens/screen_4.png">
 
-##### 🎥 watch recommendations - list of similar movies:
+##### 🎥 Watch recommendations
 *Example: recommendation for "Kung Fu Panda" (2008):*
 
 <img src="src/assets/img/readme-images/screens/screen_5.png">
     
-##### 🎥 switch localizations:
+##### 🎥 Switch localizations
 
 EN (English) and RU (Russian) languages are available. 
 With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
