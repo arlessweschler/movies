@@ -24,7 +24,7 @@ Movies is a a responsive React app with SSR support that utilized real movies da
 - ✔️ React i18next for multi language support
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
-## Features: 
+## Features
 ##### 🎥 Watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 *Example: "Top rated" category, page 1 for Russian region*:
 
