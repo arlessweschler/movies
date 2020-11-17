@@ -28,29 +28,33 @@ Application based on custom webpack boilerplate with the latest dependency versi
 
 *Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own API key.* 
 
-Application features: 
-- 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+### Features: 
+##### 🎥 watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 <img src="src/assets/img/screens/screen_1.png">
 
-- 🎥 search movies by title
+##### 🎥 search movies by title
 <img src="src/assets/img/screens/screen_2.png">
 
-- 🎥 watch movie details:
-    - original title, genres, production countries, duration
-    - creators: director, writing, director of photography, original music composer, actors
-    - movie rating based on TMDb users votes
-    - tagline and overview
-    - poster
-    - YouTube trailer 
+##### 🎥 watch movie details:
+- original title, genres, production countries, release date, duration
+- creators: director, writing, director of photography, original music composer, actors
+- movie rating based on TMDb users votes
+- tagline and overview
+- poster
+- YouTube trailer 
+
 <img src="src/assets/img/screens/screen_3.png">
 
-- 🎥 watch image gallery:
+##### 🎥 watch image gallery:
 <img src="src/assets/img/screens/screen_4.png">
 
-- 🎥 watch recommendations - list of similar movies
+##### 🎥 watch recommendations - list of similar movies
 <img src="src/assets/img/screens/screen_5.png">
     
-- 🎥 localization is supported: EN (English) and RU (Russian) languages are available. With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
+##### 🎥 switch localizations 
+
+EN (English) and RU (Russian) languages are available. 
+With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
 <img src="src/assets/img/screens/screen_6.png">
 <img src="src/assets/img/screens/screen_7.png">
 
