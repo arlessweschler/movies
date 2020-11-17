@@ -4,7 +4,7 @@
 
 Live demo is available at [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
-##### List of contents
+#### List of contents
 
 - [Technology stack](#Technology-stack)
 - [Description](#Description)
