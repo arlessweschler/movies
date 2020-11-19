@@ -3,5 +3,9 @@
   "viewportHeight": 960,
   "integrationFolder": "__tests__/e2e",
   "screenshotsFolder": "__tests__/screenshots",
-  "videosFolder": "__tests__/videos"
+  "videosFolder": "__tests__/videos",
+  "env": {
+    "baseUrl": "http://localhost:8080",
+    "defaultLanguageValue": "EN"
+  }
 }

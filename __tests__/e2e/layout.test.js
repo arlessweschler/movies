@@ -1,7 +1,7 @@
 describe('LAYOUT TEST SUITE', () => {
 
   it('Visits the "Movies" site', () => {
-    cy.visit('http://localhost:8080/');
+    cy.visit(Cypress.env('baseUrl'));
   })
 
   it('Checks for home link', () => {
@@ -18,7 +18,7 @@ describe('LAYOUT TEST SUITE', () => {
 
   it('Checks for locale dropdown', () => {
     cy.get('.dropdown-toggle--locale')
-      .contains('EN')
+      .contains(Cypress.env('defaultLanguageValue'))
       .should('be.visible')
       .click()
 

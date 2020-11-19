@@ -1,10 +1,10 @@
 <img src="src/assets/img/readme-images/movies_readme_banner_without_stars.png">
 
-[![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions)
+[![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests)
 
-Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
+Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api). 
 
-### DEMO: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
+#### Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
 #### List of contents
 
@@ -18,6 +18,7 @@ Movies is a responsive React app with SSR support that utilized real movies data
 - 🏄 Babel 7
 - 🎁 Webpack 4
 - 📐 ESLint 7 (based on "eslint-plugin-import", "eslint-plugin-react", "eslint-config-airbnb-base" + some customizations)
+- 👌 End-to-end tests with Cypress
 - 🚀 Server Side Rendering / Client Side Rendering with Express
 - ⚡ Hot Module Replacement  (supports server-side and sagas)
 - ✔️ React 16.x (latest), with Hooks
@@ -44,20 +45,26 @@ Movies is a responsive React app with SSR support that utilized real movies data
 - tagline and overview
 - poster
 - YouTube trailer 
+- and big cool backdrop image
 
-*Example: movie details for "The Usual Suspects" (1995):*
+*Example: movie details for "The Big Lebowski" (1998):*
 
 <img src="src/assets/img/readme-images/screens/screen_3.png">
 
-#### 🎥 Watch image gallery
-*Example: actors and image gallery for "Kill Bill: Vol. 1" (2003):*
+#### 🎥 Watch actors list
+*Example: actors list for "The Usual Suspects" (1995):*
 
 <img src="src/assets/img/readme-images/screens/screen_4.png">
 
-#### 🎥 Watch recommendations
-*Example: recommendations for "Kung Fu Panda" (2008):*
+#### 🎥 Watch image gallery in fullscreen mode
+*Example: Fullscreen image gallery for "Reservoir Dogs" (1992):*
 
 <img src="src/assets/img/readme-images/screens/screen_5.png">
+
+#### 🎥 Watch recommendations
+*Example: recommendations for "Ice Age" (2002):*
+
+<img src="src/assets/img/readme-images/screens/screen_6.png">
     
 #### 🎥 Switch localizations
 
@@ -66,11 +73,11 @@ With locale changing also changes movie displayed data (in relation with selecte
 
 *Example: English localization for "Avengers: Endgame" (2019):*
 
-<img src="src/assets/img/readme-images/screens/screen_6.png">
+<img src="src/assets/img/readme-images/screens/screen_7.png">
 
 *Example: Russian localization for "Avengers: Endgame" (2019):*
 
-<img src="src/assets/img/readme-images/screens/screen_7.png">
+<img src="src/assets/img/readme-images/screens/screen_8.png">
 
 ## NPM scripts
 #### Installation
@@ -89,16 +96,21 @@ RENDERING=client
 ```
 
 #### Development mode
-- `npm run dev:client` (`npm run dev`) - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*. *If your changes affects only client-side, running this script will be enough for you.*
-- `npm run dev:server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*. *This script useful if you want to change server-side behavior or work with client-side as express-hosted app.*
+- `npm run dev:client` (`npm run dev`) - launch client-side React app by Webpack Dev Server with HMR *(by default available on [localhost:8080](http://localhost:8080))*. *If your changes affects only client-side, running this script will be enough for you.*
+- `npm run dev:server` - launch server-side Express app by Nodemon tool for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*. *This script useful if you want to change server-side behavior or work with client-side as Express-hosted app.*
 
 #### Production mode
 - `npm run build` - build client and server for production
-- `npm start` - launch built express server for hosting `/dist/client/` folder 
+- `npm start` - launch built Express server for hosting `/dist/client/` folder 
 
-#### Other
-- `npm run lint` - run eslint with `./**` search pattern 
-- `npm run lint:fix` - run eslint with `--fix` flag
+#### Testing
+- `npm run cypress` - open Cypress test runner 
+- `npm run cypress:run` - run Cypress tests to completion
+- `npm test` - start Webpack Dev Server, wait for a url to respond, then run Cypress tests. When the test process exits, shut down Webpack Dev Server
+
+#### Linting
+- `npm run lint` - run ESLint with `./**` search pattern 
+- `npm run lint:fix` - run ESLint with `--fix` flag
 
 ## Environment variables
 
@@ -114,9 +126,9 @@ There is some environment variables with default values stored in `/configs/.env
 | `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
 
 ## Roadmap
-- 🔲 QA: e2e tests (Cypress)
+- 🔲 QA: write more e2e tests
 - 🔲 QA: unit tests (Jest)
-- 🔲 CI/CD: keep-alive cron for Heroku
+- 🔲 CI/CD: keep-alive cron module for Heroku
 - 🔲 CI/CD: github actions for CI/CD with Heroku
 - 🔲 CI/CD: build flags for github repo
 - 🔲 CI/CD: docker images for isolated environment (app running and testing)
