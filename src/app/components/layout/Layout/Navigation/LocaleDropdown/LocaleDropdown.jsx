@@ -67,15 +67,14 @@ const LocaleDropdown = (props) => {
     <div className="locale-dropdown__wrapper">
       <div className="dropdown">
         <button
-          className="btn btn-secondary dropdown-toggle"
+          className="dropdown-toggle dropdown-toggle--locale btn btn-secondary"
           type="button"
-          id="dropdownMenuButton"
           data-toggle="dropdown"
         >
           {lang.label}
         </button>
 
-        <div className="dropdown-menu">
+        <div className="dropdown-menu dropdown-menu--locale">
           {LANGUAGES.map((item) => (
             <a
               key={uuidv4()}

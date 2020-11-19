@@ -2,9 +2,9 @@
 
 Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
-### Live demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
+### DEMO: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
-### List of contents
+#### List of contents
 
 - [Technology stack](#Technology-stack)
 - [Features](#Features)
@@ -25,17 +25,17 @@ Movies is a a responsive React app with SSR support that utilized real movies da
 - 🍦️ SASS, Bootstrap 4 + Fontawesome 5
 
 ## Features
-##### 🎥 Watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
+#### 🎥 Watch movies lists, filtered by categories: "Now playing", "Popular", "Top rated" and "Upcoming". Pagination is supported.
 *Example: "Top rated" category, page 1 for Russian region*:
 
 <img src="src/assets/img/readme-images/screens/screen_1.png">
 
-##### 🎥 Search movies by title
+#### 🎥 Search movies by title
 *Example: Found 60 movies by search query "Terminator":*
 
 <img src="src/assets/img/readme-images/screens/screen_2.png">
 
-##### 🎥 Watch movie details
+#### 🎥 Watch movie details
 - original title, genres, production countries, release date, duration
 - creators: director, writing, director of photography, original music composer, actors
 - movie rating based on TMDb users votes
@@ -47,17 +47,17 @@ Movies is a a responsive React app with SSR support that utilized real movies da
 
 <img src="src/assets/img/readme-images/screens/screen_3.png">
 
-##### 🎥 Watch image gallery
+#### 🎥 Watch image gallery
 *Example: actors and image gallery for "Kill Bill: Vol. 1" (2003):*
 
 <img src="src/assets/img/readme-images/screens/screen_4.png">
 
-##### 🎥 Watch recommendations
-*Example: recommendation for "Kung Fu Panda" (2008):*
+#### 🎥 Watch recommendations
+*Example: recommendations for "Kung Fu Panda" (2008):*
 
 <img src="src/assets/img/readme-images/screens/screen_5.png">
     
-##### 🎥 Switch localizations
+#### 🎥 Switch localizations
 
 EN (English) and RU (Russian) languages are available. 
 With locale changing also changes movie displayed data (in relation with selected language): title, tagline, description, poster, videos.
@@ -71,7 +71,7 @@ With locale changing also changes movie displayed data (in relation with selecte
 <img src="src/assets/img/readme-images/screens/screen_7.png">
 
 ## NPM scripts
-##### Installation
+#### Installation
 - `npm install`
 
 Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key. For getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
@@ -86,15 +86,15 @@ PORT_SERVER=8081
 RENDERING=client
 ```
 
-##### Development mode
+#### Development mode
 - `npm run dev:client` (`npm run dev`) - launch client-side webpack-dev-server with HMR *(by default available on [localhost:8080](http://localhost:8080))*. *If your changes affects only client-side, running this script will be enough for you.*
 - `npm run dev:server` - launch server-side nodemon for hosting `/dist/client/` folder *(by default available on [localhost:8081](http://localhost:8081))*. *This script useful if you want to change server-side behavior or work with client-side as express-hosted app.*
 
-##### Production mode
+#### Production mode
 - `npm run build` - build client and server for production
 - `npm start` - launch builded express server for hosting `/dist/client/` folder 
 
-##### Other
+#### Other
 - `npm run lint` - run eslint with `./**` search pattern 
 - `npm run lint:fix` - run eslint with `--fix` flag
 
@@ -112,10 +112,14 @@ There is some environment variables with default values stored in `/configs/.env
 | `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
 
 ## Roadmap
-- 🔲 qa: tests
-- 🔲 ci-cd: github actions for CI/CD with Heroku
-- 🔲 ci-cd: build flags for github repo
-- 🔲 ci-cd: keep-alive cron for Heroku
-- 🔲 tech: flow static type checking
-- 🔲 tech: firebase authorization
-- 💥 and most important thing: series of articles with how to code this application tutorial and how it works in details
+- 🔲 QA: e2e tests (Cypress)
+- 🔲 QA: unit tests (Jest)
+- 🔲 CI/CD: keep-alive cron for Heroku
+- 🔲 CI/CD: github actions for CI/CD with Heroku
+- 🔲 CI/CD: build flags for github repo
+- 🔲 CI/CD: docker images for isolated environment (app running and testing)
+- 🔲 setup: static type checking (Flow)
+- 🔲 setup: authorization (Firebase)
+- 🔲 feature: wishlist
+- 🔲 feature: genres filter
+- 💥 AND MOST IMPORTANT THING! After completing roadmap - i wil write series of tutorial articles with detailes steps information about: how to code this application in parts and how it works under the hood.

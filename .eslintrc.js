@@ -29,6 +29,8 @@ module.exports = {
   ignorePatterns: [
     'node_modules',
     'dist',
+    'cypress',
+    '__tests__',
     'src/locales',
     'src/assets',
     '**/*.scss',

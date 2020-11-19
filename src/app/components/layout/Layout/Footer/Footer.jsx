@@ -1,8 +1,8 @@
 import './Footer.scss';
 
 import React from 'react';
-import b_ from 'b_';
 import cn from 'classnames';
+import b_ from 'b_';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PT from 'prop-types';
 import cn from 'classnames';
+import b_ from 'b_';
 import qs from 'query-string';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
@@ -57,17 +58,19 @@ const SearchForm = ({ t, history }) => {
     setSearchText(value);
   };
 
+  const b = b_.B({ modSeparator: '--' }).with('search-form');
+
   return (
-    <form className="search-form">
+    <form className={b()}>
       <FontAwesomeIcon
-        className="search-icon"
+        className={b('icon')}
         icon={faSearch}
       />
       <DebounceInput
         debounceTimeout={300}
         autoComplete="off"
         spellCheck={false}
-        className={cn('form-control', { 'active': searchText })}
+        className={cn(b('input'), 'form-control', { 'active': searchText })}
         type="text"
         name="search"
         placeholder={searchPlaceholder}
