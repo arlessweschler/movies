@@ -1,5 +1,7 @@
 <img src="src/assets/img/readme-images/movies_readme_banner_without_stars.png">
 
+[![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions)
+
 Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
 ### DEMO: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
