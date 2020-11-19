@@ -1,6 +1,6 @@
 <img src="src/assets/img/readme-images/movies_readme_banner_without_stars.png">
 
-Movies is a a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
+Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api).
 
 ### DEMO: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
@@ -92,7 +92,7 @@ RENDERING=client
 
 #### Production mode
 - `npm run build` - build client and server for production
-- `npm start` - launch builded express server for hosting `/dist/client/` folder 
+- `npm start` - launch built express server for hosting `/dist/client/` folder 
 
 #### Other
 - `npm run lint` - run eslint with `./**` search pattern 
