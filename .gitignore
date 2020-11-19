@@ -3,5 +3,4 @@ dist
 cypress
 __tests__/screenshots
 __tests__/videos
-package-lock.json
 .env
