@@ -1,5 +1,7 @@
 {
   "viewportWidth": 1280,
   "viewportHeight": 960,
-  "integrationFolder": "__tests__/e2e"
+  "integrationFolder": "__tests__/e2e",
+  "screenshotsFolder": "__tests__/screenshots",
+  "videosFolder": "__tests__/videos"
 }
