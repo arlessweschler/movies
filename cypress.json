@@ -1,11 +1,11 @@
 {
   "viewportWidth": 1280,
   "viewportHeight": 960,
-  "integrationFolder": "__tests__/e2e",
+  "integrationFolder": "__tests__/e2e/specs",
   "screenshotsFolder": "__tests__/screenshots",
   "videosFolder": "__tests__/videos",
   "env": {
-    "baseUrl": "http://localhost:8080",
+    "homeUrl": "http://localhost:8080",
     "defaultLanguageValue": "EN"
   }
 }

@@ -33,6 +33,7 @@ function PagingBlock(props) {
       activeClassName="active"
       // we need specify that classes because of bootstrap reboot styles (for not to override them)
       pageLinkClassName={b('link')}
+      activeLinkClassName={b('link', { active: true })}
       previousLinkClassName={b('link', { prev: true })}
       nextLinkClassName={b('link', { next: true })}
       breakLinkClassName={b('link', { break: true })}

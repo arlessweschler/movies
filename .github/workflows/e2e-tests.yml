@@ -1,12 +1,14 @@
 name: e2e-tests
 on: [push]
 jobs:
-  e2e-cypress-windows-chrome:
+  e2e-cypress-windows-electron:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
       - name: Run cypress
         uses: cypress-io/github-action@v2
+        env:
+          TMDB_API_KEY: ${{ secrets.WORKFLOW_TMDB_API_KEY }}
         with:
           command: npm test

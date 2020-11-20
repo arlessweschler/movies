@@ -5,6 +5,7 @@ import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { Button, ButtonGroup } from 'reactstrap';
 import { withTranslation } from 'react-i18next';
+import cn from 'classnames';
 
 import { TMDB_MOVIES_TYPES } from '@/settings/tmdb';
 import withMoviesNav from '@/hocs/withMoviesNav';
@@ -21,6 +22,7 @@ function ToolbarBlock(props) {
       {TMDB_MOVIES_TYPES.map((moviesType) => (
         <Button
           key={uuidv4()}
+          className={cn(moviesType, { active: activeMoviesType === moviesType })}
           color={(activeMoviesType === moviesType)
             ? 'dark'
             : 'light'}

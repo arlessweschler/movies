@@ -85,7 +85,7 @@ class MoviesListContainer extends Component {
           {(hasMovies && total_results > 20) && (
             <div className="col-12 col-lg p-0 pagination-wrapper">
               <PagingBlock
-                cls="justify-content-lg-end m-0"
+                cls="pagination-top justify-content-lg-end m-0"
                 {...pagingParams}
               />
             </div>
@@ -99,7 +99,7 @@ class MoviesListContainer extends Component {
         {(hasMovies && total_results > 20) && (
           <Row cls="pagination-wrapper mt-3">
             <PagingBlock
-              cls="m-0"
+              cls="pagination-bottom m-0"
               {...pagingParams}
             />
           </Row>
