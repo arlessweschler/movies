@@ -1,4 +1,4 @@
-const sizes = {
+const imageSizes = {
   small: 'w185',
   medium: 'w300',
   large: 'w1280',
@@ -7,9 +7,9 @@ const sizes = {
 
 const imageHost = 'https://image.tmdb.org/t/p';
 
-const TMDB_IMAGE_URL = Object.keys(sizes).reduce(
+const TMDB_IMAGE_URL = Object.keys(imageSizes).reduce(
   (acc, key) => {
-    acc[key] = `${imageHost}/${sizes[key]}`;
+    acc[key] = `${imageHost}/${imageSizes[key]}`;
     return acc;
   }, {}
 );

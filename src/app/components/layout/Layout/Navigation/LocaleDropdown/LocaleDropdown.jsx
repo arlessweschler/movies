@@ -7,9 +7,9 @@ import { withRouter } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
+import { LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
 import { redirect } from '@/routing/history';
 import { isEmpty } from '@/utils/common';
-import { LANGUAGES, DEFAULT_LANGUAGE } from '@/settings/i18n';
 
 const LocaleDropdown = (props) => {
   const { i18n, history } = props;

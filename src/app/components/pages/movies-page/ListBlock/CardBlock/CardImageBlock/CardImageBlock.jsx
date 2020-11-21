@@ -5,7 +5,7 @@ import PT from 'prop-types';
 import b_ from 'b_';
 import { withTranslation } from 'react-i18next';
 
-import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import CardRatingBlock from '../CardRatingBlock';
 
 function CardImageBlock(props) {

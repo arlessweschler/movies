@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
-import { DEFAULT_MOVIES_TYPE } from '@/settings/tmdb';
+import { DEFAULT_MOVIES_TYPE } from '@/constants/tmdb';
 import { redirect } from '@/routing/history';
 import { resetMovieDetails } from '@/actions';
 

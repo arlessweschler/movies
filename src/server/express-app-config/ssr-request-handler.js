@@ -4,8 +4,8 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
 import rootSaga from '@/redux/rootSaga';
-import { configureI18next } from '@/settings/i18n';
 import { configureStore } from '@/redux/configureStore';
+import { configureI18next } from '@/i18n';
 
 export default (ROUTES) => (req, res) => {
   const branch = matchRoutes(ROUTES, req.path);

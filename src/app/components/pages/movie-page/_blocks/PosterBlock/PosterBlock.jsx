@@ -4,7 +4,7 @@ import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 
-import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import imageNotAvailable from '@/assets/img/image_not_available.png';
 
 function PosterBlock({ cls, data }) {

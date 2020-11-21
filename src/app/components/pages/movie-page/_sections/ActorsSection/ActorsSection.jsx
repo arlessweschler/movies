@@ -5,7 +5,7 @@ import PT from 'prop-types';
 import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 
-import { TMDB_IMAGE_URL } from '@/settings/tmdb';
+import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import { isEmpty } from '@/utils/common';
 import { withCreditsContext } from '@/contexts';
 import { Section } from '@/markup';

@@ -1,5 +1,5 @@
-import { DEFAULT_MOVIES_TYPE } from '@/settings/tmdb';
-import { DEFAULT_LANGUAGE } from '@/settings/i18n';
+import { DEFAULT_MOVIES_TYPE } from '@/constants/tmdb';
+import { DEFAULT_LANGUAGE } from '@/constants/languages';
 
 export default function getDefaultQueryParams() {
   return {

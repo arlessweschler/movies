@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { withTranslation } from 'react-i18next';
 import cn from 'classnames';
 
-import { TMDB_MOVIES_TYPES } from '@/settings/tmdb';
+import { TMDB_MOVIES_TYPES } from '@/constants/tmdb';
 import withMoviesNav from '@/hocs/withMoviesNav';
 
 function ToolbarBlock(props) {

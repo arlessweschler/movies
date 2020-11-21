@@ -2,17 +2,9 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+import { DEFAULT_LANGUAGE } from '@/constants/languages';
 import en from '@/locales/en.json';
 import ru from '@/locales/ru.json';
-
-const LANGUAGES = [
-  { value: 'en', region: 'US', label: 'EN' },
-  { value: 'ru', region: 'RU', label: 'RU' }
-];
-
-const defaultLanguageValue = 'en';
-
-const DEFAULT_LANGUAGE = LANGUAGES.find((i) => i.value === defaultLanguageValue);
 
 const configureI18next = (initialLanguage = null) => {
   i18n
@@ -23,7 +15,7 @@ const configureI18next = (initialLanguage = null) => {
         en: { translation: en },
         ru: { translation: ru }
       },
-      fallbackLng: defaultLanguageValue,
+      fallbackLng: DEFAULT_LANGUAGE.value,
       lng: initialLanguage,
       debug: false,
       interpolation: {
@@ -39,7 +31,5 @@ const configureI18next = (initialLanguage = null) => {
 };
 
 export {
-  LANGUAGES,
-  DEFAULT_LANGUAGE,
   configureI18next
 };

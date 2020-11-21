@@ -5,8 +5,8 @@ import PT from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import { withTranslation } from 'react-i18next';
 
+import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import { asyncShape } from '@/types';
-import { TMDB_IMAGE_URL } from '@/settings/tmdb';
 import { Section } from '@/markup';
 
 function GallerySection({ t, images = {} }) {
