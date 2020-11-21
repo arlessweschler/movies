@@ -12,7 +12,7 @@ import { DebounceInput } from 'react-debounce-input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-import { redirect } from '@/history';
+import { redirect } from '@/routing/history';
 import { resetMovies } from '@/actions';
 
 const SearchForm = ({ t, history }) => {

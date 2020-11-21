@@ -2,9 +2,9 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
-import history from '@/history';
-import routes from '@/routing/routes';
 import store from '@/redux/configureStore';
+import routes from '@/routing/routes';
+import history from '@/routing/history';
 import { configureI18next } from '@/settings/i18n';
 
 const ClientRouter = () => (

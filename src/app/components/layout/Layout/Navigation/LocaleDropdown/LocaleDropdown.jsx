@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
-import { redirect } from '@/history';
+import { redirect } from '@/routing/history';
 import { isNotEmpty } from '@/services/UtilsService';
 import { LANGUAGES, DEFAULT_LANGUAGE } from '@/settings/i18n';
 

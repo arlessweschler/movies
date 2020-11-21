@@ -8,7 +8,7 @@ import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
-import { redirect } from '@/history';
+import { redirect } from '@/routing/history';
 import { getDefaulQueryParams, getQueryParams } from '@/services/UtilsService';
 import { resetMovies, getMovies } from '@/actions';
 import NavToggle from './NavToggle';
