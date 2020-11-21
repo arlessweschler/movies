@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests)
 
-Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/documentation/api). 
+Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
 
 #### Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
@@ -143,4 +143,4 @@ There is some environment variables with default values stored in `/configs/.env
 
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
-<img src="src/assets/img/tmdb-logos/tmdb_logo_wide.svg">
+[<img src="src/assets/img/tmdb-logos/tmdb_logo_wide.svg">](https://www.themoviedb.org/)
