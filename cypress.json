@@ -2,8 +2,11 @@
   "viewportWidth": 1280,
   "viewportHeight": 960,
   "integrationFolder": "__tests__/e2e/specs",
-  "screenshotsFolder": "__tests__/screenshots",
-  "videosFolder": "__tests__/videos",
+  "fixturesFolder": "__tests__/e2e/cypress-config/fixtures",
+  "pluginsFile": "__tests__/e2e/cypress-configs/plugins/index.js",
+  "supportFile": "__tests__/e2e/cypress-configs/support/index.js",
+  "screenshotsFolder": "__reports__/e2e/screenshots",
+  "videosFolder": "__reports__/e2e/videos",
   "env": {
     "homeUrl": "http://localhost:8080",
     "defaultLanguageValue": "EN"

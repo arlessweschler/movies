@@ -1,6 +1,4 @@
-node_modules
 dist
-cypress
-__tests__/screenshots
-__tests__/videos
+node_modules
+__reports__
 .env
