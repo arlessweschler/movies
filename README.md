@@ -13,6 +13,7 @@ Movies is a responsive React app with SSR support that utilized real movies data
 - [NPM scripts](#NPM-scripts)
 - [Environment variables](#Environment-variables)
 - [Roadmap](#Roadmap)
+- [About](#About)
 
 ## Technology stack
 - 🏄 Babel 7
@@ -137,3 +138,9 @@ There is some environment variables with default values stored in `/configs/.env
 - 🔲 feature: wishlist
 - 🔲 feature: genres filter
 - 💥 AND MOST IMPORTANT THING! After completing roadmap - i wil write series of tutorial articles with detailes steps information about: how to code this application in parts and how it works under the hood.
+
+## About
+
+This product uses the TMDb API but is not endorsed or certified by TMDb.
+
+<img src="src/assets/img/tmdb-logos/tmdb_logo_wide.svg">
