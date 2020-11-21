@@ -8,15 +8,28 @@ import RatingBlock from './RatingBlock';
 import CrewListBlock from './CrewListBlock';
 
 function DescriptionSection({ movie }) {
+  const {
+    title,
+    original_title,
+    genres,
+    release_date,
+    runtime,
+    tagline,
+    overview,
+    vote_average,
+    vote_count,
+    production_countries
+  } = movie;
+
   return (
     <Section transparent={true}>
       <Row>
         <Column size={9} cls="p-0">
           <TitleBlock
             data={{
-              title: movie.title,
-              release_date: movie.release_date,
-              original_title: movie.original_title
+              title,
+              release_date,
+              original_title
             }}
           />
         </Column>
@@ -24,7 +37,8 @@ function DescriptionSection({ movie }) {
         <Column size={3} cls="p-0">
           <RatingBlock
             data={{
-              vote_average: movie.vote_average, vote_count: movie.vote_count
+              vote_average,
+              vote_count
             }}
           />
         </Column>
@@ -32,23 +46,23 @@ function DescriptionSection({ movie }) {
 
       <TagsBlock
         data={{
-          production_countries: movie.production_countries,
-          genres: movie.genres,
-          release_date: movie.release_date,
-          runtime: movie.runtime
+          production_countries,
+          genres,
+          release_date,
+          runtime
         }}
       />
 
       <CrewListBlock />
 
-      {(movie.tagline || movie.overview) && <hr />}
+      {(tagline || overview) && <hr />}
 
       <Row cls="tagline">
-        {movie.tagline}
+        {tagline}
       </Row>
 
       <Row>
-        {movie.overview}
+        {overview}
       </Row>
     </Section>
   );
