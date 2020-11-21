@@ -1,6 +1,6 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 
-import ApiService from '@/services/ApiService';
+import API from '@/services/API';
 import { actionKeys, asyncActionMaps } from '@/sagas/movie-details/movie-details.actions';
 
 // workers
@@ -11,7 +11,7 @@ function* getDetailsSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: `/movie/${movieId}`,
       params: { lng }
     });
@@ -28,7 +28,7 @@ function* getCreditsSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: `/movie/${movieId}/credits`,
       params: { lng }
     });
@@ -45,7 +45,7 @@ function* getVideosSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: `/movie/${movieId}/videos`,
       params: { lng }
     });
@@ -62,7 +62,7 @@ function* getImagesSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: `/movie/${movieId}/images`,
       params: { lng: null }
     });
@@ -79,7 +79,7 @@ function* getRecommsSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: `/movie/${movieId}/recommendations`,
       params: { page: 1, lng }
     });

@@ -1,6 +1,6 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 
-import ApiService from '@/services/ApiService';
+import API from '@/services/API';
 import { actionKeys, asyncActionMaps } from '@/sagas/movies-list/movies-list.actions';
 
 // workers
@@ -13,7 +13,7 @@ function* getMoviesSaga({ type, payload }) {
 
   yield put(actions.start(request));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: search
         ? '/search/movie'
         : `/movie/${moviesType}`,
@@ -34,7 +34,7 @@ function* getGenresSaga({ type, payload }) {
 
   yield put(actions.start({ lng }));
   try {
-    const data = yield ApiService.fetch({
+    const data = yield API.fetch({
       url: '/genre/movie/list',
       params: { lng }
     });

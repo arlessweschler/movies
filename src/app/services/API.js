@@ -30,23 +30,17 @@ export default {
         region
       }))(params);
 
-      // console.log('\n-- ApiService, queryObject:', queryObject);
-
       const queryString = qs.stringify({
         ...queryObject,
         api_key: process.env.TMDB_API_KEY
       });
 
-      // console.log('\n-- ApiService, queryString:', queryString);
-
       const fetchUrl = `${process.env.TMDB_API_HOST}${url}?${queryString}`;
 
-      // console.log(`\n-- ApiService, fetchUrl: ${fetchUrl}`);
-
       return fetchJson(fetchUrl, { method: 'GET' });
+
     } catch (error) {
-      // console.log('-- ApiService, error:', error);
-      throw new Error('Error in ApiService!');
+      throw new Error('Error in API module!');
     }
   }
 };

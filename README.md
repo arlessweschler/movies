@@ -119,8 +119,8 @@ There is some environment variables with default values stored in `/configs/.env
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |
-| `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `ApiService.js` for fetching movies data |
-| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `ApiService.js` for fetching movies data |
+| `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `API.js` for fetching movies data |
+| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `API.js` for fetching movies data |
 | `TMDB_API_REGION` | RU | TMDb API region paramater will act as a filter to search for and display matching release date information. This parameter is expected to be an [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.|
 | `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
 | `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
