@@ -1,6 +1,6 @@
 import qs from 'query-string';
 
-import { formatLng } from '@/services/UtilsService';
+import { formatLng } from '@/utils/common';
 
 require('isomorphic-fetch');
 

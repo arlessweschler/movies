@@ -5,7 +5,7 @@ import PT from 'prop-types';
 import cn from 'classnames';
 
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
-import { imageNotAvailable } from '@/services/UtilsService';
+import imageNotAvailable from '@/assets/img/image_not_available.png';
 
 function PosterBlock({ cls, data }) {
   const { poster_path } = data;

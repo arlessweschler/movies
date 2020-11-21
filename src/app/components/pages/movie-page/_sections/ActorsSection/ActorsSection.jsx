@@ -6,7 +6,7 @@ import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
-import { isNotEmpty } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
 import { withCreditsContext } from '@/contexts';
 import { Section } from '@/markup';
 import { ToggleBlock } from '@/pages/movie-page/_blocks';
@@ -23,7 +23,7 @@ function ActorsSection({ t, context }) {
     ? cast
     : cast.slice(0, 6);
 
-  return (isNotEmpty(cast) &&
+  return (!isEmpty(cast) &&
     <Section
       cls="pt-3"
       transparent={false}

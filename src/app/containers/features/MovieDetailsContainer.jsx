@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { asyncShape } from '@/types';
-import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
+import { hasRequestDiffs, getQueryParams } from '@/utils/url';
 import { CreditsContextProvider, VideosContextProvider } from '@/contexts';
 import { ProgressBar, Backdrop, Page } from '@/layout';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page/_sections';
@@ -71,7 +72,7 @@ class MovieDetailsContainer extends Component {
       <Page>
         { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
-        {isNotEmpty(data) && (
+        {!isEmpty(data) && (
           <>
             <Backdrop
               backdrop_path={backdrop_path}

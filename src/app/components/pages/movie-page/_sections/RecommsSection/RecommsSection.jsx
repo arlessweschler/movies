@@ -2,7 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 
-import { isEmpty } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
 import GenresContainer from '@/containers/features/GenresContainer';
 import { Message } from '@/markup';
 import { ListBlock } from '@/pages/movies-page';

@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
 import { redirect } from '@/routing/history';
-import { isNotEmpty } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
 import { LANGUAGES, DEFAULT_LANGUAGE } from '@/settings/i18n';
 
 const LocaleDropdown = (props) => {
@@ -21,9 +21,9 @@ const LocaleDropdown = (props) => {
 
     const finded = LANGUAGES.find((i) => i.value === queryValue);
 
-    return isNotEmpty(finded)
-      ? finded
-      : DEFAULT_LANGUAGE;
+    return isEmpty(finded)
+      ? DEFAULT_LANGUAGE
+      : finded;
   }
 
   const defaultLang = findLang(langQuery);

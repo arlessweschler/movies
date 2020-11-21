@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '@/routing/history';
-import { getDefaulQueryParams, getQueryParams } from '@/services/UtilsService';
+import { getDefaultQueryParams, getQueryParams } from '@/utils/url';
 import { resetMovies, getMovies } from '@/actions';
 import NavToggle from './NavToggle';
 import LocaleDropdown from './LocaleDropdown';
@@ -23,7 +23,7 @@ const Navigation = () => {
     const { lng } = getQueryParams();
 
     const requestParams = {
-      ...getDefaulQueryParams(),
+      ...getDefaultQueryParams(),
       lng
     };
 

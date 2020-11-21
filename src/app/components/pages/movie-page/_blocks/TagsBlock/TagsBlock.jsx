@@ -10,7 +10,7 @@ import {
   faHistory, faVideo, faGlobe, faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons';
 
-import { isNotEmpty, capitalize } from '@/services/UtilsService';
+import { isEmpty, capitalize } from '@/utils/common';
 
 function TagsBlock({ t, data }) {
   const {
@@ -69,7 +69,7 @@ function TagsBlock({ t, data }) {
   fields.forEach(({
     value, icon, cls, func
   }) => {
-    if (isNotEmpty(value)) {
+    if (!isEmpty(value)) {
       tags.push({ icon, cls, text: func(value) });
     }
   });

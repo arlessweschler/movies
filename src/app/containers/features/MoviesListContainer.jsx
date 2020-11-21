@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import PT from 'prop-types';
 
 import { nullOrNumber, nullOrString } from '@/types';
-import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
+import { getQueryParams, hasRequestDiffs } from '@/utils/url';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/pages/movies-page';
 import { Page, ProgressBar } from '@/layout';
 import { Message, Row } from '@/markup';

@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import PT from 'prop-types';
 
-import { isEmpty } from '@/services/UtilsService';
+import { isEmpty } from '@/utils/common';
 
 const CreditsContext = createContext();
 

@@ -13,7 +13,7 @@ const aliases = {
   '@/actions': 'app/redux/actions',
   '@/sagas': 'app/redux/sagas',
   '@/routing': 'app/routing',
-  '@/services': 'app/services',
+  '@/utils': 'app/utils',
   '@/settings': 'app/settings',
   '@/types': 'app/types',
   '@/assets': 'assets',

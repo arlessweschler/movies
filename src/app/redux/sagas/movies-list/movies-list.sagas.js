@@ -1,6 +1,6 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 
-import API from '@/services/API';
+import API from '@/utils/API';
 import { actionKeys, asyncActionMaps } from '@/sagas/movies-list/movies-list.actions';
 
 // workers

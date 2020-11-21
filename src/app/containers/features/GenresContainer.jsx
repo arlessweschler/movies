@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { isEmpty, getQueryParams, capitalize, hasRequestDiffs } from '@/services/UtilsService';
+import { isEmpty, capitalize } from '@/utils/common';
+import { getQueryParams, hasRequestDiffs } from '@/utils/url';
 import { ProgressBar } from '@/layout';
 import { getGenres } from '@/actions';
 

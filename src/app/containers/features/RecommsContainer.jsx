@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { nullOrNumber, nullOrString } from '@/types';
-import { hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
+import { hasRequestDiffs, getQueryParams } from '@/utils/url';
 import { RecommsSection } from '@/pages/movie-page/_sections';
 import { ProgressBar } from '@/layout';
 import { getRecomms } from '@/actions';
