@@ -9,8 +9,8 @@ import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import { isEmpty } from '@/utils/common';
 import { withCreditsContext } from '@/contexts';
 import { Section } from '@/markup';
-import { ToggleBlock } from '@/pages/movie-page/_blocks';
 import noPhoto from '@/assets/img/no_photo.png';
+import ToggleBlock from './ToggleBlock';
 
 function ActorsSection({ t, context }) {
   const { credits } = context;

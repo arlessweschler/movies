@@ -9,7 +9,7 @@ import { isEmpty } from '@/utils/common';
 import { hasRequestDiffs, getQueryParams } from '@/utils/url';
 import { CreditsContextProvider, VideosContextProvider } from '@/contexts';
 import { ProgressBar, Backdrop, Page } from '@/layout';
-import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page/_sections';
+import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page';
 import RecommsContainer from '@/containers/features/RecommsContainer';
 import { getDetails, getCredits, getVideos, getImages } from '@/actions';
 

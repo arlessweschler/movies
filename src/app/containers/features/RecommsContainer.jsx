@@ -6,8 +6,8 @@ import { withRouter } from 'react-router-dom';
 
 import { nullOrNumber, nullOrString } from '@/types';
 import { hasRequestDiffs, getQueryParams } from '@/utils/url';
-import { RecommsSection } from '@/pages/movie-page/_sections';
 import { ProgressBar } from '@/layout';
+import { RecommsSection } from '@/pages/movie-page';
 import { getRecomms } from '@/actions';
 
 const mapStateToProps = ({ movieDetails }) => ({

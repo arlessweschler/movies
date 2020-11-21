@@ -6,7 +6,8 @@ import cn from 'classnames';
 
 import { withVideosContext } from '@/contexts';
 import { Section, Row, Column } from '@/markup';
-import { PlayerBlock, PosterBlock } from '@/pages/movie-page/_blocks';
+import PlayerBlock from './PlayerBlock';
+import PosterBlock from './PosterBlock';
 
 function MediaSection({ poster_path, context }) {
   const { searchVideos } = context;

@@ -2,7 +2,10 @@ import React from 'react';
 import PT from 'prop-types';
 
 import { Section, Row, Column } from '@/markup';
-import { TitleBlock, TagsBlock, RatingBlock, CrewListBlock } from '@/pages/movie-page/_blocks';
+import TitleBlock from './TitleBlock';
+import TagsBlock from './TagsBlock';
+import RatingBlock from './RatingBlock';
+import CrewListBlock from './CrewListBlock';
 
 function DescriptionSection({ movie }) {
   return (
