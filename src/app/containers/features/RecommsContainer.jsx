@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import PTS from '@/services/PropTypesService';
+import { nullOrNumber, nullOrString } from '@/types';
 import { hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
 import { RecommsSection } from '@/pages/movie-page/_sections';
 import { ProgressBar } from '@/layout';
@@ -88,15 +88,15 @@ RecommsContainer.propTypes = {
 
   recommsList: PT.shape({
     isLoading: PT.bool.isRequired,
-    error: PTS.nullOrString,
+    error: nullOrString,
     request: PT.shape({
       movieId: PT.string,
       lng: PT.string,
     }).isRequired,
     data: PT.shape({
       page: PT.number.isRequired,
-      total_pages: PTS.nullOrNumber,
-      total_results: PTS.nullOrNumber,
+      total_pages: nullOrNumber,
+      total_results: nullOrNumber,
       results: PT.array.isRequired,
     }).isRequired
   }).isRequired

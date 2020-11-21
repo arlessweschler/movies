@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import PTS from '@/services/PropTypesService';
+import { asyncShape } from '@/types';
 import { isEmpty, isNotEmpty, hasRequestDiffs, getQueryParams } from '@/services/UtilsService';
 import { CreditsContextProvider, VideosContextProvider } from '@/contexts';
 import { ProgressBar, Backdrop, Page } from '@/layout';
@@ -120,10 +120,10 @@ MovieDetailsContainer.propTypes = {
   }).isRequired,
 
   details: PT.shape({
-    movie: PTS.asyncShape('object'),
-    credits: PTS.asyncShape('object'),
-    videos: PTS.asyncShape('array'),
-    images: PTS.asyncShape('array')
+    movie: asyncShape('object'),
+    credits: asyncShape('object'),
+    videos: asyncShape('array'),
+    images: asyncShape('array')
   }).isRequired
 };
 

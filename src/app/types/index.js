@@ -28,7 +28,7 @@ function asyncShape(dataType) {
   }).isRequired;
 }
 
-export default {
+export {
   asyncShape,
   nullOrString,
   nullOrNumber

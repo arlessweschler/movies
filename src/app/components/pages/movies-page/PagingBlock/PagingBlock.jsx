@@ -6,7 +6,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 import ReactPaginate from 'react-paginate';
 
-import PTS from '@/services/PropTypesService';
+import { nullOrNumber } from '@/types';
 import withMoviesNav from '@/hocs/withMoviesNav';
 
 function PagingBlock(props) {
@@ -46,7 +46,7 @@ PagingBlock.propTypes = {
   cls: PT.string,
 
   initialPage: PT.number.isRequired,
-  pageCount: PTS.nullOrNumber
+  pageCount: nullOrNumber
 };
 
 export default withMoviesNav(PagingBlock);

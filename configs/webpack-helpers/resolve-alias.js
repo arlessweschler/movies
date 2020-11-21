@@ -15,6 +15,7 @@ const aliases = {
   '@/routing': 'app/routing',
   '@/services': 'app/services',
   '@/settings': 'app/settings',
+  '@/types': 'app/types',
   '@/assets': 'assets',
   '@/locales': 'locales',
   '@/server': 'server'

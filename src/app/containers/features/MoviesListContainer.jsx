@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PT from 'prop-types';
 
-import PTS from '@/services/PropTypesService';
+import { nullOrNumber, nullOrString } from '@/types';
 import { isEmpty, getQueryParams, hasRequestDiffs } from '@/services/UtilsService';
 import { ToolbarBlock, PagingBlock, ListBlock, SearchResultsBlock } from '@/pages/movies-page';
 import { Page, ProgressBar } from '@/layout';
@@ -117,7 +117,7 @@ MoviesListContainer.propTypes = {
 
   moviesList: PT.shape({
     isLoading: PT.bool.isRequired,
-    error: PTS.nullOrString,
+    error: nullOrString,
     request: PT.shape({
       moviesType: PT.string,
       page: PT.oneOfType([
@@ -129,8 +129,8 @@ MoviesListContainer.propTypes = {
     }).isRequired,
     data: PT.shape({
       page: PT.number.isRequired,
-      total_pages: PTS.nullOrNumber,
-      total_results: PTS.nullOrNumber,
+      total_pages: nullOrNumber,
+      total_results: nullOrNumber,
       results: PT.array.isRequired,
     }).isRequired
   }).isRequired

@@ -1,7 +1,7 @@
 import React, { Component, createContext } from 'react';
 import PT from 'prop-types';
 
-import PTS from '@/services/PropTypesService';
+import { asyncShape } from '@/types';
 import { isEmpty } from '@/services/UtilsService';
 
 const VideosContext = createContext();
@@ -36,7 +36,7 @@ class VideosContextProvider extends Component {
 }
 
 VideosContextProvider.propTypes = {
-  videos: PTS.asyncShape('array'),
+  videos: asyncShape('array'),
 
   children: PT.oneOfType([
     PT.arrayOf(PT.node),

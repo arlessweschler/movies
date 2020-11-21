@@ -5,7 +5,7 @@ import PT from 'prop-types';
 import ImageGallery from 'react-image-gallery';
 import { withTranslation } from 'react-i18next';
 
-import PTS from '@/services/PropTypesService';
+import { asyncShape } from '@/types';
 import { TMDB_IMAGE_URL } from '@/settings/tmdb';
 import { Section } from '@/markup';
 
@@ -43,7 +43,7 @@ function GallerySection({ t, images = {} }) {
 
 GallerySection.propTypes = {
   t: PT.func.isRequired,
-  images: PTS.asyncShape('array')
+  images: asyncShape('array')
 };
 
 export default withTranslation()(GallerySection);

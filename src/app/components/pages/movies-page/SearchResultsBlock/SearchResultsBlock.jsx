@@ -6,7 +6,7 @@ import b_ from 'b_';
 import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 
-import PTS from '@/services/PropTypesService';
+import { nullOrNumber } from '@/types';
 import { Row } from '@/markup';
 
 function SearchResultsBlock(props) {
@@ -51,7 +51,7 @@ function SearchResultsBlock(props) {
 SearchResultsBlock.propTypes = {
   t: PT.func.isRequired,
   search: PT.string,
-  total: PTS.nullOrNumber
+  total: nullOrNumber
 };
 
 export default withTranslation()(SearchResultsBlock);
