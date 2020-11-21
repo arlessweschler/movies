@@ -1,0 +1,14 @@
+@import '@/assets/css/theme/colors';
+
+.home-link {
+  color: $yellow;
+  font-size: 1.8rem;
+  line-height: 0;
+  font-weight: 500;
+  font-family: 'Bebas Neue', cursive;
+
+  &:hover {
+    color: $yellow;
+    text-decoration: none;
+  }
+}

@@ -1,4 +1,4 @@
-import './Navigation.scss';
+import './HomeLink.scss';
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -12,11 +12,8 @@ import { DEFAULT_QUERY_PARAMS } from '@/constants/query-params';
 import { redirect } from '@/routing/history';
 import { getQueryParams } from '@/utils/url';
 import { resetMovies, getMovies } from '@/actions';
-import NavToggle from './NavToggle';
-import LocaleDropdown from './LocaleDropdown';
-import SearchForm from './SearchForm';
 
-const Navigation = () => {
+const HomeLink = () => {
   const dispatch = useDispatch();
 
   const goHome = (e) => {
@@ -36,30 +33,20 @@ const Navigation = () => {
   const b = b_.B({ modSeparator: '--' }).with('home-link');
 
   return (
-    <nav className={cn('movies-navbar', 'navbar navbar-expand-sm navbar-dark')}>
-      <div className="container p-0">
-        <a
-          href="/"
-          className={b()}
-          onClick={(e) => goHome(e)}
-        >
-          <FontAwesomeIcon
-            className={cn(b('icon'), 'mr-1')}
-            icon={faFilm}
-          />
-          <span className={b('text')}>
-            Movies
-          </span>
-        </a>
-
-        <NavToggle>
-          <SearchForm />
-          <LocaleDropdown />
-        </NavToggle>
-
-      </div>
-    </nav>
+    <a
+      href="/"
+      className={b()}
+      onClick={(e) => goHome(e)}
+    >
+      <FontAwesomeIcon
+        className={cn(b('icon'), 'mr-1')}
+        icon={faFilm}
+      />
+      <span className={b('text')}>
+        Movies
+      </span>
+    </a>
   );
 };
 
-export default Navigation;
+export default HomeLink;

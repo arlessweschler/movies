@@ -1,0 +1,11 @@
+@import '@/assets/css/theme/colors';
+
+.movies-navbar.navbar {
+  background-color: $purple;
+  border-bottom: 1px solid $black-btn-border;
+  padding: 0.8rem 1rem;
+
+  @media (max-width: 576px) {
+    padding: 0.5rem 1rem;
+  }
+}
