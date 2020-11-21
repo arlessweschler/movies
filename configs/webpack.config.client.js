@@ -45,7 +45,6 @@ let commonConfig = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.NamedChunksPlugin(namedChunksConfig),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify({
@@ -101,11 +100,7 @@ const devConfig = {
 
 const prodConfig = {
   mode: 'production',
-  devtool: 'source-map',
   stats: 'minimal',
-  optimization: {
-    // minimize: false
-  },
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

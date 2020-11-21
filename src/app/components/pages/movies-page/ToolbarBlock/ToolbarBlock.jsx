@@ -3,7 +3,6 @@ import './ToolbarBlock.scss';
 import React from 'react';
 import PT from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { Button, ButtonGroup } from 'reactstrap';
 import { withTranslation } from 'react-i18next';
 import cn from 'classnames';
 
@@ -18,20 +17,27 @@ function ToolbarBlock(props) {
   } = props;
 
   return (
-    <ButtonGroup className="movies-filter">
-      {TMDB_MOVIES_TYPES.map((moviesType) => (
-        <Button
-          key={uuidv4()}
-          className={cn(moviesType, { active: activeMoviesType === moviesType })}
-          color={(activeMoviesType === moviesType)
-            ? 'dark'
-            : 'light'}
-          onClick={() => changeMoviesType(moviesType)}
-        >
-          {t(`movie_types.${moviesType}`)}
-        </Button>
-      ))}
-    </ButtonGroup>
+    <div
+      className="movies-filter btn-group"
+      role="group"
+    >
+      {TMDB_MOVIES_TYPES.map((moviesType) => {
+        const isActive = (activeMoviesType === moviesType);
+        return (
+          <button
+            key={uuidv4()}
+            className={cn(moviesType, 'btn', {
+              'active': isActive,
+              'btn-dark': isActive,
+              'btn-light': !isActive,
+            })}
+            onClick={() => changeMoviesType(moviesType)}
+          >
+            {t(`movie_types.${moviesType}`)}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

@@ -22,9 +22,6 @@ class MoviesListContainer extends Component {
   componentDidUpdate(prevProps) {
     // console.warn('\n--MoviesListContainer.componentDidUpdate()');
 
-    // const diffs = difference(this.props, prevProps);
-    // console.log('diffs:', diffs);
-
     const { moviesList, actions, location } = this.props;
     const { request } = moviesList;
     const checklist = ['lng', 'moviesType', 'page', 'search'];

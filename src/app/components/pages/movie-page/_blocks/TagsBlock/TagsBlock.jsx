@@ -2,7 +2,6 @@ import './TagsBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
-import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 import b_ from 'b_';
 import { withTranslation } from 'react-i18next';
@@ -32,7 +31,7 @@ function TagsBlock({ t, data }) {
     return `${h}${t('movie_details.duration.hours')} ${m}${t('movie_details.duration.minutes')}`;
   };
 
-  const getReleaseDate = (val) => moment(val).format('DD.MM.YYYY');
+  const getReleaseDate = (val) => val.split('-').reverse().join('.');
 
   const mapWithSemicolons = (list) => list.map((item, i) => {
     const value = (<span className="tag-value">{capitalize(item.name)}</span>);

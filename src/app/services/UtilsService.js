@@ -5,30 +5,7 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from '@/settings/i18n';
 import history from '@/history';
 import imageNotAvailable from '@/assets/img/image_not_available.png';
 
-const _ = require('lodash');
-
 const Utils = {
-  /**
-   * Deep diff between two object, using lodash
-   * @param  {Object} comparedObject Object compared
-   * @param  {Object} baseObject   Object to compare with
-   * @return {Object}        Return a new object who represent the diff
-   */
-  difference(comparedObject, baseObject) {
-    function changes(object, base) {
-      /* eslint-disable no-param-reassign */
-      return _.transform(object, (result, value, key) => {
-        if (!_.isEqual(value, base[key])) {
-          result[key] = (_.isObject(value) && _.isObject(base[key]))
-            ? changes(value, base[key])
-            : value;
-        }
-      });
-      /* eslint-enable no-param-reassign */
-    }
-    return changes(comparedObject, baseObject);
-  },
-
   capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
@@ -130,7 +107,6 @@ export const {
   getDefaulQueryParams,
   getQueryParams,
   hasRequestDiffs,
-  difference,
   capitalize,
   isEmpty
 } = Utils;
