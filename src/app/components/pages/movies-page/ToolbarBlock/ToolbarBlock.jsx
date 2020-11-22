@@ -2,8 +2,9 @@ import './ToolbarBlock.scss';
 
 import React from 'react';
 import PT from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 import { withTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
+import { v4 as uuidv4 } from 'uuid';
 import cn from 'classnames';
 
 import { TMDB_MOVIES_TYPES } from '@/constants/tmdb';
@@ -17,27 +18,36 @@ function ToolbarBlock(props) {
   } = props;
 
   return (
-    <div
-      className="movies-filter btn-group"
-      role="group"
-    >
-      {TMDB_MOVIES_TYPES.map((moviesType) => {
-        const isActive = (activeMoviesType === moviesType);
-        return (
-          <button
-            key={uuidv4()}
-            className={cn(moviesType, 'btn', {
-              'active': isActive,
-              'btn-dark': isActive,
-              'btn-light': !isActive,
-            })}
-            onClick={() => changeMoviesType(moviesType)}
-          >
-            {t(`movie_types.${moviesType}`)}
-          </button>
-        );
-      })}
-    </div>
+    <>
+      <Helmet>
+        <title>
+          {t(`movie_types.${activeMoviesType}`)}
+          {' | Movies'}
+        </title>
+      </Helmet>
+
+      <div
+        className="movies-filter btn-group"
+        role="group"
+      >
+        {TMDB_MOVIES_TYPES.map((moviesType) => {
+          const isActive = (activeMoviesType === moviesType);
+          return (
+            <button
+              key={uuidv4()}
+              className={cn(moviesType, 'btn', {
+                'active': isActive,
+                'btn-dark': isActive,
+                'btn-light': !isActive,
+              })}
+              onClick={() => changeMoviesType(moviesType)}
+            >
+              {t(`movie_types.${moviesType}`)}
+            </button>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

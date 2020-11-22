@@ -1,5 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
+import { Helmet } from 'react-helmet-async';
 
 import { Section, Row, Column } from '@/markup';
 import TitleBlock from './TitleBlock';
@@ -22,49 +23,57 @@ function DescriptionSection({ movie }) {
   } = movie;
 
   return (
-    <Section transparent={true}>
-      <Row>
-        <Column size={9} cls="p-0">
-          <TitleBlock
-            data={{
-              title,
-              release_date,
-              original_title
-            }}
-          />
-        </Column>
+    <>
+      <Helmet>
+        <title>
+          {`${title} | Movies`}
+        </title>
+      </Helmet>
 
-        <Column size={3} cls="p-0">
-          <RatingBlock
-            data={{
-              vote_average,
-              vote_count
-            }}
-          />
-        </Column>
-      </Row>
+      <Section transparent={true}>
+        <Row>
+          <Column size={9} cls="p-0">
+            <TitleBlock
+              data={{
+                title,
+                release_date,
+                original_title
+              }}
+            />
+          </Column>
 
-      <TagsBlock
-        data={{
-          production_countries,
-          genres,
-          release_date,
-          runtime
-        }}
-      />
+          <Column size={3} cls="p-0">
+            <RatingBlock
+              data={{
+                vote_average,
+                vote_count
+              }}
+            />
+          </Column>
+        </Row>
 
-      <CrewListBlock />
+        <TagsBlock
+          data={{
+            production_countries,
+            genres,
+            release_date,
+            runtime
+          }}
+        />
 
-      {(tagline || overview) && <hr />}
+        <CrewListBlock />
 
-      <Row cls="tagline">
-        {tagline}
-      </Row>
+        {(tagline || overview) && <hr />}
 
-      <Row>
-        {overview}
-      </Row>
-    </Section>
+        <Row cls="tagline">
+          {tagline}
+        </Row>
+
+        <Row>
+          {overview}
+        </Row>
+      </Section>
+    </>
   );
 }
 

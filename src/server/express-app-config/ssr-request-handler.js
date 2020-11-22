@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import rootSaga from '@/redux/rootSaga';
 import { configureStore } from '@/redux/configureStore';
@@ -26,14 +27,17 @@ export default (ROUTES) => (req, res) => {
     const preloadedStateStr = JSON.stringify(preloadedState).replace(/</g, '\\u003c');
 
     const context = {};
+    const helmetContext = {};
 
     const rootContent = renderToString(
-      <StaticRouter
-        location={req.url}
-        context={context}
-      >
-        {renderRoutes(ROUTES, { store, i18n })}
-      </StaticRouter>
+      <HelmetProvider context={helmetContext}>
+        <StaticRouter
+          location={req.url}
+          context={context}
+        >
+          {renderRoutes(ROUTES, { store, i18n })}
+        </StaticRouter>
+      </HelmetProvider>
     );
 
     if (context.status === 404) {
@@ -41,9 +45,10 @@ export default (ROUTES) => (req, res) => {
     }
 
     res.render('index', {
+      IS_SSR: true,
       rootContent,
       preloadedState: preloadedStateStr,
-      IS_SSR: true
+      pageTitle: helmetContext.helmet.title.toString()
     });
   }).catch((e) => {
     res.status(500).send(e.message);

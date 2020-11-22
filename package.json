@@ -96,6 +96,7 @@
     "react": "16.13.1",
     "react-debounce-input": "3.2.3",
     "react-dom": "16.13.1",
+    "react-helmet-async": "1.0.7",
     "react-hot-loader": "4.12.21",
     "react-i18next": "11.7.3",
     "react-image-gallery": "1.0.8",
