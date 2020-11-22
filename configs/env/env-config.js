@@ -1,7 +1,7 @@
 const path = require('path');
 const dotenv = require('dotenv-defaults');
 
-const config = dotenv.config({ defaults: path.resolve('./.env.defaults') }).parsed;
+const config = dotenv.config({ defaults: path.resolve('./configs/env/.env.defaults') }).parsed;
 const { env } = process;
 
 const envConfig = {
