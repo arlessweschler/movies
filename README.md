@@ -86,7 +86,7 @@ With locale changing also changes movie displayed data (in relation with selecte
 
 Notation: if you want to clone this app and use it by yourself, you should register account at TMDb and use your own TMDb API key. For getting API to work you should create `.env` file at the root folder and put in `TMDB_API_KEY` variable with your TMDb API key as value.
 
-Example of `.env` file you could find in `/configs/.env.defaults` file.
+Example of `.env` file you could find in `/configs/env/.env.defaults` file.
 ```yaml
 TMDB_API_KEY=put_your_api_key_here
 TMDB_API_HOST=https://api.themoviedb.org/3
@@ -94,6 +94,7 @@ TMDB_API_REGION=RU
 PORT_CLIENT=8080
 PORT_SERVER=8081
 RENDERING=client
+DEBUG_MODE=1
 ```
 
 #### Development mode
@@ -115,7 +116,7 @@ RENDERING=client
 
 ## Environment variables
 
-There is some environment variables with default values stored in `/configs/.env.defaults`
+There is some environment variables with default values stored in `/configs/env/.env.defaults`
 
 | Variable         | Default            | Description                                                      
 | ---------------- | ------------------ |------------------ |
@@ -125,6 +126,7 @@ There is some environment variables with default values stored in `/configs/.env
 | `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
 | `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
 | `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
+| `DEBUG_MODE` | `1` | Debug mode. Available values: `0` or `1`. Enables Express log with `morgan` logger and Redux log with `redux-logger` |
 
 ## Roadmap
 - 🔲 QA: write more e2e tests

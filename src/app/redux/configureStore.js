@@ -10,17 +10,21 @@ const IS_CLIENT = (typeof window !== 'undefined');
 
 function configureStore(initialState = {}, startSagas = false) {
   const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware];
 
-  const logger = createLogger({
-    level: {
-      prevState: IS_CLIENT ? 'log' : false,
-      action: 'log',
-      nextState: IS_CLIENT ? 'log' : false
-    },
-    collapsed: (getState, action, logEntry) => !logEntry.error
-  });
+  if (process.env.DEBUG_MODE === '1') {
+    const logLevel = IS_CLIENT ? 'log' : false;
+    const logger = createLogger({
+      level: {
+        prevState: logLevel,
+        action: logLevel,
+        nextState: logLevel
+      },
+      collapsed: (getState, action, logEntry) => !logEntry.error
+    });
 
-  const middlewares = [sagaMiddleware, logger];
+    middlewares.push(logger);
+  }
 
   const store = createStore(
     rootReducer,
@@ -40,7 +44,7 @@ function configureStore(initialState = {}, startSagas = false) {
 
   // HMR for reducers and sagas
   /* eslint-disable global-require */
-  if (process.env.IS_DEV && module.hot) {
+  if (process.env.NODE_ENV === 'development' && module.hot) {
     module.hot.accept('./rootReducer', () => {
       const nextRootReducer = require('./rootReducer').default;
       store.replaceReducer(nextRootReducer);

@@ -22,11 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class RecommsContainer extends Component {
   componentDidUpdate(prevProps) {
-    // console.warn('\n--RecommsContainer.componentDidUpdate()');
-
-    const {
-      recommsList, actions, location, match
-    } = this.props;
+    const { recommsList, actions, location, match } = this.props;
     const { request } = recommsList;
     const { movieId } = match.params;
 
@@ -45,8 +41,6 @@ class RecommsContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n-- RecommsContainer.componentDidMount()');
-
     const { recommsList, match, actions } = this.props;
     const { request } = recommsList;
     const { movieId } = match.params;

@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import ClientRouter from '@/routing/ClientRouter';
 
-const renderMethod = process.env.IS_SSR
+const renderMethod = (process.env.RENDERING === 'server')
   ? hydrate
   : render;
 
@@ -15,6 +15,6 @@ renderMethod(
   document.getElementById('root')
 );
 
-if (process.env.IS_DEV && module.hot) {
+if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept();
 }

@@ -7,9 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const pug = require('pug');
-const dotenv = require('dotenv-defaults');
 
 // internal confuguration modules
+const envConfig = require('./env/env-config');
 const aliases = require('./webpack-helpers/resolve-alias');
 const rules = require('./webpack-helpers/module-rules');
 const optChunksConfig = require('./webpack-helpers/optimization-chunks');
@@ -17,8 +17,6 @@ const namedChunksConfig = require('./webpack-helpers/named-chunks');
 const getIndexTemplate = require('./index.template.js');
 const GenerateAssetPlugin = require('./webpack-helpers/generate-asset-plugin');
 
-const envConfig = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
-const IS_SSR = (process.env.RENDERING === 'server') || (envConfig.RENDERING === 'server');
 const SRC_PATH = path.resolve(__dirname, '../src');
 
 let commonConfig = {
@@ -47,16 +45,7 @@ let commonConfig = {
     new CleanWebpackPlugin(),
     new webpack.NamedChunksPlugin(namedChunksConfig),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify({
-        ...Object.keys(envConfig).reduce(
-          (acc, key) => {
-            acc[key] = process.env[key] || envConfig[key];
-            return acc;
-          }, {}
-        ),
-        IS_SSR,
-        IS_DEV: (process.env.NODE_ENV === 'development')
-      })
+      'process.env': JSON.stringify(envConfig)
     }),
     new HtmlWebpackPlugin({
       favicon: `${SRC_PATH}/assets/img/favicon.ico`,
@@ -130,7 +119,7 @@ const ssrConfig = {
   ]
 };
 
-if (IS_SSR) {
+if (envConfig.RENDERING === 'server') {
   commonConfig = merge(commonConfig, ssrConfig);
 }
 

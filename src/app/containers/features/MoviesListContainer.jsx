@@ -21,8 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class MoviesListContainer extends Component {
   componentDidUpdate(prevProps) {
-    // console.warn('\n--MoviesListContainer.componentDidUpdate()');
-
     const { moviesList, actions, location } = this.props;
     const { request } = moviesList;
     const checklist = ['lng', 'moviesType', 'page', 'search'];
@@ -35,8 +33,6 @@ class MoviesListContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n--MoviesListContainer.componentDidMount()');
-
     const { moviesList, actions } = this.props;
     const { data, isLoading, request } = moviesList;
     const checklist = ['lng', 'moviesType', 'page', 'search'];

@@ -21,8 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class GenresContainer extends Component {
   componentDidUpdate() {
-    // console.warn('\n--GenresContainer.componentDidUpdate()');
-
     const { genresList, actions } = this.props;
     const { request } = genresList;
     const checklist = ['lng'];
@@ -34,8 +32,6 @@ class GenresContainer extends Component {
   }
 
   componentDidMount() {
-    // console.warn('\n--GenresContainer.componentDidMount()');
-
     const { genresList, actions } = this.props;
     const { lng } = getQueryParams();
 

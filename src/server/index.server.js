@@ -7,32 +7,25 @@ import {
   handleSSR
 } from '@/server/express-app-config';
 
+const envConfig = require('@/configs/env/env-config');
 const express = require('express');
 const favicon = require('serve-favicon');
 const path = require('path');
-const dotenv = require('dotenv-defaults');
 
-const envConfig = dotenv.config({ defaults: path.resolve('./configs/.env.defaults') }).parsed;
 const CLIENT_FOLDER = 'dist/client';
-
-/* eslint-disable no-console */
-console.log('--index.server.js, envConfig:', envConfig);
-console.log('process.env.RENDERING:', process.env.RENDERING);
-console.log('process.env.RENDERING === "server":', process.env.RENDERING === 'server');
-/* eslint-disable no-console */
 
 const app = express();
 app.use(favicon(path.join(`${__dirname}/client/favicon.ico`)));
-app.use(logger('dev'));
 app.use(responseHeaders);
+
+if (envConfig.DEBUG_MODE === '1') {
+  app.use(logger('dev'));
+}
 
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
 // серверный рендеринг
-if (
-  (process.env.RENDERING === 'server')
-  || (envConfig.RENDERING === 'server')
-) {
+if (envConfig.RENDERING === 'server') {
   const RESOURCES = ['js', 'css', 'assets'];
 
   RESOURCES.forEach((item) => {
@@ -64,7 +57,8 @@ if (
 const PORT = process.env.PORT || envConfig.PORT_SERVER;
 const listener = app.listen(PORT, (err) => {
   if (err) throw new Error('Express app port listening error:', err);
+
   /* eslint-disable no-console */
-  console.log('\n--Express app listening on:', listener.address());
+  console.log('\n---Express app is listening on:', listener.address());
   /* eslint-disable no-console */
 });

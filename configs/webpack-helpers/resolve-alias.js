@@ -30,6 +30,8 @@ Object.keys(aliases).forEach(
   }
 );
 
+aliases['@/configs'] = path.resolve(__dirname, '..');
+
 module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json', '.scss', '.css'],

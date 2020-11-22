@@ -8,15 +8,18 @@ import rootSaga from '@/redux/rootSaga';
 import { configureStore } from '@/redux/configureStore';
 import { configureI18next } from '@/i18n';
 
+const envConfig = require('@/configs/env/env-config');
+
 export default (ROUTES) => (req, res) => {
   const branch = matchRoutes(ROUTES, req.path);
   const { lng: initialLanguage = 'en' } = req.query;
 
   /* eslint-disable no-console */
-  console.log('\n--ssr-request-handler');
-  console.log('req.url:', req.url);
-  console.log('req.query:', req.query);
-  console.log('initialLanguage:', initialLanguage);
+  if (envConfig.DEBUG_MODE === '1') {
+    console.log('\n---ssr-request-handler');
+    console.log('req.url:', req.url);
+    console.log('req.query:', req.query);
+  }
   /* eslint-disable no-console */
 
   const store = configureStore();
