@@ -96,7 +96,8 @@ There is some environment variables with default values stored in `/configs/env/
 - 🎓 tutorial: step by step tutorial with best practices about "How to code this app"
 
 ### ✌️ About
-Author: [nk11dev](https://github.com/nk11dev)
+**Author**: [nk11dev](https://github.com/nk11dev).
+
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
 [<img src="src/assets/img/tmdb-logos/tmdb_logo_wide.svg">](https://www.themoviedb.org/)
