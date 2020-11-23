@@ -93,7 +93,7 @@ There is some environment variables with default values stored in `/configs/env/
 - 🔲 CI/CD: add docker images for isolated environment (app running and testing)
 - 🔲 setup: static type checking (Flow), authorization (Firebase)
 - 🔲 features: wishlist, genres filter
-- 🎓 tutorial: Write and publish step by step tutorial about "How to code this app"
+- 🎓 tutorial: step by step tutorial with best practices about "How to code this app"
 
 ### ✌️ About
 
