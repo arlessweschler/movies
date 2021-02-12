@@ -8,12 +8,14 @@ import routes from '@/routing/routes';
 import store from '@/redux/configureStore';
 import { configureI18next } from '@/i18n';
 
+const i18n = configureI18next();
+
 const ClientRouter = () => (
   <HelmetProvider>
     <Router history={history}>
       {renderRoutes(routes, {
         store,
-        i18n: configureI18next()
+        i18n
       })}
     </Router>
   </HelmetProvider>
