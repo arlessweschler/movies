@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
