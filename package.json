@@ -1,7 +1,7 @@
 {
   "name": "movies",
   "version": "0.0.1",
-  "description": "Application for movies search, based on Webpack 5 / Express / React + Redux-Saga / Bootstrap 4 / 118next / SSR",
+  "description": "Application for movies search, based on Webpack 5 / Express / React + Redux-Saga / Bootstrap 4 / i18next / SSR",
   "main": "index.client.js",
   "scripts": {
     "cypress": "npx cypress open --config-file=cypress.json",
