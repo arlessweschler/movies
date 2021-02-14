@@ -1,15 +1,6 @@
 @import '@/assets/css/bootstrap';
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
-@keyframes animateOpacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 html {
   overflow-y: scroll !important;
 }

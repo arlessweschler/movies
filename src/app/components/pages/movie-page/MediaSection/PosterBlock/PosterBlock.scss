@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/animations';
 @import '@/assets/css/theme/colors';
 
 .movie-details__poster {
@@ -11,12 +12,12 @@
   }
 
   &.embed-responsive-item {
-    // fix image 16by9 width proportion
+    // fix for image 16by9 width proportion
     width: auto !important;
     animation: animateOpacity 0.5s ease;
 
     @media (max-width: 768px) {
-      // fix image 16by9 width proportion
+      // fix for image 16by9 width proportion
       position: relative !important;
 
       display: block;
