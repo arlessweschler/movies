@@ -60,7 +60,6 @@
     "imports-loader": "2.0.0",
     "node-sass": "5.0.0",
     "nodemon-webpack-plugin": "4.4.4",
-    "resolve-url-loader": "3.1.2",
     "sass-loader": "11.0.1",
     "start-server-and-test": "1.12.0",
     "style-loader": "2.0.0",
