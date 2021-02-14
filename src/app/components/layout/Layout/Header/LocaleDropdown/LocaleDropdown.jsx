@@ -31,6 +31,7 @@ const LocaleDropdown = (props) => {
 
   useEffect(() => {
     require('bootstrap/js/dist/dropdown');
+    require('bootstrap/js/dist/collapse');
   }, []);
 
   useEffect(() => {
