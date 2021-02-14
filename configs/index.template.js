@@ -43,8 +43,7 @@ html(lang="en")
     if IS_SSR
       !=pageTitle
     else
-      title Movies 
-    ${getStyle(hash, 'vendor')}
+      title Movies
     ${getStyle(hash, 'main')}
 
   body
@@ -55,7 +54,7 @@ html(lang="en")
     else
       div#root
 
-    ${getScript(hash, 'vendor', 'chunk.js')}
+    ${getScript(hash, 'vendor', 'js')}
     ${getScript(hash, 'main', 'js')}
 `;
 };

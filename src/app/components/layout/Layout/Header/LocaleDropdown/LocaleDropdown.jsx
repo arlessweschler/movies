@@ -30,6 +30,11 @@ const LocaleDropdown = (props) => {
   const [lang, setLang] = useState(defaultLang);
 
   useEffect(() => {
+    require('bootstrap/js/dist/dropdown');
+  }, []);
+
+  useEffect(() => {
+
     const unlisten = history.listen((loc, action) => {
       if (action === 'POP') {
         const { lng } = qs.parse(loc.search);

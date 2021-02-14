@@ -12,8 +12,6 @@ const pug = require('pug');
 const envConfig = require('./env/env-config');
 const aliases = require('./webpack-helpers/resolve-alias');
 const rules = require('./webpack-helpers/module-rules');
-const optChunksConfig = require('./webpack-helpers/optimization-chunks');
-const namedChunksConfig = require('./webpack-helpers/named-chunks');
 const getIndexTemplate = require('./index.template.js');
 const GenerateAssetPlugin = require('./webpack-helpers/generate-asset-plugin');
 
@@ -25,16 +23,25 @@ let commonConfig = {
   entry: [
     'react-hot-loader/patch',
     `${SRC_PATH}/app/index.client.js`,
-    `${SRC_PATH}/app/index.styles.js`,
-    'bootstrap-loader'
+    `${SRC_PATH}/app/index.styles.js`
   ],
   output: {
     path: path.resolve(__dirname, '../dist/client'),
-    filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[id].[hash].chunk.js',
+    filename: 'js/[name].[fullhash].js',
+    chunkFilename: 'js/[id].[fullhash].chunk.js',
     publicPath: '/'
   },
-  optimization: optChunksConfig({ splitBy: 'vendor' }),
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+          test: /node_modules/,
+        },
+      },
+    }
+  },
   module: {
     rules: [
       rules.jsx,
@@ -43,7 +50,6 @@ let commonConfig = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.NamedChunksPlugin(namedChunksConfig),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(envConfig)
     }),
@@ -103,7 +109,7 @@ const prodConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash].css'
+      filename: 'css/[name].[fullhash].css'
     }),
   ]
 };
