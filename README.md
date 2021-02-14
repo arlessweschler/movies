@@ -17,14 +17,14 @@ Movies is a responsive React app with SSR support that utilized real movies data
 
 ### 🚀 Technologies
 - Babel 7
-- Webpack 4
+- Webpack 5
 - ESLint 7 (based on "eslint-plugin-import", "eslint-plugin-react", "eslint-config-airbnb-base" + some customizations)
 - End-to-end tests with Cypress
 - Server Side Rendering / Client Side Rendering with Express
 - Hot Module Replacement  (supports server-side and sagas)
-- React 16.x (latest), with Hooks
+- React 16.4, with hooks
 - Redux + Sagas
-- React Router 4
+- React Router 5
 - React i18next for multi language support
 - SASS, Bootstrap 4 + Fontawesome 5
 
@@ -91,7 +91,7 @@ There is some environment variables with default values stored in `/configs/env/
 ### 🍦️ Roadmap
 - 🔲 QA: write more e2e tests, add unit tests (Jest)
 - 🔲 CI/CD: add docker images for isolated environment (app running and testing)
-- 🔲 setup: static type checking (Flow), authorization (Firebase)
+- 🔲 setup: static type checking (Typescript), authorization (Firebase)
 - 🔲 features: wishlist, genres filter
 - 🎓 tutorial: step by step tutorial with best practices about "How to code this app"
 
