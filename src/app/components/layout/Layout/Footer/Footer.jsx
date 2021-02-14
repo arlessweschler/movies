@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className={cn(b(), 'text-center p-3')}>
       <div className={cn(b('link-wrapper'), 'mr-2')}>
-        <span>© 2020,</span>
+        <span>© 2021,</span>
         <a
           className={b('link', { 'github': true })}
           href="https://github.com/nk11dev"
