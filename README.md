@@ -22,7 +22,7 @@ Movies is a responsive React app with SSR support that utilized real movies data
 - End-to-end tests with Cypress
 - Server Side Rendering / Client Side Rendering with Express
 - Hot Module Replacement  (supports server-side and sagas)
-- React 16.4, with hooks
+- React 17, with hooks
 - Redux + Sagas
 - React Router 5
 - React i18next for multi language support
