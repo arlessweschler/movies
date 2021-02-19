@@ -17,7 +17,8 @@ const aliases = {
   '@/types': 'app/types',
   '@/utils': 'app/utils',
   '@/i18n': 'app/i18n',
-  '@/assets': 'assets',
+  '@/assets/img': 'assets/img',
+  '@/assets/css': 'assets/styles',
   '@/locales': 'locales',
   '@/server': 'server'
 };
@@ -31,6 +32,7 @@ Object.keys(aliases).forEach(
 );
 
 aliases['@/configs'] = path.resolve(__dirname, '..');
+aliases['@react-image-gallery'] = path.resolve(__dirname, '../../node_modules/react-image-gallery');
 
 module.exports = {
   resolve: {

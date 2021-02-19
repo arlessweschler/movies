@@ -20,11 +20,13 @@ const SRC_PATH = path.resolve(__dirname, '../src');
 let commonConfig = {
   ...aliases,
   context: path.resolve(__dirname),
-  entry: [
-    'react-hot-loader/patch',
-    `${SRC_PATH}/app/index.client.js`,
-    `${SRC_PATH}/app/index.styles.js`
-  ],
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      `${SRC_PATH}/app/index.client.js`,
+      `${SRC_PATH}/app/index.styles.js`
+    ]
+  },
   output: {
     path: path.resolve(__dirname, '../dist/client'),
     filename: 'js/[name].[fullhash].js',
@@ -38,6 +40,28 @@ let commonConfig = {
           name: 'vendor',
           chunks: 'all',
           test: /node_modules/,
+          priority: 10
+        },
+        app_styles: {
+          name: 'app_styles',
+          chunks: 'all',
+          test: /\.(sa|sc|c)ss$/,
+          enforce: true,
+          priority: 11
+        },
+        vendor_styles: {
+          name: 'vendor_styles',
+          chunks: 'all',
+          test: /node_modules[\\/].*\.(sa|sc|c)ss$/,
+          enforce: true,
+          priority: 12
+        },
+        bootstrap_styles: {
+          name: 'bootstrap_styles',
+          chunks: 'all',
+          test: /assets[\\/]styles[\\/]bootstrap[\\/]index\.scss/,
+          enforce: true,
+          priority: 13
         },
       },
     }

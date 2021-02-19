@@ -1,10 +1,17 @@
+// Custom values for default variables
 @import '@/assets/css/bootstrap/custom-default-variables';
 
+// Resets
 @import "~bootstrap/scss/_reboot.scss";
 @import "~bootstrap/scss/_print.scss";
+
+// Special components
 @import "~bootstrap/scss/_media.scss";
+
+// Utilities
 @import "~bootstrap/scss/_utilities.scss";
 
+// Core CSS
 @import "~bootstrap/scss/_buttons.scss";
 @import "~bootstrap/scss/_forms.scss";
 @import "~bootstrap/scss/_grid.scss";
@@ -12,6 +19,7 @@
 @import "~bootstrap/scss/_tables.scss";
 @import "~bootstrap/scss/_type.scss";
 
+// Components
 @import "~bootstrap/scss/_button-group.scss";
 @import "~bootstrap/scss/_custom-forms.scss";
 @import "~bootstrap/scss/_dropdown.scss";

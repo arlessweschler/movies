@@ -1,9 +1,12 @@
+// Theme dependencies
 @import '@/assets/css/theme/colors';
 
+// Custom values for default variables
 $font-family-sans-serif: 'Manrope', sans-serif !default;
 
 $dark: $black_mod;
 
+// Functions, variables, mixins
 @import "~bootstrap/scss/_functions.scss";
 @import "~bootstrap/scss/_variables.scss";
 @import "~bootstrap/scss/_mixins.scss";
