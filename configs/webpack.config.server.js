@@ -35,9 +35,7 @@ const commonConfig = {
       rules.common.scripts,
       rules.server.imagesUrl,
       rules.server.cssByUrl,
-      rules.server.scssByUrl,
       rules.server.cssModules(),
-      rules.server.scssModules(),
     ]
   },
   plugins: [

@@ -81,15 +81,9 @@ const devConfig = {
   },
   module: {
     rules: [
-      rules.client.css(),
-      rules.client.scss()
+      rules.client.css()
     ]
   }
-};
-
-const cssProdParams = {
-  extract: true,
-  publicPath: '../'
 };
 
 const prodConfig = {
@@ -102,8 +96,10 @@ const prodConfig = {
   },
   module: {
     rules: [
-      rules.client.css(cssProdParams),
-      rules.client.scss(cssProdParams)
+      rules.client.css({
+        extract: true,
+        publicPath: '../'
+      })
     ]
   },
   plugins: [

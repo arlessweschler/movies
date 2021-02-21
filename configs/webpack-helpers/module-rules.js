@@ -3,13 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const regexes = {
   scripts: /\.(js|jsx)$/,
   images: /\.(jpe?g|jpg|png|gif|svg)$/,
-  css: /\.css$/,
-  scss: /\.scss$/,
-  cssModules: {
-    common: /.*module\.(sa|sc|c)ss$/,
-    css: /\.module\.css$/,
-    scss: /\.module\.scss$/
-  }
+  css: /\.(sa|sc|c)ss$/,
+  cssModules: /.*module\.(sa|sc|c)ss$/
 };
 
 const common = {
@@ -33,7 +28,7 @@ const styling = {
         ? {
           modules: {
             // load as css modules only regex suitable files
-            auto: (resourcePath) => regexes.cssModules.common.test(resourcePath),
+            auto: (resourcePath) => regexes.cssModules.test(resourcePath),
 
             // css modules naming format
             localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -79,20 +74,11 @@ const client = {
       test: regexes.css,
       use: [
         styling.styleLoader(params),
-        styling.cssLoader({ cssModules: true })
-      ]
-    };
-  },
-  scss(params = {}) {
-    return {
-      test: regexes.scss,
-      use: [
-        styling.styleLoader(params),
         styling.cssLoader({ cssModules: true }),
         'sass-loader'
       ]
     };
-  },
+  }
 }
 
 const server = {
@@ -102,28 +88,12 @@ const server = {
   },
   cssByUrl: {
     test: regexes.css,
-    exclude: regexes.cssModules.css,
-    use: ['url-loader']
-  },
-  scssByUrl: {
-    test: regexes.scss,
-    exclude: regexes.cssModules.scss,
+    exclude: regexes.cssModules,
     use: ['url-loader']
   },
   cssModules() {
     return {
-      test: regexes.cssModules.css,
-      use: [
-        styling.cssLoader({
-          cssModules: true,
-          exportOnlyLocals: true
-        })
-      ]
-    }
-  },
-  scssModules() {
-    return {
-      test: regexes.cssModules.scss,
+      test: regexes.cssModules,
       use: [
         styling.cssLoader({
           cssModules: true,
