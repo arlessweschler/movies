@@ -44,9 +44,7 @@ html(lang="en")
       !=pageTitle
     else
       title Movies
-    ${getStyle(hash, 'bootstrap_styles')}
-    ${getStyle(hash, 'vendor_styles')}
-    ${getStyle(hash, 'app_styles')}
+    ${getStyle(hash, 'app')}
 
   body
     if IS_SSR

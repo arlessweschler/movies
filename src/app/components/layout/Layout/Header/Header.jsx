@@ -1,4 +1,4 @@
-import './Header.scss';
+import styles from './Header.module.scss';
 
 import React from 'react';
 import cn from 'classnames';
@@ -10,7 +10,7 @@ import SearchForm from './SearchForm';
 
 const Header = () => (
   <header className="fixed-top">
-    <nav className={cn('movies-navbar', 'navbar navbar-expand-sm navbar-dark')}>
+    <nav className={cn(styles.nav, 'navbar navbar-expand-sm navbar-dark')}>
       <div className="container p-0">
         <HomeLink />
 

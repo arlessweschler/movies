@@ -12,6 +12,7 @@ const pug = require('pug');
 const envConfig = require('./env/env-config');
 const aliases = require('./webpack-helpers/resolve-alias');
 const rules = require('./webpack-helpers/module-rules');
+const splitChunks = require('./webpack-helpers/optimization - splitChunks');
 const getIndexTemplate = require('./index.template.js');
 const GenerateAssetPlugin = require('./webpack-helpers/generate-asset-plugin');
 
@@ -19,7 +20,6 @@ const SRC_PATH = path.resolve(__dirname, '../src');
 
 let commonConfig = {
   ...aliases,
-  context: path.resolve(__dirname),
   entry: {
     app: [
       'react-hot-loader/patch',
@@ -34,42 +34,12 @@ let commonConfig = {
     publicPath: '/'
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: 'vendor',
-          chunks: 'all',
-          test: /node_modules/,
-          priority: 10
-        },
-        app_styles: {
-          name: 'app_styles',
-          chunks: 'all',
-          test: /\.(sa|sc|c)ss$/,
-          enforce: true,
-          priority: 11
-        },
-        vendor_styles: {
-          name: 'vendor_styles',
-          chunks: 'all',
-          test: /node_modules[\\/].*\.(sa|sc|c)ss$/,
-          enforce: true,
-          priority: 12
-        },
-        bootstrap_styles: {
-          name: 'bootstrap_styles',
-          chunks: 'all',
-          test: /assets[\\/]styles[\\/]bootstrap[\\/]index\.scss/,
-          enforce: true,
-          priority: 13
-        },
-      },
-    }
+    splitChunks
   },
   module: {
     rules: [
-      rules.jsx,
-      rules.images
+      rules.common.scripts,
+      rules.client.images
     ]
   },
   plugins: [
@@ -111,10 +81,15 @@ const devConfig = {
   },
   module: {
     rules: [
-      rules.css(),
-      rules.scss()
+      rules.client.css(),
+      rules.client.scss()
     ]
   }
+};
+
+const cssProdParams = {
+  extract: true,
+  publicPath: '../'
 };
 
 const prodConfig = {
@@ -127,8 +102,8 @@ const prodConfig = {
   },
   module: {
     rules: [
-      rules.css({ extract: true, publicPath: '../' }),
-      rules.scss({ extract: true, publicPath: '../' })
+      rules.client.css(cssProdParams),
+      rules.client.scss(cssProdParams)
     ]
   },
   plugins: [

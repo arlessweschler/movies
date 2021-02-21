@@ -32,19 +32,12 @@ const commonConfig = {
   },
   module: {
     rules: [
-      rules.jsx,
-      {
-        test: /\.(jpe?g|jpg|png|gif|svg)$/,
-        use: ['url-loader']
-      },
-      {
-        test: /\.scss$/,
-        use: ['url-loader']
-      },
-      {
-        test: /\.css$/,
-        use: ['url-loader']
-      }
+      rules.common.scripts,
+      rules.server.imagesUrl,
+      rules.server.cssByUrl,
+      rules.server.scssByUrl,
+      rules.server.cssModules(),
+      rules.server.scssModules(),
     ]
   },
   plugins: [
