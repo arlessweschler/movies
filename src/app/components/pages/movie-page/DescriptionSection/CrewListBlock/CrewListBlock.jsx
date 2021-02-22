@@ -5,7 +5,6 @@ import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import b_ from 'b_';
 import cn from 'classnames';
-import { v4 as uuidv4 } from 'uuid';
 
 import { Row } from '@/markup';
 import CrewNamesBlock from './CrewNamesBlock';
@@ -34,9 +33,9 @@ function CrewListBlock({ t }) {
 
   return (
     <>
-      {crewList.map((item) => (
+      {crewList.map((item, index) => (
         <Row
-          key={uuidv4()}
+          key={`${index}_${item.label}`}
           cls={b()}
         >
           <CrewNamesBlock

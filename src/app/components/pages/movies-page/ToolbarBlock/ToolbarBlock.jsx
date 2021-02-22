@@ -4,7 +4,6 @@ import React from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { v4 as uuidv4 } from 'uuid';
 import cn from 'classnames';
 
 import { TMDB_MOVIES_TYPES } from '@/constants/tmdb';
@@ -30,11 +29,11 @@ function ToolbarBlock(props) {
         className="movies-filter btn-group"
         role="group"
       >
-        {TMDB_MOVIES_TYPES.map((moviesType) => {
+        {TMDB_MOVIES_TYPES.map((moviesType, index) => {
           const isActive = (activeMoviesType === moviesType);
           return (
             <button
-              key={uuidv4()}
+              key={index}
               className={cn(moviesType, 'btn', {
                 'active': isActive,
                 'btn-dark': isActive,

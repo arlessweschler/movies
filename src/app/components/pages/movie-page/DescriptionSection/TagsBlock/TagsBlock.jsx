@@ -2,7 +2,6 @@ import './TagsBlock.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 import b_ from 'b_';
 import { withTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -33,11 +32,17 @@ function TagsBlock({ t, data }) {
 
   const getReleaseDate = (val) => val.split('-').reverse().join('.');
 
-  const mapWithSemicolons = (list) => list.map((item, i) => {
-    const value = (<span className="tag-value">{capitalize(item.name)}</span>);
+  const mapWithSemicolons = (list) => list.map((item, index) => {
+
+    const value = (
+      <span className="tag-value">
+        {capitalize(item.name)}
+      </span>
+    );
+
     return (
-      <Fragment key={uuidv4()}>
-        {i !== (list.length - 1)
+      <Fragment key={`${index}_${item.name}`}>
+        {index !== (list.length - 1)
           ? (
             <>
               {value}
@@ -78,9 +83,9 @@ function TagsBlock({ t, data }) {
 
   return (
     <div className={b()}>
-      {tags.map((item) => (
+      {tags.map((item, index) => (
         <span
-          key={uuidv4()}
+          key={`${index}_${item.text}`}
           className={b('item', { [item.cls]: true })}
         >
           <FontAwesomeIcon
