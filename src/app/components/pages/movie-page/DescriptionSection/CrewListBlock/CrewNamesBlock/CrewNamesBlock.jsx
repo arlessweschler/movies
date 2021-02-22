@@ -16,7 +16,7 @@ function CrewNamesBlock(props) {
     <>
       <div className={labelCls}>
         {label}
-        {':'}
+        :
       </div>
 
       <div className={valueCls}>

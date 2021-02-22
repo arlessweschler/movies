@@ -15,7 +15,7 @@ function RecommsSection({ t, movies }) {
       <Message>
         <h2 className="mb-0">
           {t('movie_details.recommendations.section_label')}
-          {':'}
+          :
         </h2>
       </Message>
 

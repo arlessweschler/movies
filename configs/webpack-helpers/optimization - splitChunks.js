@@ -7,9 +7,10 @@ const nodeModulesGroups = {
   }
 };
 
-/* 
+/*
 Temporarily disabled.
-UI client handlers are not working after hydration on client in SSR mode with current css modules build settings.
+UI client handlers are not working after hydration on client-side.
+This happens in SSR mode with enabled css modules build settings.
 */
 /* const styleModulesGroups = {
   app_styles: {

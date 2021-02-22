@@ -31,7 +31,7 @@ function ActorsSection({ t, context }) {
       <div className="row d-flex justify-content-between">
         <h2>
           {t('movie_details.actors.section_label')}
-          {':'}
+          :
         </h2>
 
         {

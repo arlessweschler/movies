@@ -33,7 +33,7 @@ const commonConfig = {
   module: {
     rules: [
       rules.common.scripts,
-      rules.server.imagesUrl,
+      rules.server.imagesByUrl,
       rules.server.cssByUrl,
       rules.server.cssModules(),
     ]

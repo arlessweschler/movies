@@ -45,7 +45,7 @@ const styling = {
             compileType: 'icss'
           },
         }
-    }
+    };
   },
 
   styleLoader(params = {}) {
@@ -58,7 +58,7 @@ const styling = {
       }
       : 'style-loader';
   },
-}
+};
 
 const client = {
   images: {
@@ -79,10 +79,10 @@ const client = {
       ]
     };
   }
-}
+};
 
 const server = {
-  imagesUrl: {
+  imagesByUrl: {
     test: regexes.images,
     use: ['url-loader']
   },
@@ -101,7 +101,7 @@ const server = {
         }),
         'sass-loader'
       ]
-    }
+    };
   }
 };
 

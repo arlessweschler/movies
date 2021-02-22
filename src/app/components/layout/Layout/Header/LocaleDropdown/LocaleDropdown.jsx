@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unassigned-import */
+/* eslint-disable global-require */
 import './LocaleDropdown.scss';
 
 import React, { useState, useEffect } from 'react';

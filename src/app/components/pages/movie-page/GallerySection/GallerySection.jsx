@@ -27,7 +27,7 @@ function GallerySection({ t, images = {} }) {
       <div className="row">
         <h2>
           {t('movie_details.images.section_label')}
-          {':'}
+          :
         </h2>
       </div>
 

@@ -1,7 +1,7 @@
 module.exports = {
   rules: {
     'import/prefer-default-export': 0,
-    'import/order': 1,
+    'import/order': 0,
     'import/no-useless-path-segments': 1,
     'import/first': 1,
     'import/exports-last': 1,

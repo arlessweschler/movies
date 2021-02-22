@@ -1,6 +1,7 @@
 @import '@/assets/css/theme/colors';
 
-.nav:global(.navbar) {
+.nav {
+  composes: navbar navbar-expand-sm navbar-dark from global;
   background-color: $purple;
   border-bottom: 1px solid $black-btn-border;
   padding: 0.8rem 1rem;
