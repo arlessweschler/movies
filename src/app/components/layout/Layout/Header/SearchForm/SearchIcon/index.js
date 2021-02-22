@@ -1,3 +1,3 @@
-import SearchFormIcon from './SearchFormIcon';
+import SearchIcon from './SearchIcon';
 
-export default SearchFormIcon;
+export default SearchIcon;
