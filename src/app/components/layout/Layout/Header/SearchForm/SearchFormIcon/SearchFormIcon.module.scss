@@ -1,0 +1,13 @@
+@import '@/assets/css/theme/colors';
+
+.icon {
+  position: absolute;
+  color: $gray;
+  top: 11px;
+  left: 18px;
+
+  @media (max-width: 576px) {
+    top: 10px;
+    left: 8px;
+  }
+}

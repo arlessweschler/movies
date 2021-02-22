@@ -1,9 +1,7 @@
-import './HomeLink.scss';
+import styles from './HomeLink.module.scss';
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import cn from 'classnames';
-import b_ from 'b_';
 import qs from 'query-string';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
@@ -30,24 +28,19 @@ const HomeLink = () => {
     redirect(`/?${qs.stringify({ lng })}`);
   };
 
-  const b = b_.B({ modSeparator: '--' }).with('home-link');
-
   return (
     <a
       href="/"
-      className={b()}
+      className={styles.link}
       onClick={(e) => goHome(e)}
       data-test="home-link"
     >
       <FontAwesomeIcon
-        className={cn(b('icon'), 'mr-1')}
+        className="mr-1"
         icon={faFilm}
         data-test="home-link__icon"
       />
-      <span
-        className={b('text')}
-        data-test="home-link__text"
-      >
+      <span data-test="home-link__text">
         Movies
       </span>
     </a>

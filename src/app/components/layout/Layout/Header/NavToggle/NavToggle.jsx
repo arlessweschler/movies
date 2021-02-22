@@ -1,15 +1,18 @@
-import './NavToggle.scss';
+import styles from './NavToggle.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
+import cn from 'classnames';
+
+const toggleID = 'headerNavToggle';
 
 const NavToggle = (props) => (
   <>
     <button
       className="navbar-toggler"
       type="button"
-      data-toggle="collapse" data-target="#moviesNavbarToggle"
-      aria-controls="moviesNavbarToggle"
+      data-toggle="collapse" data-target={`#${toggleID}`}
+      aria-controls={toggleID}
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
@@ -17,10 +20,10 @@ const NavToggle = (props) => (
     </button>
 
     <div
+      id={toggleID}
       className="collapse navbar-collapse"
-      id="moviesNavbarToggle"
     >
-      <div className="row nav-toggle__row">
+      <div className={cn(styles.wrapper, 'row')}>
         {props.children}
       </div>
     </div>

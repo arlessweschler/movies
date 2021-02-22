@@ -1,12 +1,9 @@
-.nav-toggle__row {
+.wrapper:global(.row) {
   width: 100%;
   padding: 0px 0px 0px 5px;
-
+  margin: 0px;
+  
   @media (max-width: 576px) {
     padding: 10px 0px 0px 0px;
-  }
-  
-  &.row {
-    margin: 0px;
   }
 }

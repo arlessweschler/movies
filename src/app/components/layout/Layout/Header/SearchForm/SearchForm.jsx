@@ -1,23 +1,19 @@
-import './SearchForm.scss';
+import styles from './SearchForm.module.scss';
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PT from 'prop-types';
-import cn from 'classnames';
-import b_ from 'b_';
 import qs from 'query-string';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
-import { DebounceInput } from 'react-debounce-input';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { redirect } from '@/routing/history';
 import { resetMovies } from '@/actions';
+import SearchFormIcon from './SearchFormIcon';
+import SearchFormInput from './SearchFormInput';
 
 const SearchForm = ({ t, history }) => {
   const dispatch = useDispatch();
-  const searchPlaceholder = t('movie_search.input_placeholder');
   const { search = '' } = qs.parse(history.location.search);
 
   const [searchText, setSearchText] = useState(search);
@@ -58,27 +54,13 @@ const SearchForm = ({ t, history }) => {
     setSearchText(value);
   };
 
-  const b = b_.B({ modSeparator: '--' }).with('search-form');
-
   return (
-    <form className={b()}>
-      <FontAwesomeIcon
-        className={b('icon')}
-        icon={faSearch}
-        data-test="search-form__icon"
-      />
-      <DebounceInput
-        debounceTimeout={600}
-        autoComplete="off"
-        spellCheck={false}
-        className={cn(b('input'), 'form-control', { 'active': searchText })}
-        type="text"
-        name="search"
-        placeholder={searchPlaceholder}
-        aria-label={searchPlaceholder}
+    <form className={styles.form}>
+      <SearchFormIcon />
+      <SearchFormInput
         value={searchText}
         onChange={onInputChange}
-        data-test="search-form__input"
+        placeholder={t('movie_search.input_placeholder')}
       />
     </form>
   );
