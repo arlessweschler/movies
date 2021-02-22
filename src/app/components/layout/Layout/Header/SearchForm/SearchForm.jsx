@@ -9,8 +9,8 @@ import { withRouter } from 'react-router-dom';
 
 import { redirect } from '@/routing/history';
 import { resetMovies } from '@/actions';
-import SearchIcon from './SearchIcon';
-import SearchInput from './SearchInput';
+import FormIcon from './FormIcon';
+import FormInput from './FormInput';
 
 const SearchForm = ({ t, history }) => {
   const dispatch = useDispatch();
@@ -56,8 +56,8 @@ const SearchForm = ({ t, history }) => {
 
   return (
     <form className={styles.form}>
-      <SearchIcon />
-      <SearchInput
+      <FormIcon />
+      <FormInput
         value={searchText}
         onChange={onInputChange}
         placeholder={t('movie_search.input_placeholder')}
