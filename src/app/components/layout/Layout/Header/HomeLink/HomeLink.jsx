@@ -37,12 +37,17 @@ const HomeLink = () => {
       href="/"
       className={b()}
       onClick={(e) => goHome(e)}
+      data-test="home-link"
     >
       <FontAwesomeIcon
         className={cn(b('icon'), 'mr-1')}
         icon={faFilm}
+        data-test="home-link__icon"
       />
-      <span className={b('text')}>
+      <span
+        className={b('text')}
+        data-test="home-link__text"
+      >
         Movies
       </span>
     </a>

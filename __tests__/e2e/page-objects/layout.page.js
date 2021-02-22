@@ -1,13 +1,13 @@
-const homeLink = '.home-link';
-const homeLinkIcon = '.home-link__icon';
-const homeLinkText = '.home-link__text';
+const homeLink = '[data-test=home-link]';
+const homeLinkIcon = '[data-test=home-link__icon]';
+const homeLinkText = '[data-test=home-link__text]';
 
-const searchFormIcon = '.search-form__icon';
-const searchFormInput = '.search-form__input';
+const searchFormIcon = '[data-test=search-form__icon]';
+const searchFormInput = '[data-test=search-form__input]';
 
-const dropdownToggleLocale = '.dropdown-toggle--locale';
-const dropdownMenuLocale = '.dropdown-menu--locale';
-const dropdownItem = '.dropdown-item';
+const dropdownToggleLocale = '[data-test=dropdown-toggle--locale]';
+const dropdownMenuLocale = '[data-test=dropdown-menu--locale]';
+const dropdownItem = '[data-test=dropdown-item]';
 
 const LayoutPage = {
   homeLink: () => cy.get(homeLink),

@@ -65,6 +65,7 @@ const SearchForm = ({ t, history }) => {
       <FontAwesomeIcon
         className={b('icon')}
         icon={faSearch}
+        data-test="search-form__icon"
       />
       <DebounceInput
         debounceTimeout={600}
@@ -77,6 +78,7 @@ const SearchForm = ({ t, history }) => {
         aria-label={searchPlaceholder}
         value={searchText}
         onChange={onInputChange}
+        data-test="search-form__input"
       />
     </form>
   );
