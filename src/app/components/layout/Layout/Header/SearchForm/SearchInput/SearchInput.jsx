@@ -1,11 +1,11 @@
-import styles from './SearchFormInput.module.scss';
+import styles from './SearchInput.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
 import cn from 'classnames';
 import { DebounceInput } from 'react-debounce-input';
 
-const SearchFormInput = ({
+const SearchInput = ({
   value,
   onChange,
   placeholder
@@ -26,10 +26,10 @@ const SearchFormInput = ({
   />
 );
 
-SearchFormInput.propTypes = {
+SearchInput.propTypes = {
   value: PT.string.isRequired,
   placeholder: PT.string.isRequired,
   onChange: PT.func.isRequired
 };
 
-export default SearchFormInput;
+export default SearchInput;

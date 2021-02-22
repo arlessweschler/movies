@@ -1,10 +1,10 @@
-import styles from './SearchFormIcon.module.scss';
+import styles from './SearchIcon.module.scss';
 
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const SearchFormIcon = () => (
+const SearchIcon = () => (
   <FontAwesomeIcon
     className={styles.icon}
     icon={faSearch}
@@ -12,4 +12,4 @@ const SearchFormIcon = () => (
   />
 );
 
-export default SearchFormIcon;
+export default SearchIcon;
