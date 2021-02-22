@@ -1,0 +1,24 @@
+@import '@/assets/css/theme/colors';
+
+.menu:global(.dropdown-menu) {
+  width: auto;
+  min-width: auto;
+  background-color: $black_mod;
+  border-color: $black-btn-border;
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
+
+  .item {
+    color: $lightgray;
+  
+    &:hover {
+      color: $yellow !important;
+      background-color: $purple;
+      cursor: pointer;
+    }
+  }
+}
+
+

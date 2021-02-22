@@ -1,0 +1,10 @@
+@import '@/assets/css/theme/colors';
+
+.wrapper {
+  width: 60px;
+
+  @media (max-width: 576px) {
+    padding-right: 0px;
+    width: 55px;
+  }
+}

@@ -1,17 +1,18 @@
 /* eslint-disable import/no-unassigned-import */
 /* eslint-disable global-require */
-import './LocaleDropdown.scss';
+import styles from './LocaleDropdown.module.scss';
 
 import React, { useState, useEffect } from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import qs from 'query-string';
 
 import { LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
 import { redirect } from '@/routing/history';
 import { isEmpty } from '@/utils/common';
+import DropdownToggle from './DropdownToggle';
+import DropdownMenu from './DropdownMenu';
 
 const LocaleDropdown = (props) => {
   const { i18n, history } = props;
@@ -72,33 +73,14 @@ const LocaleDropdown = (props) => {
   }
 
   return (
-    <div className="locale-dropdown__wrapper">
+    <div className={styles.wrapper}>
       <div className="dropdown">
-        <button
-          className="dropdown-toggle dropdown-toggle--locale btn btn-secondary"
-          type="button"
-          data-toggle="dropdown"
-          data-test="dropdown-toggle--locale"
-        >
-          {lang.label}
-        </button>
+        <DropdownToggle label={lang.label} />
 
-        <div
-          className="dropdown-menu dropdown-menu--locale"
-          data-test="dropdown-menu--locale"
-        >
-          {LANGUAGES.map((item) => (
-            <a
-              key={uuidv4()}
-              className="dropdown-item"
-              href=""
-              onClick={(e) => onLangChange(e, location, item)}
-              data-test="dropdown-item"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+        <DropdownMenu
+          clickHandler={onLangChange}
+          location={location}
+        />
       </div>
     </div>
   );
