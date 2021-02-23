@@ -1,0 +1,19 @@
+@import '@/assets/css/theme/colors';
+
+.wrapper {
+  display: inline;
+  color: $lightgray;
+
+  @media (max-width: 576px) {
+    display: block;
+  }
+
+  .link {
+    color: $lightgray;
+
+    &:hover {
+      color: $white_base;
+      text-decoration: none;
+    }
+  }
+}

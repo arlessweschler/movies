@@ -1,4 +1,4 @@
-import './Layout.scss';
+import styles from './Layout.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -10,8 +10,8 @@ import Footer from './Footer';
 const Layout = (props) => (
   <>
     <Header />
-    <main className="layout">
-      <div className="container position-relative p-0">
+    <main className="layoutOuter">
+      <div className={styles.layoutInner}>
         <Backdrop />
         {props.children}
       </div>

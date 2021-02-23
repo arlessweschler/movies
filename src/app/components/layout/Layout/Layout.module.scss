@@ -1,0 +1,15 @@
+:global {
+  .layoutOuter {
+    word-break: break-word;
+    padding: 5.2rem 1rem 5.5rem 1rem;
+
+    @media (max-width: 576px) {
+      padding-top: 4.2rem;
+      padding-bottom: 7.2rem;
+    }
+  }
+}
+
+.layoutInner {
+  composes: container position-relative p-0 from global;
+}
