@@ -1,0 +1,45 @@
+@import '@/assets/css/theme/colors';
+
+$border-color: $black-btn-border;
+
+@mixin dark-btn-style {
+  color: $yellow !important;
+  border-color: $border-color !important;
+  background-color: $purple !important;
+}
+
+.filterBtn:global(.btn) {
+  z-index: 0 !important;
+  min-height: 38px;
+  line-height: 1;
+  word-break: break-all;
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+    padding: 4px;
+    word-break: break-word;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+    @include dark-btn-style;
+  }
+  &:active {
+    box-shadow: none !important;
+    @include dark-btn-style;
+  }
+
+  &:hover {
+    @include dark-btn-style;
+  }
+}
+
+.light:global(.btn-light) {
+  color: #afb5ba;
+  border-color: $border-color;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dark:global(.btn-dark) {
+  @include dark-btn-style;
+}

@@ -6,11 +6,11 @@ describe('3) MOVIES LIST: FILTERING', () => {
     cy.visit(Cypress.env('homeUrl'));
     MLP.listCard().should('have.length', 20);
 
-    MLP.filterMovies('.top_rated');
+    MLP.filterMovies('[data-test=top_rated]');
   });
 
   it('3.2: Active filter button has changed by movies filter', () => {
-    MLP.moviesFilterBtn('.top_rated')
+    MLP.moviesFilterBtn('[data-test=top_rated]')
       .should('have.class', 'active');
   });
 

@@ -1,0 +1,12 @@
+:global {
+  .toolbar-wrapper {
+    @media (max-width: 576px) {
+      padding-right: 0px !important;
+    }
+  }
+}
+
+.group {
+  border-radius: 8px;
+  width: 100%;
+}

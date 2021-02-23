@@ -14,14 +14,14 @@ describe('2) MOVIES LIST: LAYOUT', () => {
     MLP.moviesFilter().should('be.visible');
     MLP.moviesFilterBtn().should('have.length', 4);
 
-    MLP.moviesFilterBtn('.now_playing').should('be.visible');
-    MLP.moviesFilterBtn('.popular').should('be.visible');
-    MLP.moviesFilterBtn('.top_rated').should('be.visible');
-    MLP.moviesFilterBtn('.upcoming').should('be.visible');
+    MLP.moviesFilterBtn('[data-test=now_playing]').should('be.visible');
+    MLP.moviesFilterBtn('[data-test=popular]').should('be.visible');
+    MLP.moviesFilterBtn('[data-test=top_rated]').should('be.visible');
+    MLP.moviesFilterBtn('[data-test=upcoming]').should('be.visible');
   });
 
   it('2.2.2: "Now playing" movies type is active by default', () => {
-    MLP.moviesFilterBtn('.now_playing').should('have.class', 'active');
+    MLP.moviesFilterBtn('[data-test=now_playing]').should('have.class', 'active');
   });
 
   it('2.3.1: Pagination is visible', () => {

@@ -1,13 +1,14 @@
-import './ToolbarBlock.scss';
+import styles from './ToolbarBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
+import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import cn from 'classnames';
 
 import { TMDB_MOVIES_TYPES } from '@/constants/tmdb';
 import withMoviesNav from '@/hocs/withMoviesNav';
+import FilterButton from './FilterButton';
 
 function ToolbarBlock(props) {
   const {
@@ -26,25 +27,21 @@ function ToolbarBlock(props) {
       </Helmet>
 
       <div
-        className="movies-filter btn-group"
+        className={cn(styles.group, 'btn-group')}
         role="group"
+        data-test="movies-filter"
       >
-        {TMDB_MOVIES_TYPES.map((moviesType, index) => {
-          const isActive = (activeMoviesType === moviesType);
-          return (
-            <button
+        {TMDB_MOVIES_TYPES.map(
+          (item, index) => (
+            <FilterButton
               key={index}
-              className={cn(moviesType, 'btn', {
-                'active': isActive,
-                'btn-dark': isActive,
-                'btn-light': !isActive,
-              })}
-              onClick={() => changeMoviesType(moviesType)}
-            >
-              {t(`movie_types.${moviesType}`)}
-            </button>
-          );
-        })}
+              isActive={activeMoviesType === item}
+              value={item}
+              text={t(`movie_types.${item}`)}
+              handler={changeMoviesType}
+            />
+          )
+        )}
       </div>
     </>
   );

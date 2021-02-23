@@ -1,4 +1,4 @@
-const moviesFilter = '.movies-filter';
+const moviesFilter = '[data-test=movies-filter]';
 const pagination = '.pagination-top';
 const paginationLink = '.pagination__link';
 const paginationLinkPrev = '.pagination__link--prev';
@@ -17,9 +17,9 @@ const MoviesListPage = {
   pagination: () => cy.get(pagination, { timeout: 20000 }),
   moviesList: () => cy.get(moviesList),
 
-  moviesFilterBtn(cls) {
-    if (!cls) return this.moviesFilter().find('.btn');
-    return this.moviesFilter().find(cls);
+  moviesFilterBtn(selector) {
+    if (!selector) return this.moviesFilter().find('.btn');
+    return this.moviesFilter().find(selector);
   },
 
   paginationLinkPrev() {
