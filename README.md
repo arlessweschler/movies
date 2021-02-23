@@ -1,4 +1,4 @@
-<img src="src/assets/img/readme-images/movies_readme_banner_without_stars.png">
+<img src="src/assets/img/readme-images/banner.png">
 
 [![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests)
 
