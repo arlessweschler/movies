@@ -48,11 +48,11 @@ class MoviesListContainer extends Component {
   render() {
     const { moviesList } = this.props;
     const { data, error, isLoading, request } = moviesList;
-    const {
-      results, total_results, total_pages, page
+    const { results, total_results, total_pages, page
     } = data;
     const { search } = request;
     const hasMovies = !isEmpty(results);
+    const showPaging = hasMovies && total_results > 20;
 
     const pagingParams = {
       initialPage: (page - 1),
@@ -70,19 +70,14 @@ class MoviesListContainer extends Component {
         />
 
         <Row>
-          {!search && (
-            <div className="col-12 col-lg-auto p-0 pr-lg-2 toolbar-wrapper">
-              <ToolbarBlock />
-            </div>
-          )}
+          {!search && <ToolbarBlock />}
 
-          {(hasMovies && total_results > 20) && (
-            <div className="col-12 col-lg p-0 pagination-wrapper">
-              <PagingBlock
-                cls="pagination-top justify-content-lg-end m-0"
-                {...pagingParams}
-              />
-            </div>
+          {showPaging && (
+            <PagingBlock
+              wrapperCls="col-12 col-lg p-0"
+              containerCls="pagination-top justify-content-lg-end"
+              {...pagingParams}
+            />
           )}
         </Row>
 
@@ -90,13 +85,12 @@ class MoviesListContainer extends Component {
           <ListBlock movies={results} />
         </GenresContainer>
 
-        {(hasMovies && total_results > 20) && (
-          <Row cls="pagination-wrapper mt-3">
-            <PagingBlock
-              cls="pagination-bottom m-0"
-              {...pagingParams}
-            />
-          </Row>
+        {showPaging && (
+          <PagingBlock
+            wrapperCls="row mt-3"
+            containerCls="pagination-bottom"
+            {...pagingParams}
+          />
         )}
       </Page>
     );

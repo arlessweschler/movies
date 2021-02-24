@@ -4,7 +4,7 @@ $a-color: $lightgray;
 $a-color--active: $white_mod;
 $a-color--hover: $white_mod;
 
-.pagination-wrapper {
+.wrapper {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   justify-content: center;
@@ -14,7 +14,9 @@ $a-color--hover: $white_mod;
   }
 }
 
-ul.pagination {
+.container {
+  composes: m-0 from global;
+  
   @media (max-width: 576px) {
     padding: 0px 5px;
   }
@@ -40,7 +42,7 @@ ul.pagination {
       }
     }
 
-    a {
+    .link {
       padding: 5px;
       outline: none;
       cursor: pointer;

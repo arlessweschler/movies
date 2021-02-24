@@ -18,7 +18,7 @@ function ToolbarBlock(props) {
   } = props;
 
   return (
-    <>
+    <div className="col-12 col-lg-auto p-0 pr-lg-2">
       <Helmet>
         <title>
           {t(`movie_types.${activeMoviesType}`)}
@@ -43,7 +43,7 @@ function ToolbarBlock(props) {
           )
         )}
       </div>
-    </>
+    </div>
   );
 }
 

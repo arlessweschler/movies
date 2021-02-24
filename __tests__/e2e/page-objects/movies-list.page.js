@@ -1,10 +1,10 @@
 const moviesFilter = '[data-test=movies-filter]';
 const pagination = '.pagination-top';
 const paginationLink = '.pagination__link';
-const paginationLinkPrev = '.pagination__link--prev';
-const paginationLinkNext = '.pagination__link--next';
-const paginationLinkActive = '.pagination__link--active';
-const paginationLinkBreak = '.pagination__link--break';
+const paginationLinkPrev = '.previous .pagination__link';
+const paginationLinkNext = '.next .pagination__link';
+const paginationLinkActive = '.active .pagination__link';
+const paginationLinkBreak = '.break .pagination__link';
 
 const moviesList = '.movies-list';
 const listCard = '.list-card';
