@@ -47,11 +47,11 @@ class MoviesListContainer extends Component {
 
   render() {
     const { moviesList } = this.props;
-    const { data, error, isLoading } = moviesList;
+    const { data, error, isLoading, request } = moviesList;
     const {
       results, total_results, total_pages, page
     } = data;
-    const { search } = getQueryParams();
+    const { search } = request;
     const hasMovies = !isEmpty(results);
 
     const pagingParams = {
