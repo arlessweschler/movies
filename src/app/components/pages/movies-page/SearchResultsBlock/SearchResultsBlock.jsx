@@ -1,49 +1,44 @@
-import './SearchResultsBlock.scss';
+import styles from './SearchResultsBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
-import b_ from 'b_';
 import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 
 import { nullOrNumber } from '@/types';
 import { Row } from '@/markup';
+import Highlight from './Highlight';
 
 function SearchResultsBlock(props) {
   const { t, search, total } = props;
 
   if (total == null || !search) return null;
 
-  const b = b_.with('search-results');
-  const quotes = (
-    <span className={b('quotes')}>
-      &quot;
-    </span>
-  );
+  const foundCountTR = t('movie_search.found.count', { count: total });
+  const movieCountTR = t('movie_search.movie.count', { count: total });
+  const byTitleTR = t('movie_search.by_title');
 
   return (
-    <Row cls={cn(b(), 'mb-lg-2')}>
-      <span>
-        {t('movie_search.found.count', { count: total })}
+    <Row cls={cn(styles.wrapper, 'mb-lg-2')}>
+      <span className="mr-2">
+        {foundCountTR}
       </span>
 
-      <span className={b('highlight')}>
+      <Highlight cls="mr-2">
         {total}
+      </Highlight>
+
+      <span className="mr-2">
+        {movieCountTR}
       </span>
 
-      <span>
-        {t('movie_search.movie.count', { count: total })}
+      <span className="mr-2">
+        {byTitleTR}
       </span>
 
-      <span>
-        {t('movie_search.by_title')}
-      </span>
-
-      <span className={b('highlight')}>
-        {quotes}
+      <Highlight isQuoted={true}>
         {search}
-        {quotes}
-      </span>
+      </Highlight>
     </Row>
   );
 }

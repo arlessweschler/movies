@@ -1,23 +1,10 @@
 @import '@/assets/css/theme/colors';
 
-.search-results {
+.wrapper {
   display: block;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   color: $white_mod;
   font-size: calc(1rem + 0.5vw);
-
-  & span:not(&__quotes) {
-    margin-right: 7px;
-  }
-
-  &__quotes {
-    margin-right: 0px;
-    color: $white_mod;
-  }
-
-  &__highlight {
-    color: $yellow;
-  }
 }
