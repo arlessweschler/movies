@@ -42,7 +42,7 @@ module.exports = {
       'allow': 'single-child'
     }],
     'react/jsx-pascal-case': 2,
-    'react/jsx-props-no-multi-spaces': 2,
+    'react/jsx-props-no-multi-spaces': 1,
     'react/jsx-uses-react': 2,
     'react/jsx-wrap-multilines': 2,
     'react/no-access-state-in-setstate': 2,
