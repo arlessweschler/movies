@@ -10,5 +10,9 @@
   "env": {
     "homeUrl": "http://localhost:8080",
     "defaultLanguageValue": "EN"
+  },
+  "retries": {
+    "runMode": 2,
+    "openMode": 2
   }
 }
