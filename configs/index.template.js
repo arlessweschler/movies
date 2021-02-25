@@ -13,7 +13,7 @@ function favicon() {
 
 function font(family) {
   return `
-  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=${family}")`;
+  link(rel="stylesheet dns-prefetch", href="https://fonts.googleapis.com/css?family=${family}")`;
 }
 
 function printRenderingType() {
@@ -34,8 +34,7 @@ html(lang="en")
 
   ${printRenderingType()}
   ${favicon()}
-  ${font('Bebas+Neue')}
-  ${font('Manrope')}
+  ${font('Bebas+Neue|Manrope&display=swap')}
 
   head
     meta(charset="utf-8")
