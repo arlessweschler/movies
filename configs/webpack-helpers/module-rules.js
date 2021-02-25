@@ -1,3 +1,4 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const regexes = {
@@ -11,7 +12,10 @@ const common = {
   scripts: {
     test: regexes.scripts,
     exclude: /node_modules/,
-    use: 'babel-loader'
+    loader: 'babel-loader',
+    options: {
+      configFile: path.resolve(__dirname, '../../.babelrc.js'),
+    }
   }
 };
 
