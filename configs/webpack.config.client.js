@@ -6,6 +6,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const pug = require('pug');
 
 // internal confuguration modules
@@ -106,6 +107,9 @@ const prodConfig = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[fullhash].css'
     }),
+    new CompressionPlugin({
+      algorithm: 'gzip'
+    })
   ]
 };
 

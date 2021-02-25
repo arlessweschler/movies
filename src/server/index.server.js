@@ -9,6 +9,7 @@ import {
 
 const envConfig = require('@/configs/env/env-config');
 const express = require('express');
+const expressStaticGzip = require('express-static-gzip');
 const favicon = require('serve-favicon');
 const path = require('path');
 
@@ -22,32 +23,27 @@ if (envConfig.DEBUG_MODE === '1') {
   app.use(logger('dev'));
 }
 
+app.use(expressStaticGzip(CLIENT_FOLDER));
+
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
-// серверный рендеринг
+// SSR (server-side rendering)
 if (envConfig.RENDERING === 'server') {
-  const RESOURCES = ['js', 'css', 'assets'];
-
-  RESOURCES.forEach((item) => {
-    app.use(`/${item}`, express.static(path.join(`${__dirname}/client/${item}`)));
-  });
 
   app.set('view engine', 'pug');
   app.set('views', path.join(`${__dirname}/client/views`));
 
   app.get('*', handleSSR(REACT_ROUTES));
 
-  // клиентский рендеринг
+  // CSR (client-side rendering)
 } else {
-  // ассеты
-  app.use(express.static(CLIENT_FOLDER));
 
-  // CSR прикладные маршруты
+  // CSR business-logic routes
   app.get(EXPRESS_ROUTES, (req, res) => {
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
   });
 
-  // CSR 404
+  // CSR 404 route
   app.use((req, res) => {
     res.status(404);
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
