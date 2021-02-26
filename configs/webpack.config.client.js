@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 
 // webpack plugins and common modules
@@ -6,6 +8,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const pug = require('pug');
 
@@ -104,6 +107,13 @@ const prodConfig = {
     ]
   },
   plugins: [
+    // new PurgeCSSPlugin({
+    //   paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, { nodir: true }),
+    //   safelist: {
+    //     // keep rules from CSS modules
+    //     standard: [/-module__/]
+    //   }
+    // }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[fullhash].css'
     }),
