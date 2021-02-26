@@ -6,11 +6,11 @@ const paginationLinkNext = '.next .pagination__link';
 const paginationLinkActive = '.active .pagination__link';
 const paginationLinkBreak = '.break .pagination__link';
 
-const moviesList = '.movies-list';
-const listCard = '.list-card';
-const listCardTitle = '.list-card__title';
-const listCardGenres = '.list-card__genres';
-const listCardRating = '.list-card__rating';
+const moviesList = '[data-test=movies-list]';
+const listCard = '[data-test=movie-card]';
+const listCardTitle = '[data-test=movie-card__title]';
+const listCardGenres = '[data-test=movie-card__genres]';
+const listCardRating = '[data-test=movie-card__rating]';
 
 const MoviesListPage = {
   moviesFilter: () => cy.get(moviesFilter),

@@ -1,6 +1,6 @@
 @import '@/assets/css/theme/variables';
 
-.movies-list {
+.list {
   display: grid;
   grid-template-columns: repeat(auto-fill, $list-card-width);
   justify-content: space-between;

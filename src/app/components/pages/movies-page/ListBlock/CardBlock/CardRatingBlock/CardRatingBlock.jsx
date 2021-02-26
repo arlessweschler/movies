@@ -1,4 +1,4 @@
-import './CardRatingBlock.scss';
+import styles from './CardRatingBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -9,7 +9,10 @@ function CardRatingBlock({ vote_average }) {
   if (!vote_average) return null;
 
   return (
-    <span className="list-card__rating">
+    <span
+      className={styles.rating}
+      data-test="movie-card__rating"
+    >
       <FontAwesomeIcon
         className="mr-1"
         icon={faStar}
