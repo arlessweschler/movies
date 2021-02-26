@@ -1,0 +1,53 @@
+@import '@/assets/css/theme/colors';
+
+$base: 'movie-details-tags';
+
+.tagsBlock {
+  margin-bottom: 10px;
+}
+
+.tagItem {
+  position: relative;
+  margin: 10px 15px 10px 0px;
+
+  &:first-child {
+    margin-left: 0px;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+  }
+}
+
+.tagGenres {
+  :global(.tag-value) {
+    background-color: rgba(90, 92, 165, 0.4);
+    padding: 0px 3px;
+    border-radius: 5px;
+    display: inline-block;
+
+    @media (max-width: 576px) {
+      margin-bottom: 3px;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+.tagIcon {
+  color: $gray;
+}
+
+.tagText {
+  margin-left: 5px;
+  color: $lightgray;
+  word-break: break-word;
+}
+
+.tagSemicolon {
+  margin-right: 5px;
+}

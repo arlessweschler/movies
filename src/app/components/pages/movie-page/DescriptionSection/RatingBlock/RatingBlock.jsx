@@ -1,36 +1,35 @@
-import './RatingBlock.scss';
+import styles from './RatingBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
-import b_ from 'b_';
 import { withTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function RatingBlock({ t, data }) {
   const { vote_average, vote_count } = data;
-  const b = b_.with('movie-details-rating');
 
   if (!vote_average) return null;
 
   return (
-    <div className={b()}>
+    <div className={styles.rating}>
       <FontAwesomeIcon
-        className={b('icon')}
+        className={styles.icon}
         icon={faStar}
       />
       {vote_average}
-      <span className={b('scale')}>
+      <span className={styles.scale}>
         /10
       </span>
 
       {vote_count
         ? (
-          <div className={b('votes')}>
-            <span className={b('votes-label')}>
+          <div className={styles.votes}>
+            <span className={styles.votesLabel}>
               {vote_count}
             </span>
-            <span className={b('votes-value')}>
+
+            <span className={styles.votesValue}>
               {t('movie_details.rating_votes.count', { count: vote_count })}
             </span>
           </div>

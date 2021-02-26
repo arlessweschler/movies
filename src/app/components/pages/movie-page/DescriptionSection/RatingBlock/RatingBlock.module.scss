@@ -1,0 +1,34 @@
+@import '@/assets/css/theme/colors';
+
+$base: 'movie-details-rating';
+
+.rating {
+  float: right;
+  font-size: calc(1rem + 1.2vw);
+
+  @media (max-width: 576px) {
+    text-align: right;
+  }
+}
+
+.icon {
+  margin-right: 3px;
+  color: $yellow;
+}
+
+.scale,
+.votes {
+  font-size: calc(0.8rem + 0.3vw);
+  color: $gray;
+
+  .votesValue {
+    margin-left: 3px;
+  }
+
+  .votesLabel,
+  .votesValue {
+    @media (max-width: 576px) {
+      display: block;
+    }
+  }
+}

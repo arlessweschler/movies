@@ -3,10 +3,13 @@ import PT from 'prop-types';
 
 import { withCreditsContext } from '@/contexts';
 
-function CrewNamesBlock(props) {
-  const {
-    labelCls = '', valueCls = '', label, searchParams, context
-  } = props;
+function CrewNamesBlock({
+  labelCls = '',
+  valueCls = '',
+  label,
+  searchParams,
+  context
+}) {
   const { searchCrewNames } = context;
 
   const names = searchCrewNames(searchParams);

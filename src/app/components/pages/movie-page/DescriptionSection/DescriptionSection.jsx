@@ -1,3 +1,5 @@
+import styles from './TitleBlock/TitleBlock.module.scss';
+
 import React from 'react';
 import PT from 'prop-types';
 import { Helmet } from 'react-helmet-async';
@@ -65,7 +67,7 @@ function DescriptionSection({ movie }) {
 
         {(tagline || overview) && <hr />}
 
-        <Row cls="tagline">
+        <Row cls={styles.tagline}>
           {tagline}
         </Row>
 

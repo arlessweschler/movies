@@ -1,8 +1,8 @@
-import './TagsBlock.scss';
+import styles from './TagsBlock.module.scss';
 
 import React, { Fragment } from 'react';
 import PT from 'prop-types';
-import b_ from 'b_';
+import cn from 'classnames';
 import { withTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -46,7 +46,7 @@ function TagsBlock({ t, data }) {
           ? (
             <>
               {value}
-              <span className="tag-semicolon">,</span>
+              <span className={styles.tagSemicolon}>,</span>
             </>
           )
           : value}
@@ -58,7 +58,7 @@ function TagsBlock({ t, data }) {
 
   const fields = [
     {
-      value: genres, icon: faVideo, func: mapWithSemicolons, cls: 'genres'
+      value: genres, icon: faVideo, func: mapWithSemicolons, cls: styles.tagGenres
     },
     {
       value: production_countries, icon: faGlobe, func: mapWithSemicolons, cls: 'countries'
@@ -79,20 +79,18 @@ function TagsBlock({ t, data }) {
     }
   });
 
-  const b = b_.B({ modSeparator: '--' }).with('movie-details-tags');
-
   return (
-    <div className={b()}>
+    <div className={styles.tagsBlock}>
       {tags.map((item, index) => (
         <span
           key={`${index}_${item.text}`}
-          className={b('item', { [item.cls]: true })}
+          className={cn(styles.tagItem, item.cls)}
         >
           <FontAwesomeIcon
-            className={b('icon')}
+            className={styles.tagIcon}
             icon={item.icon}
           />
-          <span className={b('text')}>
+          <span className={styles.tagText}>
             {item.text}
           </span>
         </span>

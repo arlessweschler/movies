@@ -1,16 +1,14 @@
-import './CrewListBlock.scss';
+import styles from './CrewListBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import b_ from 'b_';
 import cn from 'classnames';
 
 import { Row } from '@/markup';
 import CrewNamesBlock from './CrewNamesBlock';
 
 function CrewListBlock({ t }) {
-  const b = b_.with('movie-details-crew');
 
   const crewList = [
     {
@@ -34,13 +32,10 @@ function CrewListBlock({ t }) {
   return (
     <>
       {crewList.map((item, index) => (
-        <Row
-          key={`${index}_${item.label}`}
-          cls={b()}
-        >
+        <Row key={`${index}_${item.label}`}>
           <CrewNamesBlock
-            labelCls={cn(b('label'), 'pr-1 col-12 col-md-auto p-0')}
-            valueCls={cn(b('value'), 'col p-0')}
+            labelCls={cn(styles.label, 'pr-1 col-12 col-md-auto p-0')}
+            valueCls={cn(styles.value, 'col p-0')}
             label={item.label}
             searchParams={item.searchParams}
           />
