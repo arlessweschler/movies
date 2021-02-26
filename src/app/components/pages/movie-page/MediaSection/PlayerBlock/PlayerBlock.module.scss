@@ -1,8 +1,8 @@
 @import '@/assets/css/theme/colors';
 @import '@/assets/css/theme/mixins';
 
-.movie-player {
-  .react-player__preview {
+.player {
+  :global(.react-player__preview) {
     @include embed-responsive-item;
   }
 

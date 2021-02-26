@@ -1,4 +1,4 @@
-import './ActorsSection.scss';
+import styles from './ActorsSection.module.scss';
 
 import React, { useState } from 'react';
 import PT from 'prop-types';
@@ -42,20 +42,22 @@ function ActorsSection({ t, context }) {
         }
       </div>
 
-      <div className="actors-grid">
+      <div className={styles.grid}>
         {list.map((person, index) => (
           <div
             key={index}
-            className="actors-card"
+            className={styles.card}
           >
             <img
-              className={cn('cast-image', { 'no-image': !person.profile_path })}
+              className={cn(styles.image, {
+                [styles.noImage]: !person.profile_path
+              })}
               src={person.profile_path
                 ? `${TMDB_IMAGE_URL.small + person.profile_path}`
                 : noPhoto}
             />
 
-            <div className="cast-name">
+            <div className={styles.name}>
               {person.name}
             </div>
 

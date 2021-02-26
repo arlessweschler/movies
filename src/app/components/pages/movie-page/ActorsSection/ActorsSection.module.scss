@@ -1,0 +1,43 @@
+$image-width: 160px;
+$image-height: 240px;
+
+$image-width-sm: 135px;
+$image-height-sm: 202px;
+
+.grid {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(auto-fill, $image-width);
+
+  @media screen and (max-width: 576px) {
+    grid-template-columns: repeat(auto-fill, $image-width-sm);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.image {
+  border: 1px solid lightgray;
+  width: $image-width;
+  height: $image-height;
+
+  @media screen and (max-width: 576px) {
+    width: $image-width-sm;
+    height: $image-height-sm;
+  }
+
+  &.noImage {
+    object-fit: cover;
+  }
+}
+
+.name {
+  line-height: 1.2;
+  margin-top: 3px;
+}

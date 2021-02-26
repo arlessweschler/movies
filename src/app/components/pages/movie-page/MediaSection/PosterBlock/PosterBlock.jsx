@@ -1,4 +1,4 @@
-import './PosterBlock.scss';
+import styles from './PosterBlock.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -10,7 +10,9 @@ import imageNotAvailable from '@/assets/img/image_not_available.png';
 function PosterBlock({ cls, data }) {
   const { poster_path } = data;
 
-  const classes = cn(cls, 'movie-details__poster', { 'no-image': !poster_path });
+  const classes = cn(styles.poster, cls, {
+    [styles.noImage]: !poster_path
+  });
 
   return (
     <img

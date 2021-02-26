@@ -1,4 +1,4 @@
-import './Message.scss';
+import styles from './Message.module.scss';
 
 import React from 'react';
 import PT from 'prop-types';
@@ -8,7 +8,7 @@ function Message({ cls = '', text, children = null }) {
   if (!text && !children) return null;
 
   return (
-    <div className={cn('message', cls)}>
+    <div className={cn(styles.message, cls)}>
       {children || text}
     </div>
   );

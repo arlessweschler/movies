@@ -1,4 +1,4 @@
-import './PlayerBlock.scss';
+import styles from './PlayerBlock.module.scss';
 
 import React, { useState } from 'react';
 import PT from 'prop-types';
@@ -22,7 +22,7 @@ function PlayerBlock(props) {
       <ReactPlayer
         width="100%"
         height="100%"
-        className='movie-player'
+        className={styles.player}
         url={`${host}/embed/${trailer.key}`}
         playing={false}
         controls={true}

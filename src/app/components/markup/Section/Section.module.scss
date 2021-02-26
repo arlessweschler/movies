@@ -1,0 +1,12 @@
+@import '@/assets/css/theme/colors';
+
+.section {
+  padding: 20px 15px;
+  color: $black_mod;
+  background-color: #fff;
+
+  &.transparent {
+    color: $white_mod;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,17 +1,17 @@
 @import '@/assets/css/theme/animations';
 @import '@/assets/css/theme/colors';
 
-.movie-details__poster {
+.poster {
   border: 1px solid $black_mod !important;
 
   // fit parent column width if no responsive needed
   width: 100%;
 
-  &.no-image {
-    border: 1px solid lightgray;
+  &.noImage {
+    border: 1px solid lightgray !important;
   }
 
-  &.embed-responsive-item {
+  &:global(.embed-responsive-item) {
     // fix for image 16by9 width proportion
     width: auto !important;
     animation: animateOpacity 0.5s ease;
