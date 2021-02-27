@@ -51,4 +51,8 @@ $base: 'list-card';
   word-break: break-word;
   color: $lightgray;
   background-color: rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: 576px) {
+    @include image-size-small();
+  }
 }

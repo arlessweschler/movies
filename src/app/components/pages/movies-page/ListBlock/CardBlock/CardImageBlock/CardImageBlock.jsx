@@ -17,7 +17,10 @@ function CardImageBlock(props) {
       {
         poster_path
           ? (
-            <LazyLoad height="278">
+            <LazyLoad
+              height="278"
+              offset={100}
+            >
               <img
                 width="185"
                 height="278"
