@@ -11,11 +11,6 @@ function favicon() {
   link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")`;
 }
 
-function font(family) {
-  return `
-  link(rel="stylesheet dns-prefetch", href="https://fonts.googleapis.com/css?family=${family}")`;
-}
-
 function printRenderingType() {
   return `
   if IS_SSR
@@ -34,7 +29,6 @@ html(lang="en")
 
   ${printRenderingType()}
   ${favicon()}
-  ${font('Bebas+Neue|Manrope&display=swap')}
 
   head
     meta(charset="utf-8")

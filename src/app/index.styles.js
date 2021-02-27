@@ -1,3 +1,6 @@
+// App fonts
+import '@/assets/css/fonts.scss';
+
 // CSS Framework (first, for easy overriding if need to)
 import '@/assets/css/bootstrap/index.scss';
 

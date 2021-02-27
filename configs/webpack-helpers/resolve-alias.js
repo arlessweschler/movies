@@ -19,6 +19,7 @@ const aliases = {
   '@/i18n': 'app/i18n',
   '@/assets/img': 'assets/img',
   '@/assets/css': 'assets/styles',
+  '@/assets/fonts': 'assets/fonts',
   '@/locales': 'locales',
   '@/server': 'server'
 };

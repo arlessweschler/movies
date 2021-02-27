@@ -34,6 +34,7 @@ const commonConfig = {
     rules: [
       rules.common.scripts,
       rules.server.imagesByUrl,
+      rules.server.fontsByUrl,
       rules.server.cssByUrl,
       rules.server.cssModules(),
     ]

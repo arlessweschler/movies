@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const regexes = {
   scripts: /\.(js|jsx)$/,
   images: /\.(jpe?g|jpg|png|gif|svg)$/,
+  fonts: /\.(ttf|svg|woff|woff2)$/,
   css: /\.(sa|sc|c)ss$/,
   cssModules: /.*module\.(sa|sc|c)ss$/
 };
@@ -67,10 +68,20 @@ const styling = {
 const client = {
   images: {
     test: regexes.images,
+    exclude: /assets[\\/]fonts/,
     loader: 'file-loader',
     options: {
       name: '[name].[ext]',
       outputPath: 'assets/img'
+    },
+  },
+  fonts: {
+    test: regexes.fonts,
+    exclude: /assets[\\/]img/,
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]',
+      outputPath: 'assets/fonts'
     },
   },
   css(params = {}) {
@@ -88,6 +99,10 @@ const client = {
 const server = {
   imagesByUrl: {
     test: regexes.images,
+    use: ['url-loader']
+  },
+  fontsByUrl: {
+    test: regexes.fonts,
     use: ['url-loader']
   },
   cssByUrl: {

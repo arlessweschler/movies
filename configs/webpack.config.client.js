@@ -43,7 +43,8 @@ let commonConfig = {
   module: {
     rules: [
       rules.common.scripts,
-      rules.client.images
+      rules.client.images,
+      rules.client.fonts
     ]
   },
   plugins: [
