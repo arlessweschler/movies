@@ -1,35 +1,47 @@
 @import '@/assets/css/theme/animations';
 @import '@/assets/css/theme/colors';
+@import '@/assets/css/theme/variables';
 
 $base: 'list-card';
 
-$image-height: 300px;
-$image-height--sm: 195px;
+@mixin image-size($mod: 0) {
+  width: 185px + $mod;
+  height: 278px + $mod;
+}
 
-@mixin card-image {
-  width: 100%;
-  height: 100%;
+@mixin image-size-small() {
+  width: $list-card-width--sm;
+  height: 195px;
+}
+
+@mixin image-border {
   border-radius: 8px;
+  border: 1px solid $black_mod;
 }
 
 .wrapper {
   position: relative;
-  height: $image-height;
+  @include image-size();
 
   @media screen and (max-width: 576px) {
-    height: $image-height--sm;
+    @include image-size-small();
   }
 }
 
 .image {
-  @include card-image;
+  @include image-size(2);
+  @include image-border;
   object-fit: cover;
   animation: animateOpacity 0.7s ease;
-  border: 1px solid $black_mod;
+
+  @media screen and (max-width: 576px) {
+    @include image-size-small();
+  }
 }
 
 .noImage {
-  @include card-image;
+  @include image-size;
+  @include image-border;
   display: flex;
   padding: 10px;
   justify-content: center;
@@ -39,5 +51,4 @@ $image-height--sm: 195px;
   word-break: break-word;
   color: $lightgray;
   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid $black_mod;
 }

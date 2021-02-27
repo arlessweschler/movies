@@ -1,5 +1,5 @@
 const imageSizes = {
-  small: 'w154',
+  small: 'w185',
   medium: 'w300',
   large: 'w1280',
   original: 'original'

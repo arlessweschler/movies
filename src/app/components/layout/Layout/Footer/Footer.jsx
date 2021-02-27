@@ -28,7 +28,12 @@ const Footer = () => (
       textBefore="This product uses the TMDb API but is not endorsed or certified by TMDb "
       cls={styles.tmdbLogo}
     >
-      <img className="ml-1" src={tmdbLogo} />
+      <img
+        width="85"
+        height="12"
+        className="ml-1"
+        src={tmdbLogo}
+      />
     </FooterLink>
   </footer>
 );

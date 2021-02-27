@@ -17,6 +17,8 @@ function CardImageBlock(props) {
         poster_path
           ? (
             <img
+              width="185"
+              height="278"
               className={styles.image}
               src={`${TMDB_IMAGE_URL.small}/${poster_path}`}
             />
