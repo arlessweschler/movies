@@ -5,7 +5,7 @@ $mPath: '~@/assets/fonts/Manrope/manrope-v4-latin-regular';
   font-family: 'Bebas Neue';
   font-style: normal;
   font-weight: 400;
-  display: swap;
+  font-display: swap;
   src: url('#{$bnPath}.woff2'), url('#{$bnPath}.woff'), url('#{$bnPath}.ttf'), url('#{$bnPath}.svg');
 }
 
@@ -13,6 +13,6 @@ $mPath: '~@/assets/fonts/Manrope/manrope-v4-latin-regular';
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 400;
-  display: swap;
+  font-display: swap;
   src: url('#{$mPath}.woff2'), url('#{$mPath}.woff'), url('#{$mPath}.ttf'), url('#{$mPath}.svg');
 }
