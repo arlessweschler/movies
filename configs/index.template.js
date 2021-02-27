@@ -11,6 +11,11 @@ function favicon() {
   link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")`;
 }
 
+function font(filename) {
+  return `
+  link(rel="preload", crossorigin, as="font", type="font/woff2", href="/assets/fonts/${filename}.woff2")`;
+}
+
 function printRenderingType() {
   return `
   if IS_SSR
@@ -29,6 +34,8 @@ html(lang="en")
 
   ${printRenderingType()}
   ${favicon()}
+  ${font('bebas-neue-v2-latin-regular')}
+  ${font('manrope-v4-latin-regular')}
 
   head
     meta(charset="utf-8")
