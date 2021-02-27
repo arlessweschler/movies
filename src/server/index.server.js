@@ -23,12 +23,16 @@ if (envConfig.DEBUG_MODE === '1') {
   app.use(logger('dev'));
 }
 
-app.use(expressStaticGzip(CLIENT_FOLDER));
-
 const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
 
 // SSR (server-side rendering)
 if (envConfig.RENDERING === 'server') {
+
+  const RESOURCES = ['js', 'css', 'assets'];
+
+  RESOURCES.forEach((item) => {
+    app.use(`/${item}`, expressStaticGzip(path.join(`${__dirname}/client/${item}`)));
+  });
 
   app.set('view engine', 'pug');
   app.set('views', path.join(`${__dirname}/client/views`));
@@ -37,6 +41,8 @@ if (envConfig.RENDERING === 'server') {
 
   // CSR (client-side rendering)
 } else {
+
+  app.use(expressStaticGzip(CLIENT_FOLDER));
 
   // CSR business-logic routes
   app.get(EXPRESS_ROUTES, (req, res) => {
