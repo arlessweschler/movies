@@ -3,6 +3,7 @@ import styles from './CardImageBlock.module.scss';
 import React from 'react';
 import PT from 'prop-types';
 import { withTranslation } from 'react-i18next';
+import LazyLoad from 'react-lazyload';
 
 import { TMDB_IMAGE_URL } from '@/constants/tmdb';
 import CardRatingBlock from '../CardRatingBlock';
@@ -16,12 +17,14 @@ function CardImageBlock(props) {
       {
         poster_path
           ? (
-            <img
-              width="185"
-              height="278"
-              className={styles.image}
-              src={`${TMDB_IMAGE_URL.small}/${poster_path}`}
-            />
+            <LazyLoad height="278">
+              <img
+                width="185"
+                height="278"
+                className={styles.image}
+                src={`${TMDB_IMAGE_URL.small}/${poster_path}`}
+              />
+            </LazyLoad>
           )
           : (
             <div className={styles.noImage}>
