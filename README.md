@@ -1,21 +1,40 @@
 <img src="src/assets/img/readme-images/banner.png">
 
-[![Actions Status](https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg)](https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests)
+<p align="center">
+  <a href="#-what-is-it">What is it</a> •
+  <a href="#-functionality">Functionality</a> •
+  <a href="#-technologies">Technologies</a> •
+  <a href="#-how-to-use">How to use</a> •
+  <a href="#-details">Details</a> •
+  <a href="#-roadmap">Roadmap</a> •
+  <a href="#-about">About</a>
+</p>
 
-Movies is a responsive React app with SSR support that utilized real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
+<p align="center">
+  <a href="https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests">
+    <img src="https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg">
+  </a>
+</p>
 
-### 🏄 Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
+## 💡 What is it
+Movies is a real world React application. **It's fast, responsive, with i18 and SSR built in support.**
 
-### 🎥 Features
+Movies application utilizes real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
+
+📄 **Note:** If you have some issues fetching data from TMDb, like in Russia (it's maybe due to country access restriction), please try to enable some VPN extension in your browser.
+
+#### 🏄 Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
+
+<img src="src/assets/img/readme-images/demo.gif">
+
+## 🎥 Functionality
 - Filter movies by category: "Now playing", "Popular", "Top rated" and "Upcoming"
 - Search movies
 - Switch localizations
 - Watch movie details (including trailer, actors and images)
 - Watch recommendations
 
-<img src="src/assets/img/readme-images/demo.gif">
-
-### 🚀 Technologies
+## 🚀 Technologies
 - [Webpack 5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/)
 - [ESLint](https://eslint.org/) (based on [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import), [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react), [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base) + some customizations)
 - [Cypress](https://www.cypress.io/) (E2E testing)
@@ -24,10 +43,31 @@ Movies is a responsive React app with SSR support that utilized real movies data
 - [Redux](https://redux.js.org/) + [Sagas](https://redux-saga.js.org/)
 - [React Router 5](https://reactrouter.com/)
 - [React-i18next](https://react.i18next.com/) (for multi language support)
-- Hot Module Replacement  ([react-hot-loader](https://www.npmjs.com/package/react-hot-loader) and [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server) with server-side HMR and sagas HMR support)
+- Hot Module Replacement  ([react-hot-loader](https://www.npmjs.com/package/react-hot-loader), [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server) and [nodemon-webpack-plugin](https://www.npmjs.com/package/nodemon-webpack-plugin) with server-side HMR and sagas HMR support)
 - [Sass](https://www.npmjs.com/package/sass), [CSS Modules](https://github.com/css-modules/css-modules), [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) + [Font Awesome 5](https://fontawesome.com/)
 
-### 💻 NPM scripts
+## 📖 How to use
+
+### Environment variables
+
+There is some environment variables with default values stored in `/configs/env/.env.defaults`
+
+<details> 
+  <summary>Variables list</summary>
+<br />
+
+| Variable         | Default            | Description                                                      
+| ---------------- | ------------------ |------------------ |
+| `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `API.js` for fetching movies data |
+| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `API.js` for fetching movies data |
+| `TMDB_API_REGION` | US | TMDb API region paramater will act as a filter to search for and display matching release date information. This parameter is expected to be an [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.|
+| `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
+| `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
+| `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
+| `DEBUG_MODE` | `1` | Debug mode. Available values: `0` or `1`. Enables Express log with `morgan` logger and Redux log with `redux-logger` |
+</details>
+
+### NPM scripts
 
 <details> 
   <summary>Installation</summary>
@@ -126,26 +166,38 @@ Run ESLint with `--fix` flag.
 
 </details>
 
-
-### 🔧 Environment variables
-
-There is some environment variables with default values stored in `/configs/env/.env.defaults`
+## 💻 Details
 
 <details> 
-  <summary>Variables list</summary>
+<summary> Optimization </summary>
 
-| Variable         | Default            | Description                                                      
-| ---------------- | ------------------ |------------------ |
-| `TMDB_API_KEY` | none | Your TMDb API key, used by internal module `API.js` for fetching movies data |
-| `TMDB_API_HOST` | https://api.themoviedb.org/3 | TMDb v3 API host, used by internal module `API.js` for fetching movies data |
-| `TMDB_API_REGION` | US | TMDb API region paramater will act as a filter to search for and display matching release date information. This parameter is expected to be an [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.|
-| `PORT_CLIENT` | `8080` | Port used by webpack-dev-server with client build |
-| `PORT_SERVER` | `8081` | Port used by express for nodemon/production modes |
-| `RENDERING` | `client` | Application rendering type. Available values: `client` or `server` |
-| `DEBUG_MODE` | `1` | Debug mode. Available values: `0` or `1`. Enables Express log with `morgan` logger and Redux log with `redux-logger` |
-</details>
+##### Current score (from "Chrome -> Dev Tools -> "Lighthowse" tab):
 
-### 🍦️ Roadmap
+<img src="src/assets/img/readme-images/lighthouse-score.png">
+
+Desktop version scores ~96/100 ponts.<br />
+Mobile version scores ~82/100 ponts.
+
+But there is a some planned improvements.
+And that's without even mentioning the possible PWA techniques!
+
+##### Bundle
+  - [x] Minified
+  - [x] Gzipped
+  - [ ] Tree-shaking
+  - [ ] Code-splitting
+
+##### Fonts
+  - [x] Stored locally
+  - [x] In modern format
+  - [x] Preloaded
+  - [x] With "font-display:swap"
+
+##### Images
+  - [x] Lazy loading
+</details> 
+
+## 🐾 Roadmap
 - [ ] QA: write more e2e tests, add unit tests (Jest);
 - [ ] CI/CD: add docker images as isolated environment for application running and testing;
 - [ ] Technologies: static type checking (Typescript), authorization (Firebase);
@@ -153,8 +205,9 @@ There is some environment variables with default values stored in `/configs/env/
 
 🎓 Article: step by step tutorial with best practices about "How to code application like this".
 
-### ✌️ About
-**Author**: [nk11dev](https://github.com/nk11dev).
+## ✌️ About
+**Author**: [nk11dev](https://github.com/nk11dev)<br />
+**License**: [MIT](/LICENSE)
 
 This product uses the TMDb API but is not endorsed or certified by TMDb.
 
