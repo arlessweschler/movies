@@ -99,10 +99,12 @@ const client = {
 const server = {
   imagesByUrl: {
     test: regexes.images,
+    exclude: /assets[\\/]fonts/,
     use: ['url-loader']
   },
   fontsByUrl: {
     test: regexes.fonts,
+    exclude: /assets[\\/]img/,
     use: ['url-loader']
   },
   cssByUrl: {
