@@ -1,10 +1,11 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/colors';
 
 .wrapper {
   display: inline;
   color: $lightgray;
 
-  @media (max-width: 576px) {
+  @media (max-width: $bp-small) {
     display: block;
   }
 

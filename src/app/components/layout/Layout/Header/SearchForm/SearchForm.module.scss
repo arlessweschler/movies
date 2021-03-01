@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/colors';
 
 .form {
@@ -5,7 +6,7 @@
   width: calc(100% - 60px);
   padding: 0px 10px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $bp-small) {
     padding: 0px 10px 0px 0px;
     width: calc(100% - 55px);
   }

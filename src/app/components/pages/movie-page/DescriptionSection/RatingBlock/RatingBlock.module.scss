@@ -1,12 +1,11 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/colors';
-
-$base: 'movie-details-rating';
 
 .rating {
   float: right;
   font-size: calc(1rem + 1.2vw);
 
-  @media (max-width: 576px) {
+  @media (max-width: $bp-small) {
     text-align: right;
   }
 }
@@ -27,7 +26,7 @@ $base: 'movie-details-rating';
 
   .votesLabel,
   .votesValue {
-    @media (max-width: 576px) {
+    @media (max-width: $bp-small) {
       display: block;
     }
   }

@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/colors';
 
 $border-color: $black-btn-border;
@@ -14,7 +15,7 @@ $border-color: $black-btn-border;
   line-height: 1;
   word-break: break-all;
 
-  @media (max-width: 576px) {
+  @media (max-width: $bp-small) {
     font-size: 14px;
     padding: 4px;
     word-break: break-word;

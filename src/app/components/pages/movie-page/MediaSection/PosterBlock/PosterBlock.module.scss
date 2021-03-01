@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/animations';
 @import '@/assets/css/theme/colors';
 
@@ -16,7 +17,7 @@
     width: auto !important;
     animation: animateOpacity 0.5s ease;
 
-    @media (max-width: 768px) {
+    @media (max-width: $bp-medium) {
       // fix for image 16by9 width proportion
       position: relative !important;
 

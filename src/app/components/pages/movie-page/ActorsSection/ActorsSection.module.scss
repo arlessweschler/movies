@@ -1,3 +1,5 @@
+@import '@/assets/css/theme/breakpoints';
+
 $image-width: 160px;
 $image-height: 240px;
 
@@ -9,7 +11,7 @@ $image-height-sm: 202px;
   justify-content: space-between;
   grid-template-columns: repeat(auto-fill, $image-width);
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     grid-template-columns: repeat(auto-fill, $image-width-sm);
   }
 }
@@ -27,7 +29,7 @@ $image-height-sm: 202px;
   width: $image-width;
   height: $image-height;
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     width: $image-width-sm;
     height: $image-height-sm;
   }

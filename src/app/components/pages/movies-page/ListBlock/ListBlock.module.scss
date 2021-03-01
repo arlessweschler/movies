@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/variables';
 
 .list {
@@ -6,7 +7,7 @@
   justify-content: space-between;
   margin-top: 20px;
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     grid-template-columns: repeat(auto-fill, $list-card-width--sm + 12);
   }
 }

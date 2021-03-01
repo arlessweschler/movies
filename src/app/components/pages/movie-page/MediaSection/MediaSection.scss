@@ -1,10 +1,12 @@
+@import '@/assets/css/theme/breakpoints';
+
 .row.row--has-videos {
   .column--poster {
     padding-bottom: 20px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-medium) {
   .row:not(.row--has-videos) {
     .column--trailer::before {
       padding-top: 0px;

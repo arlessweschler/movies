@@ -1,8 +1,7 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/variables';
 @import '@/assets/css/theme/colors';
 @import '@/assets/css/theme/mixins';
-
-$base: 'list-card';
 
 .card {
   display: flex;
@@ -11,7 +10,7 @@ $base: 'list-card';
   margin-bottom: 15px;
   transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     width: $list-card-width--sm;
   }
 
@@ -20,7 +19,7 @@ $base: 'list-card';
     transform: scale(1.1);
     cursor: pointer;
 
-    @media screen and (max-width: 576px) {
+    @media (max-width: $bp-small) {
       transform: none;
     }
   }

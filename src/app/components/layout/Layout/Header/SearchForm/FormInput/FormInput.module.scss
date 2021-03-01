@@ -1,3 +1,4 @@
+@import '@/assets/css/theme/breakpoints';
 @import "@/assets/css/theme/colors";
 
 .input:global(.form-control) {
@@ -5,7 +6,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   border-color: $black-btn-border;
 
-  @media (max-width: 576px) {
+  @media (max-width: $bp-small) {
     font-size: 14px;
   }
 

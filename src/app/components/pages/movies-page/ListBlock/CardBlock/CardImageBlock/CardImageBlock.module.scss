@@ -1,8 +1,7 @@
+@import '@/assets/css/theme/breakpoints';
 @import '@/assets/css/theme/animations';
 @import '@/assets/css/theme/colors';
 @import '@/assets/css/theme/variables';
-
-$base: 'list-card';
 
 @mixin image-size($mod: 0) {
   width: 185px + $mod;
@@ -23,7 +22,7 @@ $base: 'list-card';
   position: relative;
   @include image-size();
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     @include image-size-small();
   }
 }
@@ -34,7 +33,7 @@ $base: 'list-card';
   object-fit: cover;
   animation: animateOpacity 0.7s ease;
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     @include image-size-small();
   }
 }
@@ -52,7 +51,7 @@ $base: 'list-card';
   color: $lightgray;
   background-color: rgba(0, 0, 0, 0.5);
 
-  @media screen and (max-width: 576px) {
+  @media (max-width: $bp-small) {
     @include image-size-small();
   }
 }
