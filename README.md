@@ -17,7 +17,7 @@
 </p>
 
 ## 💡 What is it
-Movies is a real world React application. **It's fast, responsive, with i18 and SSR built in support.**
+Movies is a real world React application. **It's fast, responsive, with i18n and SSR built in support.**
 
 Movies application utilizes real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
 
@@ -171,7 +171,7 @@ Run ESLint with `--fix` flag.
 <details> 
 <summary> Optimization </summary>
 
-##### Current score (from "Chrome -> Dev Tools -> "Lighthowse" tab):
+##### Current score (tested with disabled cache from "Chrome -> Dev Tools -> "Lighthowse" tab):
 
 <img src="src/assets/img/readme-images/lighthouse-score.png">
 
@@ -180,6 +180,9 @@ Mobile version scores ~82/100 ponts.
 
 But there is a some planned improvements.
 And that's without even mentioning the possible PWA techniques!
+
+##### Express
+  - [x] HTTP headers with Cache-Control
 
 ##### Bundle
   - [x] Minified
