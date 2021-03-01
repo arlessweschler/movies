@@ -1,4 +1,18 @@
-dist
+# External dependencies
 node_modules
+
+# Compiled output
+dist
+
+# Cypress (e2e tests) reports
 __reports__
+
+# Local environment variables
 .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
