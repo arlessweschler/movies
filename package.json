@@ -1,7 +1,7 @@
 {
   "name": "movies",
   "version": "0.0.1",
-  "description": "Movies is a real world application for movies search, based on Webpack 5 / Express / React 17 + Redux-Saga / Bootstrap 4.6 + CSS Modules / i18next / SSR",
+  "description": "Movies is a real world isomorphic application for movies search, based on Webpack 5 / Express / React 17 + Redux-Saga / Bootstrap 4.6 + CSS Modules / i18next / SSR",
   "main": "index.client.js",
   "scripts": {
     "cypress": "npx cypress open --config-file=cypress.json",
