@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 
 import { LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/languages';
-import { redirect } from '@/routing/history';
+import { redirect } from '@/routing/common/history';
 import { isEmpty } from '@/utils/common';
 import DropdownToggle from './DropdownToggle';
 import DropdownMenu from './DropdownMenu';

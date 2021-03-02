@@ -1,7 +1,7 @@
-import RootRoute from '@/routing/RootRoute';
-import NotFoundPage from '@/pages';
+import RootRoute from '@/routing/common/RootRoute';
 import MoviesRouteContainer from '@/containers/MoviesRouteContainer';
 import MovieRouteContainer from '@/containers/MovieRouteContainer';
+import NotFoundPage from '@/pages';
 
 const routes = [
   {

@@ -1,6 +1,6 @@
 import logger from 'morgan';
 
-import REACT_ROUTES from '@/routing/routes';
+import REACT_ROUTES from '@/routing/common/routes';
 import {
   responseHeaders,
   extractRoutes,

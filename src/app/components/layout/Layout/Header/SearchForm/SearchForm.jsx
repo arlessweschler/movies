@@ -7,7 +7,7 @@ import qs from 'query-string';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 
-import { redirect } from '@/routing/history';
+import { redirect } from '@/routing/common/history';
 import { resetMovies } from '@/actions';
 import FormIcon from './FormIcon';
 import FormInput from './FormInput';

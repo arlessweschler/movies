@@ -1,6 +1,6 @@
 import qs from 'query-string';
 
-import history from '@/routing/history';
+import history from '@/routing/common/history';
 import { DEFAULT_QUERY_PARAMS } from '@/constants/query-params';
 
 export default function getQueryParams(query = history.location.search) {

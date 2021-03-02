@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 import { DEFAULT_QUERY_PARAMS } from '@/constants/query-params';
-import { redirect } from '@/routing/history';
+import { redirect } from '@/routing/common/history';
 import { getQueryParams } from '@/utils/url';
 import { resetMovies, getMovies } from '@/actions';
 
