@@ -2,13 +2,14 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { matchRoutes } from 'react-router-config';
 
-import { configureStore } from '@/redux/configureStore';
-import rootSaga from '@/redux/rootSaga';
+import routes from '@/routing/common/routes';
 import ServerRouter from '@/routing/ServerRouter';
+import rootSaga from '@/redux/rootSaga';
+import { configureStore } from '@/redux/configureStore';
 
 const envConfig = require('@/configs/env/env-config');
 
-export default (routes) => (req, res) => {
+export default (req, res) => {
 
   /* eslint-disable no-console */
   if (envConfig.DEBUG_MODE === '1') {
@@ -44,7 +45,6 @@ export default (routes) => (req, res) => {
         initialLanguage={initialLanguage}
         helmetContext={helmetContext}
         routerContext={routerContext}
-        routes={routes}
         store={store}
         url={req.url}
       />

@@ -1,10 +1,10 @@
 import logger from 'morgan';
 
-import REACT_ROUTES from '@/routing/common/routes';
+import routes from '@/routing/common/routes';
 import {
   responseHeaders,
   extractRoutes,
-  handleSSR
+  ssrRequestHandler
 } from '@/server/express-app-config';
 
 const envConfig = require('@/configs/env/env-config');
@@ -23,8 +23,6 @@ if (envConfig.DEBUG_MODE === '1') {
   app.use(logger('dev'));
 }
 
-const EXPRESS_ROUTES = extractRoutes(REACT_ROUTES);
-
 // SSR (server-side rendering)
 if (envConfig.RENDERING === 'server') {
 
@@ -37,15 +35,17 @@ if (envConfig.RENDERING === 'server') {
   app.set('view engine', 'pug');
   app.set('views', path.join(`${__dirname}/client/views`));
 
-  app.get('*', handleSSR(REACT_ROUTES));
+  app.get('*', ssrRequestHandler);
 
   // CSR (client-side rendering)
 } else {
 
+  const routesList = extractRoutes(routes);
+
   app.use(expressStaticGzip(CLIENT_FOLDER));
 
   // CSR business-logic routes
-  app.get(EXPRESS_ROUTES, (req, res) => {
+  app.get(routesList, (req, res) => {
     res.sendFile(`${CLIENT_FOLDER}/index.html`, { root: '.' });
   });
 

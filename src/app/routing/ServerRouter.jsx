@@ -4,13 +4,13 @@ import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { HelmetProvider } from 'react-helmet-async';
 
+import routes from '@/routing/common/routes';
 import { configureI18next } from '@/i18n';
 
 const ServerRouter = ({
   initialLanguage,
   helmetContext,
   routerContext,
-  routes,
   store,
   url
 }) => {
@@ -36,7 +36,6 @@ ServerRouter.propTypes = {
   helmetContext: PT.object.isRequired,
   routerContext: PT.object.isRequired,
   url: PT.string.isRequired,
-  routes: PT.array.isRequired,
   store: PT.object.isRequired
 };
 
