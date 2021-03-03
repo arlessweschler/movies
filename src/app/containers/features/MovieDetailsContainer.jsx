@@ -9,6 +9,7 @@ import { isEmpty } from '@/utils/common';
 import { hasRequestDiffs, getQueryParams } from '@/utils/url';
 import { CreditsContextProvider, VideosContextProvider } from '@/contexts';
 import { ProgressBar, Backdrop, Page } from '@/layout';
+import { Message } from '@/markup';
 import { DescriptionSection, MediaSection, ActorsSection, GallerySection } from '@/pages/movie-page';
 import RecommsContainer from '@/containers/features/RecommsContainer';
 import { getDetails, getCredits, getVideos, getImages } from '@/actions';
@@ -65,11 +66,19 @@ class MovieDetailsContainer extends Component {
   render() {
     const { details } = this.props;
     const { movie } = details;
-    const { data } = movie;
+    const { data, error } = movie;
     const { backdrop_path, poster_path } = data;
 
     return (
       <Page>
+        {error && (
+          <Message
+            cls="mb-3"
+            text={error}
+            showAccessNote={true}
+          />
+        )}
+
         { Object.keys(details).some((key) => details[key].isLoading) && <ProgressBar />}
 
         {!isEmpty(data) && (

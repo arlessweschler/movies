@@ -61,7 +61,14 @@ class MoviesListContainer extends Component {
 
     return (
       <Page>
-        {error && <Message cls="mb-3" text={error} />}
+        {error && (
+          <Message
+            cls="mb-3"
+            text={error}
+            showAccessNote={true}
+          />
+        )}
+
         {isLoading && <ProgressBar />}
 
         <SearchResultsBlock

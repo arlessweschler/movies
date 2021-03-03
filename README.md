@@ -24,7 +24,7 @@ Movies is a real world isomorphic React application. **It's fast, responsive, wi
 
 Movies application utilizes real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
 
-📄 **Note:** If you have some issues fetching data from TMDb, like in Russia (it's maybe due to country access restriction), you can try to enable some VPN extension in your browser or use DNS from Cloudflare.
+📄 **Note:** If you have some issues fetching data from TMDb, like in Russia (it is maybe due to country access restriction), you can try to enable some VPN extension in your browser or use Cloudflare DNS.
 
 #### 🏄 Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 

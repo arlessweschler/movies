@@ -47,5 +47,6 @@
     "recommendations": {
       "section_label": "Recommendations"
     }
-  }
+  },
+  "access_note": "Note: If you have some issues fetching data from TMDb, like in Russia (it is maybe due to country access restriction), you can try to enable some VPN extension in your browser or use Cloudflare DNS."
 }
