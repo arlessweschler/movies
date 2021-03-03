@@ -12,8 +12,11 @@
 
 <p align="center">
   <a href="https://github.com/nk11dev/movies/actions?query=workflow%3Ae2e-tests">
-    <img src="https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg">
+    <img alt="E2E-tests status" src="https://github.com/nk11dev/movies/workflows/e2e-tests/badge.svg">
   </a>
+  <a href="https://stats.uptimerobot.com/qLDMxHOKQy">
+    <img alt="Uptime Robot status" src="https://img.shields.io/uptimerobot/status/m787399188-cfa78f70cbf831fbe3e2876d?label=website">
+</a>
 </p>
 
 ## 💡 What is it
@@ -21,7 +24,7 @@ Movies is a real world isomorphic React application. **It's fast, responsive, wi
 
 Movies application utilizes real movies data API provided by [The Movie Database (TMDb)](https://www.themoviedb.org/). 
 
-📄 **Note:** If you have some issues fetching data from TMDb, like in Russia (it's maybe due to country access restriction), please try to enable some VPN extension in your browser.
+📄 **Note:** If you have some issues fetching data from TMDb, like in Russia (it's maybe due to country access restriction), you can try to enable some VPN extension in your browser or use DNS from Cloudflare.
 
 #### 🏄 Demo: [nk11dev-movies.herokuapp.com](https://nk11dev-movies.herokuapp.com/)
 
