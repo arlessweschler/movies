@@ -22,18 +22,20 @@ function withMoviesNav(WrappedComponent) {
       redirect(`/?${qs.stringify(nextUrlParams)}`);
     }
 
-    // обработчик переключения типа фильмов (из списка фильмов)
+    // Movies type switching handler (used in toolbar in movies list page)
     function changeMoviesType(moviesType) {
       update({ moviesType, page: 1 });
     }
 
-    // обработчик переключения страниц (из списка фильмов или результатов поиска)
+    // Pagination handler
     function linkPage({ selected }) {
       update({ page: selected + 1 });
     }
 
-    // обработчик для перехода на маршрут деталей фильма
-    // (из списка фильмов, результатов поиска или рекоммендаций)
+    /*
+    Handler for routing to the movie details page.
+    Used from the list of movies, search results or recommendations
+    */
     function linkMovie(id) {
       const { location } = props;
       const { lng } = qs.parse(location.search);

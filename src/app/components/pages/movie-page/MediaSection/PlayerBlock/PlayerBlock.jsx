@@ -27,7 +27,7 @@ function PlayerBlock(props) {
         playing={false}
         controls={true}
         onReady={() => setLoading(false)}
-        // устанавливает превью изображение, при клике на которое загружается плеер
+        // Use YouTube preview, the video player will start on preview click
         light={isLight}
       />
     </>

@@ -1,9 +1,13 @@
 import getQueryParams from './getQueryParams';
 
-// проверяем различия параметров последнего запроса (ключи объекта request) в store с:
-// 1. значениями этих параметров из url search query или
-// (опционально) 2. дефолтными значениями этих параметров из редюсера
-export default function hasRequestDiffs({ request, checklist }) {
+/*
+Checks for differences of the last request (from redux store) and url search query.
+And (optionally) with default values from redux useReducer.
+*/
+export default function hasRequestDiffs({
+  request,
+  checklist
+}) {
   const searchParams = getQueryParams();
 
   let checks = [];

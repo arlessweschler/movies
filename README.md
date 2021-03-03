@@ -53,7 +53,7 @@ Movies application utilizes real movies data API provided by [The Movie Database
 
 ### Environment variables
 
-There is some environment variables with default values stored in `/configs/env/.env.defaults`
+There are some environment variables with default values stored in `/configs/env/.env.defaults`.
 
 <details> 
   <summary>Variables list</summary>

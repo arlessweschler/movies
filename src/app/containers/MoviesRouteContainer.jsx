@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   }, dispatch)
 });
 
-// получение данных для отправки разметки с данными при серверном рендеринге
+// API data prefetching (used in SSR mode)
 class MoviesRouteContainer extends Component {
   static fetchData(store, url) {
     const queryParams = getQueryParams(url.split('?').pop());
