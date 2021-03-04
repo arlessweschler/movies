@@ -32,7 +32,7 @@ const HomeLink = () => {
     <a
       href="/"
       className={styles.link}
-      onClick={(e) => goHome(e)}
+      onClick={goHome}
       data-test="home-link"
     >
       <FontAwesomeIcon

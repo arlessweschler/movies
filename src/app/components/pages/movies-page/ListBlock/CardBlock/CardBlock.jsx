@@ -11,11 +11,20 @@ function CardBlock(props) {
   const { movie, printGenres, linkMovie } = props;
   const { id, title, genre_ids } = movie;
 
+  const onClick = (e) => {
+    const cardEl = e.target.closest('div[data-movie-id]');
+
+    if (cardEl) {
+      linkMovie(cardEl.dataset.movieId);
+    }
+  };
+
   return (
     <div
       className={cn(styles.card, 'mx-auto')}
-      onClick={() => linkMovie(id)}
       data-test="movie-card"
+      data-movie-id={id}
+      onClick={onClick}
     >
       <CardImageBlock
         movie={movie}
