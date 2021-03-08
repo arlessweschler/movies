@@ -9,6 +9,12 @@ $border-color: $black-btn-border;
   background-color: $purple !important;
 }
 
+@mixin light-btn-style {
+  color: #afb5ba;
+  border-color: $border-color;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .filterBtn:global(.btn) {
   z-index: 0 !important;
   min-height: 38px;
@@ -23,7 +29,7 @@ $border-color: $black-btn-border;
 
   &:focus {
     box-shadow: none !important;
-    @include dark-btn-style;
+    @include light-btn-style;
   }
   &:active {
     box-shadow: none !important;
@@ -36,9 +42,7 @@ $border-color: $black-btn-border;
 }
 
 .light:global(.btn-light) {
-  color: #afb5ba;
-  border-color: $border-color;
-  background-color: rgba(0, 0, 0, 0.5);
+  @include light-btn-style;
 }
 
 .dark:global(.btn-dark) {
